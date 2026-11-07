@@ -43,10 +43,12 @@ Si un site est bloqué (erreur réseau, DNS, 403 du proxy), ne réessaie pas : b
 
 ## 4. Rédiger le digest (format exact)
 
+Liens : écris **toujours** les liens au format Markdown masqué `[texte](url)`, jamais une URL nue (le digest est envoyé sur Discord, où ces liens deviennent cliquables). Exemples : `[Tweet](https://x.com/handle/status/123)`, `[Repo](https://github.com/owner/repo)`, `[@handle](https://x.com/handle)`. Garde les titres de section `###` exactement comme ci-dessous : chacun devient un bloc (embed) sur Discord.
+
 ### 🛠️ Nouveaux projets (section principale)
 Les 3 à 5 projets / outils / démos / retours d'expérience les plus intéressants présentés ou mis en avant dans les 24h (posts, RT, quotes), en privilégiant l'IA appliquée au business (voir section 2). Classe-les du plus utile pour moi au plus niche. Pour chacun :
 - **Titre** : nom du projet + ce que c'est en 5-8 mots (ex. "Bombadil : un robot qui essaie de casser ton app web"), avec (open source / payant / recherche).
-- 🔗 lien du tweet + lien du projet (repo, site, paper).
+- 🔗 `[Tweet](url)` · `[Repo](url)` / `[Site](url)` / `[Paper](url)`.
 - **C'est quoi** : une phrase claire. Si possible une comparaison avec un outil connu ("en clair, un Codex cloud que tu héberges toi-même").
 - **Comment ça marche** : le mécanisme technique, vulgarisé, étape par étape si besoin. Explique chaque terme technique.
 - **Pour qui / quel problème** : pourquoi ça existe, en quoi ça me concerne (vibe coding, agents, ops).
@@ -78,6 +80,16 @@ Une ou deux lignes, à partir de `data/run.json` :
 
 ## 5. Livraison
 
-**Ne crée AUCUN fichier pour le rapport (pas de .md, pas de fichier texte).** Les seuls fichiers autorisés sont ceux du script dans `data/` et des notes temporaires. Écris le digest complet directement dans la conversation du run, comme réponse finale.
+**Ne crée AUCUN fichier pour le rapport dans le repo**, ni commit ni push. Seule exception : `data/digest.md` (ignoré par git), qui sert uniquement à l'envoi Discord. Les autres fichiers autorisés sont ceux du script dans `data/` et des notes temporaires.
+
+Dans cet ordre :
+
+1. **Discord** : écris le digest complet (format ci-dessus) dans `data/digest.md`, puis lance depuis la racine du repo :
+   ```bash
+   python3 post_discord.py data/digest.md
+   ```
+   Le script lit le webhook dans `DISCORD_WEBHOOK_URL` (n'affiche jamais cette URL) et envoie le digest en embeds, une section par embed. Ne le relance pas s'il échoue : note l'erreur affichée et ajoute en haut du digest « ⚠️ Envoi Discord échoué : <raison> » pour la notification et la réponse finale.
+2. **Notification** (ci-dessous).
+3. **Réponse finale** : le digest complet directement dans la conversation du run.
 
 Envoie aussi le digest complet via l'outil PushNotification (dans des balises <routine_summary>). La première phrase devient la bannière du téléphone : mets-y le projet le plus intéressant du jour en une phrase. Le reste du message est le digest complet dans le format ci-dessus (c'est ce que je lis par email). Si l'API Mindcase a échoué, la notification doit le dire en première phrase.
