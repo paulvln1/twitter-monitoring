@@ -83,6 +83,19 @@ def find_cost(payload):
     return None
 
 
+def find_notices(payload, path=""):
+    """Récupère les notices (solde bas, avertissements) présentes dans la réponse."""
+    out = []
+    if isinstance(payload, dict):
+        for k, v in payload.items():
+            kl = k.lower()
+            if any(w in kl for w in ("balance", "notice", "warning", "message")) and not isinstance(v, list):
+                out.append({f"{path}{k}": v})
+            elif isinstance(v, dict):
+                out += find_notices(v, f"{path}{k}.")
+    return out
+
+
 def parse_date(s):
     if not s:
         return None
@@ -115,7 +128,7 @@ def call(handle):
 
 
 summary = {"calls": 0, "ok": 0, "failed": 0, "billed_tweets": 0, "kept_tweets": 0,
-           "real_cost_fields": [], "errors": [], "stopped": None, "per_account": []}
+           "real_cost_fields": [], "notices": [], "errors": [], "stopped": None, "per_account": []}
 kept = []
 
 for i, handle in enumerate(accounts):
@@ -134,6 +147,9 @@ for i, handle in enumerate(accounts):
         continue
 
     summary["ok"] += 1
+    for n in find_notices(payload):
+        if n not in summary["notices"]:
+            summary["notices"].append(n)
     rows = extract_rows(payload)
     cost = find_cost(payload)
     if cost:
