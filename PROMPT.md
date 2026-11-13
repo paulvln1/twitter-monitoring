@@ -4,7 +4,7 @@ Mon profil : je bosse en ops chez Newfund, je vibe code beaucoup, je touche à d
 
 ## 1. Récupérer les tweets des dernières 24h
 
-Les comptes suivis (la « whitelist ») sont dans la variable d'environnement `TWITTER_ACCOUNTS`, pas dans ce repo. Ne les écris dans aucun fichier du repo et ne fais aucun commit ni push.
+Les comptes suivis (la « whitelist ») sont dans `accounts.txt` (modifiable par Paul et Julien sur GitHub). Ne modifie pas ce fichier pendant un run et ne fais aucun commit ni push.
 
 Lance, depuis la racine du repo :
 
