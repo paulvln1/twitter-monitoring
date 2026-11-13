@@ -12,7 +12,10 @@ Digest quotidien des tweets d'une liste de comptes, généré par une routine Cl
 MINDCASE_API_KEY=mk_live_...
 TWITTER_ACCOUNTS=handle1,handle2,handle3
 DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/...
+DISCORD_WEBHOOK_URL_2=https://discord.com/api/webhooks/...   # optionnel : second salon
 ```
+
+Le digest est envoyé sur chaque webhook défini ; si l'un échoue, l'autre est quand même servi.
 
 La liste des comptes n'est volontairement **pas** dans le repo : elle vit uniquement dans `TWITTER_ACCOUNTS`.
 Domaines réseau à autoriser : `api.mindcase.co`, `discord.com`.
