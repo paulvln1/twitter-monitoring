@@ -88,7 +88,7 @@ Dans cet ordre :
    ```bash
    python3 post_discord.py data/digest.md
    ```
-   Le script lit le webhook dans `DISCORD_WEBHOOK_URL` (n'affiche jamais cette URL) et envoie le digest en embeds, une section par embed. Ne le relance pas s'il échoue : note l'erreur affichée et ajoute en haut du digest « ⚠️ Envoi Discord échoué : <raison> » pour la notification et la réponse finale.
+   Le script lit les webhooks dans `DISCORD_WEBHOOK_URL` et `DISCORD_WEBHOOK_URL_2` (n'affiche jamais ces URL) et envoie sur chacun et envoie le digest en embeds, une section par embed. Ne le relance pas s'il échoue : note l'erreur affichée et ajoute en haut du digest « ⚠️ Envoi Discord échoué : <raison> » pour la notification et la réponse finale.
 2. **Notification** (ci-dessous).
 3. **Réponse finale** : le digest complet directement dans la conversation du run.
 

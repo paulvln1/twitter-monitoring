@@ -31,6 +31,7 @@ TITLE_MAX = 256
 MSG_EMBEDS_MAX = 10
 MSG_CHARS_MAX = 6000
 USERNAME = "Veille Twitter"
+WEBHOOK_VARS = ("DISCORD_WEBHOOK_URL", "DISCORD_WEBHOOK_URL_2")
 USER_AGENT = "DiscordBot (https://github.com/paulvln1/twitter-monitoring, 1.0)"
 
 COLORS = [  # (mot-clé dans le titre de section, couleur)
@@ -217,23 +218,36 @@ def main():
             print(json.dumps({"embeds": embeds}, ensure_ascii=False, indent=2))
         return 0
 
-    url = os.environ.get("DISCORD_WEBHOOK_URL", "").strip()
-    if not re.match(r"^https://(?:\w+\.)?discord(?:app)?\.com/api/webhooks/", url):
-        print("ERREUR Discord : DISCORD_WEBHOOK_URL est vide ou n'est pas une URL de webhook Discord.", file=sys.stderr)
+    # Un ou plusieurs webhooks : DISCORD_WEBHOOK_URL, DISCORD_WEBHOOK_URL_2, ...
+    targets = []
+    for name in WEBHOOK_VARS:
+        url = os.environ.get(name, "").strip()
+        if not url:
+            continue
+        if not re.match(r"^https://(?:\w+\.)?discord(?:app)?\.com/api/webhooks/", url):
+            print(f"ERREUR Discord : {name} n'est pas une URL de webhook Discord.", file=sys.stderr)
+            return 1
+        targets.append((name, url))
+    if not targets:
+        print("ERREUR Discord : DISCORD_WEBHOOK_URL est vide.", file=sys.stderr)
         return 1
 
-    for i, embeds in enumerate(messages, 1):
-        payload = {"username": USERNAME, "embeds": embeds, "allowed_mentions": {"parse": []}}
-        try:
-            post(url, payload)
-        except RuntimeError as err:
-            print(f"ERREUR Discord : message {i}/{len(messages)} non envoyé ({err}).", file=sys.stderr)
-            return 1
-        if i < len(messages):
-            time.sleep(1)
-    print(f"Discord : digest envoyé ({len(messages)} message(s), "
-          f"{sum(len(m) for m in messages)} embed(s)).")
-    return 0
+    failed = False
+    for name, url in targets:
+        for i, embeds in enumerate(messages, 1):
+            payload = {"username": USERNAME, "embeds": embeds, "allowed_mentions": {"parse": []}}
+            try:
+                post(url, payload)
+            except RuntimeError as err:
+                print(f"ERREUR Discord ({name}) : message {i}/{len(messages)} non envoyé ({err}).", file=sys.stderr)
+                failed = True
+                break  # on passe au webhook suivant
+            if i < len(messages):
+                time.sleep(1)
+        else:
+            print(f"Discord ({name}) : digest envoyé ({len(messages)} message(s), "
+                  f"{sum(len(m) for m in messages)} embed(s)).")
+    return 1 if failed else 0
 
 
 if __name__ == "__main__":
