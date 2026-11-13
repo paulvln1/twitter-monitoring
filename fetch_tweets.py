@@ -3,7 +3,7 @@
 
 Variables d'environnement :
   MINDCASE_API_KEY  clé Mindcase (avec ou sans préfixe "Bearer ")
-  TWITTER_ACCOUNTS  handles à suivre, séparés par des virgules ou des espaces
+  accounts.txt      handles à suivre, un par ligne (repli : variable TWITTER_ACCOUNTS si le fichier n'existe pas)
   HOURS             (optionnel) fenêtre en heures, 24 par défaut
 
 Sorties (dossier data/, ignoré par git) :
@@ -45,9 +45,15 @@ key = re.sub(r"^bearer\s+", "", key, flags=re.I)
 if not key:
     die("MINDCASE_API_KEY est vide.")
 
-accounts = [a.lstrip("@") for a in re.split(r"[\s,;]+", os.environ.get("TWITTER_ACCOUNTS", "")) if a]
+ACCOUNTS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "accounts.txt")
+try:
+    with open(ACCOUNTS_FILE, encoding="utf-8") as f:
+        raw_accounts = "\n".join(line.split("#", 1)[0] for line in f)
+except OSError:
+    raw_accounts = os.environ.get("TWITTER_ACCOUNTS", "")  # repli si accounts.txt est absent
+accounts = list(dict.fromkeys(a.lstrip("@") for a in re.split(r"[\s,;]+", raw_accounts) if a.lstrip("@")))
 if not accounts:
-    die("TWITTER_ACCOUNTS est vide (ex. TWITTER_ACCOUNTS=handle1,handle2).")
+    die("Aucun compte : remplis accounts.txt (un handle par ligne).")
 
 hours = int(os.environ.get("HOURS", "24"))
 now = time.time()

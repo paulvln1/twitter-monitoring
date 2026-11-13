@@ -10,18 +10,20 @@ Digest quotidien des tweets d'une liste de comptes, généré par une routine Cl
 
 ```
 MINDCASE_API_KEY=mk_live_...
-TWITTER_ACCOUNTS=handle1,handle2,handle3
 DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/...
-DISCORD_WEBHOOK_URL_2=https://discord.com/api/webhooks/...   # optionnel : second salon
+DISCORD_WEBHOOK_URL_2=https://discord.com/api/webhooks/...   # optionnel : second salon (serveur commun avec Julien)
 ```
 
 Le digest est envoyé sur chaque webhook défini ; si l'un échoue, l'autre est quand même servi.
 
-La liste des comptes n'est volontairement **pas** dans le repo : elle vit uniquement dans `TWITTER_ACCOUNTS`.
+## Comptes suivis
+
+La liste est dans `accounts.txt` (un handle par ligne, `#` pour commenter). Chacun peut l'éditer directement sur GitHub ; la routine lit la version de `main` à chaque run. Si le fichier est absent, le script se rabat sur la variable `TWITTER_ACCOUNTS`.
+
 Domaines réseau à autoriser : `api.mindcase.co`, `discord.com`.
 
 ## Lancer à la main
 
 ```bash
-MINDCASE_API_KEY=... TWITTER_ACCOUNTS=handle1,handle2 python3 fetch_tweets.py
+MINDCASE_API_KEY=... python3 fetch_tweets.py
 ```
