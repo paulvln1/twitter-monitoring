@@ -18,3 +18,5 @@ kieranklaassen
 RLanceMartin
 mitsuhiko
 CompleteSkeptic
+sqs
+zachlloydtweets
