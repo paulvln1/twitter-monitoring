@@ -1,7 +1,6 @@
 # Comptes Twitter/X suivis par le digest quotidien.
 # Un handle par ligne (avec ou sans @). Les lignes qui commencent par # sont ignorées.
 # Modifie ce fichier directement sur GitHub : la prochaine exécution de la routine le prendra en compte.
-jerryjliu0
 hwchase17
 mckaywrigley
 GeoffreyHuntley
