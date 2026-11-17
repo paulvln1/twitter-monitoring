@@ -1,6 +1,6 @@
 # Spec — Map des comptes
 
-Statut : **brouillon, en discussion** (rien n'est codé).
+Statut : **spec validée, prête à coder** (rien n'est codé).
 
 ## Objectif
 
@@ -18,7 +18,7 @@ Le run quotidien existant (`fetch_tweets.py`) récupère déjà les tweets écri
 
 Les mentions simples ne comptent pas.
 
-Chaque interaction est ajoutée à `graph/interactions.jsonl`, **versionné dans git** :
+Chaque interaction est ajoutée à `graph/interactions.jsonl`, **versionné dans git sur la branche `claude/map-data`** (voir section 1 bis) :
 
 ```json
 {"date": "2026-11-17", "from": "wl_handle", "to": "target_handle", "type": "rt|quote|reply", "target_tweet_url": "…", "source_tweet_url": "…"}
@@ -30,6 +30,17 @@ Règles :
 - `target_tweet_url` (le tweet du compte relayé) est indispensable : c'est lui qui permet de compter les **tweets différents** (section 2).
 - On ignore les interactions d'un compte avec lui-même (reply dans son propre thread, auto-RT).
 - On garde tout l'historique dans le fichier. La fenêtre de 30 jours ne s'applique qu'à l'affichage.
+
+## 1 bis. Où vivent les données : la branche `claude/map-data`
+
+- La routine **n'a pas le droit de pousser sur `main`** : une routine Claude ne peut pousser que sur des branches `claude/…`. **C'est voulu** : la routine lit chaque jour du contenu externe (tweets, pages web) et ne doit pas pouvoir modifier le code.
+- Toutes les données de la map vivent donc dans le dossier `graph/` d'une **branche dédiée `claude/map-data`**, qui ne contient que des données : `interactions.jsonl`, `profiles.json`, `oneliners.json`, `graph.json`.
+- **Chaque jour**, la routine :
+  1. lit `accounts.txt` depuis `main` ;
+  2. récupère `claude/map-data` (et la crée comme branche orpheline si elle n'existe pas) ;
+  3. ajoute les données du jour, recalcule `graph.json`, commit et pousse ;
+  4. si le push échoue, réessaie après un `fetch` et un merge, sans jamais faire de force-push.
+- La routine ne touche **jamais** à `main` ni à `accounts.txt`.
 
 ## 2. Règles de la map (recalculées chaque jour)
 
@@ -55,7 +66,7 @@ Règles :
 
 ## 3. Profils
 
-- Champs gardés : `displayName`, `bio`, `followers` (et `profileUrl`).
+- Champs gardés : `displayName`, `bio`, `followers`, `profilePicture` (photo de profil, affichée dans la bulle) et `profileUrl`.
 - Appel à l'agent Mindcase `twitter/profiles`, avec la même clé `MINDCASE_API_KEY` :
   ```
   POST https://api.mindcase.co/v1/data/twitter/profiles/run?wait=true
@@ -68,6 +79,7 @@ Règles :
   - pour chaque compte de la whitelist qui n'a pas encore de profil : les ~22 comptes actuels au premier run (≈ 0,01 $), puis chaque nouvel ajout.
   - Tous les comptes concernés d'un même run passent dans **un seul appel**.
 - Les résultats sont stockés dans `graph/profiles.json` et **jamais rafraîchis** : le nombre de followers affiché est donc celui du jour de la récupération.
+- Photo : l'URL `pbs.twimg.com` peut casser si le compte change de photo. Dans ce cas, le site affiche les initiales sur un rond de couleur.
 - Si un profil n'est pas renvoyé (compte suspendu, faute de frappe), le nœud s'affiche avec le handle seul, et on réessaie au run suivant, une seule fois.
 - Le coût des profils est ajouté à la section « Coût du run » du digest.
 
@@ -80,7 +92,9 @@ Règles :
 
 ## 4. Site
 
-- **Hébergement** : Vercel, déployé automatiquement à chaque push sur `main`. Le commit quotidien de `graph/` rafraîchit donc la map.
+- **Hébergement** : Vercel, déployé depuis `main`, qui ne contient que le code du site.
+- **Données** : au chargement, le site lit `graph.json` directement depuis la branche `claude/map-data` (`raw.githubusercontent.com`, le repo étant public). Le run quotidien met donc la map à jour **sans redéploiement**. Le cache de GitHub peut retarder la mise à jour de quelques minutes.
+- **Bulles** : photo de profil ronde, avec une bordure dont la couleur distingue whitelist et candidats.
 - **Map publique, en anglais** : graphe interactif (force-directed). Les nœuds whitelist et candidats ont deux couleurs différentes, et la taille d'un candidat dépend du nombre de tweets différents relayés.
 - **Clic sur une bulle → panneau latéral** avec :
   - display name, @handle, bio, nombre de followers ;
@@ -96,7 +110,7 @@ Règles :
 - Un seul utilisateur autorisé pour l'instant : variable `ADMIN_GITHUB_LOGINS=paulvln1` (pour ajouter Julien plus tard, il suffira de l'ajouter à cette variable).
 - Une fois connecté, le panneau affiche **« Ajouter à la watchlist »** sur un candidat ou **« Retirer »** sur un compte de la whitelist.
 - Le serveur commit directement dans `accounts.txt` sur `main` via l'API GitHub, avec un token stocké côté Vercel et jamais exposé au navigateur. Le message de commit indique l'action et le compte.
-- Le changement apparaît sur la map **au run suivant**. En attendant, le nœud porte un badge « en attente ».
+- Le changement apparaît sur la map **au run suivant**. En attendant, le nœud porte un badge « en attente » : le site compare `accounts.txt` sur `main` avec la whitelist de `graph.json`.
 - Conflits : le commit utilise le `sha` du fichier. Si le fichier a changé entre-temps, le serveur relit et réessaie.
 
 ### Sécurité
@@ -124,7 +138,7 @@ Règles :
 
 ## 7. Points à vérifier avant de coder
 
-- [ ] Le champ « reply » dans la réponse Mindcase : y a-t-il le handle et l'ID du tweet parent ? Sinon, une reply ne permet pas de savoir quel tweet a été relayé.
 - [x] Format et coût de l'agent `twitter/profiles` (voir section 3).
-- [ ] La routine cloud a-t-elle le droit de push sur `main` pour commiter `graph/` ?
-- [ ] Le repo passe en public : vérifier l'historique git (aucun secret).
+- [x] Push de la routine : pas d'accès à `main`. Elle pousse sur `claude/map-data` (section 1 bis).
+- [x] Historique git vérifié le 17/11/2026 (25 commits, toutes branches) : aucun secret, seulement les exemples du README (`mk_live_...`).
+- [x] Les replies Mindcase indiquent le tweet parent (confirmé par Paul).
