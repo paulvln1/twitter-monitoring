@@ -14,6 +14,8 @@
   let byId = new Map();    // id -> node
   let selected = null;
   let zoom, view, sim;
+  // admin : login connecté, contenu actuel de accounts.txt, confirmation de retrait en cours
+  const Admin = { login: null, accounts: null, busy: false, confirm: null, error: null };
 
   // ---------- helpers ----------
   function el(tag, props = {}, ...children) {
@@ -130,6 +132,7 @@
     node.append("circle").attr("class", "ring").attr("r", (d) => d.r);
     node.append("text").attr("class", "label").attr("y", (d) => d.r + 14).text((d) => `@${handleOf(d)}`);
     node.filter(isNew).append("text").attr("class", "new").attr("y", (d) => -d.r - 6).text("new");
+    node.append("text").attr("class", "pending").attr("y", (d) => -d.r - 6).text("pending");
 
     function draw() {
       edge.attr("x1", (l) => l.source.x).attr("y1", (l) => l.source.y)
@@ -150,6 +153,7 @@
     fitAll(false);
 
     G._sim = { nodes, links, edge, node };
+    markPending();
   }
 
   function fitAll(animate = true) {
@@ -267,9 +271,117 @@
     }
 
     body.append(el("a", { class: "p-open blue", href: xUrl(n), target: "_blank", rel: "noopener", text: "↘ Open on X" }));
+    renderAdmin(n, body);
     $("panel").hidden = false;
     $("panel").scrollTop = 0;
   }
+
+  // ---------- watchlist (admin) ----------
+  // "add" : candidat déjà ajouté à accounts.txt, "remove" : source déjà retirée. Visible au prochain run.
+  function pending(n) {
+    if (!Admin.accounts) return null;
+    const inFile = Admin.accounts.has(n.id);
+    if (n.kind === "candidate" && inFile) return "add";
+    if (n.kind === "whitelist" && !inFile) return "remove";
+    return null;
+  }
+
+  function markPending() {
+    if (!G || !G._sim) return;
+    const { node } = G._sim;
+    node.select(".pending").attr("display", (d) => (pending(d) ? null : "none"));
+    node.select(".new").attr("display", (d) => (pending(d) ? "none" : null));
+  }
+
+  function renderAdmin(n, body) {
+    if (!Admin.login || !Admin.accounts) return;
+    const box = el("div", { class: "p-admin" }, el("p", { class: "p-label", text: "Watchlist" }));
+    const h = `@${handleOf(n)}`;
+    const p = pending(n);
+    if (p) {
+      box.append(el("p", { class: "p-note", text: p === "add"
+        ? `${h} is in the watchlist. It becomes a source at the next run.`
+        : `${h} was removed from the watchlist. It leaves the sources at the next run.` }));
+    } else if (n.kind === "candidate") {
+      box.append(el("button", { type: "button", class: "btn blue", disabled: Admin.busy ? "" : null,
+        text: Admin.busy ? "Adding…" : "+ Add to watchlist", onclick: () => edit("add", n) }));
+    } else if (Admin.confirm === n.id) {
+      box.append(el("p", { class: "p-note", text: `Remove ${h} from the watchlist?` }),
+        el("div", { class: "btn-row" },
+          el("button", { type: "button", class: "btn", disabled: Admin.busy ? "" : null,
+            text: Admin.busy ? "Removing…" : "Confirm", onclick: () => edit("remove", n) }),
+          el("button", { type: "button", class: "btn ghost", text: "Cancel",
+            onclick: () => { Admin.confirm = null; renderPanel(n); } })));
+    } else {
+      box.append(el("button", { type: "button", class: "btn ghost", text: "Remove from watchlist",
+        onclick: () => { Admin.confirm = n.id; Admin.error = null; renderPanel(n); } }));
+    }
+    if (Admin.error) box.append(el("p", { class: "p-note err", text: Admin.error }));
+    body.append(box);
+  }
+
+  async function edit(action, n) {
+    if (Admin.busy) return;
+    Admin.busy = true; Admin.error = null;
+    renderPanel(n);
+    try {
+      const r = await fetch("/api/watchlist", {
+        method: "POST", credentials: "same-origin",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action, handle: handleOf(n) }),
+      });
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(data.error || `error ${r.status}`);
+      Admin.accounts = new Set(data.accounts.map((a) => a.toLowerCase()));
+      Admin.confirm = null;
+    } catch (e) {
+      Admin.error = r401(e) ? "Your session has expired. Log in again." : `Could not save: ${e.message}.`;
+    } finally {
+      Admin.busy = false;
+      markPending();
+      if (selected === n.id) renderPanel(n);
+    }
+  }
+  const r401 = (e) => /not signed in/.test(e.message);
+
+  function renderAuth() {
+    const box = $("auth");
+    if (Admin.login) {
+      box.replaceChildren(el("span", { text: `@${Admin.login}` }), el("span", { class: "sep", text: "·" }),
+        el("button", { type: "button", class: "linkish blue", text: "Log out", onclick: logout }));
+    } else {
+      box.replaceChildren(el("a", { class: "blue", href: "/api/login", text: "Log in" }));
+    }
+  }
+
+  async function logout() {
+    await fetch("/api/logout", { method: "POST", credentials: "same-origin" }).catch(() => {});
+    Admin.login = null; Admin.accounts = null; Admin.confirm = null;
+    renderAuth(); markPending();
+    if (selected) renderPanel(byId.get(selected));
+  }
+
+  async function initAuth() {
+    const q = new URLSearchParams(location.search).get("login");
+    if (q) {
+      $("auth").replaceChildren(el("span", { text: q === "denied" ? "Access denied" : "Login failed" }));
+      history.replaceState(null, "", location.pathname + location.hash);
+      setTimeout(renderAuth, 4000);
+    }
+    try {
+      const me = await fetch("/api/me", { credentials: "same-origin" }).then((r) => (r.ok ? r.json() : {}));
+      if (!me.login) return;
+      Admin.login = me.login;
+      renderAuth();
+      const w = await fetch("/api/watchlist", { credentials: "same-origin" }).then((r) => (r.ok ? r.json() : null));
+      if (w && Array.isArray(w.accounts)) {
+        Admin.accounts = new Set(w.accounts.map((a) => a.toLowerCase()));
+        markPending();
+        if (selected) renderPanel(byId.get(selected));
+      }
+    } catch { /* pas d'API (aperçu local) : le site reste en lecture seule */ }
+  }
+  initAuth();
 
   // Embed officiel X, chargé à la demande
   let widgets = null;
