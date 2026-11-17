@@ -1,0 +1,391 @@
+{
+ "as_of": "2026-11-17",
+ "edges": [
+  {
+   "source": "kieranklaassen",
+   "target": "ryancarson",
+   "types": [
+    "rt"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "swyx",
+   "target": "ryancarson",
+   "types": [
+    "quote"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "steipete",
+   "target": "simonw",
+   "types": [
+    "rt"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "geoffreyhuntley",
+   "target": "simonw",
+   "types": [
+    "quote"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "dbreunig",
+   "target": "simonw",
+   "types": [
+    "quote"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "dexhorthy",
+   "target": "steve_yegge",
+   "types": [
+    "quote"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "swyx",
+   "target": "steve_yegge",
+   "types": [
+    "rt"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "geoffreyhuntley",
+   "target": "steve_yegge",
+   "types": [
+    "rt"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "hwchase17",
+   "target": "sydneyrunkle",
+   "types": [
+    "rt"
+   ],
+   "weight": 2
+  },
+  {
+   "source": "swyx",
+   "target": "sydneyrunkle",
+   "types": [
+    "rt"
+   ],
+   "weight": 1
+  }
+ ],
+ "generated_at": "2026-11-17T22:48:32+00:00",
+ "nodes": [
+  {
+   "bio": "@LangChain\n\nAlways hiring: https://t.co/D5Ut3loFO7",
+   "display_name": "Harrison Chase",
+   "followers": 140668,
+   "id": "hwchase17",
+   "kind": "whitelist",
+   "photo": "https://pbs.twimg.com/profile_images/1569345624935485442/R67C4wCQ_400x400.jpg",
+   "profile_url": "https://x.com/hwchase17"
+  },
+  {
+   "bio": "I build & teach AI stuff.",
+   "display_name": "Mckay Wrigley",
+   "followers": 230150,
+   "id": "mckaywrigley",
+   "kind": "whitelist",
+   "photo": "https://pbs.twimg.com/profile_images/1552979440547704832/WX5crG9I_400x400.jpg",
+   "profile_url": "https://x.com/mckaywrigley"
+  },
+  {
+   "bio": "impressive whatever goes here",
+   "display_name": "geoff",
+   "followers": 91470,
+   "id": "geoffreyhuntley",
+   "kind": "whitelist",
+   "photo": "https://pbs.twimg.com/profile_images/2042464755483373569/X-duvuat_400x400.jpg",
+   "profile_url": "https://x.com/GeoffreyHuntley"
+  },
+  {
+   "bio": "Polyagentmorous ClawFather. Came back from retirement to mess with AI and help a lobster take over the world.\n@OpenClaw🦞 + @OpenAI",
+   "display_name": "Peter Steinberger",
+   "followers": 617072,
+   "id": "steipete",
+   "kind": "whitelist",
+   "photo": "https://pbs.twimg.com/profile_images/1131851609774985216/OcsssQ9J_400x400.png",
+   "profile_url": "https://x.com/steipete"
+  },
+  {
+   "bio": "Claude is an AI assistant built by @anthropicai to be safe, accurate, and secure. Talk to Claude on https://t.co/ZhTwG8d1e5 or download the app.",
+   "display_name": "Claude",
+   "followers": 2090438,
+   "id": "claudeai",
+   "kind": "whitelist",
+   "photo": "https://pbs.twimg.com/profile_images/1950950107937185792/QOfEjFoJ_400x400.jpg",
+   "profile_url": "https://x.com/claudeai"
+  },
+  {
+   "bio": "Co-founder of @Superlogical. Creator of Ghostty. 👻 Prev founded @HashiCorp, created Vagrant, Terraform, Vault, and others.",
+   "display_name": "Mitchell Hashimoto",
+   "followers": 242615,
+   "id": "mitchellh",
+   "kind": "whitelist",
+   "photo": "https://pbs.twimg.com/profile_images/2082830624415698944/bRo7PB2S_400x400.jpg",
+   "profile_url": "https://x.com/mitchellh"
+  },
+  {
+   "bio": "Writing about and working on AI, DSPy, geo, and data.\n\nTrying to prevent prompt debt and help others build maintainable intelligent applications.",
+   "display_name": "Drew Breunig",
+   "followers": 10705,
+   "id": "dbreunig",
+   "kind": "whitelist",
+   "photo": "https://pbs.twimg.com/profile_images/1247992288552214528/dExsBwMe_400x400.jpg",
+   "profile_url": "https://x.com/dbreunig"
+  },
+  {
+   "bio": "achieve ambition with intentionality, intensity, integrity & insanity.\n\naffiliations:\n- @smol_ai\n- @cognition\n- @temporalio\n- @aidotengineer\n- @latentspacepod",
+   "display_name": "swyx",
+   "followers": 214325,
+   "id": "swyx",
+   "kind": "whitelist",
+   "photo": "https://pbs.twimg.com/profile_images/2073162797354217472/hNny55eF_400x400.jpg",
+   "profile_url": "https://x.com/swyx"
+  },
+  {
+   "bio": "Custom AI agents that solve your business problems | CEO @ Soba Labs | @LangChain Ambassador",
+   "display_name": "Simon Budziak",
+   "followers": 202,
+   "id": "simon_budziak",
+   "kind": "whitelist",
+   "photo": "https://pbs.twimg.com/profile_images/2110858560082944000/c8Pm5t4x_400x400.jpg",
+   "profile_url": "https://x.com/simon_budziak"
+  },
+  {
+   "bio": "Evals Evals Evals @OpenAI \n\nAbout Me: https://t.co/P6WyeKk13C",
+   "display_name": "Hamel Husain",
+   "followers": 66457,
+   "id": "hamelhusain",
+   "kind": "whitelist",
+   "photo": "https://pbs.twimg.com/profile_images/1287206199088173057/ixE4fKy1_400x400.jpg",
+   "profile_url": "https://x.com/HamelHusain"
+  },
+  {
+   "bio": "MTS @factory, YC alum @humanlayer_dev, @aitinkerers sf lead, prev @replicatedhq @SproutSocial @nasa ai that works pod @ https://t.co/69BhaNtopF",
+   "display_name": "dex",
+   "followers": 56198,
+   "id": "dexhorthy",
+   "kind": "whitelist",
+   "photo": "https://pbs.twimg.com/profile_images/1936650128518938624/tCFV_MZO_400x400.jpg",
+   "profile_url": "https://x.com/dexhorthy"
+  },
+  {
+   "bio": "vibes @openai",
+   "display_name": "jason",
+   "followers": 141473,
+   "id": "jxnlco",
+   "kind": "whitelist",
+   "photo": "https://pbs.twimg.com/profile_images/2079316705029832704/Cb5f0ORi_400x400.jpg",
+   "profile_url": "https://x.com/jxnlco"
+  },
+  {
+   "bio": "frontier team @every | compound engineering | agent-ophile  | composer | maker | baker",
+   "display_name": "Kieran Klaassen",
+   "followers": 20715,
+   "id": "kieranklaassen",
+   "kind": "whitelist",
+   "photo": "https://pbs.twimg.com/profile_images/1826620508789485568/AfWTPhxT_400x400.jpg",
+   "profile_url": "https://x.com/kieranklaassen"
+  },
+  {
+   "bio": "MTS @anthropicai",
+   "display_name": "Lance Martin",
+   "followers": 43102,
+   "id": "rlancemartin",
+   "kind": "whitelist",
+   "photo": "https://pbs.twimg.com/profile_images/1999948423018221568/s2XL2-On_400x400.jpg",
+   "profile_url": "https://x.com/RLanceMartin"
+  },
+  {
+   "bio": "Creator of Flask. Building at https://t.co/uGuzfu0LKT. Bypassing Permissions. Can hand crank. Husband and father of 3 — “more nuanced in person”",
+   "display_name": "Armin Ronacher ⇌",
+   "followers": 100654,
+   "id": "mitsuhiko",
+   "kind": "whitelist",
+   "photo": "https://pbs.twimg.com/profile_images/1905698833084174336/jcHMkWFA_400x400.jpg",
+   "profile_url": "https://x.com/mitsuhiko"
+  },
+  {
+   "bio": "Sane + 🌶️ takes in an insane AI world... AI capabilities researcher: co-created RLHF/ChatGPT @ @openai now trying to right the wrong 🤭 (ceo @typesafeai)",
+   "display_name": "Diogo Almeida",
+   "followers": 158537,
+   "id": "completeskeptic",
+   "kind": "whitelist",
+   "photo": "https://pbs.twimg.com/profile_images/1650708125685800960/7k6r0UZg_400x400.jpg",
+   "profile_url": "https://x.com/CompleteSkeptic"
+  },
+  {
+   "bio": "CEO & Member of Technical Staff @ampcode, founded @sourcegraph",
+   "display_name": "Quinn Slack",
+   "followers": 19993,
+   "id": "sqs",
+   "kind": "whitelist",
+   "photo": "https://pbs.twimg.com/profile_images/1519180377604034560/NxI03WYE_400x400.jpg",
+   "profile_url": "https://x.com/sqs"
+  },
+  {
+   "bio": "Trying to build impactful software.  Founder @warpdotdev, former Principal eng @Google.",
+   "display_name": "Zach Lloyd",
+   "followers": 30152,
+   "id": "zachlloydtweets",
+   "kind": "whitelist",
+   "photo": "https://pbs.twimg.com/profile_images/1937620050254454785/flAAHtFa_400x400.jpg",
+   "profile_url": "https://x.com/zachlloydtweets"
+  },
+  {
+   "bio": "ai engineer. \nthe voice ai & evals guy\n5x startups | 7x hackathons",
+   "display_name": "anshul",
+   "followers": 436,
+   "id": "luhsnaa",
+   "kind": "whitelist",
+   "photo": "https://pbs.twimg.com/profile_images/2101717056819449856/IMGtMf7L_400x400.jpg",
+   "profile_url": "https://x.com/luhsnaa"
+  },
+  {
+   "bio": "Dad, Dev, CEO, 4x Founder. \nBuilding @HelloUntangle - AI for family law",
+   "display_name": "Ryan Carson",
+   "followers": 187278,
+   "id": "ryancarson",
+   "interactions": 2,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "swyx"
+    ],
+    "date": "2026-11-12",
+    "tweet_url": null,
+    "types": [
+     "quote"
+    ]
+   },
+   "oneliner": "AIE talk: how they build with agents at Untangle.",
+   "photo": "https://pbs.twimg.com/profile_images/2111981537365196800/k2HE9uOo_400x400.jpg",
+   "profile_url": "https://x.com/ryancarson",
+   "relayed_by": [
+    "kieranklaassen",
+    "swyx"
+   ],
+   "tweets": 2
+  },
+  {
+   "bio": "Creator @datasetteproj, co-creator Django. PSF board. Hangs out with @natbat. He/Him. Mastodon: https://t.co/t0MrmnJW0K Bsky: https://t.co/OnWIyhX4CH",
+   "display_name": "Simon Willison",
+   "followers": 256193,
+   "id": "simonw",
+   "interactions": 3,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "dbreunig"
+    ],
+    "date": "2026-11-13",
+    "tweet_url": null,
+    "types": [
+     "quote"
+    ]
+   },
+   "oneliner": "Breaks down every new model's prompting guide.",
+   "photo": "https://pbs.twimg.com/profile_images/378800000261649705/be9cc55e64014e6d7663c50d7cb9fc75_400x400.jpeg",
+   "profile_url": "https://x.com/simonw",
+   "relayed_by": [
+    "dbreunig",
+    "geoffreyhuntley",
+    "steipete"
+   ],
+   "tweets": 2
+  },
+  {
+   "bio": "I've been in the industry for O(40) years and have written O(1M) LOC. I don't think I'll ever write O(another) line again, but I'll be launching more than ever.",
+   "display_name": "Steve Yegge",
+   "followers": 52944,
+   "id": "steve_yegge",
+   "interactions": 3,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "geoffreyhuntley"
+    ],
+    "date": "2026-11-11",
+    "tweet_url": null,
+    "types": [
+     "rt"
+    ]
+   },
+   "oneliner": "Talk on his Wheelhouse agent software factory and its agent drama.",
+   "photo": "https://pbs.twimg.com/profile_images/1978335584331632640/ypKkHeVF_400x400.jpg",
+   "profile_url": "https://x.com/Steve_Yegge",
+   "relayed_by": [
+    "dexhorthy",
+    "geoffreyhuntley",
+    "swyx"
+   ],
+   "tweets": 3
+  },
+  {
+   "bio": "product + open source @LangChain",
+   "display_name": "Sydney Runkle",
+   "followers": 15518,
+   "id": "sydneyrunkle",
+   "interactions": 3,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "swyx"
+    ],
+    "date": "2026-11-12",
+    "tweet_url": null,
+    "types": [
+     "rt"
+    ]
+   },
+   "oneliner": "Talk on proactive agents that act without being asked.",
+   "photo": "https://pbs.twimg.com/profile_images/1955622250629021696/WOrOq2Mw_400x400.jpg",
+   "profile_url": "https://x.com/sydneyrunkle",
+   "relayed_by": [
+    "hwchase17",
+    "swyx"
+   ],
+   "tweets": 3
+  }
+ ],
+ "rules": {
+  "min_tweets": 2,
+  "min_wl_accounts": 2,
+  "window_days": 30
+ },
+ "whitelist": [
+  "hwchase17",
+  "mckaywrigley",
+  "geoffreyhuntley",
+  "steipete",
+  "claudeai",
+  "mitchellh",
+  "dbreunig",
+  "swyx",
+  "simon_budziak",
+  "hamelhusain",
+  "dexhorthy",
+  "jxnlco",
+  "kieranklaassen",
+  "rlancemartin",
+  "mitsuhiko",
+  "completeskeptic",
+  "sqs",
+  "zachlloydtweets",
+  "luhsnaa"
+ ]
+}
