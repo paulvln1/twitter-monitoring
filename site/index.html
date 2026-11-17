@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>signal</title>
+  <meta name="description" content="Who's worth following in AI: a living map of the accounts our sources keep relaying.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23EEECE7'/%3E%3Ccircle cx='16' cy='16' r='6' fill='none' stroke='%232B3BD0' stroke-width='2'/%3E%3C/svg%3E">
+</head>
+<body>
+  <header class="topbar wrap" id="top">
+    <span class="brand">signal/</span>
+    <a class="blue caps" href="https://github.com/paulvln1/twitter-monitoring" target="_blank" rel="noopener">GitHub</a>
+    <span class="caps" id="updated">&nbsp;</span>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <h1>signal</h1>
+      <p class="subtitle">who's worth following in AI.</p>
+      <p class="tiny" id="hero-meta">A living map of the accounts our sources keep relaying.<br>(EST. 2026)</p>
+    </section>
+
+    <section class="intro wrap">
+      <p class="tiny intro-left">Updated every morning.<br>Retweets, quotes and replies<br>over the last 30 days.</p>
+      <p class="intro-right" id="intro">
+        signal watches a handful of builders<br>
+        in AI and coding agents every day,<br>
+        and maps the people they keep<br>
+        retweeting, quoting and replying to.<br>
+        Click a face to see why it matters.
+      </p>
+    </section>
+
+    <nav class="nav wrap" aria-label="Sections">
+      <a href="#map"><span class="arrow">↘</span><span>The<br>Map</span></a>
+      <a href="#discovered"><span class="arrow">↘</span><span>Discovered<br><span id="nav-cand">( )</span></span></a>
+      <a href="#sources"><span class="arrow">↘</span><span>Sources<br><span id="nav-src">( )</span></span></a>
+    </nav>
+
+    <section class="map-section" id="map">
+      <div class="section-head wrap">
+        <h2>Map</h2>
+        <form class="search" id="search" autocomplete="off" role="search">
+          <label class="sr" for="q">Search an account</label>
+          <input id="q" list="handles" placeholder="search @handle" spellcheck="false">
+          <datalist id="handles"></datalist>
+        </form>
+      </div>
+      <div class="map" id="map-area">
+        <svg id="graph" role="img" aria-label="Map of accounts"></svg>
+        <p class="legend tiny"><span class="dot dot-src"></span>source <span class="dot dot-cand"></span>discovered · size = tweets relayed</p>
+        <p class="map-status tiny" id="status">Loading the map…</p>
+        <aside class="panel" id="panel" aria-live="polite" hidden>
+          <button class="close caps" id="close" type="button">Close ×</button>
+          <div id="panel-body"></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="list-section wrap" id="discovered">
+      <h2>Discovered</h2>
+      <ol class="rows" id="cand-list"></ol>
+    </section>
+
+    <section class="list-section wrap" id="sources">
+      <h2>Sources</h2>
+      <p class="tiny sources-note">The accounts signal reads every day.</p>
+      <ul class="sources" id="src-list"></ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="up" href="#top" aria-label="Back to top">⤴</a>
+    <dl class="wrap">
+      <dt>R</dt><dd>Open source.<br><a class="blue" href="https://github.com/paulvln1/twitter-monitoring" target="_blank" rel="noopener">↘ GitHub</a></dd>
+      <dt>D</dt><dd>Raw data, refreshed daily.<br><a class="blue" id="data-link" href="#" target="_blank" rel="noopener">↘ graph.json</a></dd>
+      <dt>&nbsp;</dt><dd class="copy">©2026 signal</dd>
+    </dl>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
