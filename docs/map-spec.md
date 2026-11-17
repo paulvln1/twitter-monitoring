@@ -31,6 +31,20 @@ Règles :
 - On ignore les interactions d'un compte avec lui-même (reply dans son propre thread, auto-RT).
 - On garde tout l'historique dans le fichier. La fenêtre de 30 jours ne s'applique qu'à l'affichage.
 
+## 1 ter. Le moteur : `map_graph.py`
+
+| Commande | Rôle |
+|---|---|
+| `extract [data/tweets.json]` | Lit les tweets du cron et ajoute les interactions à `interactions.jsonl`, sans doublon. |
+| `seed FICHIER.jsonl` | Importe une amorce (digests Discord). |
+| `profiles` | Récupère via Mindcase, en un seul appel, les profils manquants (whitelist + candidats de la map). |
+| `build` | Calcule `graph.json` (lu par le site) et `oneliners_todo.json` (les one-liners que Claude doit écrire). |
+
+- Données dans `$GRAPH_DIR` (défaut `graph/`).
+- Ordre d'un run : `extract` → `profiles` → `build` → Claude écrit `oneliners.json` → `build`.
+- Tests : `python3 -m unittest discover tests`.
+- Champs Mindcase utilisés (vérifiés le 17/11/2026) : `retweetedTweetUrl`/`retweetedTweetText`, `quotedTweetUrl`/`quotedTweetText`, `isReply`/`replyToHandle`/`replyToTweetUrl` (au format `x.com/i/status/<id>` : le handle vient de `replyToHandle`). Un même tweet peut être à la fois un quote et une reply, ce qui donne 2 interactions.
+
 ## 1 bis. Où vivent les données : la branche `claude/map-data`
 
 - La routine **n'a pas le droit de pousser sur `main`** : une routine Claude ne peut pousser que sur des branches `claude/…`. **C'est voulu** : la routine lit chaque jour du contenu externe (tweets, pages web) et ne doit pas pouvoir modifier le code.
@@ -44,7 +58,7 @@ Règles :
 
 ## 2. Règles de la map (recalculées chaque jour)
 
-`build_graph.py` lit `accounts.txt` (version du jour) et `interactions.jsonl`, puis produit `graph/graph.json`.
+`map_graph.py build` lit `accounts.txt` (version du jour) et `interactions.jsonl`, puis produit `graph/graph.json`.
 
 - **Nœuds whitelist** : tous les comptes présents dans `accounts.txt` aujourd'hui.
 - **Nœuds candidats** : un compte hors whitelist entre sur la map si, sur les **30 derniers jours** (fenêtre glissante), en ne comptant que les interactions venant de la whitelist **actuelle** :
@@ -127,13 +141,13 @@ Règles :
 
 ## 6. Démarrage
 
-- On amorce la map avec les 10 digests Discord collés par Paul dans le chat le 17/11/2026, de la façon suivante :
-  - on suppose un digest par jour, dans l'ordre, le dernier daté du 16/11 ;
+- On amorce la map avec les 11 digests Discord collés par Paul dans le chat le 17/11/2026 (`map_seed/discord_backfill.jsonl`, importé avec `map_graph.py seed`), de la façon suivante :
+  - on suppose un digest par jour, dans l'ordre, du 06/11 au 16/11 ;
   - les interactions sont marquées `"source": "discord_backfill"` ;
   - « 2 RT de X » = 2 tweets différents ;
   - les mentions sont ignorées ;
   - les interactions venant de comptes qui ne sont plus dans la whitelist (jerryjliu0) ne comptent pas.
-- Limites : les digests ne donnent pas les URLs des tweets. Le décompte est donc approximatif, ces interactions n'ont pas d'embed, et leur one-liner vient du texte du digest, traduit.
+- Limites : les digests ne donnent pas les URLs des tweets. Le décompte est donc approximatif, ces interactions n'ont pas d'embed, et leur one-liner vient du texte du digest, déjà traduit dans le fichier (Claude n'a rien à écrire pour elles).
 - Cette amorce sort de la fenêtre de 30 jours d'elle-même, vers mi-décembre.
 
 ## 7. Points à vérifier avant de coder
