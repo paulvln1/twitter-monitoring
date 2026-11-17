@@ -142,7 +142,11 @@ Règles :
 - Un seul utilisateur autorisé pour l'instant : variable `ADMIN_GITHUB_LOGINS=paulvln1` (pour ajouter Julien plus tard, il suffira de l'ajouter à cette variable).
 - Une fois connecté, le panneau affiche **« Ajouter à la watchlist »** sur un candidat ou **« Retirer »** sur un compte de la whitelist.
 - Le serveur commit directement dans `accounts.txt` sur `main` via l'API GitHub, avec un token stocké côté Vercel et jamais exposé au navigateur. Le message de commit indique l'action et le compte.
-- Le changement apparaît sur la map **au run suivant**. En attendant, le nœud porte un badge « en attente » : le site compare `accounts.txt` sur `main` avec la whitelist de `graph.json`.
+- Le lien **Log in** est dans la barre du haut. Une fois connecté, elle affiche `@login · Log out`.
+- Le retrait demande une **confirmation** (Confirm / Cancel). L'ajout part au clic.
+- Pas d'autre fonction pour l'instant : pas d'ajout d'un handle hors map, pas d'annulation.
+- Le changement apparaît sur la map **au run suivant**. En attendant, le nœud porte un badge « pending », visible seulement par l'admin connecté : le site compare `accounts.txt` sur `main` avec la whitelist de `graph.json`.
+- Code : `site/api/` (fonctions Vercel, sans dépendance) ; tests : `node --test tests/site_api.test.js`. Mise en place : [`docs/admin-setup.md`](admin-setup.md).
 - Conflits : le commit utilise le `sha` du fichier. Si le fichier a changé entre-temps, le serveur relit et réessaie.
 
 ### Sécurité
