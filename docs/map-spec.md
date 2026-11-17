@@ -71,6 +71,18 @@ Règles :
 - Le changement apparaît sur la map **au run suivant**. En attendant, le nœud porte un badge « en attente ».
 - Conflits : le commit utilise le `sha` du fichier. Si le fichier a changé entre-temps, le serveur relit et réessaie.
 
+### Sécurité
+
+- **Aucun token personnel de Paul n'est stocké.**
+- **Login GitHub = vérification d'identité uniquement.** On demande le scope minimal (aucun accès aux repos). Le token OAuth sert à lire le login, puis il est jeté. Le navigateur reçoit un cookie de session signé (`HttpOnly`, `Secure`, `SameSite=Strict`, durée limitée), avec une clé de signature stockée côté Vercel.
+- **Écriture via une GitHub App dédiée**, installée sur ce seul repo, avec une seule permission : `Contents: write`. Sa clé privée est stockée dans les variables d'environnement chiffrées de Vercel, n'est jamais envoyée au navigateur et peut être renouvelée à tout moment.
+- **Le serveur ne modifie que `accounts.txt`** : le chemin du fichier est écrit en dur dans le code.
+- **Validation des handles** : `^[A-Za-z0-9_]{1,15}$`. Tout le reste est refusé, ce qui empêche d'injecter des lignes ou du texte arbitraire.
+- **Protection CSRF** : les routes d'écriture n'acceptent que des requêtes `POST` venant du domaine du site (en-tête `Origin` vérifié).
+- **Liste des admins** côté serveur (`ADMIN_GITHUB_LOGINS`) : on vérifie le login à chaque requête d'écriture, pas seulement à la connexion.
+- **Vercel** : connexion GitHub en « Only select repositories ». 2FA activée sur Vercel et GitHub.
+- **Risque résiduel accepté** : code et watchlist sont dans le même repo. Si la clé de la GitHub App fuitait, un attaquant pourrait modifier le code exécuté par la routine, qui dispose de `MINDCASE_API_KEY` et des webhooks Discord. Pour réduire ce risque, il faudrait mettre `accounts.txt` dans un repo séparé, option écartée pour l'instant par souci de simplicité.
+
 ## 6. Démarrage
 
 - On amorce la map avec les ~8-9 digests Discord passés, que Paul collera dans le chat. Limite connue : ces digests ne contiennent que les 5-6 comptes « à suivre » de chaque jour, donc l'amorce est partielle. Elle sort de la fenêtre de 30 jours d'elle-même.
