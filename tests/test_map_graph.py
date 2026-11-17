@@ -40,6 +40,10 @@ class Rules(unittest.TestCase):
         self.assertEqual(self.kept([old, it("bob", "x", 2)]), set())
         self.assertEqual(self.kept([edge, it("bob", "x", 2)]), {"x"})
 
+    def test_qualified_since(self):
+        its = [it("alice", "x", 1, d="2026-11-03"), it("alice", "x", 2, d="2026-11-05"), it("bob", "x", 2, d="2026-11-09")]
+        self.assertEqual(mg.qualified_since(its), "2026-11-09")
+
     def test_removed_from_whitelist_source_no_longer_counts(self):
         items = [it("alice", "x", 1), it("bob", "x", 2)]
         self.assertEqual(self.kept(items, wl=["alice", "carol"]), set())
