@@ -224,3 +224,8 @@ data/
 .env
 *.json
 .DS_Store
+
+# Données de la map : elles vivent sur la branche claude/map-data, jamais sur main
+/graph/
+__pycache__/
+/map-data/
