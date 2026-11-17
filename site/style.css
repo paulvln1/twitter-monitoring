@@ -95,8 +95,8 @@ h2 { margin: 0; font-size: 21px; font-weight: 400; letter-spacing: -0.01em; }
 #graph:active { cursor: grabbing; }
 .legend { position: absolute; left: var(--gutter); bottom: 14px; margin: 0; color: var(--muted); }
 .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin: 0 4px 0 10px; vertical-align: -1px; }
-.dot-src { border: 1px solid var(--ink); margin-left: 0; }
-.dot-cand { border: 1.5px solid var(--blue); }
+.dot-src { border: 1px solid var(--muted); background: #d6d3cc; margin-left: 0; width: 6px; height: 6px; }
+.dot-cand { border: 2.5px solid var(--blue); width: 10px; height: 10px; }
 .map-status { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; color: var(--muted); pointer-events: none; }
 .map-status:empty { display: none; }
 
@@ -104,11 +104,14 @@ h2 { margin: 0; font-size: 21px; font-weight: 400; letter-spacing: -0.01em; }
 .edge { stroke: var(--line); fill: none; transition: stroke .2s, opacity .2s; }
 .edge.hl { stroke: var(--blue); }
 .node { cursor: pointer; transition: opacity .2s; }
-.node .photo { filter: grayscale(1) contrast(1.05); transition: filter .25s; }
-.node:hover .photo, .node.sel .photo { filter: none; }
+/* sources : petites, noir et blanc, estompées ; découvertes : en couleur, cercle bleu épais */
+.node.src .photo { filter: grayscale(1) contrast(1.05); opacity: .55; transition: filter .25s, opacity .25s; }
+.node.src:hover .photo, .node.src.sel .photo { filter: none; opacity: 1; }
 .node .ring { fill: none; stroke: var(--ink); stroke-width: 1; }
-.node.cand .ring { stroke: var(--blue); stroke-width: 1.5; }
-.node.sel .ring { stroke: var(--blue); stroke-width: 2.5; }
+.node.src .ring { stroke: var(--muted); stroke-width: .8; }
+.node.cand .ring { stroke: var(--blue); stroke-width: 3; }
+.node.sel .ring { stroke: var(--blue); stroke-width: 3; }
+.node.cand .label { font-weight: 500; }
 .node .bg { fill: var(--cream-2); }
 .node .initials { font-size: 11px; fill: var(--muted); text-anchor: middle; dominant-baseline: central; }
 .node .label { font-size: 10.5px; fill: var(--muted); text-anchor: middle; paint-order: stroke; stroke: var(--cream); stroke-width: 3px; }

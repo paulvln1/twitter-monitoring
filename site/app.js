@@ -40,7 +40,7 @@
   };
   const initials = (n) => (n.display_name || n.id).replace(/[^A-Za-z0-9 ]/g, "").split(/\s+/)
     .filter(Boolean).slice(0, 2).map((w) => w[0].toUpperCase()).join("") || "@";
-  const radius = (n) => (n.kind === "candidate" ? 15 + 5 * Math.min(n.tweets || 1, 6) : 17);
+  const radius = (n) => (n.kind === "candidate" ? 20 + 5 * Math.min(n.tweets || 1, 6) : 12);
   const safeUrl = (u) => (typeof u === "string" && /^https:\/\//.test(u) ? u : null);
   const xUrl = (n) => `https://x.com/${encodeURIComponent(handleOf(n))}`;
   const typeLabel = { rt: "retweet", quote: "quote", reply: "reply" };
@@ -61,8 +61,6 @@
     const srcs = G.nodes.filter((n) => n.kind === "whitelist");
     $("nav-cand").textContent = `(${cands.length})`;
     $("nav-src").textContent = `(${srcs.length})`;
-    $("hero-meta").firstChild.textContent =
-      `A living map of the accounts our ${srcs.length} sources keep relaying.`;
 
     renderList(cands);
     renderSources(srcs);
@@ -96,7 +94,9 @@
             .attr("width", 1).attr("height", 1)
             .append("image").attr("href", photo).attr("width", 1).attr("height", 1)
             .attr("preserveAspectRatio", "xMidYMid slice");
-          view.selectAll(".node").filter((d) => d.id === n.id).select(".photo").attr("fill", `url(#${n.pid})`);
+          const g = view.selectAll(".node").filter((d) => d.id === n.id);
+          g.select(".photo").attr("fill", `url(#${n.pid})`);
+          g.select(".initials").remove();
         };
         img.src = photo;
       }

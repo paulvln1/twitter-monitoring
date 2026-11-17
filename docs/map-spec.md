@@ -123,7 +123,8 @@ Règles :
 - Nom : **signal**, sous-titre « who's worth following in AI. », en minuscules et en très grand, dans l'esprit de la référence « unlock the Unexpected » de Paul.
 - Couleurs : crème `#EEECE7`, encre `#1A1A18`, bleu `#2B3BD0` (liens, comptes découverts, surbrillance), traits fins `#CBC8C0`.
 - Police : Inter Tight (300/400/500). Très épuré : traits fins, petites capitales, flèches ↘.
-- Photos de profil en noir et blanc, en couleur au survol ou à la sélection. Si une photo ne charge pas, la bulle affiche les initiales.
+- Hiérarchie visuelle : les **découvertes** sont grandes, avec photo **en couleur** et cercle bleu épais. Les **sources** sont petites, avec photo en noir et blanc estompée, et repassent en couleur au survol ou à la sélection. Si une photo ne charge pas, la bulle affiche les initiales.
+- Pas de chiffres dynamiques dans les textes (« our sources », pas « our 19 sources »).
 - Sections :
   - hero ;
   - intro ;
