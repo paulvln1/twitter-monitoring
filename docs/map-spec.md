@@ -118,6 +118,23 @@ Règles :
   - un bouton **« Ouvrir sur X »** (`x.com/<handle>`).
 - Le panneau fonctionne aussi sur mobile.
 
+### DA (validée le 17/11/2026)
+
+- Nom : **signal**, sous-titre « who's worth following in AI. », en minuscules et en très grand, dans l'esprit de la référence « unlock the Unexpected » de Paul.
+- Couleurs : crème `#EEECE7`, encre `#1A1A18`, bleu `#2B3BD0` (liens, comptes découverts, surbrillance), traits fins `#CBC8C0`.
+- Police : Inter Tight (300/400/500). Très épuré : traits fins, petites capitales, flèches ↘.
+- Photos de profil en noir et blanc, en couleur au survol ou à la sélection. Si une photo ne charge pas, la bulle affiche les initiales.
+- Sections :
+  - hero ;
+  - intro ;
+  - nav ↘ (The Map / Discovered / Sources) ;
+  - **Map** avec recherche @handle et panneau au clic ;
+  - **Discovered**, une liste façon « News » avec un badge « new » pour les comptes entrés sur la map depuis moins de 7 jours (champ `since`) ;
+  - **Sources** ;
+  - footer façon adresse (↘ GitHub, ↘ graph.json).
+- Clic sur une **source** (compte de la whitelist) : profil + ses découvertes, avec ses liens en bleu sur la map.
+- Lien direct vers un compte : `/#simonw`.
+
 ## 5. Gestion de la watchlist depuis le site
 
 - Connexion **« Login with GitHub »** (GitHub OAuth App) via une fonction serveur Vercel.

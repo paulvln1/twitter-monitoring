@@ -209,6 +209,17 @@ def compute_map(whitelist, interactions, ref_day):
     return kept
 
 
+def qualified_since(its):
+    """Premier jour (dans la fenêtre) où le compte a rempli les deux conditions : sert au badge « new »."""
+    tweets, relayers = set(), set()
+    for it in sorted(its, key=lambda x: x["date"]):
+        tweets.add(it["target_tweet_id"])
+        relayers.add(it["from"])
+        if len(tweets) >= MIN_TWEETS and len(relayers) >= MIN_WL_ACCOUNTS:
+            return it["date"]
+    return None
+
+
 def latest_relayed(its):
     """Dernier tweet relayé : date la plus récente, puis ID le plus grand (les IDs X sont chronologiques).
     On préfère un tweet avec une vraie URL (les amorces Discord n'en ont pas)."""
@@ -286,6 +297,7 @@ def cmd_profiles(_args):
 def node_profile(h, profiles):
     p = profiles.get(h) or {}
     return {
+        "handle": p.get("handle") or h,
         "display_name": p.get("display_name"), "bio": p.get("bio"),
         "followers": p.get("followers"), "photo": p.get("photo"),
         "profile_url": p.get("profile_url") or f"https://x.com/{h}",
@@ -316,6 +328,7 @@ def cmd_build(_args):
             "tweets": len({it["target_tweet_id"] for it in its}),
             "relayed_by": sorted({it["from"] for it in its}),
             "interactions": len(its),
+            "since": qualified_since(its),
             "latest": {k: latest[k] for k in ("tweet_url", "date", "by", "types")},
             "oneliner": ol.get("text") if ol else None,
         })
