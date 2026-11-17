@@ -18,7 +18,7 @@
 ## Screenshots
 
 <!--
-  Screenshot slot. Drop the images in docs/screenshots/ with the names below,
+  Screenshot slot: replace the image paths below with your screenshots,
   then delete this comment's opening and closing lines so they show up.
 
 <p align="center">
