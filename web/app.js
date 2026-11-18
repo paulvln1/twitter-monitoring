@@ -6,6 +6,7 @@
   const DEFAULT_DATA =
     "https://raw.githubusercontent.com/paulvln1/twitter-monitoring/claude/map-data/graph/graph.json";
   const DATA_URL = new URLSearchParams(location.search).get("data") || DEFAULT_DATA;
+  const AUTH_WAIT_MS = 4000; // longest the first draw waits for the login check
   const NEW_DAYS = 7;
 
   const $ = (id) => document.getElementById(id);
@@ -51,9 +52,13 @@
   const HANDLE = /^[a-z0-9_]{1,15}$/i;
 
   // ---------- data ----------
-  fetch(DATA_URL, { cache: "no-store" })
-    .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then(init)
+  // The map waits for the login check (and, for the admin, the watchlist) before its first draw,
+  // so accounts waiting for the next run never flash on the map. Capped, so a slow API never blocks it.
+  const data = fetch(DATA_URL, { cache: "no-store" })
+    .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); });
+  const auth = Promise.race([initAuth(), new Promise((ok) => setTimeout(ok, AUTH_WAIT_MS))]);
+  Promise.all([data, auth])
+    .then(([d]) => init(d))
     .catch(() => { $("status").textContent = "The map data is not available right now."; });
 
   function init(data) {
@@ -543,8 +548,6 @@
       }
     } catch { /* no API (local preview): the site stays read-only */ }
   }
-  initAuth();
-
   // Official X embed, loaded on demand
   let widgets = null;
   function loadWidgets() {
