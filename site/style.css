@@ -5,6 +5,8 @@
   --muted: #74726C;
   --line: #CBC8C0;
   --blue: #2B3BD0;
+  --green: #1C9A55;
+  --orange: #E8731C;
   --gutter: clamp(16px, 4vw, 56px);
   --font: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -67,12 +69,15 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin: 0 4px 0 10px; vertical-align: -1px; }
 .dot-src { border: 1px solid var(--muted); background: #d6d3cc; margin-left: 0; width: 6px; height: 6px; }
 .dot-cand { border: 2.5px solid var(--blue); width: 10px; height: 10px; }
+.dot-lit { border: 2.5px solid var(--green); width: 10px; height: 10px; }
 .map-status { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; color: var(--muted); pointer-events: none; }
 .map-status:empty { display: none; }
 
 /* graph marks */
 .edge { stroke: var(--line); fill: none; transition: stroke .2s, opacity .2s; }
+.edge.lit { stroke: var(--green); }
 .edge.hl { stroke: var(--blue); }
+.edge.off { display: none; }
 .node { cursor: pointer; transition: opacity .2s; }
 /* sources : petites, noir et blanc, estompées ; découvertes : en couleur, cercle bleu épais */
 .node.src .photo { filter: grayscale(1) contrast(1.05); opacity: .55; transition: filter .25s, opacity .25s; }
@@ -88,7 +93,28 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .node.cand .label { fill: var(--ink); }
 .node .new { font-size: 9px; fill: var(--blue); text-anchor: middle; letter-spacing: .04em; }
 .node .pending { font-size: 9px; fill: var(--ink); text-anchor: middle; letter-spacing: .04em; font-style: italic; }
+/* vert : comptes derrière les projets du jour ; orange : ajouté à la watchlist, en attente du prochain run */
+.node .halo { fill: none; stroke: var(--green); stroke-width: 2.5; display: none; }
+.node.lit .halo { display: inline; }
+.node.src.lit .photo { filter: none; opacity: 1; }
+.node.lit .label { fill: var(--ink); }
+.node.pend-add .ring { stroke: var(--orange); stroke-width: 3; }
+.node.pend-add .pending { fill: var(--orange); }
 .faded { opacity: .18; }
+
+/* --- projets du jour, à gauche de la map --- */
+.projects { position: absolute; top: 22px; left: var(--gutter); width: 250px; max-height: calc(100% - 70px); overflow-y: auto; }
+.projects summary { margin: 0 0 8px; cursor: pointer; list-style: none; }
+.projects summary::-webkit-details-marker { display: none; }
+.projects ol { list-style: none; margin: 0; padding: 0; }
+.projects li { border-top: 1px solid var(--line); }
+.projects li:last-child { border-bottom: 1px solid var(--line); }
+.projects li.empty { font-size: 12px; color: var(--muted); padding: 9px 0; }
+.projects button { all: unset; box-sizing: border-box; display: flex; gap: 10px; width: 100%; padding: 9px 0; cursor: pointer; font-size: 13px; line-height: 1.35; }
+.projects button .n { font-size: 10px; color: var(--muted); padding-top: 2px; flex: none; }
+.projects button:hover .title, .projects button.on .title { color: var(--green); }
+.projects button.on .n { color: var(--green); }
+.projects button:focus-visible { outline: 1px solid var(--green); outline-offset: 2px; }
 
 /* --- side panel --- */
 .panel {
@@ -110,6 +136,9 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .p-stats dt { font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .p-stats dd { margin: 0; font-size: 15px; grid-row: 2; }
 .p-label { font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin: 22px 0 6px; }
+.p-label.first { margin-top: 18px; }
+.p-text { font-size: 13.5px; line-height: 1.5; margin: 0; }
+.p-links { display: flex; gap: 16px; margin: 20px 0 0; font-size: 14px; }
 .p-oneliner { font-size: 15px; line-height: 1.4; margin: 0; letter-spacing: -0.005em; }
 .p-list { list-style: none; margin: 0; padding: 0; }
 .p-list li { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
@@ -136,5 +165,9 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   .brand .tagline { display: none; }
   .search { grid-column: 1 / -1; grid-row: 2; }
   .search input { width: 100%; text-align: left; }
+  .projects { top: 10px; width: auto; right: var(--gutter); background: var(--cream); }
+  .projects:not([open]) { right: auto; }
+  .projects summary::after { content: " ▾"; }
+  .projects[open] summary::after { content: " ▴"; }
   .panel { position: fixed; top: auto; left: 0; right: 0; width: 100%; max-height: 74vh; border-left: 0; border-top: 1px solid var(--line); z-index: 10; box-shadow: 0 -10px 30px rgba(26,26,24,.08); }
 }

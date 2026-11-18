@@ -103,13 +103,29 @@ Dans cet ordre :
    Le script lit les webhooks dans `DISCORD_WEBHOOK_URL` et `DISCORD_WEBHOOK_URL_2` (n'affiche jamais ces URL) et envoie sur chacun et envoie le digest en embeds, une section par embed. Ne le relance pas s'il échoue : note l'erreur affichée et ajoute en haut du digest « ⚠️ Envoi Discord échoué : <raison> » pour la notification et la réponse finale.
 2. **Notification** (ci-dessous).
 3. **Map des comptes** (section 6).
-4. **Réponse finale** : le digest complet directement dans la conversation du run, plus une ligne sur la map (« Map : N candidats, M one-liners écrits » ou l'erreur).
+4. **Réponse finale** : le digest complet directement dans la conversation du run, plus une ligne sur la map (« Map : N candidats, M one-liners écrits, P projets » ou l'erreur).
 
 Envoie aussi le digest complet via l'outil PushNotification (dans des balises <routine_summary>). La première phrase devient la bannière du téléphone : mets-y le projet le plus intéressant du jour en une phrase. Le reste du message est le digest complet dans le format ci-dessus (c'est ce que je lis par email). Si l'API Mindcase a échoué, la notification doit le dire en première phrase.
 
 ## 6. Map des comptes (après Discord et la notification)
 
-Le site public affiche une map des comptes de la whitelist et des comptes qu'ils relaient. Ton seul travail ici : écrire les **one-liners**, puis publier.
+Le site public affiche une map des comptes de la whitelist et des comptes qu'ils relaient, et à sa gauche les projets du jour. Ton seul travail ici : écrire les **projets du jour en anglais** et les **one-liners**, puis publier.
+
+0. **Projets du jour.** Écris `map-data/graph/projects.json` (remplace le fichier de la veille) : la traduction **en anglais** des projets de ta section « 🛠️ Nouveaux projets », dans le même ordre, sans rien ajouter ni inventer. Le digest Discord reste en français ; ce fichier ne sert qu'au site.
+   ```json
+   {"date": "AAAA-MM-JJ", "projects": [
+     {"title": "Bombadil: a bot that tries to break your web app",
+      "tag": "open source",
+      "tweet_url": "https://x.com/<handle>/status/<id>",
+      "links": [{"label": "Repo", "url": "https://github.com/owner/repo"}],
+      "what": "…", "how": "…", "who": "…", "try": "…"}
+   ]}
+   ```
+   - `title` : le titre du digest, traduit (nom du projet + ce que c'est en 5-8 mots), sans le `(open source / payant / recherche)`, qui va dans `tag` (`open source`, `paid` ou `research`).
+   - `tweet_url` : **exactement** l'URL du lien `[Tweet](…)` du digest. Le script s'en sert pour retrouver l'auteur et les comptes de la whitelist qui l'ont relayé.
+   - `links` : les autres liens du projet (`Repo`, `Site`, `Paper`), en `https://` uniquement.
+   - `what`, `how`, `who`, `try` : les paragraphes « C'est quoi », « Comment ça marche », « Pour qui / quel problème » et « Essayer », traduits. Garde la même clarté, en texte simple (pas de Markdown).
+   - Pas de projet aujourd'hui : `{"date": "AAAA-MM-JJ", "projects": []}`.
 
 1. Lis `map-data/graph/oneliners_todo.json`. C'est une liste de comptes de la map dont le dernier tweet relayé a changé. Chaque entrée contient :
    - `handle` ;
@@ -129,7 +145,7 @@ Le site public affiche une map des comptes de la whitelist et des comptes qu'ils
    ```
    Le script recalcule la map, commit et pousse sur `claude/map-data`, jamais sur `main`.
    - Ne fais aucun autre commit ou push.
-   - Ne touche à aucun autre fichier de `map-data/`.
+   - Ne touche à aucun autre fichier de `map-data/` que `projects.json` et `oneliners.json`.
    - Ne force jamais un push.
    - En cas d'échec, ne réessaie pas : signale l'erreur en une ligne dans la réponse finale.
 

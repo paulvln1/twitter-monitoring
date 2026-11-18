@@ -6,6 +6,7 @@ Commandes :
   python3 map_graph.py seed FICHIER.jsonl           importe des interactions d'amorce (ex. digests Discord)
   python3 map_graph.py profiles                     récupère via Mindcase les profils manquants des nœuds de la map
   python3 map_graph.py build                        calcule graph.json et oneliners_todo.json
+                                                    (avec les projets du jour de projects.json, s'il existe)
 
 Dossier des données : $GRAPH_DIR (défaut : graph/). En production c'est le dossier
 graph/ de la branche claude/map-data, jamais main.
@@ -304,6 +305,59 @@ def node_profile(h, profiles):
     }
 
 
+PROJECT_TEXTS = ("what", "how", "who", "try")
+PROJECT_TEXT_MAX = 700
+PROJECTS_MAX = 8
+
+
+def short(text, n):
+    text = " ".join(str(text or "").split())
+    return text if len(text) <= n else text[:n - 1] + "…"
+
+
+def build_projects(interactions):
+    """Projets du jour écrits par Claude (projects.json), enrichis des comptes concernés.
+
+    Pour chaque projet, `accounts` = l'auteur du tweet, les comptes de la whitelist qui l'ont relayé
+    (RT, quote, reply) et, si le tweet est lui-même une quote ou une reply, le compte cité.
+    Le site met ces comptes en vert. Renvoie None si projects.json n'existe pas.
+    """
+    raw = load_json("projects.json", None)
+    if not isinstance(raw, dict):
+        return None
+    items = []
+    for p in raw.get("projects") or []:
+        if not isinstance(p, dict) or len(items) >= PROJECTS_MAX:
+            continue
+        title = short(p.get("title"), 120)
+        m = STATUS_RE.search(str(p.get("tweet_url") or ""))
+        if not title or not m or not HANDLE_RE.match(m.group(1)):
+            continue
+        author, tid = norm(m.group(1)), m.group(2)
+        accounts = [author]
+        for it in interactions:
+            src = STATUS_RE.search(it.get("source_tweet_url") or "")
+            if it["target_tweet_id"] == tid:
+                accounts.append(it["from"])
+            elif src and src.group(2) == tid:
+                accounts.append(it["to"])
+        links = []
+        for link in p.get("links") or []:
+            url = str((link or {}).get("url") or "") if isinstance(link, dict) else ""
+            if url.startswith("https://") and len(links) < 4:
+                links.append({"label": short(link.get("label") or "Link", 20), "url": url})
+        items.append({
+            "title": title,
+            "tag": short(p.get("tag"), 30) or None,
+            "tweet_url": f"https://x.com/{m.group(1)}/status/{tid}",
+            "author": author,
+            "accounts": list(dict.fromkeys(accounts)),
+            "links": links,
+            **{k: short(p.get(k), PROJECT_TEXT_MAX) or None for k in PROJECT_TEXTS},
+        })
+    return {"date": str(raw.get("date") or today().isoformat())[:10], "items": items}
+
+
 def cmd_build(_args):
     wl, kept = map_handles()
     profiles = load_json("profiles.json", {})
@@ -347,6 +401,9 @@ def cmd_build(_args):
         "nodes": nodes,
         "edges": edges,
     }
+    projects = build_projects(load_interactions())
+    if projects is not None:
+        graph["projects"] = projects
     save_json("graph.json", graph)
     save_json("oneliners_todo.json", todo)
     print(json.dumps({"whitelist": len(wl), "candidates": len(kept), "edges": len(edges),
