@@ -149,7 +149,7 @@
           .attr("x2", (l) => l.target.x).attr("y2", (l) => l.target.y);
       G._sim.node.attr("transform", (d) => `translate(${d.x},${d.y})`);
     }
-    G._sim = { nodes, links, edge, node, draw, layer, build, ghosts: new Map(), detached: "" };
+    G._sim = { nodes, links, edge, node, draw, ghosts: new Map(), detached: "" };
     draw();
     sim.on("tick", draw);
 
