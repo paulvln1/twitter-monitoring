@@ -21,4 +21,3 @@ sqs
 zachlloydtweets
 luhsnaa
 sydneyrunkle
-karpathy
