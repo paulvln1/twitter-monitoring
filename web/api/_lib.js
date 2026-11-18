@@ -1,11 +1,11 @@
-// Outils partagés des fonctions serveur Vercel (les fichiers qui commencent par _ ne sont pas des routes).
-// Aucune dépendance : uniquement les modules natifs de Node.
+// Shared helpers for the Vercel serverless functions (files starting with _ are not routes).
+// No dependencies: Node built-in modules only.
 "use strict";
 const crypto = require("crypto");
 
 const OWNER = "paulvln1";
 const REPO = "twitter-monitoring";
-const FILE = "accounts.txt"; // le seul fichier que le serveur a le droit de modifier
+const FILE = "watchlist.txt"; // the only file the server is allowed to change
 const BRANCH = "main";
 const SESSION_COOKIE = "signal_session";
 const SESSION_DAYS = 7;
@@ -18,7 +18,7 @@ const env = (k) => {
 };
 const siteOrigin = () => env("SITE_ORIGIN").replace(/\/+$/, "");
 
-// ---------- cookies & session signée ----------
+// ---------- cookies & signed session ----------
 const b64url = (buf) => Buffer.from(buf).toString("base64url");
 
 function parseCookies(req) {
@@ -59,7 +59,7 @@ function admins() {
 }
 const isAdmin = (login) => !!login && admins().includes(login.toLowerCase());
 
-// Login de l'admin connecté, ou null. La liste des admins est revérifiée à chaque requête.
+// Login of the signed-in admin, or null. The admin list is checked again on every request.
 function currentAdmin(req) {
   const login = readSession(parseCookies(req)[SESSION_COOKIE]);
   return isAdmin(login) ? login : null;
@@ -69,12 +69,12 @@ function cookie(name, value, { maxAge, sameSite = "Strict", path = "/" } = {}) {
   return `${name}=${encodeURIComponent(value)}; Path=${path}; HttpOnly; Secure; SameSite=${sameSite}; Max-Age=${maxAge}`;
 }
 
-// Anti-CSRF : les écritures doivent venir du site lui-même.
+// CSRF guard: writes must come from the site itself.
 function sameOrigin(req) {
   return req.headers.origin === siteOrigin();
 }
 
-// ---------- GitHub App (écriture de accounts.txt) ----------
+// ---------- GitHub App (writes watchlist.txt) ----------
 async function gh(path, { token, auth = "token", method = "GET", body } = {}) {
   const r = await fetch(`https://api.github.com${path}`, {
     method,
@@ -99,7 +99,7 @@ function appJwt(now = Math.floor(Date.now() / 1000)) {
   return `${head}.${body}.${sig}`;
 }
 
-// Jeton d'installation, limité à ce repo et à Contents: write.
+// Installation token, limited to this repo and to Contents: write.
 async function installationToken() {
   const jwt = appJwt();
   const inst = await gh(`/repos/${OWNER}/${REPO}/installation`, { token: jwt, auth: "jwt" });
@@ -112,13 +112,13 @@ async function installationToken() {
   return tok.data.token;
 }
 
-async function readAccountsFile(token) {
+async function readWatchlistFile(token) {
   const r = await gh(`/repos/${OWNER}/${REPO}/contents/${FILE}?ref=${BRANCH}`, { token });
   if (r.status !== 200) throw new Error(`read ${r.status}`);
   return { sha: r.data.sha, text: Buffer.from(r.data.content, "base64").toString("utf8") };
 }
 
-// ---------- édition de accounts.txt (logique pure, testée) ----------
+// ---------- editing watchlist.txt (pure logic, tested) ----------
 const norm = (line) => line.trim().replace(/^@/, "").toLowerCase();
 const isEntry = (line) => line.trim() !== "" && !line.trim().startsWith("#");
 
@@ -126,8 +126,8 @@ function listHandles(text) {
   return text.split("\n").filter(isEntry).map((l) => l.trim().replace(/^@/, ""));
 }
 
-// Renvoie le nouveau texte, ou null si rien ne change.
-function editAccounts(text, action, handle) {
+// Returns the new text, or null if nothing changes.
+function editWatchlist(text, action, handle) {
   const h = handle.toLowerCase();
   const present = text.split("\n").some((l) => isEntry(l) && norm(l) === h);
   if (action === "add") {
@@ -144,5 +144,5 @@ function editAccounts(text, action, handle) {
 module.exports = {
   OWNER, REPO, FILE, BRANCH, SESSION_COOKIE, SESSION_DAYS, HANDLE_RE,
   env, siteOrigin, parseCookies, safeEqual, signSession, readSession, isAdmin, currentAdmin,
-  cookie, sameOrigin, gh, installationToken, readAccountsFile, listHandles, editAccounts,
+  cookie, sameOrigin, gh, installationToken, readWatchlistFile, listHandles, editWatchlist,
 };

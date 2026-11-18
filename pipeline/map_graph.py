@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
-"""Moteur de la map des comptes (voir docs/map-spec.md). Python 3, sans dépendance.
+"""Account map engine (see docs/map-spec.md). Python 3, no dependencies.
 
-Commandes :
-  python3 map_graph.py extract [data/tweets.json]   ajoute les interactions du jour à interactions.jsonl
-  python3 map_graph.py seed FICHIER.jsonl           importe des interactions d'amorce (ex. digests Discord)
-  python3 map_graph.py profiles                     récupère via Mindcase les profils manquants des nœuds de la map
-  python3 map_graph.py build                        calcule graph.json et oneliners_todo.json
-                                                    (avec les projets du jour de projects.json, s'il existe)
+Commands:
+  python3 pipeline/map_graph.py extract [data/tweets.json]   append today's interactions to interactions.jsonl
+  python3 pipeline/map_graph.py seed FILE.jsonl              import seed interactions (e.g. from Discord digests)
+  python3 pipeline/map_graph.py profiles                     fetch missing profiles of map nodes from Mindcase
+  python3 pipeline/map_graph.py build                        compute graph.json and oneliners_todo.json
+                                                             (with today's projects from projects.json, if any)
 
-Dossier des données : $GRAPH_DIR (défaut : graph/). En production c'est le dossier
-graph/ de la branche claude/map-data, jamais main.
+Data folder: $GRAPH_DIR (default: graph/). In production it is the graph/ folder
+of the claude/map-data branch, never main.
 
-Ordre d'un run quotidien : extract -> profiles -> build -> (Claude écrit oneliners.json) -> build.
+Daily run order: extract -> profiles -> build -> (Claude writes oneliners.json) -> build.
 """
 import json
 import os
@@ -21,15 +21,15 @@ import urllib.error
 import urllib.request
 from datetime import date, datetime, timedelta, timezone
 
-# --- Réglages (section 2 de la spec) ---
-MIN_TWEETS = 2        # tweets différents du compte relayés par la whitelist
-MIN_WL_ACCOUNTS = 2   # comptes différents de la whitelist qui l'ont relayé
-WINDOW_DAYS = 30      # fenêtre glissante
-PROFILE_MAX_ATTEMPTS = 2  # 1er essai + 1 réessai si Mindcase ne renvoie pas le profil
-TEXT_MAX = 600        # longueur max des textes stockés (pour les one-liners)
+# --- Settings (spec, section 2) ---
+MIN_TWEETS = 2        # distinct tweets of the account relayed by the watchlist
+MIN_WL_ACCOUNTS = 2   # distinct watchlist accounts that relayed it
+WINDOW_DAYS = 30      # rolling window
+PROFILE_MAX_ATTEMPTS = 2  # first try + one retry if Mindcase returns no profile
+TEXT_MAX = 600        # max length of stored texts (used for one-liners)
 
 PROFILES_URL = "https://api.mindcase.co/v1/data/twitter/profiles/run?wait=true"
-HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # repository root
 GRAPH_DIR = os.environ.get("GRAPH_DIR", "graph")
 HANDLE_RE = re.compile(r"^[A-Za-z0-9_]{1,15}$")
 STATUS_RE = re.compile(r"(?:x|twitter)\.com/([^/?#]+)/status(?:es)?/(\d+)", re.I)
@@ -40,7 +40,7 @@ def path(name):
 
 
 def today():
-    """Date du jour (UTC). MAP_TODAY=AAAA-MM-JJ la fixe, pour les tests."""
+    """Today's date (UTC). MAP_TODAY=YYYY-MM-DD pins it, for tests."""
     forced = os.environ.get("MAP_TODAY")
     return date.fromisoformat(forced) if forced else datetime.now(timezone.utc).date()
 
@@ -67,8 +67,8 @@ def save_json(name, obj):
 
 
 def load_whitelist():
-    """Même lecture que fetch_tweets.py : un handle par ligne, # = commentaire."""
-    accounts_file = os.environ.get("ACCOUNTS_FILE", os.path.join(HERE, "accounts.txt"))
+    """Same parsing as fetch_tweets.py: one handle per line, # starts a comment."""
+    accounts_file = os.environ.get("WATCHLIST_FILE", os.path.join(ROOT, "watchlist.txt"))
     with open(accounts_file, encoding="utf-8") as f:
         raw = "\n".join(line.split("#", 1)[0] for line in f)
     return list(dict.fromkeys(norm(a) for a in re.split(r"[\s,;]+", raw) if norm(a)))
@@ -91,7 +91,7 @@ def interaction_key(it):
 
 
 def append_interactions(new):
-    """Ajoute sans doublon. Renvoie le nombre réellement ajouté."""
+    """Append without duplicates. Returns how many were actually added."""
     seen = {interaction_key(it) for it in load_interactions()}
     added = []
     for it in new:
@@ -128,7 +128,7 @@ def tweet_date(t):
 
 
 def interactions_from_tweet(t):
-    """Un tweet d'un compte de la whitelist -> 0 à 2 interactions (un tweet peut être reply ET quote)."""
+    """One tweet from a watchlist account -> 0 to 2 interactions (a tweet can be both a reply and a quote)."""
     src = norm(t.get("account") or (t.get("author") or {}).get("handle"))
     source_url = t.get("tweetUrl")
     if not src or not source_url:
@@ -139,7 +139,7 @@ def interactions_from_tweet(t):
     def add(kind, to, tweet_id, text):
         to = norm(to)
         if not to or to == "i" or to == src or not HANDLE_RE.match(to) or not tweet_id:
-            return  # handle inconnu, interaction avec soi-même, ou donnée incomplète
+            return  # unknown handle, self-interaction, or incomplete data
         found.append({
             "date": d, "from": src, "to": to, "type": kind,
             "target_tweet_id": str(tweet_id),
@@ -153,7 +153,7 @@ def interactions_from_tweet(t):
     rt = STATUS_RE.search(t.get("retweetedTweetUrl") or "")
     if rt:
         add("rt", rt.group(1), rt.group(2), t.get("retweetedTweetText"))
-        return found  # un RT natif n'a pas d'autre contenu propre
+        return found  # a native RT has no content of its own
 
     qt = STATUS_RE.search(t.get("quotedTweetUrl") or "")
     if qt:
@@ -177,7 +177,7 @@ def cmd_extract(args):
 
 def cmd_seed(args):
     if not args:
-        sys.exit("usage : map_graph.py seed FICHIER.jsonl")
+        sys.exit("usage: map_graph.py seed FILE.jsonl")
     with open(args[0], encoding="utf-8") as f:
         items = [json.loads(l) for l in f if l.strip() and not l.lstrip().startswith("//")]
     for it in items:
@@ -186,10 +186,10 @@ def cmd_seed(args):
     print(json.dumps({"seed_items": len(items), "added": append_interactions(items)}))
 
 
-# --- Calcul de la map ---
+# --- Map computation ---
 
 def compute_map(whitelist, interactions, ref_day):
-    """Applique les règles de la section 2. Renvoie {handle: stats} des candidats retenus."""
+    """Apply the rules of section 2. Returns {handle: interactions} for the accounts that make the map."""
     wl = set(whitelist)
     start = (ref_day - timedelta(days=WINDOW_DAYS - 1)).isoformat()
     end = ref_day.isoformat()
@@ -198,7 +198,7 @@ def compute_map(whitelist, interactions, ref_day):
         if not (start <= it["date"] <= end):
             continue
         if it["from"] not in wl or it["to"] in wl:
-            continue  # source retirée de la whitelist, ou lien whitelist <-> whitelist
+            continue  # source no longer in the watchlist, or a watchlist <-> watchlist link
         per.setdefault(it["to"], []).append(it)
 
     kept = {}
@@ -211,7 +211,7 @@ def compute_map(whitelist, interactions, ref_day):
 
 
 def qualified_since(its):
-    """Premier jour (dans la fenêtre) où le compte a rempli les deux conditions : sert au badge « new »."""
+    """First day (within the window) the account met both conditions: drives the "new" badge."""
     tweets, relayers = set(), set()
     for it in sorted(its, key=lambda x: x["date"]):
         tweets.add(it["target_tweet_id"])
@@ -222,8 +222,8 @@ def qualified_since(its):
 
 
 def latest_relayed(its):
-    """Dernier tweet relayé : date la plus récente, puis ID le plus grand (les IDs X sont chronologiques).
-    On préfère un tweet avec une vraie URL (les amorces Discord n'en ont pas)."""
+    """Latest relayed tweet: most recent date, then highest ID (X IDs are chronological).
+    A tweet with a real URL wins (Discord seeds have none)."""
     def rank(it):
         real = it.get("target_tweet_url") is not None
         tid = int(it["target_tweet_id"]) if it["target_tweet_id"].isdigit() else 0
@@ -259,7 +259,7 @@ def cmd_profiles(_args):
         return
     key = re.sub(r"^bearer\s+", "", os.environ.get("MINDCASE_API_KEY", "").strip(), flags=re.I)
     if not key:
-        sys.exit("MINDCASE_API_KEY est vide.")
+        sys.exit("MINDCASE_API_KEY is empty.")
     body = json.dumps({"params": {"inputs": wanted}}).encode()
     req = urllib.request.Request(PROFILES_URL, data=body, method="POST", headers={
         "Authorization": f"Bearer {key}", "Content-Type": "application/json"})
@@ -267,7 +267,7 @@ def cmd_profiles(_args):
         with urllib.request.urlopen(req, timeout=300) as r:
             payload = json.loads(r.read() or b"null")
     except urllib.error.HTTPError as e:
-        sys.exit(f"Mindcase profils : HTTP {e.code} {e.read().decode(errors='replace')[:300]}")
+        sys.exit(f"Mindcase profiles: HTTP {e.code} {e.read().decode(errors='replace')[:300]}")
 
     got = set()
     for row in payload.get("data") or []:
@@ -316,11 +316,11 @@ def short(text, n):
 
 
 def build_projects(interactions):
-    """Projets du jour écrits par Claude (projects.json), enrichis des comptes concernés.
+    """Today's projects written by Claude (projects.json), enriched with the accounts involved.
 
-    Pour chaque projet, `accounts` = l'auteur du tweet, les comptes de la whitelist qui l'ont relayé
-    (RT, quote, reply) et, si le tweet est lui-même une quote ou une reply, le compte cité.
-    Le site met ces comptes en vert. Renvoie None si projects.json n'existe pas.
+    For each project, `accounts` = the tweet's author, the watchlist accounts that relayed it
+    (RT, quote, reply) and, if the tweet itself quotes or replies to someone, that account.
+    The site lights these accounts in green. Returns None if projects.json does not exist.
     """
     raw = load_json("projects.json", None)
     if not isinstance(raw, dict):
@@ -372,11 +372,11 @@ def cmd_build(_args):
         latest = latest_relayed(its)
         ol = oneliners.get(h)
         if (not ol or ol.get("tweet_id") != latest["tweet_id"]) and latest["digest_note"]:
-            # amorce Discord : le one-liner (déjà traduit) vient du digest, pas besoin de Claude
+            # Discord seed: the one-liner (already in English) comes from the digest, no need for Claude
             ol = {"text": latest["digest_note"], "tweet_id": latest["tweet_id"]}
         if not ol or ol.get("tweet_id") != latest["tweet_id"]:
             todo.append({"handle": h, **latest})
-            ol = None  # pas de one-liner périmé affiché pour un nouveau tweet
+            ol = None  # never show a stale one-liner for a new tweet
         nodes.append({
             "id": h, "kind": "candidate", **node_profile(h, profiles),
             "tweets": len({it["target_tweet_id"] for it in its}),

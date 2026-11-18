@@ -32,7 +32,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 .wrap { padding-left: var(--gutter); padding-right: var(--gutter); }
 
-/* --- top bar : une ligne, la map prend le reste de l'écran --- */
+/* --- top bar: one line, the map takes the rest of the screen --- */
 .topbar {
   display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px;
   padding: 14px var(--gutter);
@@ -78,7 +78,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .edge.hl { stroke: var(--blue); }
 .edge.off { display: none; }
 .node { cursor: pointer; transition: opacity .2s; }
-/* sources : petites, noir et blanc, estompées ; découvertes : en couleur, cercle bleu épais */
+/* sources: small, black and white, faded; discovered: in color, thick blue ring */
 .node.src .photo { filter: grayscale(1) contrast(1.05); opacity: .55; transition: filter .25s, opacity .25s; }
 .node.src:hover .photo, .node.src.sel .photo { filter: none; opacity: 1; }
 .node .ring { fill: none; stroke: var(--ink); stroke-width: 1; }
@@ -92,7 +92,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .node.cand .label { fill: var(--ink); }
 .node .new { font-size: 9px; fill: var(--blue); text-anchor: middle; letter-spacing: .04em; }
 .node .pending { font-size: 9px; fill: var(--ink); text-anchor: middle; letter-spacing: .04em; font-style: italic; }
-/* vert : comptes derrière les projets du jour */
+/* green: accounts behind today's projects */
 .node .halo { fill: none; stroke: var(--green); stroke-width: 2.5; display: none; }
 .node.lit .halo { display: inline; }
 .node.src.lit .photo { filter: none; opacity: 1; }
@@ -100,7 +100,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .node.gone { display: none; }
 .faded { opacity: .18; }
 
-/* --- projets du jour, à gauche de la map --- */
+/* --- today's projects, left of the map --- */
 .projects { position: absolute; top: 22px; left: var(--gutter); width: 250px; max-height: calc(100% - 70px); overflow-y: auto; }
 .projects summary { margin: 0 0 8px; cursor: pointer; list-style: none; }
 .projects summary::-webkit-details-marker { display: none; }
@@ -114,7 +114,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .projects button.on .n { color: var(--green); }
 .projects button:focus-visible { outline: 1px solid var(--green); outline-offset: 2px; }
 
-/* --- ajout à la main (admin) : bouton sous la barre du haut, à droite --- */
+/* --- add by hand (admin): button under the top bar, on the right --- */
 .add-wrap { position: absolute; top: 16px; right: var(--gutter); z-index: 5; display: flex; flex-direction: column; align-items: flex-end; }
 .map:has(#panel:not([hidden])) .add-wrap { right: calc(min(380px, 92%) + 16px); }
 .add-open { font: inherit; font-size: 13px; padding: 8px 14px; background: var(--cream); color: var(--ink); border: 1px solid var(--blue); cursor: pointer; }
@@ -127,7 +127,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .add-msg { font-size: 12px; line-height: 1.4; color: #B3261E; margin: 8px 0 0; }
 .add-msg:empty { display: none; }
 
-/* --- backlog (admin) : sous le bouton, collé au bord droit, sans bordure droite --- */
+/* --- backlog (admin): under the button, flush with the right edge, no right border --- */
 .backlog { position: absolute; top: 72px; right: 0; z-index: 4; width: 230px; max-height: calc(100% - 140px); overflow-y: auto;
   background: var(--cream); border: 1px solid var(--ink); border-right: 0; padding: 14px 16px 10px; }
 .map:has(#panel:not([hidden])) .backlog { display: none; }

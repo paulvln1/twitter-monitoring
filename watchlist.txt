@@ -1,0 +1,24 @@
+# X accounts followed by the daily digest (the "sources").
+# One handle per line, with or without @. Lines starting with # are ignored.
+# Edit this file on GitHub or from the site: the next morning run picks it up.
+hwchase17
+mckaywrigley
+GeoffreyHuntley
+steipete
+claudeai
+mitchellh
+dbreunig
+swyx
+simon_budziak
+HamelHusain
+dexhorthy
+jxnlco
+kieranklaassen
+RLanceMartin
+mitsuhiko
+CompleteSkeptic
+sqs
+zachlloydtweets
+luhsnaa
+sydneyrunkle
+karpathy

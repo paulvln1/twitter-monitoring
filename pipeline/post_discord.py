@@ -1,21 +1,22 @@
 #!/usr/bin/env python3
-"""Envoie le digest sur Discord, sous forme d'embeds, via un webhook.
+"""Post the digest to Discord as embeds, through one or more webhooks.
 
-Usage :
-  python3 post_discord.py [fichier]       # par défaut data/digest.md
-  python3 post_discord.py --dry-run [f]   # affiche les payloads sans rien envoyer
+Usage:
+  python3 pipeline/post_discord.py [file]       # data/digest.md by default
+  python3 pipeline/post_discord.py --dry-run [f]  # print the payloads, send nothing
 
-Variable d'environnement :
-  DISCORD_WEBHOOK_URL  URL du webhook Discord (https://discord.com/api/webhooks/...)
+Environment:
+  DISCORD_WEBHOOK_URL, DISCORD_WEBHOOK_URL_2  Discord webhook URLs (https://discord.com/api/webhooks/...)
 
-Mise en forme :
-  - chaque section « ## » / « ### » du digest devient un embed (titre + couleur) ;
-  - le texte avant la première section (alertes, solde…) devient un embed d'en-tête ;
-  - les liens Markdown [texte](url) deviennent des liens cliquables ; les URL
-    de tweets laissées « nues » sont converties en [@handle](url) ;
-  - limites Discord respectées : 4096 caractères par embed, 10 embeds et
-    6000 caractères par message (découpage aux paragraphes, puis aux lignes).
-L'URL du webhook n'est jamais affichée.
+Formatting:
+  - each "##" / "###" section of the digest becomes an embed (title + color);
+  - text before the first section (alerts, balance...) becomes a header embed;
+  - Markdown links [text](url) become clickable; bare tweet URLs are turned
+    into [@handle](url);
+  - Discord limits are respected: 4096 characters per embed, 10 embeds and
+    6000 characters per message (split on paragraphs, then on lines).
+The digest itself is in French, so the Discord-facing strings below stay in French.
+Webhook URLs are never printed.
 """
 import json
 import os
@@ -30,11 +31,11 @@ DESC_MAX = 4096
 TITLE_MAX = 256
 MSG_EMBEDS_MAX = 10
 MSG_CHARS_MAX = 6000
-USERNAME = "Veille Twitter"
+USERNAME = "Veille Twitter"  # bot name shown in Discord (French, like the digest)
 WEBHOOK_VARS = ("DISCORD_WEBHOOK_URL", "DISCORD_WEBHOOK_URL_2")
 USER_AGENT = "DiscordBot (https://github.com/paulvln1/twitter-monitoring, 1.0)"
 
-COLORS = [  # (mot-clé dans le titre de section, couleur)
+COLORS = [  # (keyword in the French section title, color)
     ("projet", 0x5865F2),
     ("concept", 0x57F287),
     ("take", 0xFEE75C),
@@ -59,7 +60,7 @@ def color_for(title):
 
 
 def linkify(text):
-    """Transforme les URL de tweets nues en liens masqués [@handle](url)."""
+    """Turn bare tweet URLs into masked links [@handle](url)."""
     def repl(m):
         url = m.group(0).rstrip(".,;:!?")
         tail = m.group(0)[len(url):]
@@ -68,7 +69,7 @@ def linkify(text):
 
 
 def clean_body(text):
-    """Sous-titres Markdown (#### …) → gras, plus lisible dans un embed."""
+    """Markdown subheadings (#### ...) -> bold, easier to read in an embed."""
     out = []
     for line in text.splitlines():
         m = re.match(r"^#{1,6}\s+(.*)$", line)
@@ -77,7 +78,7 @@ def clean_body(text):
 
 
 def split_sections(md):
-    """Renvoie [(titre ou None, corps)] en coupant sur les titres ## / ###."""
+    """Return [(title or None, body)], split on ## / ### headings."""
     sections, title, buf = [], None, []
     for line in md.splitlines():
         m = re.match(r"^#{1,3}\s+(.*)$", line)
@@ -93,7 +94,7 @@ def split_sections(md):
 
 
 def chunk(text, limit):
-    """Découpe en morceaux ≤ limit : paragraphes, puis lignes, puis coupe dure."""
+    """Split into pieces <= limit: paragraphs, then lines, then a hard cut."""
     if len(text) <= limit:
         return [text]
     pieces, cur = [], ""
@@ -101,7 +102,7 @@ def chunk(text, limit):
         units = [para] if len(para) <= limit else para.split("\n")
         sep = "\n\n"
         for u in units:
-            while len(u) > limit:  # ligne gigantesque : coupe dure
+            while len(u) > limit:  # huge line: hard cut
                 if cur:
                     pieces.append(cur)
                     cur = ""
@@ -135,7 +136,7 @@ def build_embeds(md):
             if title and i == 0:
                 e["title"] = title
             elif title:
-                e["title"] = f"{title} (suite)"[:TITLE_MAX]
+                e["title"] = f"{title} (suite)"[:TITLE_MAX]  # "continued"
             if part:
                 e["description"] = part
             if "title" in e or "description" in e:
@@ -153,7 +154,7 @@ def embed_size(e):
 
 
 def pack(embeds):
-    """Regroupe les embeds en messages (≤ 10 embeds, ≤ 6000 caractères)."""
+    """Group embeds into messages (<= 10 embeds, <= 6000 characters)."""
     msgs, cur, size = [], [], 0
     for e in embeds:
         s = embed_size(e)
@@ -188,10 +189,10 @@ def post(url, payload):
                     wait = 2
                 time.sleep(min(wait, 30) + 0.5)
                 continue
-            raise RuntimeError(f"HTTP {err.code} : {body}") from None
+            raise RuntimeError(f"HTTP {err.code}: {body}") from None
         except urllib.error.URLError as err:
-            raise RuntimeError(f"réseau : {err.reason}") from None
-    raise RuntimeError("trop de rate limits (429)")
+            raise RuntimeError(f"network: {err.reason}") from None
+    raise RuntimeError("too many rate limits (429)")
 
 
 def main():
@@ -204,10 +205,10 @@ def main():
         with open(path, encoding="utf-8") as f:
             md = f.read()
     except OSError as err:
-        print(f"ERREUR Discord : impossible de lire {path} ({err.strerror}).", file=sys.stderr)
+        print(f"Discord ERROR: cannot read {path} ({err.strerror}).", file=sys.stderr)
         return 1
     if not md.strip():
-        print(f"ERREUR Discord : {path} est vide.", file=sys.stderr)
+        print(f"Discord ERROR: {path} is empty.", file=sys.stderr)
         return 1
 
     messages = pack(build_embeds(md))
@@ -218,18 +219,18 @@ def main():
             print(json.dumps({"embeds": embeds}, ensure_ascii=False, indent=2))
         return 0
 
-    # Un ou plusieurs webhooks : DISCORD_WEBHOOK_URL, DISCORD_WEBHOOK_URL_2, ...
+    # One or more webhooks: DISCORD_WEBHOOK_URL, DISCORD_WEBHOOK_URL_2
     targets = []
     for name in WEBHOOK_VARS:
         url = os.environ.get(name, "").strip()
         if not url:
             continue
         if not re.match(r"^https://(?:\w+\.)?discord(?:app)?\.com/api/webhooks/", url):
-            print(f"ERREUR Discord : {name} n'est pas une URL de webhook Discord.", file=sys.stderr)
+            print(f"Discord ERROR: {name} is not a Discord webhook URL.", file=sys.stderr)
             return 1
         targets.append((name, url))
     if not targets:
-        print("ERREUR Discord : DISCORD_WEBHOOK_URL est vide.", file=sys.stderr)
+        print("Discord ERROR: DISCORD_WEBHOOK_URL is empty.", file=sys.stderr)
         return 1
 
     failed = False
@@ -239,13 +240,13 @@ def main():
             try:
                 post(url, payload)
             except RuntimeError as err:
-                print(f"ERREUR Discord ({name}) : message {i}/{len(messages)} non envoyé ({err}).", file=sys.stderr)
+                print(f"Discord ERROR ({name}): message {i}/{len(messages)} not sent ({err}).", file=sys.stderr)
                 failed = True
-                break  # on passe au webhook suivant
+                break  # move on to the next webhook
             if i < len(messages):
                 time.sleep(1)
         else:
-            print(f"Discord ({name}) : digest envoyé ({len(messages)} message(s), "
+            print(f"Discord ({name}): digest sent ({len(messages)} message(s), "
                   f"{sum(len(m) for m in messages)} embed(s)).")
     return 1 if failed else 0
 

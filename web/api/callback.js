@@ -1,4 +1,4 @@
-// GET /api/callback : retour de GitHub. On lit le login, on jette le jeton OAuth, on pose un cookie de session signé.
+// GET /api/callback: back from GitHub. Read the login, throw the OAuth token away, set a signed session cookie.
 "use strict";
 const {
   env, siteOrigin, parseCookies, safeEqual, signSession, isAdmin, cookie, SESSION_COOKIE, SESSION_DAYS,
@@ -32,7 +32,7 @@ module.exports = async (req, res) => {
     }).then((r) => r.json());
     login = typeof u.login === "string" ? u.login : null;
 
-    // Le jeton ne sert plus à rien : on le révoque tout de suite.
+    // The token is no longer needed: revoke it right away.
     await fetch(`https://api.github.com/applications/${clientId}/token`, {
       method: "DELETE",
       headers: {

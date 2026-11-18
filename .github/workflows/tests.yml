@@ -21,5 +21,5 @@ jobs:
           node-version: "22"
       - name: Python tests (map graph)
         run: python -m unittest discover tests -v
-      - name: Node tests (site API)
-        run: node --test tests/site_api.test.js
+      - name: Node tests (web API)
+        run: node --test tests/web_api.test.js

@@ -1,22 +1,24 @@
 #!/usr/bin/env python3
-"""Récupère les tweets des dernières 24h via l'API Mindcase.
+"""Fetch the last 24 hours of tweets from the Mindcase API.
 
-Variables d'environnement :
-  MINDCASE_API_KEY  clé Mindcase (avec ou sans préfixe "Bearer ")
-  accounts.txt      handles à suivre, un par ligne (repli : variable TWITTER_ACCOUNTS si le fichier n'existe pas)
-  HOURS             (optionnel) fenêtre en heures, 24 par défaut
+Run from the repository root: python3 pipeline/fetch_tweets.py
 
-Sorties (dossier data/, ignoré par git) :
-  data/raw_<n>.json   réponse brute de l'API pour le n-ième compte
-  data/tweets.json    tweets gardés (fenêtre respectée), avec le champ "account"
-  data/run.json       résumé : appels, erreurs, tweets facturés, coût estimé
-Le résumé est aussi affiché sur stdout.
+Inputs:
+  MINDCASE_API_KEY  Mindcase key (with or without a "Bearer " prefix)
+  watchlist.txt     handles to follow, one per line (fallback: TWITTER_ACCOUNTS if the file is missing)
+  HOURS             (optional) window in hours, 24 by default
 
-Garde-fous coût :
-  - toujours un filtre de date dans `query` (jamais d'appel sans) ;
-  - le premier compte est appelé seul ; s'il renvoie > 100 tweets ou des
-    tweets de plus de 48h, le filtre n'a pas marché et on arrête tout ;
-  - une erreur 4xx arrête tous les appels (pas de réessai sans filtre).
+Outputs (data/ folder, ignored by git):
+  data/raw_<n>.json   raw API response for the n-th account
+  data/tweets.json    tweets kept (inside the window), each with an "account" field
+  data/run.json       summary: calls, errors, billed tweets, estimated cost
+The summary is also printed to stdout.
+
+Cost guards:
+  - always a date filter in `query` (never a call without one);
+  - the first account is called alone; if it returns > 100 tweets or tweets
+    older than 48h, the filter did not work and everything stops;
+  - a 4xx error stops all calls (no retry without the filter).
 """
 import json
 import os
@@ -32,28 +34,29 @@ PRICE_PER_TWEET = 0.00025  # $
 MAX_FIRST_CALL = 100
 STALE_HOURS = 48
 
-os.makedirs("data", exist_ok=True)
+os.makedirs("data", exist_ok=True)  # relative to the working directory: run from the repository root
 
 
 def die(msg):
-    print(f"ERREUR : {msg}", file=sys.stderr)
+    print(f"ERROR: {msg}", file=sys.stderr)
     sys.exit(1)
 
 
 key = os.environ.get("MINDCASE_API_KEY", "").strip()
 key = re.sub(r"^bearer\s+", "", key, flags=re.I)
 if not key:
-    die("MINDCASE_API_KEY est vide.")
+    die("MINDCASE_API_KEY is empty.")
 
-ACCOUNTS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "accounts.txt")
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # repository root
+WATCHLIST_FILE = os.path.join(ROOT, "watchlist.txt")
 try:
-    with open(ACCOUNTS_FILE, encoding="utf-8") as f:
+    with open(WATCHLIST_FILE, encoding="utf-8") as f:
         raw_accounts = "\n".join(line.split("#", 1)[0] for line in f)
 except OSError:
-    raw_accounts = os.environ.get("TWITTER_ACCOUNTS", "")  # repli si accounts.txt est absent
+    raw_accounts = os.environ.get("TWITTER_ACCOUNTS", "")  # fallback if watchlist.txt is missing
 accounts = list(dict.fromkeys(a.lstrip("@") for a in re.split(r"[\s,;]+", raw_accounts) if a.lstrip("@")))
 if not accounts:
-    die("Aucun compte : remplis accounts.txt (un handle par ligne).")
+    die("No accounts: fill in watchlist.txt (one handle per line).")
 
 hours = int(os.environ.get("HOURS", "24"))
 now = time.time()
@@ -61,7 +64,7 @@ since = int(now - hours * 3600)
 
 
 def extract_rows(payload):
-    """Trouve la liste de tweets dans la réponse, quelle que soit la clé."""
+    """Find the list of tweets in the response, whatever its key."""
     if isinstance(payload, list):
         return payload
     if isinstance(payload, dict):
@@ -77,7 +80,7 @@ def extract_rows(payload):
 
 
 def find_cost(payload):
-    """Renvoie un champ de coût réel s'il existe dans la réponse."""
+    """Return a real cost field if the response has one."""
     if isinstance(payload, dict):
         for k, v in payload.items():
             if k.lower() in ("cost", "credits", "credits_used", "billed", "billed_rows", "usage", "price") and not isinstance(v, list):
@@ -90,7 +93,7 @@ def find_cost(payload):
 
 
 def find_notices(payload, path=""):
-    """Récupère les notices (solde bas, avertissements) présentes dans la réponse."""
+    """Collect the notices (low balance, warnings) found in the response."""
     out = []
     if isinstance(payload, dict):
         for k, v in payload.items():
@@ -129,7 +132,7 @@ def call(handle):
     except urllib.error.HTTPError as e:
         text = e.read().decode(errors="replace")[:500]
         return e.code, {"error": text}
-    except Exception as e:  # réseau, timeout, JSON invalide
+    except Exception as e:  # network, timeout, invalid JSON
         return 0, {"error": f"{type(e).__name__}: {e}"}
 
 
@@ -148,7 +151,7 @@ for i, handle in enumerate(accounts):
         err = payload.get("error") if isinstance(payload, dict) else payload
         summary["errors"].append({"account": handle, "status": status, "error": err})
         if 400 <= status < 500:
-            summary["stopped"] = f"erreur {status} sur {handle} : appels arrêtés (pas de réessai sans filtre)"
+            summary["stopped"] = f"error {status} on {handle}: calls stopped (no retry without the filter)"
             break
         continue
 
@@ -165,8 +168,8 @@ for i, handle in enumerate(accounts):
     dates = [parse_date(r.get("postedDate") or r.get("createdAt")) for r in rows if isinstance(r, dict)]
     stale = [d for d in dates if d and d < now - STALE_HOURS * 3600]
     if i == 0 and (len(rows) > MAX_FIRST_CALL or stale):
-        summary["stopped"] = (f"le premier compte a renvoyé {len(rows)} tweets dont {len(stale)} de plus de "
-                              f"{STALE_HOURS}h : le filtre de date ne marche pas, appels arrêtés")
+        summary["stopped"] = (f"the first account returned {len(rows)} tweets, {len(stale)} of them older than "
+                              f"{STALE_HOURS}h: the date filter is not working, calls stopped")
         break
 
     n_kept = 0

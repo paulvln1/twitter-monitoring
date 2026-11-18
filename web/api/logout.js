@@ -1,4 +1,4 @@
-// POST /api/logout : efface le cookie de session.
+// POST /api/logout: clear the session cookie.
 "use strict";
 const { cookie, sameOrigin, SESSION_COOKIE } = require("./_lib");
 

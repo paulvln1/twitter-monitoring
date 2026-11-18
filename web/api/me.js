@@ -1,4 +1,4 @@
-// GET /api/me : qui est connecté ({ login } ou { login: null }).
+// GET /api/me: who is signed in ({ login } or { login: null }).
 "use strict";
 const { currentAdmin } = require("./_lib");
 

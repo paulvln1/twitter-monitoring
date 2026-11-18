@@ -1,5 +1,5 @@
-// Amorce de la map à partir des 11 digests Discord (06/11 -> 16/11/2026), un digest par jour.
-// Approximatif : pas d'URL de tweet ; 'target_tweet_id' est synthétique. Voir docs/map-spec.md section 6.
+// Map seed built from the 11 Discord digests (2026-11-06 -> 2026-11-16), one digest per day.
+// Approximate: no tweet URLs, and "target_tweet_id" is synthetic. See docs/map-spec.md, section 6.
 {"date": "2026-11-06", "from": "kieranklaassen", "to": "kplikethebird", "type": "rt", "target_tweet_id": "bf-2026-11-06-kplikethebird-1", "target_tweet_url": null, "target_text": null, "source_tweet_url": "discord:bf-2026-11-06-kplikethebird-1:kieranklaassen:rt", "source_text": null, "note": "Vibe-coded his own Bible study app.", "source": "discord_backfill"}
 {"date": "2026-11-06", "from": "kieranklaassen", "to": "kplikethebird", "type": "rt", "target_tweet_id": "bf-2026-11-06-kplikethebird-2", "target_tweet_url": null, "target_text": null, "source_tweet_url": "discord:bf-2026-11-06-kplikethebird-2:kieranklaassen:rt", "source_text": null, "note": "Added PostHog to Every's agent to track its metrics.", "source": "discord_backfill"}
 {"date": "2026-11-06", "from": "hwchase17", "to": "sydneyrunkle", "type": "rt", "target_tweet_id": "bf-2026-11-06-sydneyrunkle-1", "target_tweet_url": null, "target_text": null, "source_tweet_url": "discord:bf-2026-11-06-sydneyrunkle-1:hwchase17:rt", "source_text": null, "note": "Feedback as context for agents.", "source": "discord_backfill"}

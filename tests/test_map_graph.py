@@ -1,4 +1,4 @@
-"""Tests du moteur de la map : python3 -m unittest discover tests"""
+"""Tests for the map engine: python3 -m unittest discover tests"""
 import json
 import os
 import sys
@@ -6,7 +6,7 @@ import tempfile
 import unittest
 from datetime import date
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "pipeline"))
 import map_graph as mg  # noqa: E402
 
 DAY = date(2026, 11, 17)
@@ -24,19 +24,19 @@ class Rules(unittest.TestCase):
         return set(mg.compute_map(wl, items, DAY))
 
     def test_one_viral_tweet_is_not_enough(self):
-        # 1 tweet relayé par 3 comptes de la whitelist -> compte pour 1 tweet
+        # 1 tweet relayed by 3 watchlist accounts -> counts as 1 tweet
         self.assertEqual(self.kept([it("alice", "x", 1), it("bob", "x", 1), it("carol", "x", 1)]), set())
 
     def test_single_fan_is_not_enough(self):
-        # 4 tweets différents mais relayés par un seul compte de la whitelist
+        # 4 different tweets, but relayed by a single watchlist account
         self.assertEqual(self.kept([it("alice", "x", n) for n in range(4)]), set())
 
     def test_two_tweets_two_accounts(self):
         self.assertEqual(self.kept([it("alice", "x", 1), it("bob", "x", 2)]), {"x"})
 
     def test_window_30_days(self):
-        old = it("alice", "x", 1, d="2026-10-18")  # 30 jours avant le 17/11 -> hors fenêtre
-        edge = it("alice", "x", 1, d="2026-10-19")  # 29 jours avant -> dans la fenêtre
+        old = it("alice", "x", 1, d="2026-10-18")  # 30 days before 2026-11-17 -> outside the window
+        edge = it("alice", "x", 1, d="2026-10-19")  # 29 days before -> inside the window
         self.assertEqual(self.kept([old, it("bob", "x", 2)]), set())
         self.assertEqual(self.kept([edge, it("bob", "x", 2)]), {"x"})
 
@@ -99,10 +99,10 @@ class Storage(unittest.TestCase):
 
     def test_build_and_oneliner_todo(self):
         mg.append_interactions([it("alice", "x", 1, d="2026-11-10"), it("bob", "x", 2, d="2026-11-12")])
-        accounts = os.path.join(self.tmp.name, "accounts.txt")
-        with open(accounts, "w") as f:
-            f.write("# commentaire\n@Alice\nbob\ncarol\n")
-        os.environ.update(ACCOUNTS_FILE=accounts, MAP_TODAY="2026-11-17")
+        watchlist = os.path.join(self.tmp.name, "watchlist.txt")
+        with open(watchlist, "w") as f:
+            f.write("# comment\n@Alice\nbob\ncarol\n")
+        os.environ.update(WATCHLIST_FILE=watchlist, MAP_TODAY="2026-11-17")
         try:
             mg.cmd_build([])
             g = mg.load_json("graph.json", {})
@@ -112,21 +112,21 @@ class Storage(unittest.TestCase):
             self.assertEqual([(n["id"], n["tweets"], n["latest"]["tweet_url"]) for n in cand],
                              [("x", 2, "https://x.com/x/status/2")])
             self.assertEqual([t["handle"] for t in todo], ["x"])
-            # Claude écrit le one-liner -> il disparaît de la todo
+            # Claude writes the one-liner -> it leaves the todo list
             mg.save_json("oneliners.json", {"x": {"text": "Great thread.", "tweet_id": "2"}})
             mg.cmd_build([])
             self.assertEqual(mg.load_json("oneliners_todo.json", None), [])
             self.assertEqual(mg.load_json("graph.json", {})["nodes"][-1]["oneliner"], "Great thread.")
-            # un nouveau tweet relayé -> le one-liner est à réécrire
+            # a new relayed tweet -> the one-liner must be rewritten
             mg.append_interactions([it("carol", "x", 3, d="2026-11-15")])
             mg.cmd_build([])
             self.assertEqual([t["tweet_id"] for t in mg.load_json("oneliners_todo.json", [])], ["3"])
         finally:
-            os.environ.pop("ACCOUNTS_FILE")
+            os.environ.pop("WATCHLIST_FILE")
             os.environ.pop("MAP_TODAY")
 
     def test_projects_accounts(self):
-        # x poste un projet (tweet 5), RT par alice ; carol cite un tweet de y (tweet 9) dans son tweet 77
+        # x posts a project (tweet 5), RT'd by alice; carol quotes a tweet from y (tweet 9) in tweet 77
         mg.append_interactions([it("alice", "x", 5),
                                 it("carol", "y", 9, kind="quote", src="https://x.com/carol/status/77")])
         mg.save_json("projects.json", {"date": "2026-11-17", "projects": [

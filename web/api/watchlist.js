@@ -1,10 +1,10 @@
-// /api/watchlist (admin uniquement)
-//   GET  -> { accounts: [...] } : le contenu actuel de accounts.txt sur main
-//   POST { action: "add" | "remove", handle } -> commit sur accounts.txt via la GitHub App
+// /api/watchlist (admin only)
+//   GET  -> { accounts: [...] }: the current content of watchlist.txt on main
+//   POST { action: "add" | "remove", handle } -> commits watchlist.txt through the GitHub App
 "use strict";
 const {
   OWNER, REPO, FILE, BRANCH, HANDLE_RE, currentAdmin, sameOrigin, gh, installationToken,
-  readAccountsFile, listHandles, editAccounts,
+  readWatchlistFile, listHandles, editWatchlist,
 } = require("./_lib");
 
 module.exports = async (req, res) => {
@@ -15,7 +15,7 @@ module.exports = async (req, res) => {
   try {
     if (req.method === "GET") {
       const token = await installationToken();
-      const { text } = await readAccountsFile(token);
+      const { text } = await readWatchlistFile(token);
       return res.status(200).json({ accounts: listHandles(text) });
     }
     if (req.method !== "POST") return res.status(405).json({ error: "method not allowed" });
@@ -30,16 +30,16 @@ module.exports = async (req, res) => {
     }
 
     const token = await installationToken();
-    // Si accounts.txt a changé entre la lecture et l'écriture, GitHub refuse (sha périmé) : on relit et on réessaie.
+    // If watchlist.txt changed between the read and the write, GitHub refuses (stale sha): read again and retry.
     for (let attempt = 0; attempt < 3; attempt++) {
-      const { sha, text } = await readAccountsFile(token);
-      const next = editAccounts(text, action, handle);
+      const { sha, text } = await readWatchlistFile(token);
+      const next = editWatchlist(text, action, handle);
       if (next === null) return res.status(200).json({ ok: true, changed: false, accounts: listHandles(text) });
-      const verb = action === "add" ? "Ajoute" : "Retire";
+      const verb = action === "add" ? "Add" : "Remove";
       const put = await gh(`/repos/${OWNER}/${REPO}/contents/${FILE}`, {
         token, method: "PUT",
         body: {
-          message: `Watchlist : ${verb.toLowerCase()} @${handle} (depuis le site, par @${admin})`,
+          message: `Watchlist: ${verb.toLowerCase()} @${handle} (from the site, by @${admin})`,
           content: Buffer.from(next, "utf8").toString("base64"),
           sha, branch: BRANCH,
         },
@@ -49,7 +49,7 @@ module.exports = async (req, res) => {
       }
       if (put.status !== 409 && put.status !== 422) throw new Error(`write ${put.status}`);
     }
-    return res.status(409).json({ error: "accounts.txt keeps changing, try again" });
+    return res.status(409).json({ error: "watchlist.txt keeps changing, try again" });
   } catch (e) {
     console.error("watchlist:", e.message);
     return res.status(502).json({ error: "GitHub is not reachable right now" });

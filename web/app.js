@@ -1,5 +1,5 @@
-/* signal — la map des comptes. Données : graph.json de la branche claude/map-data.
-   Tout le texte qui vient des données (bios, one-liners…) passe par textContent : jamais d'innerHTML. */
+/* signal: the account map. Data: graph.json from the claude/map-data branch.
+   Every piece of text that comes from the data (bios, one-liners...) goes through textContent, never innerHTML. */
 (() => {
   "use strict";
 
@@ -12,11 +12,11 @@
   const svg = d3.select("#graph");
   let G = null;            // graph.json
   let byId = new Map();    // id -> node
-  let selected = null;     // id du nœud ouvert dans le panneau
-  let project = null;      // index du projet ouvert dans le panneau
-  let preview = null;      // index du projet survolé
+  let selected = null;     // id of the node open in the panel
+  let project = null;      // index of the project open in the panel
+  let preview = null;      // index of the hovered project
   let zoom, view, sim;
-  // admin : login connecté, contenu actuel de accounts.txt, confirmation de retrait en cours
+  // admin: signed-in login, current content of watchlist.txt, pending remove confirmation
   const Admin = { login: null, accounts: null, busy: false, confirm: null, error: null };
 
   // ---------- helpers ----------
@@ -85,7 +85,7 @@
       n.pid = `p${i}`;
       const photo = safeUrl(n.photo);
       if (photo) {
-        // on n'affiche la photo qu'une fois chargée : sinon on garde les initiales
+        // only show the photo once it has loaded; until then, keep the initials
         const img = new Image();
         img.onload = () => {
           defs.append("pattern").attr("id", n.pid).attr("patternContentUnits", "objectBoundingBox")
@@ -120,7 +120,7 @@
         if (!ev.active) sim.alphaTarget(0);
         if (d.pin) d.pin = { x: d.fx, y: d.fy }; else { d.fx = null; d.fy = null; }
       });
-    // construit les bulles ; resservi pour les comptes ajoutés à la main (pas encore sur la map)
+    // builds the bubbles
     const build = (enter) => {
       const g = enter.append("g")
         .attr("class", (d) => `node ${d.kind === "candidate" ? "cand" : "src"}`)
@@ -161,13 +161,13 @@
     paintProjects();
   }
 
-  // largeur occupée à gauche par la liste des projets (desktop)
+  // width taken on the left by the project list (desktop)
   function leftInset() {
     const box = $("projects");
     return !box.hidden && window.innerWidth > 720 ? box.offsetLeft + box.offsetWidth : 0;
   }
 
-  // largeur occupée à droite par le backlog (desktop, panneau fermé)
+  // width taken on the right by the backlog (desktop, panel closed)
   function rightInset() {
     const box = $("backlog");
     return !box.hidden && window.innerWidth > 720 && $("panel").hidden ? box.offsetWidth + 16 : 0;
@@ -189,7 +189,7 @@
   }
 
   function focusNode(id) {
-    const n = sim.nodes().find((d) => d.id === id); // un compte en backlog n'est plus sur la map
+    const n = sim.nodes().find((d) => d.id === id); // an account in the backlog is no longer on the map
     if (!n) return;
     const area = $("map-area");
     const panelW = window.innerWidth > 720 ? Math.min(380, area.clientWidth * 0.92) : 0;
@@ -224,7 +224,7 @@
     project = null;
     paintProjects();
     const onMap = sim.nodes().includes(n);
-    highlight(onMap ? id : null); // un compte du backlog n'a pas de bulle : la map reste telle quelle
+    highlight(onMap ? id : null); // a backlog account has no bubble: leave the map as it is
     if (onMap) focusNode(id);
     renderPanel(n);
     renderBacklog();
@@ -320,7 +320,7 @@
   }
 
   // ---------- watchlist (admin) ----------
-  // "add" : candidat déjà ajouté à accounts.txt, "remove" : source déjà retirée. Visible au prochain run.
+  // "add": discovered account already added to watchlist.txt; "remove": source already removed. Applied at the next run.
   function pending(n) {
     if (!Admin.accounts) return null;
     const inFile = Admin.accounts.has(n.id);
@@ -329,7 +329,7 @@
     return null;
   }
 
-  // Comptes de accounts.txt qui ne sont pas encore sur la map (ajoutés à la main) : fiche fantôme, listée dans le backlog.
+  // Accounts in watchlist.txt that are not on the map yet (added by hand): a ghost entry, listed in the backlog.
   function syncGhosts() {
     const S = G._sim;
     const onMap = new Set(G.nodes.map((n) => n.id));
@@ -345,8 +345,8 @@
     }
   }
 
-  // Un compte qu'on vient d'ajouter quitte la map (bulle et liens) et passe dans le backlog, à droite.
-  // Un compte retiré reste sur la map jusqu'au run, marqué « pending », et apparaît aussi dans le backlog.
+  // An account that was just added leaves the map (bubble and links) and moves to the backlog, on the right.
+  // A removed account stays on the map, marked "pending", until the run, and is listed in the backlog too.
   function markPending(animate) {
     if (!G || !G._sim) return;
     syncGhosts();
@@ -379,7 +379,7 @@
     }
   }
 
-  // ---------- backlog : ce qui changera au prochain run ----------
+  // ---------- backlog: what changes at the next run ----------
   function renderBacklog() {
     const box = $("backlog");
     const on = !!(Admin.login && Admin.accounts);
@@ -470,7 +470,7 @@
     renderBacklog();
   }
 
-  // ---------- ajout à la main : bouton sous la barre du haut, petite boîte de dialogue ----------
+  // ---------- add by hand: a button under the top bar opens a small dialog ----------
   function openAdd(open) {
     $("add-card").hidden = !open;
     $("add-open").setAttribute("aria-expanded", String(open));
@@ -541,11 +541,11 @@
         markPending(false);
         if (selected) renderPanel(byId.get(selected));
       }
-    } catch { /* pas d'API (aperçu local) : le site reste en lecture seule */ }
+    } catch { /* no API (local preview): the site stays read-only */ }
   }
   initAuth();
 
-  // Embed officiel X, chargé à la demande
+  // Official X embed, loaded on demand
   let widgets = null;
   function loadWidgets() {
     if (!widgets) {
@@ -572,7 +572,7 @@
       .catch(fallback);
   }
 
-  // ---------- projets du jour (section « Nouveaux projets » du digest, en anglais) ----------
+  // ---------- today's projects (the digest's "Nouveaux projets" section, in English) ----------
   const projects = () => (G && G.projects && Array.isArray(G.projects.items) ? G.projects.items : null);
   const projectAccounts = (p) => (p.accounts || []).filter((h) => byId.has(h));
 
@@ -597,7 +597,7 @@
     box.hidden = false;
   }
 
-  // vert : tous les comptes des projets du jour ; au survol ou au clic, seulement ceux du projet.
+  // green: every account behind today's projects; on hover or click, only that project's accounts.
   function paintProjects() {
     if (!G || !G._sim) return;
     const items = projects() || [];

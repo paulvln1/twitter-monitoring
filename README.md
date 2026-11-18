@@ -41,12 +41,12 @@
 
 ## What it does
 
-Every morning, a scheduled Claude Code routine reads the last 24 hours of tweets from a curated watchlist of AI and coding-agent builders (`accounts.txt`), then:
+Every morning, a scheduled Claude Code routine reads the last 24 hours of tweets from a curated watchlist of AI and coding-agent builders (`watchlist.txt`), then:
 
 1. **Writes a digest** and posts it to Discord: new projects worth a look, one technical concept explained simply, notable takes, accounts to follow, and the cost of the run.
 2. **Updates the map.** Every retweet, quote and reply from the watchlist is logged. An account that keeps getting relayed shows up on the map as a *discovery*, with a one-line note on why it matters.
    The day's new projects are listed next to the map, in English; the accounts behind them light up in green.
-3. **Lets the owner act on it.** Signed in with GitHub, the owner can add a discovery to the watchlist or remove a source, straight from the site.
+3. **Lets the owner act on it.** Signed in with GitHub, the owner can add a discovery to the watchlist, add any account by hand, or remove a source, straight from the site. Pending changes wait in a Backlog box until the next run.
 
 The loop: sources surface people → the best ones get promoted to sources → they surface new people.
 
@@ -67,7 +67,7 @@ flowchart LR
         F[fetch_tweets.py] --> D[Digest]
         F --> M[map_graph.py]
     end
-    A[(accounts.txt<br/>main)] --> F
+    A[(watchlist.txt<br/>main)] --> F
     X[Mindcase API<br/>tweets + profiles] --> F
     X --> M
     D --> DC[Discord]
@@ -80,14 +80,16 @@ flowchart LR
 
 | Piece | Role |
 |---|---|
-| `PROMPT.md` | Instructions for the daily routine: filtering, digest format, delivery order. |
-| `fetch_tweets.py` | All tweet fetching via Mindcase, with cost guardrails (date filter on every call, stop if the first call looks wrong). Python stdlib only. |
-| `post_discord.py` | Sends the digest to one or more Discord webhooks, one embed per section. `--dry-run` prints the payloads. |
-| `map_graph.py` | The map engine: extracts interactions, applies the rules, fetches new profiles once, links each project of the day to its accounts, builds `graph.json`. Python stdlib only. |
-| `update_map.sh` | `prepare` and `publish` steps for the routine. Pushes only to the `claude/map-data` branch, never to `main`. |
-| `site/` | The static site (HTML, CSS, vanilla JS, d3). Reads `graph.json` straight from GitHub. |
-| `site/api/` | Vercel functions for GitHub login and watchlist edits. No npm dependencies. |
+| `ROUTINE.md` | Instructions for the daily routine: filtering, digest format (in French), delivery order, map update. |
+| `watchlist.txt` | The followed accounts, one handle per line. |
+| `pipeline/fetch_tweets.py` | All tweet fetching via Mindcase, with cost guardrails (date filter on every call, stop if the first call looks wrong). Python stdlib only. |
+| `pipeline/post_discord.py` | Sends the digest to one or more Discord webhooks, one embed per section. `--dry-run` prints the payloads. |
+| `pipeline/map_graph.py` | The map engine: extracts interactions, applies the rules, fetches new profiles once, links each project of the day to its accounts, builds `graph.json`. Python stdlib only. |
+| `pipeline/update_map.sh` | `prepare` and `publish` steps for the routine. Pushes only to the `claude/map-data` branch, never to `main`. |
+| `web/` | The static site (HTML, CSS, vanilla JS, d3). Reads `graph.json` straight from GitHub. |
+| `web/api/` | Vercel functions for GitHub login and watchlist edits. No npm dependencies. |
 | `map_seed/` | Interactions backfilled from the first Discord digests. |
+| `docs/` | The [map spec](docs/map-spec.md) and the [admin setup](docs/admin-setup.md). |
 
 ## Security
 
@@ -95,7 +97,7 @@ The site is public; editing the watchlist is restricted to one admin.
 
 - **GitHub login is used for identity only.** No repository scope is requested, and the OAuth token is revoked right after reading the login.
 - **The session is a signed cookie** (`HttpOnly`, `Secure`, `SameSite=Strict`, 7 days). The admin list is checked again on every write.
-- **Writes go through a dedicated GitHub App** installed on this repository only, with `Contents: write` as its only permission. The server code can only touch `accounts.txt`.
+- **Writes go through a dedicated GitHub App** installed on this repository only, with `Contents: write` as its only permission. The server code can only touch `watchlist.txt`.
 - **Handles are validated** against `^[A-Za-z0-9_]{1,15}$`, and write requests must come from the site's own origin.
 - **The routine can't push to `main`.** Its data lives on `claude/map-data`, so a malicious tweet can't change the code the routine runs.
 
@@ -106,7 +108,7 @@ The site is public; editing the watchlist is restricted to one admin.
 ```bash
 export MINDCASE_API_KEY=...
 export DISCORD_WEBHOOK_URL=...        # optional second channel: DISCORD_WEBHOOK_URL_2
-python3 fetch_tweets.py
+python3 pipeline/fetch_tweets.py
 ```
 
 The routine needs network access to `api.mindcase.co` and `discord.com`.
@@ -114,24 +116,24 @@ The routine needs network access to `api.mindcase.co` and `discord.com`.
 **Map, locally:**
 
 ```bash
-./update_map.sh prepare
+pipeline/update_map.sh prepare
 python3 -m http.server
 ```
 
-Then open `http://localhost:8000/site/index.html?data=/map-data/graph/graph.json`.
+Then open `http://localhost:8000/web/index.html?data=/map-data/graph/graph.json`.
 
-**Site on Vercel:** import the repository with Root Directory `site` and Framework `Other`. To enable login and editing, follow [`docs/admin-setup.md`](docs/admin-setup.md).
+**Site on Vercel:** import the repository with Root Directory `web` and Framework `Other`. To enable login and editing, follow [`docs/admin-setup.md`](docs/admin-setup.md).
 
 **Tests:**
 
 ```bash
 python3 -m unittest discover tests
-node --test tests/site_api.test.js
+node --test tests/web_api.test.js
 ```
 
 ## Editing the watchlist
 
-Use the **Add / Remove** buttons on the site, or edit [`accounts.txt`](accounts.txt) on GitHub: one handle per line, `#` for comments. The routine reads `main` on every run, so changes show up the next morning.
+Use the **Add / Remove** buttons or **+ Add an account** on the site, or edit [`watchlist.txt`](watchlist.txt) on GitHub: one handle per line, `#` for comments. The routine reads `main` on every run, so changes show up the next morning.
 
 ## Costs
 
