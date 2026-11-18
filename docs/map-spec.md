@@ -154,6 +154,10 @@ Règles :
 - Pas d'autre fonction pour l'instant : pas d'ajout d'un handle hors map, pas d'annulation.
 - Le changement apparaît sur la map **au run suivant**. En attendant, le nœud porte un badge « pending », visible seulement par l'admin connecté : le site compare `accounts.txt` sur `main` avec la whitelist de `graph.json`.
 - Un compte **ajouté** (pending) a un **contour orange**, perd tout de suite ses liens et se range tout à droite de la map, comme une source qui n'a encore rien relayé.
+- **Ajout à la main** : connecté, l'admin a un lien « + Add » dans la barre du haut. Il ouvre un champ où taper un username (`@handle`, `handle` ou une URL `x.com/handle`), à n'importe quel moment de la journée. Le compte est écrit dans `accounts.txt` comme avec le bouton du panneau.
+  - S'il n'est pas encore sur la map, il apparaît tout à droite comme une bulle orange avec ses initiales (« added by hand »). Son profil arrive au run suivant.
+  - Son panneau propose « Undo: remove from watchlist », pour corriger une faute de frappe.
+  - Tout compte de `accounts.txt` absent de la map (ajouté à la main sur GitHub par exemple) est affiché de la même façon.
 - Code : `site/api/` (fonctions Vercel, sans dépendance) ; tests : `node --test tests/site_api.test.js`. Mise en place : [`docs/admin-setup.md`](admin-setup.md).
 - Conflits : le commit utilise le `sha` du fichier. Si le fichier a changé entre-temps, le serveur relit et réessaie.
 

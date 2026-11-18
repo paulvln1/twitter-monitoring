@@ -18,20 +18,20 @@
 ## Screenshots
 
 <!--
-  Screenshot slot: replace the image paths below with your screenshots,
-  then delete this comment's opening and closing lines so they show up.
+  Put the images in docs/screenshots/ with these names, then delete this comment's
+  opening and closing lines so they show up.
 
 <p align="center">
-  <img src="docs/screenshots/hero.png" alt="signal home page" width="100%">
+  <img src="docs/screenshots/map.png" alt="The whole map: sources, discoveries and today's projects" width="100%">
 </p>
 
-| The map | An account |
+| An account | A project of the day |
 |---|---|
-| <img src="docs/screenshots/map.png" alt="The map of sources and discovered accounts"> | <img src="docs/screenshots/panel.png" alt="Side panel with bio, relays and latest tweet"> |
+| <img src="docs/screenshots/account.png" alt="Side panel of a discovered account: bio, why it showed up, who relayed it, latest tweet"> | <img src="docs/screenshots/project.png" alt="A project of the day: its accounts light up in green, summary in the side panel"> |
 
-| Discovered | Admin mode |
+| Admin mode | Mobile |
 |---|---|
-| <img src="docs/screenshots/discovered.png" alt="List of discovered accounts"> | <img src="docs/screenshots/admin.png" alt="Add to watchlist / Remove from watchlist"> |
+| <img src="docs/screenshots/admin.png" alt="Signed in: an account just added to the watchlist, in orange on the right"> | <img src="docs/screenshots/mobile.png" alt="The map on a phone" width="300"> |
 -->
 
 ## What it does
@@ -66,6 +66,8 @@ flowchart LR
     X[Mindcase API<br/>tweets + profiles] --> F
     X --> M
     D --> DC[Discord]
+    D --> P[projects.json<br/>in English]
+    P --> M
     M --> B[(graph.json<br/>claude/map-data)]
     B --> S[signal<br/>Vercel]
     S -- "Add / Remove<br/>GitHub App" --> A
@@ -76,7 +78,7 @@ flowchart LR
 | `PROMPT.md` | Instructions for the daily routine: filtering, digest format, delivery order. |
 | `fetch_tweets.py` | All tweet fetching via Mindcase, with cost guardrails (date filter on every call, stop if the first call looks wrong). Python stdlib only. |
 | `post_discord.py` | Sends the digest to one or more Discord webhooks, one embed per section. `--dry-run` prints the payloads. |
-| `map_graph.py` | The map engine: extracts interactions, applies the rules, fetches new profiles once, builds `graph.json`. Python stdlib only. |
+| `map_graph.py` | The map engine: extracts interactions, applies the rules, fetches new profiles once, links each project of the day to its accounts, builds `graph.json`. Python stdlib only. |
 | `update_map.sh` | `prepare` and `publish` steps for the routine. Pushes only to the `claude/map-data` branch, never to `main`. |
 | `site/` | The static site (HTML, CSS, vanilla JS, d3). Reads `graph.json` straight from GitHub. |
 | `site/api/` | Vercel functions for GitHub login and watchlist edits. No npm dependencies. |

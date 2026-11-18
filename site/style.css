@@ -49,6 +49,9 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .linkish.blue { color: var(--blue); }
 .linkish:hover { text-decoration: underline; text-underline-offset: 3px; }
 #auth .sep { margin: 0 6px; }
+.add-form { display: inline-flex; align-items: center; gap: 10px; }
+.add-input { font: inherit; font-size: 12px; text-transform: none; letter-spacing: 0; color: var(--ink); background: transparent; border: 0; border-bottom: 1px solid var(--orange); padding: 2px 0; width: 120px; outline: none; }
+.add-msg { margin-left: 10px; text-transform: none; letter-spacing: 0; color: var(--orange); }
 .search input {
   font: inherit; font-size: 13px; color: var(--ink);
   background: transparent; border: 0; border-bottom: 1px solid var(--line);
@@ -164,6 +167,11 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   .topbar { grid-template-columns: 1fr auto; gap: 10px 12px; padding-top: 12px; padding-bottom: 12px; }
   .brand .tagline { display: none; }
   .search { grid-column: 1 / -1; grid-row: 2; }
+  /* champ d'ajout ouvert : il prend toute la première ligne */
+  .topbar.adding .brand, .topbar.adding #updated, .topbar.adding .top-right > .sep { display: none; }
+  .topbar.adding .top-right { grid-column: 1 / -1; justify-self: stretch; white-space: normal; }
+  .topbar.adding .top-right > a { display: none; }
+  .add-input { width: 110px; }
   .search input { width: 100%; text-align: left; }
   .projects { top: 10px; width: auto; right: var(--gutter); background: var(--cream); }
   .projects:not([open]) { right: auto; }
