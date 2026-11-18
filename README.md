@@ -1,10 +1,8 @@
-<p align="center">
-  <img src="docs/logo.svg" alt="signal — who's worth following in AI" width="420">
-</p>
+<h1 align="center">signal</h1>
 
 <p align="center">
-  A daily digest of a handpicked list of AI builders on X,<br>
-  and a living map of the people they keep relaying.
+  <b>Who's worth following in AI.</b><br>
+  A daily digest of a handpicked list of AI builders on X, and a living map of the people they keep relaying.
 </p>
 
 <p align="center">

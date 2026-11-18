@@ -17,7 +17,7 @@
   let preview = null;      // index du projet survolé
   let zoom, view, sim;
   // admin : login connecté, contenu actuel de accounts.txt, confirmation de retrait en cours
-  const Admin = { login: null, accounts: null, busy: false, confirm: null, error: null };
+  const Admin = { login: null, accounts: null, busy: false, confirm: null, error: null, adding: false, msg: null, draft: "" };
 
   // ---------- helpers ----------
   function el(tag, props = {}, ...children) {
@@ -48,6 +48,7 @@
   const safeUrl = (u) => (typeof u === "string" && /^https:\/\//.test(u) ? u : null);
   const xUrl = (n) => `https://x.com/${encodeURIComponent(handleOf(n))}`;
   const typeLabel = { rt: "retweet", quote: "quote", reply: "reply" };
+  const HANDLE = /^[a-z0-9_]{1,15}$/i;
 
   // ---------- data ----------
   fetch(DATA_URL, { cache: "no-store" })
@@ -112,46 +113,50 @@
       .attr("class", "edge")
       .attr("stroke-width", (l) => 0.8 + 0.6 * Math.min(l.weight, 5));
 
-    const node = view.append("g").selectAll("g").data(nodes, (d) => d.id).join("g")
-      .attr("class", (d) => `node ${d.kind === "candidate" ? "cand" : "src"}`)
-      .attr("tabindex", 0)
-      .attr("role", "button")
-      .attr("aria-label", (d) => `@${handleOf(d)}`)
-      .on("click", (ev, d) => { ev.stopPropagation(); select(d.id); })
-      .on("keydown", (ev, d) => { if (ev.key === "Enter") select(d.id); });
-
-    node.append("circle").attr("class", "bg").attr("r", (d) => d.r);
-    node.append("text").attr("class", "initials").text(initials);
-    node.filter((d) => safeUrl(d.photo)).append("circle").attr("class", "photo")
-      .attr("r", (d) => d.r).attr("fill", "none");
-    node.append("circle").attr("class", "ring").attr("r", (d) => d.r);
-    node.append("circle").attr("class", "halo").attr("r", (d) => d.r + 5);
-    node.append("text").attr("class", "label").attr("y", (d) => d.r + 14).text((d) => `@${handleOf(d)}`);
-    node.filter(isNew).append("text").attr("class", "new").attr("y", (d) => -d.r - 6).text("new");
-    node.append("text").attr("class", "pending").attr("y", (d) => -d.r - 6).text("pending");
-
-    function draw() {
-      edge.attr("x1", (l) => l.source.x).attr("y1", (l) => l.source.y)
-          .attr("x2", (l) => l.target.x).attr("y2", (l) => l.target.y);
-      node.attr("transform", (d) => `translate(${d.x},${d.y})`);
-    }
-    draw();
-    sim.on("tick", draw);
-
-    node.call(d3.drag()
+    const drag = d3.drag()
       .on("start", (ev, d) => { if (!ev.active) sim.alphaTarget(0.2).restart(); d.fx = d.x; d.fy = d.y; })
       .on("drag", (ev, d) => { d.fx = ev.x; d.fy = ev.y; })
       .on("end", (ev, d) => {
         if (!ev.active) sim.alphaTarget(0);
         if (d.pin) d.pin = { x: d.fx, y: d.fy }; else { d.fx = null; d.fy = null; }
-      }));
+      });
+    // construit les bulles ; resservi pour les comptes ajoutés à la main (pas encore sur la map)
+    const build = (enter) => {
+      const g = enter.append("g")
+        .attr("class", (d) => `node ${d.kind === "candidate" ? "cand" : "src"}`)
+        .attr("tabindex", 0)
+        .attr("role", "button")
+        .attr("aria-label", (d) => `@${handleOf(d)}`)
+        .on("click", (ev, d) => { ev.stopPropagation(); select(d.id); })
+        .on("keydown", (ev, d) => { if (ev.key === "Enter") select(d.id); });
+      g.append("circle").attr("class", "bg").attr("r", (d) => d.r);
+      g.append("text").attr("class", "initials").text(initials);
+      g.filter((d) => safeUrl(d.photo)).append("circle").attr("class", "photo")
+        .attr("r", (d) => d.r).attr("fill", "none");
+      g.append("circle").attr("class", "ring").attr("r", (d) => d.r);
+      g.append("circle").attr("class", "halo").attr("r", (d) => d.r + 5);
+      g.append("text").attr("class", "label").attr("y", (d) => d.r + 14).text((d) => `@${handleOf(d)}`);
+      g.filter(isNew).append("text").attr("class", "new").attr("y", (d) => -d.r - 6).text("new");
+      g.append("text").attr("class", "pending").attr("y", (d) => -d.r - 6).text("pending");
+      g.call(drag);
+      return g;
+    };
+    const layer = view.append("g");
+    const node = layer.selectAll("g").data(nodes, (d) => d.id).join(build);
+
+    function draw() {
+      G._sim.edge.attr("x1", (l) => l.source.x).attr("y1", (l) => l.source.y)
+          .attr("x2", (l) => l.target.x).attr("y2", (l) => l.target.y);
+      G._sim.node.attr("transform", (d) => `translate(${d.x},${d.y})`);
+    }
+    G._sim = { nodes, links, edge, node, draw, layer, build, ghosts: new Map(), detached: "" };
+    draw();
+    sim.on("tick", draw);
 
     zoom = d3.zoom().scaleExtent([0.35, 3]).on("zoom", (ev) => view.attr("transform", ev.transform));
     svg.call(zoom).on("dblclick.zoom", null);
     svg.on("click", () => deselect());
     fitAll(false);
-
-    G._sim = { nodes, links, edge, node, draw, detached: "" };
     markPending(false);
     paintProjects();
   }
@@ -231,6 +236,7 @@
   function renderPanel(n) {
     const body = $("panel-body");
     body.replaceChildren();
+    if (n.ghost) return renderGhostPanel(n, body);
     const photo = safeUrl(n.photo);
 
     body.append(el("div", { class: "p-head" },
@@ -287,6 +293,22 @@
     $("panel").scrollTop = 0;
   }
 
+  function renderGhostPanel(n, body) {
+    body.append(el("div", { class: "p-head" }, el("div", {},
+      el("div", { class: "p-name", text: `@${n.id}` }),
+      el("div", { class: "p-handle", text: "added by hand" }))));
+    body.append(el("p", { class: "p-bio", text: "Not on the map yet. Its profile shows up at the next run, and its links once it relays someone." }));
+    body.append(el("a", { class: "p-open blue", href: xUrl(n), target: "_blank", rel: "noopener", text: "↘ Open on X" }));
+    if (!Admin.login) return;
+    const box = el("div", { class: "p-admin" }, el("p", { class: "p-label", text: "Watchlist" }));
+    box.append(el("button", { type: "button", class: "btn ghost", disabled: Admin.busy ? "" : null,
+      text: Admin.busy ? "Removing…" : "Undo: remove from watchlist", onclick: () => edit("remove", n) }));
+    if (Admin.error) box.append(el("p", { class: "p-note err", text: Admin.error }));
+    body.append(box);
+    $("panel").hidden = false;
+    $("panel").scrollTop = 0;
+  }
+
   // ---------- watchlist (admin) ----------
   // "add" : candidat déjà ajouté à accounts.txt, "remove" : source déjà retirée. Visible au prochain run.
   function pending(n) {
@@ -298,8 +320,28 @@
   }
 
   // Un compte qu'on vient d'ajouter : contour orange, plus aucun lien, rangé tout à droite de la map.
+  // Comptes de accounts.txt qui ne sont pas encore sur la map (ajoutés à la main) : bulle fantôme.
+  function syncGhosts() {
+    const S = G._sim;
+    const onMap = new Set(G.nodes.map((n) => n.id));
+    const want = Admin.accounts ? [...Admin.accounts].filter((h) => HANDLE.test(h) && !onMap.has(h)) : [];
+    const same = want.length === S.ghosts.size && want.every((h) => S.ghosts.has(h));
+    if (same) return;
+    for (const h of [...S.ghosts.keys()]) if (!want.includes(h)) { S.ghosts.delete(h); byId.delete(h); }
+    for (const h of want) {
+      if (S.ghosts.has(h)) continue;
+      const n = { id: h, handle: h, kind: "candidate", ghost: true, tweets: 0, r: radius({ kind: "candidate", tweets: 1 }), x: 0, y: 0 };
+      S.ghosts.set(h, n);
+      byId.set(h, n);
+    }
+    S.nodes = S.nodes.filter((n) => !n.ghost).concat([...S.ghosts.values()]);
+    sim.nodes(S.nodes);
+    S.node = S.layer.selectAll("g.node").data(S.nodes, (d) => d.id).join(S.build);
+  }
+
   function markPending(animate) {
     if (!G || !G._sim) return;
+    syncGhosts();
     const { node, edge, nodes, links, draw } = G._sim;
     const isAdd = (d) => pending(d) === "add";
     node.classed("pend-add", isAdd);
@@ -314,7 +356,7 @@
     const off = (l) => ids.has(l.source.id) || ids.has(l.target.id);
     edge.classed("off", off);
     sim.force("link").links(links.filter((l) => !off(l)));
-    const rest = nodes.filter((n) => !ids.has(n.id));
+    const rest = nodes.filter((n) => !ids.has(n.id) && !n.ghost);
     nodes.forEach((n) => { if (n.pin && !ids.has(n.id)) { n.pin = null; n.fx = null; n.fy = null; } });
     if (ids.size) {
       const right = Math.max(...rest.map((n) => n.x + n.r));
@@ -324,6 +366,7 @@
         const n = nodes.find((d) => d.id === id);
         n.pin = { x: right + 150, y: cy + (i - (ids.size - 1) / 2) * 120 };
         n.fx = n.pin.x; n.fy = n.pin.y;
+        if (n.ghost && !n.x) { n.x = n.pin.x; n.y = n.pin.y; }
       });
     }
     const refit = () => (selected ? focusNode(selected) : fitAll(animate));
@@ -385,24 +428,70 @@
       Admin.error = r401(e) ? "Your session has expired. Log in again." : `Could not save: ${e.message}.`;
     } finally {
       Admin.busy = false;
-      if (selected === n.id) renderPanel(n);
+      if (selected === n.id) byId.has(n.id) ? renderPanel(byId.get(n.id)) : deselect();
     }
   }
   const r401 = (e) => /not signed in/.test(e.message);
 
   function renderAuth() {
     const box = $("auth");
-    if (Admin.login) {
-      box.replaceChildren(el("span", { text: `@${Admin.login}` }), el("span", { class: "sep", text: "·" }),
-        el("button", { type: "button", class: "linkish blue", text: "Log out", onclick: logout }));
+    $("top").classList.toggle("adding", Boolean(Admin.login && Admin.adding));
+    if (Admin.login && Admin.adding) {
+      const input = el("input", { class: "add-input", placeholder: "@handle", maxlength: "80", spellcheck: "false",
+        autocomplete: "off", "aria-label": "Username to add to the watchlist" });
+      const form = el("form", { class: "add-form", onsubmit: (e) => { e.preventDefault(); addByHand(input.value); } },
+        input,
+        el("button", { type: "submit", class: "linkish blue", disabled: Admin.busy ? "" : null, text: Admin.busy ? "Adding…" : "Add" }),
+        el("button", { type: "button", class: "linkish", text: "×", "aria-label": "Cancel",
+          onclick: () => { Admin.adding = false; Admin.msg = null; renderAuth(); } }));
+      box.replaceChildren(form);
+      if (Admin.msg) box.append(el("span", { class: "add-msg", text: Admin.msg }));
+      input.value = Admin.draft || "";
+      input.focus();
+    } else if (Admin.login) {
+      box.replaceChildren(el("span", { text: `@${Admin.login}` }), el("span", { class: "sep", text: "·" }));
+      if (Admin.accounts) {
+        box.append(el("button", { type: "button", class: "linkish blue", text: "+ Add",
+          onclick: () => { Admin.adding = true; Admin.msg = null; Admin.draft = ""; renderAuth(); } }),
+          el("span", { class: "sep", text: "·" }));
+      }
+      box.append(el("button", { type: "button", class: "linkish blue", text: "Log out", onclick: logout }));
     } else {
       box.replaceChildren(el("a", { class: "blue", href: "/api/login", text: "Log in" }));
     }
   }
 
+  // Ajout à la main depuis la barre du haut, à n'importe quel moment.
+  async function addByHand(raw) {
+    const h = String(raw || "").trim().replace(/^@/, "").replace(/^https?:\/\/(www\.)?(x|twitter)\.com\//i, "").split(/[/?#]/)[0];
+    Admin.draft = raw;
+    if (!HANDLE.test(h)) { Admin.msg = "Not a valid username"; return renderAuth(); }
+    if (Admin.accounts.has(h.toLowerCase())) { Admin.msg = `@${h} is already in the watchlist`; return renderAuth(); }
+    Admin.busy = true; Admin.msg = null; renderAuth();
+    try {
+      const r = await fetch("/api/watchlist", {
+        method: "POST", credentials: "same-origin",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "add", handle: h }),
+      });
+      const data = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(data.error || `error ${r.status}`);
+      Admin.accounts = new Set(data.accounts.map((a) => a.toLowerCase()));
+      Admin.adding = false; Admin.draft = "";
+      Admin.busy = false;
+      markPending(true);
+      select(h.toLowerCase());
+    } catch (e) {
+      Admin.msg = r401(e) ? "Session expired, log in again" : `Could not save: ${e.message}`;
+    } finally {
+      Admin.busy = false;
+      renderAuth();
+    }
+  }
+
   async function logout() {
     await fetch("/api/logout", { method: "POST", credentials: "same-origin" }).catch(() => {});
-    Admin.login = null; Admin.accounts = null; Admin.confirm = null;
+    Admin.login = null; Admin.accounts = null; Admin.confirm = null; Admin.adding = false;
     renderAuth(); markPending(true);
     if (selected) renderPanel(byId.get(selected));
   }
@@ -422,6 +511,7 @@
       const w = await fetch("/api/watchlist", { credentials: "same-origin" }).then((r) => (r.ok ? r.json() : null));
       if (w && Array.isArray(w.accounts)) {
         Admin.accounts = new Set(w.accounts.map((a) => a.toLowerCase()));
+        renderAuth();
         markPending(false);
         if (selected) renderPanel(byId.get(selected));
       }
