@@ -13,6 +13,11 @@
   <a href="docs/map-spec.md">Spec</a>
 </p>
 
+<p align="center">
+  <a href="https://github.com/paulvln1/twitter-monitoring/actions/workflows/tests.yml"><img src="https://github.com/paulvln1/twitter-monitoring/actions/workflows/tests.yml/badge.svg?branch=main" alt="tests"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT license"></a>
+</p>
+
 ---
 
 ## Screenshots
@@ -131,6 +136,12 @@ Use the **Add / Remove** buttons on the site, or edit [`accounts.txt`](accounts.
 ## Costs
 
 Mindcase charges per row returned: about $0.00025 per tweet and $0.0005 per profile. Profiles are fetched once, when an account enters the map, and never refreshed. Each digest ends with the cost of its run.
+
+---
+
+## License
+
+[MIT](LICENSE)
 
 ---
 
