@@ -1,4 +1,13 @@
 {
+ "badlogicgames": {
+  "bio": "Armin's handler at https://t.co/B05ybKGkzx. Old man yelling at Claudes.\n\nhttps://t.co/Q1wG57v1yc\n\nhttps://t.co/mnOoWUr0TO\n\nhttps://t.co/8i5vIRE0Wn",
+  "display_name": "Mario Zechner",
+  "fetched_at": "2026-11-18",
+  "followers": 81193,
+  "handle": "badlogicgames",
+  "photo": "https://pbs.twimg.com/profile_images/1553485821767991296/87k3l720_400x400.jpg",
+  "profile_url": "https://x.com/badlogicgames"
+ },
  "claudeai": {
   "bio": "Claude is an AI assistant built by @anthropicai to be safe, accurate, and secure. Talk to Claude on https://t.co/ZhTwG8d1e5 or download the app.",
   "display_name": "Claude",
@@ -52,6 +61,15 @@
   "handle": "HamelHusain",
   "photo": "https://pbs.twimg.com/profile_images/1287206199088173057/ixE4fKy1_400x400.jpg",
   "profile_url": "https://x.com/HamelHusain"
+ },
+ "hammer_mt": {
+  "bio": "🧪 Head of Evals @Every\n📕 2x O'Reilly author: Prompt Engineering / DSPy\n🎓 400k students on AI Udemy course\n🤖 AI engineer since 2020\n📈 Built 50 person agency",
+  "display_name": "Mike Taylor",
+  "fetched_at": "2026-11-18",
+  "followers": 13165,
+  "handle": "hammer_mt",
+  "photo": "https://pbs.twimg.com/profile_images/2045274630408359936/_Q6ixnwR_400x400.jpg",
+  "profile_url": "https://x.com/hammer_mt"
  },
  "hwchase17": {
   "bio": "@LangChain\n\nAlways hiring: https://t.co/D5Ut3loFO7",
@@ -196,6 +214,15 @@
   "handle": "sydneyrunkle",
   "photo": "https://pbs.twimg.com/profile_images/1955622250629021696/WOrOq2Mw_400x400.jpg",
   "profile_url": "https://x.com/sydneyrunkle"
+ },
+ "theo": {
+  "bio": "Full time CEO @t3dotcodes & @t3dotchat. Part time YouTuber, investor, and developer",
+  "display_name": "Theo - t3.gg",
+  "fetched_at": "2026-11-18",
+  "followers": 433028,
+  "handle": "theo",
+  "photo": "https://pbs.twimg.com/profile_images/2106484435382333440/vXOVE8EX_400x400.jpg",
+  "profile_url": "https://x.com/theo"
  },
  "zachlloydtweets": {
   "bio": "Trying to build impactful software.  Founder @warpdotdev, former Principal eng @Google.",

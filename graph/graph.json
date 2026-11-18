@@ -1,6 +1,54 @@
 {
- "as_of": "2026-11-17",
+ "as_of": "2026-11-18",
  "edges": [
+  {
+   "source": "dexhorthy",
+   "target": "badlogicgames",
+   "types": [
+    "quote"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "dbreunig",
+   "target": "badlogicgames",
+   "types": [
+    "quote"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "steipete",
+   "target": "badlogicgames",
+   "types": [
+    "rt"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "mitsuhiko",
+   "target": "badlogicgames",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "kieranklaassen",
+   "target": "hammer_mt",
+   "types": [
+    "rt"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "dbreunig",
+   "target": "hammer_mt",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
   {
    "source": "kieranklaassen",
    "target": "ryancarson",
@@ -69,9 +117,10 @@
    "source": "hwchase17",
    "target": "sydneyrunkle",
    "types": [
+    "quote",
     "rt"
    ],
-   "weight": 2
+   "weight": 5
   },
   {
    "source": "swyx",
@@ -80,9 +129,26 @@
     "rt"
    ],
    "weight": 1
+  },
+  {
+   "source": "dbreunig",
+   "target": "theo",
+   "types": [
+    "quote"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "kieranklaassen",
+   "target": "theo",
+   "types": [
+    "reply",
+    "rt"
+   ],
+   "weight": 2
   }
  ],
- "generated_at": "2026-11-17T23:05:35+00:00",
+ "generated_at": "2026-11-18T07:11:41+00:00",
  "nodes": [
   {
    "bio": "@LangChain\n\nAlways hiring: https://t.co/D5Ut3loFO7",
@@ -275,6 +341,66 @@
    "profile_url": "https://x.com/luhsnaa"
   },
   {
+   "bio": "Armin's handler at https://t.co/B05ybKGkzx. Old man yelling at Claudes.\n\nhttps://t.co/Q1wG57v1yc\n\nhttps://t.co/mnOoWUr0TO\n\nhttps://t.co/8i5vIRE0Wn",
+   "display_name": "Mario Zechner",
+   "followers": 81193,
+   "handle": "badlogicgames",
+   "id": "badlogicgames",
+   "interactions": 4,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "mitsuhiko",
+     "steipete"
+    ],
+    "date": "2026-11-18",
+    "tweet_url": "https://x.com/badlogicgames/status/2122831328169103761",
+    "types": [
+     "reply",
+     "rt"
+    ]
+   },
+   "oneliner": "Argues one-shotting a three.js game is not a meaningful test of real-world model performance.",
+   "photo": "https://pbs.twimg.com/profile_images/1553485821767991296/87k3l720_400x400.jpg",
+   "profile_url": "https://x.com/badlogicgames",
+   "relayed_by": [
+    "dbreunig",
+    "dexhorthy",
+    "mitsuhiko",
+    "steipete"
+   ],
+   "since": "2026-11-17",
+   "tweets": 2
+  },
+  {
+   "bio": "🧪 Head of Evals @Every\n📕 2x O'Reilly author: Prompt Engineering / DSPy\n🎓 400k students on AI Udemy course\n🤖 AI engineer since 2020\n📈 Built 50 person agency",
+   "display_name": "Mike Taylor",
+   "followers": 13165,
+   "handle": "hammer_mt",
+   "id": "hammer_mt",
+   "interactions": 2,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "dbreunig"
+    ],
+    "date": "2026-11-17",
+    "tweet_url": "https://x.com/hammer_mt/status/2122781824254349409",
+    "types": [
+     "reply"
+    ]
+   },
+   "oneliner": "Conversation with @dbreunig about why so much software is breaking and AI adoption by engineers vs bad actors.",
+   "photo": "https://pbs.twimg.com/profile_images/2045274630408359936/_Q6ixnwR_400x400.jpg",
+   "profile_url": "https://x.com/hammer_mt",
+   "relayed_by": [
+    "dbreunig",
+    "kieranklaassen"
+   ],
+   "since": "2026-11-17",
+   "tweets": 2
+  },
+  {
    "bio": "Dad, Dev, CEO, 4x Founder. \nBuilding @HelloUntangle - AI for family law",
    "display_name": "Ryan Carson",
    "followers": 187278,
@@ -366,19 +492,19 @@
    "followers": 15518,
    "handle": "sydneyrunkle",
    "id": "sydneyrunkle",
-   "interactions": 3,
+   "interactions": 6,
    "kind": "candidate",
    "latest": {
     "by": [
-     "swyx"
+     "hwchase17"
     ],
-    "date": "2026-11-12",
-    "tweet_url": null,
+    "date": "2026-11-17",
+    "tweet_url": "https://x.com/sydneyrunkle/status/2122735146596282854",
     "types": [
      "rt"
     ]
    },
-   "oneliner": "Talk on proactive agents that act without being asked.",
+   "oneliner": "Lessons learned building proactive agents that react to live events and schedule their own work; memory and UX are key.",
    "photo": "https://pbs.twimg.com/profile_images/1955622250629021696/WOrOq2Mw_400x400.jpg",
    "profile_url": "https://x.com/sydneyrunkle",
    "relayed_by": [
@@ -386,7 +512,36 @@
     "swyx"
    ],
    "since": "2026-11-12",
-   "tweets": 3
+   "tweets": 5
+  },
+  {
+   "bio": "Full time CEO @t3dotcodes & @t3dotchat. Part time YouTuber, investor, and developer",
+   "display_name": "Theo - t3.gg",
+   "followers": 433028,
+   "handle": "theo",
+   "id": "theo",
+   "interactions": 3,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "kieranklaassen"
+    ],
+    "date": "2026-11-17",
+    "tweet_url": "https://x.com/theo/status/2122762384704258122",
+    "types": [
+     "reply",
+     "rt"
+    ]
+   },
+   "oneliner": "GPT-6.2 Astra produced near-identical game levels named \"Bellwether\" for two testers; claims it regresses to the mean.",
+   "photo": "https://pbs.twimg.com/profile_images/2106484435382333440/vXOVE8EX_400x400.jpg",
+   "profile_url": "https://x.com/theo",
+   "relayed_by": [
+    "dbreunig",
+    "kieranklaassen"
+   ],
+   "since": "2026-11-17",
+   "tweets": 2
   }
  ],
  "rules": {

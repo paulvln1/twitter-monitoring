@@ -1,0 +1,22 @@
+{
+ "badlogicgames": {
+  "text": "Argues one-shotting a three.js game is not a meaningful test of real-world model performance.",
+  "tweet_id": "2122831328169103761",
+  "date": "2026-11-18"
+ },
+ "hammer_mt": {
+  "text": "Conversation with @dbreunig about why so much software is breaking and AI adoption by engineers vs bad actors.",
+  "tweet_id": "2122781824254349409",
+  "date": "2026-11-17"
+ },
+ "sydneyrunkle": {
+  "text": "Lessons learned building proactive agents that react to live events and schedule their own work; memory and UX are key.",
+  "tweet_id": "2122735146596282854",
+  "date": "2026-11-17"
+ },
+ "theo": {
+  "text": "GPT-6.2 Astra produced near-identical game levels named \"Bellwether\" for two testers; claims it regresses to the mean.",
+  "tweet_id": "2122762384704258122",
+  "date": "2026-11-17"
+ }
+}
