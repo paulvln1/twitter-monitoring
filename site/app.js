@@ -58,19 +58,11 @@
     G.nodes.forEach((n) => byId.set(n.id, n));
     $("status").textContent = "";
     $("updated").textContent = `Updated ${fmtDate(G.as_of)}`;
-    $("data-link").href = DATA_URL;
-    const cands = G.nodes.filter((n) => n.kind === "candidate");
-    const srcs = G.nodes.filter((n) => n.kind === "whitelist");
-    $("nav-cand").textContent = `(${cands.length})`;
-    $("nav-src").textContent = `(${srcs.length})`;
-
-    renderList(cands);
-    renderSources(srcs);
     renderSearch();
     renderGraph();
 
     const h = decodeURIComponent(location.hash.slice(1)).toLowerCase().replace(/^@/, "");
-    if (byId.has(h)) select(h, true);
+    if (byId.has(h)) select(h);
   }
 
   // ---------- graph ----------
@@ -198,7 +190,7 @@
   }
 
   // ---------- selection & panel ----------
-  function select(id, scroll = false) {
+  function select(id) {
     const n = byId.get(id);
     if (!n) return;
     selected = id;
@@ -206,7 +198,6 @@
     focusNode(id);
     renderPanel(n);
     history.replaceState(null, "", `#${encodeURIComponent(handleOf(n))}`);
-    if (scroll) $("map").scrollIntoView({ behavior: "smooth" });
   }
 
   function deselect() {
@@ -408,40 +399,6 @@
       .then((tw) => tw.widgets.createTweet(m[1], box, { dnt: true, theme: "light", conversation: "none", align: "left" }))
       .then((node) => { box.querySelector(".tiny")?.remove(); if (!node) fallback(); })
       .catch(fallback);
-  }
-
-  // ---------- lists ----------
-  function renderList(cands) {
-    const list = $("cand-list");
-    const sorted = [...cands].sort((a, b) =>
-      (b.latest?.date || "").localeCompare(a.latest?.date || "") || b.tweets - a.tweets);
-    if (!sorted.length) {
-      list.append(el("li", { class: "empty", text: "Nobody has made it onto the map yet." }));
-      return;
-    }
-    for (const n of sorted) {
-      const by = n.relayed_by.map((h) => `@${handleOf(byId.get(h) || { id: h })}`).join(", ");
-      list.append(el("li", { onclick: () => select(n.id, true) },
-        el("span", { class: "r-tag", text: isNew(n) ? "“new”" : "" }),
-        el("span", { class: "r-date", text: fmtDate(n.latest?.date) }),
-        el("div", {},
-          el("div", { class: "r-handle" }, `@${handleOf(n)} `,
-            n.display_name ? el("span", { class: "r-name", text: `— ${n.display_name}` }) : null),
-          n.oneliner ? el("p", { class: "r-line", text: n.oneliner }) : null,
-          el("div", { class: "r-meta" },
-            `${n.tweets} tweets relayed · by ${by} · ${fmtNum(n.followers)} followers`,
-            el("a", { href: xUrl(n), target: "_blank", rel: "noopener", text: "↘ Open on X",
-                      onclick: (e) => e.stopPropagation() })))));
-    }
-  }
-
-  function renderSources(srcs) {
-    const counts = new Map();
-    G.edges.forEach((e) => counts.set(e.source, (counts.get(e.source) || 0) + 1));
-    const sorted = [...srcs].sort((a, b) => (counts.get(b.id) || 0) - (counts.get(a.id) || 0) || a.id.localeCompare(b.id));
-    $("src-list").append(...sorted.map((n) => el("li", {},
-      el("button", { type: "button", text: `@${handleOf(n)}`, onclick: () => select(n.id, true) }),
-      counts.get(n.id) ? el("span", { class: "n", text: `→ ${counts.get(n.id)}` }) : null)));
   }
 
   function renderSearch() {

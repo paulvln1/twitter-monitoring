@@ -120,6 +120,8 @@ Règles :
 
 ### DA (validée le 17/11/2026)
 
+- **Mise en page (18/11/2026)** : le site est un seul écran. Une barre fine en haut (`signal/ who's worth following in AI`, recherche, `GitHub · Log in · Updated`) et la map sur tout le reste. Plus de hero, d'intro, de menu, de listes Discovered / Sources ni de footer. Prochaine étape envisagée : les tweets du jour sous la map.
+
 - Nom : **signal**, sous-titre « who's worth following in AI. », en minuscules et en très grand, dans l'esprit de la référence « unlock the Unexpected » de Paul.
 - Couleurs : crème `#EEECE7`, encre `#1A1A18`, bleu `#2B3BD0` (liens, comptes découverts, surbrillance), traits fins `#CBC8C0`.
 - Police : Inter Tight (300/400/500). Très épuré : traits fins, petites capitales, flèches ↘.
