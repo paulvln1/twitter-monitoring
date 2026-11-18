@@ -31,7 +31,7 @@
 
 | Admin mode | Mobile |
 |---|---|
-| <img src="docs/screenshots/admin.png" alt="Signed in: an account just added to the watchlist, in orange on the right"> | <img src="docs/screenshots/mobile.png" alt="The map on a phone" width="300"> |
+| <img src="docs/screenshots/admin.png" alt="Signed in: the Backlog of accounts waiting for the next run"> | <img src="docs/screenshots/mobile.png" alt="The map on a phone" width="300"> |
 -->
 
 ## What it does

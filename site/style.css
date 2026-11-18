@@ -6,7 +6,6 @@
   --line: #CBC8C0;
   --blue: #2B3BD0;
   --green: #1C9A55;
-  --orange: #E8731C;
   --gutter: clamp(16px, 4vw, 56px);
   --font: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -93,13 +92,12 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .node.cand .label { fill: var(--ink); }
 .node .new { font-size: 9px; fill: var(--blue); text-anchor: middle; letter-spacing: .04em; }
 .node .pending { font-size: 9px; fill: var(--ink); text-anchor: middle; letter-spacing: .04em; font-style: italic; }
-/* vert : comptes derrière les projets du jour ; orange : ajouté à la watchlist, en attente du prochain run */
+/* vert : comptes derrière les projets du jour */
 .node .halo { fill: none; stroke: var(--green); stroke-width: 2.5; display: none; }
 .node.lit .halo { display: inline; }
 .node.src.lit .photo { filter: none; opacity: 1; }
 .node.lit .label { fill: var(--ink); }
-.node.pend-add .ring { stroke: var(--orange); stroke-width: 3; }
-.node.pend-add .pending { fill: var(--orange); }
+.node.gone { display: none; }
 .faded { opacity: .18; }
 
 /* --- projets du jour, à gauche de la map --- */
@@ -119,15 +117,34 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 /* --- ajout à la main (admin) : bouton sous la barre du haut, à droite --- */
 .add-wrap { position: absolute; top: 16px; right: var(--gutter); z-index: 5; display: flex; flex-direction: column; align-items: flex-end; }
 .map:has(#panel:not([hidden])) .add-wrap { right: calc(min(380px, 92%) + 16px); }
-.add-open { font: inherit; font-size: 13px; padding: 8px 14px; background: var(--cream); color: var(--ink); border: 1px solid var(--orange); cursor: pointer; }
-.add-open:hover, .add-open.on { background: var(--orange); color: #fff; }
+.add-open { font: inherit; font-size: 13px; padding: 8px 14px; background: var(--cream); color: var(--ink); border: 1px solid var(--blue); cursor: pointer; }
+.add-open:hover, .add-open.on { background: var(--blue); color: #fff; }
 .add-card { margin-top: 8px; width: 290px; background: var(--cream); border: 1px solid var(--line); box-shadow: 0 10px 30px rgba(26,26,24,.10); padding: 16px 18px 14px; }
 .add-title { font-size: 15px; margin: 0 0 4px; letter-spacing: -0.01em; }
 .add-help { font-size: 12px; line-height: 1.45; color: var(--muted); margin: 0 0 12px; }
 #add-input { font: inherit; font-size: 14px; width: 100%; padding: 8px 10px; border: 1px solid var(--line); background: #fff; color: var(--ink); outline: none; margin-bottom: 10px; border-radius: 0; }
-#add-input:focus { border-color: var(--orange); }
+#add-input:focus { border-color: var(--blue); }
 .add-msg { font-size: 12px; line-height: 1.4; color: #B3261E; margin: 8px 0 0; }
 .add-msg:empty { display: none; }
+
+/* --- backlog (admin) : sous le bouton, collé au bord droit, sans bordure droite --- */
+.backlog { position: absolute; top: 72px; right: 0; z-index: 4; width: 230px; max-height: calc(100% - 140px); overflow-y: auto;
+  background: var(--cream); border: 1px solid var(--ink); border-right: 0; padding: 14px 16px 10px; }
+.map:has(#panel:not([hidden])) .backlog { display: none; }
+.b-title { font-size: 15px; margin: 0; letter-spacing: -0.01em; color: var(--ink); }
+.b-sub { font-size: 11px; color: var(--blue); margin: 2px 0 10px; letter-spacing: .02em; }
+.backlog ul { list-style: none; margin: 0; padding: 0; }
+.backlog li { border-top: 1px solid var(--line); }
+.backlog li.empty { font-size: 12px; color: var(--muted); padding: 9px 0; }
+.backlog button { all: unset; box-sizing: border-box; display: flex; align-items: center; gap: 9px; width: 100%; padding: 7px 0; cursor: pointer; font-size: 13px; color: var(--ink); }
+.backlog button:hover .b-h, .backlog button.on .b-h { color: var(--blue); }
+.backlog button:focus-visible { outline: 1px solid var(--blue); outline-offset: 2px; }
+.b-pic { flex: none; width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--blue); background: var(--cream-2); object-fit: cover;
+  font-size: 9px; color: var(--muted); display: inline-flex; align-items: center; justify-content: center; }
+.b-pic { position: relative; overflow: hidden; }
+.b-pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.b-h { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.b-tag { flex: none; font-size: 10px; color: var(--muted); letter-spacing: .03em; }
 
 /* --- side panel --- */
 .panel {
@@ -185,5 +202,6 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   .add-wrap { top: auto; bottom: 40px; }
   .map:has(#panel:not([hidden])) .add-wrap { display: none; }
   .add-card { order: -1; margin: 0 0 8px; width: min(290px, calc(100vw - 32px)); }
+  .backlog { top: auto; bottom: 92px; width: 190px; max-height: 34%; padding: 10px 12px 6px; }
   .panel { position: fixed; top: auto; left: 0; right: 0; width: 100%; max-height: 74vh; border-left: 0; border-top: 1px solid var(--line); z-index: 10; box-shadow: 0 -10px 30px rgba(26,26,24,.08); }
 }

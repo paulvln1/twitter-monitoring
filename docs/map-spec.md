@@ -153,11 +153,13 @@ Règles :
 - Le retrait demande une **confirmation** (Confirm / Cancel). L'ajout part au clic.
 - Pas d'autre fonction pour l'instant : pas d'ajout d'un handle hors map, pas d'annulation.
 - Le changement apparaît sur la map **au run suivant**. En attendant, le nœud porte un badge « pending », visible seulement par l'admin connecté : le site compare `accounts.txt` sur `main` avec la whitelist de `graph.json`.
-- Un compte **ajouté** (pending) a un **contour orange**, perd tout de suite ses liens et se range tout à droite de la map, comme une source qui n'a encore rien relayé.
-- **Ajout à la main** : connecté, l'admin a un bouton orange « + Add an account » sous la barre du haut, à droite (en bas à droite sur mobile). Il ouvre une petite boîte de dialogue « Add to the watchlist » où taper un username (`@handle`, `handle` ou une URL `x.com/handle`), à n'importe quel moment de la journée. Le compte est écrit dans `accounts.txt` comme avec le bouton du panneau.
-  - S'il n'est pas encore sur la map, il apparaît tout à droite comme une bulle orange avec ses initiales (« added by hand »). Son profil arrive au run suivant.
+- **Backlog** : connecté, un encadré « Backlog · Will be in the next run » est collé au bord droit de la map, sous le bouton d'ajout (bordure noire sans bordure droite). Il liste les comptes en attente du prochain run : *joining* (ajoutés) et *leaving* (retirés). Un clic ouvre la fiche du compte, avec le bouton pour annuler.
+- Un compte **ajouté** quitte tout de suite la map (bulle et liens) : il n'est plus que dans le backlog. Un compte **retiré** reste sur la map, marqué « pending », jusqu'au run.
+- Le site n'utilise que le noir et le bleu (plus le vert des projets du jour).
+- **Ajout à la main** : connecté, l'admin a un bouton à bordure bleue « + Add an account » sous la barre du haut, à droite (en bas à droite sur mobile). Il ouvre une petite boîte de dialogue « Add to the watchlist » où taper un username (`@handle`, `handle` ou une URL `x.com/handle`), à n'importe quel moment de la journée. Le compte est écrit dans `accounts.txt` comme avec le bouton du panneau.
+  - S'il n'est pas encore sur la map, il apparaît dans le backlog avec ses initiales ; sa fiche dit « added by hand ». Son profil arrive au run suivant.
   - Son panneau propose « Undo: remove from watchlist », pour corriger une faute de frappe.
-  - Tout compte de `accounts.txt` absent de la map (ajouté à la main sur GitHub par exemple) est affiché de la même façon.
+  - Tout compte de `accounts.txt` absent de la map (ajouté à la main sur GitHub par exemple) est listé de la même façon.
 - Code : `site/api/` (fonctions Vercel, sans dépendance) ; tests : `node --test tests/site_api.test.js`. Mise en place : [`docs/admin-setup.md`](admin-setup.md).
 - Conflits : le commit utilise le `sha` du fichier. Si le fichier a changé entre-temps, le serveur relit et réessaie.
 

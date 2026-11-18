@@ -167,11 +167,18 @@
     return !box.hidden && window.innerWidth > 720 ? box.offsetLeft + box.offsetWidth : 0;
   }
 
+  // largeur occupée à droite par le backlog (desktop, panneau fermé)
+  function rightInset() {
+    const box = $("backlog");
+    return !box.hidden && window.innerWidth > 720 && $("panel").hidden ? box.offsetWidth + 16 : 0;
+  }
+
   function fitAll(animate = true) {
-    const { nodes } = G._sim || { nodes: sim.nodes() };
+    const nodes = sim.nodes();
+    if (!nodes.length) return;
     const area = $("map-area");
     const L = leftInset();
-    const W = area.clientWidth - L, H = area.clientHeight;
+    const W = area.clientWidth - L - rightInset(), H = area.clientHeight;
     const xs = nodes.map((n) => n.x), ys = nodes.map((n) => n.y);
     const pad = 70;
     const x0 = Math.min(...xs) - pad, x1 = Math.max(...xs) + pad;
@@ -182,7 +189,7 @@
   }
 
   function focusNode(id) {
-    const n = G._sim.nodes.find((d) => d.id === id);
+    const n = sim.nodes().find((d) => d.id === id); // un compte en backlog n'est plus sur la map
     if (!n) return;
     const area = $("map-area");
     const panelW = window.innerWidth > 720 ? Math.min(380, area.clientWidth * 0.92) : 0;
@@ -216,9 +223,11 @@
     selected = id;
     project = null;
     paintProjects();
-    highlight(id);
-    focusNode(id);
+    const onMap = sim.nodes().includes(n);
+    highlight(onMap ? id : null); // un compte du backlog n'a pas de bulle : la map reste telle quelle
+    if (onMap) focusNode(id);
     renderPanel(n);
+    renderBacklog();
     history.replaceState(null, "", `#${encodeURIComponent(handleOf(n))}`);
   }
 
@@ -229,6 +238,7 @@
     paintProjects();
     highlight(null);
     $("panel").hidden = true;
+    renderBacklog();
     fitAll();
     history.replaceState(null, "", location.pathname + location.search);
   }
@@ -319,8 +329,7 @@
     return null;
   }
 
-  // Un compte qu'on vient d'ajouter : contour orange, plus aucun lien, rangé tout à droite de la map.
-  // Comptes de accounts.txt qui ne sont pas encore sur la map (ajoutés à la main) : bulle fantôme.
+  // Comptes de accounts.txt qui ne sont pas encore sur la map (ajoutés à la main) : fiche fantôme, listée dans le backlog.
   function syncGhosts() {
     const S = G._sim;
     const onMap = new Set(G.nodes.map((n) => n.id));
@@ -330,23 +339,23 @@
     for (const h of [...S.ghosts.keys()]) if (!want.includes(h)) { S.ghosts.delete(h); byId.delete(h); }
     for (const h of want) {
       if (S.ghosts.has(h)) continue;
-      const n = { id: h, handle: h, kind: "candidate", ghost: true, tweets: 0, r: radius({ kind: "candidate", tweets: 1 }), x: 0, y: 0 };
+      const n = { id: h, handle: h, kind: "candidate", ghost: true, tweets: 0 };
       S.ghosts.set(h, n);
       byId.set(h, n);
     }
-    S.nodes = S.nodes.filter((n) => !n.ghost).concat([...S.ghosts.values()]);
-    sim.nodes(S.nodes);
-    S.node = S.layer.selectAll("g.node").data(S.nodes, (d) => d.id).join(S.build);
   }
 
+  // Un compte qu'on vient d'ajouter quitte la map (bulle et liens) et passe dans le backlog, à droite.
+  // Un compte retiré reste sur la map jusqu'au run, marqué « pending », et apparaît aussi dans le backlog.
   function markPending(animate) {
     if (!G || !G._sim) return;
     syncGhosts();
     const { node, edge, nodes, links, draw } = G._sim;
     const isAdd = (d) => pending(d) === "add";
-    node.classed("pend-add", isAdd);
+    node.classed("gone", isAdd);
     node.select(".pending").attr("display", (d) => (pending(d) ? null : "none"));
     node.select(".new").attr("display", (d) => (pending(d) ? "none" : null));
+    renderBacklog();
 
     const ids = new Set(nodes.filter(isAdd).map((d) => d.id));
     const key = [...ids].sort().join(",");
@@ -355,30 +364,45 @@
 
     const off = (l) => ids.has(l.source.id) || ids.has(l.target.id);
     edge.classed("off", off);
+    sim.nodes(nodes.filter((n) => !ids.has(n.id)));
     sim.force("link").links(links.filter((l) => !off(l)));
-    const rest = nodes.filter((n) => !ids.has(n.id) && !n.ghost);
-    nodes.forEach((n) => { if (n.pin && !ids.has(n.id)) { n.pin = null; n.fx = null; n.fy = null; } });
-    if (ids.size) {
-      const right = Math.max(...rest.map((n) => n.x + n.r));
-      const ys = rest.map((n) => n.y);
-      const cy = (Math.min(...ys) + Math.max(...ys)) / 2;
-      [...ids].forEach((id, i) => {
-        const n = nodes.find((d) => d.id === id);
-        n.pin = { x: right + 150, y: cy + (i - (ids.size - 1) / 2) * 120 };
-        n.fx = n.pin.x; n.fy = n.pin.y;
-        if (n.ghost && !n.x) { n.x = n.pin.x; n.y = n.pin.y; }
-      });
-    }
-    const refit = () => (selected ? focusNode(selected) : fitAll(animate));
+    const refit = () => (selected && !ids.has(selected) && byId.get(selected) && !byId.get(selected).ghost ? focusNode(selected) : fitAll(animate));
     paintProjects();
     if (animate) {
       sim.on("end.pending", () => { sim.on("end.pending", null); refit(); });
-      sim.alpha(0.6).restart();
-      setTimeout(refit, 80); // le compte épinglé a déjà sauté à sa place : on le suit tout de suite
+      sim.alpha(0.5).restart();
+      setTimeout(refit, 80);
     } else {
       sim.tick(250);
       draw();
       refit();
+    }
+  }
+
+  // ---------- backlog : ce qui changera au prochain run ----------
+  function renderBacklog() {
+    const box = $("backlog");
+    const on = !!(Admin.login && Admin.accounts);
+    box.hidden = !on;
+    if (!on) return;
+    const items = [];
+    for (const n of byId.values()) {
+      const p = n.ghost ? "add" : pending(n);
+      if (p) items.push({ n, p });
+    }
+    items.sort((a, b) => (a.p === b.p ? handleOf(a.n).localeCompare(handleOf(b.n)) : a.p === "add" ? -1 : 1));
+    const list = $("backlog-list");
+    list.replaceChildren();
+    if (!items.length) { list.append(el("li", { class: "empty", text: "Nothing pending." })); return; }
+    for (const { n, p } of items) {
+      const photo = safeUrl(n.photo);
+      const pic = el("span", { class: "b-pic", text: initials(n) });
+      if (photo) pic.replaceChildren(el("img", { src: photo, alt: "", onerror: (e) => e.target.remove() }));
+      list.append(el("li", {}, el("button", {
+        type: "button", class: selected === n.id ? "on" : null,
+        onclick: (e) => { e.stopPropagation(); select(n.id); },
+      }, pic, el("span", { class: "b-h", text: `@${handleOf(n)}` }),
+        el("span", { class: "b-tag", text: p === "add" ? "joining" : "leaving" }))));
     }
   }
 
@@ -443,6 +467,7 @@
     }
     $("add-wrap").hidden = !(Admin.login && Admin.accounts);
     if ($("add-wrap").hidden) openAdd(false);
+    renderBacklog();
   }
 
   // ---------- ajout à la main : bouton sous la barre du haut, petite boîte de dialogue ----------
@@ -588,7 +613,7 @@
       node.classed("faded", (d) => !lit.has(d.id));
       edge.classed("faded", (l) => !isLit(l)).classed("hl", false);
       node.classed("sel", false);
-    } else if (selected) {
+    } else if (selected && sim.nodes().some((d) => d.id === selected)) {
       highlight(selected);
     } else {
       highlight(null);
