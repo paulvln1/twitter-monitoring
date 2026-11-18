@@ -34,6 +34,22 @@
       <summary class="p-label">New projects · <span id="projects-date"></span></summary>
       <ol id="projects-list"></ol>
     </details>
+    <div class="add-wrap" id="add-wrap" hidden>
+      <button class="add-open" id="add-open" type="button" aria-controls="add-card" aria-expanded="false">+ Add an account</button>
+      <div class="add-card" id="add-card" role="dialog" aria-labelledby="add-title" hidden>
+        <p class="add-title" id="add-title">Add to the watchlist</p>
+        <p class="add-help">The X username of someone to follow. They become a source at the next morning run.</p>
+        <form id="add-form" autocomplete="off">
+          <label class="sr" for="add-input">Username</label>
+          <input id="add-input" placeholder="@handle or x.com/handle" spellcheck="false" maxlength="80">
+          <div class="btn-row">
+            <button class="btn blue" id="add-submit" type="submit">Add</button>
+            <button class="btn ghost" id="add-cancel" type="button">Cancel</button>
+          </div>
+        </form>
+        <p class="add-msg" id="add-msg" aria-live="polite"></p>
+      </div>
+    </div>
     <p class="legend tiny"><span class="dot dot-src"></span>source <span class="dot dot-cand"></span>discovered · size = tweets relayed <span class="dot dot-lit"></span>behind today's projects</p>
     <p class="map-status tiny" id="status">Loading the map…</p>
     <aside class="panel" id="panel" aria-live="polite" hidden>

@@ -17,7 +17,7 @@
   let preview = null;      // index du projet survolé
   let zoom, view, sim;
   // admin : login connecté, contenu actuel de accounts.txt, confirmation de retrait en cours
-  const Admin = { login: null, accounts: null, busy: false, confirm: null, error: null, adding: false, msg: null, draft: "" };
+  const Admin = { login: null, accounts: null, busy: false, confirm: null, error: null };
 
   // ---------- helpers ----------
   function el(tag, props = {}, ...children) {
@@ -435,39 +435,41 @@
 
   function renderAuth() {
     const box = $("auth");
-    $("top").classList.toggle("adding", Boolean(Admin.login && Admin.adding));
-    if (Admin.login && Admin.adding) {
-      const input = el("input", { class: "add-input", placeholder: "@handle", maxlength: "80", spellcheck: "false",
-        autocomplete: "off", "aria-label": "Username to add to the watchlist" });
-      const form = el("form", { class: "add-form", onsubmit: (e) => { e.preventDefault(); addByHand(input.value); } },
-        input,
-        el("button", { type: "submit", class: "linkish blue", disabled: Admin.busy ? "" : null, text: Admin.busy ? "Adding…" : "Add" }),
-        el("button", { type: "button", class: "linkish", text: "×", "aria-label": "Cancel",
-          onclick: () => { Admin.adding = false; Admin.msg = null; renderAuth(); } }));
-      box.replaceChildren(form);
-      if (Admin.msg) box.append(el("span", { class: "add-msg", text: Admin.msg }));
-      input.value = Admin.draft || "";
-      input.focus();
-    } else if (Admin.login) {
-      box.replaceChildren(el("span", { text: `@${Admin.login}` }), el("span", { class: "sep", text: "·" }));
-      if (Admin.accounts) {
-        box.append(el("button", { type: "button", class: "linkish blue", text: "+ Add",
-          onclick: () => { Admin.adding = true; Admin.msg = null; Admin.draft = ""; renderAuth(); } }),
-          el("span", { class: "sep", text: "·" }));
-      }
-      box.append(el("button", { type: "button", class: "linkish blue", text: "Log out", onclick: logout }));
+    if (Admin.login) {
+      box.replaceChildren(el("span", { text: `@${Admin.login}` }), el("span", { class: "sep", text: "·" }),
+        el("button", { type: "button", class: "linkish blue", text: "Log out", onclick: logout }));
     } else {
       box.replaceChildren(el("a", { class: "blue", href: "/api/login", text: "Log in" }));
     }
+    $("add-wrap").hidden = !(Admin.login && Admin.accounts);
+    if ($("add-wrap").hidden) openAdd(false);
   }
 
-  // Ajout à la main depuis la barre du haut, à n'importe quel moment.
+  // ---------- ajout à la main : bouton sous la barre du haut, petite boîte de dialogue ----------
+  function openAdd(open) {
+    $("add-card").hidden = !open;
+    $("add-open").setAttribute("aria-expanded", String(open));
+    $("add-open").classList.toggle("on", open);
+    if (open) { addMsg(""); $("add-input").value = ""; $("add-input").focus(); }
+  }
+  function addMsg(text, ok = false) {
+    $("add-msg").textContent = text;
+    $("add-msg").classList.toggle("ok", ok);
+  }
+  $("add-open").addEventListener("click", (e) => { e.stopPropagation(); openAdd($("add-card").hidden); });
+  $("add-cancel").addEventListener("click", () => openAdd(false));
+  $("add-card").addEventListener("click", (e) => e.stopPropagation());
+  $("add-card").addEventListener("keydown", (e) => { if (e.key === "Escape") { e.stopPropagation(); openAdd(false); } });
+  $("add-form").addEventListener("submit", (e) => { e.preventDefault(); addByHand($("add-input").value); });
+
   async function addByHand(raw) {
+    if (Admin.busy) return;
     const h = String(raw || "").trim().replace(/^@/, "").replace(/^https?:\/\/(www\.)?(x|twitter)\.com\//i, "").split(/[/?#]/)[0];
-    Admin.draft = raw;
-    if (!HANDLE.test(h)) { Admin.msg = "Not a valid username"; return renderAuth(); }
-    if (Admin.accounts.has(h.toLowerCase())) { Admin.msg = `@${h} is already in the watchlist`; return renderAuth(); }
-    Admin.busy = true; Admin.msg = null; renderAuth();
+    if (!h) return addMsg("Type a username first.");
+    if (!HANDLE.test(h)) return addMsg("That's not a valid X username (letters, digits and _, 15 max).");
+    if (Admin.accounts.has(h.toLowerCase())) return addMsg(`@${h} is already in the watchlist.`);
+    const btn = $("add-submit");
+    Admin.busy = true; btn.disabled = true; btn.textContent = "Adding…"; addMsg("");
     try {
       const r = await fetch("/api/watchlist", {
         method: "POST", credentials: "same-origin",
@@ -477,21 +479,20 @@
       const data = await r.json().catch(() => ({}));
       if (!r.ok) throw new Error(data.error || `error ${r.status}`);
       Admin.accounts = new Set(data.accounts.map((a) => a.toLowerCase()));
-      Admin.adding = false; Admin.draft = "";
       Admin.busy = false;
+      openAdd(false);
       markPending(true);
       select(h.toLowerCase());
     } catch (e) {
-      Admin.msg = r401(e) ? "Session expired, log in again" : `Could not save: ${e.message}`;
+      addMsg(r401(e) ? "Your session has expired. Log in again." : `Could not save: ${e.message}.`);
     } finally {
-      Admin.busy = false;
-      renderAuth();
+      Admin.busy = false; btn.disabled = false; btn.textContent = "Add";
     }
   }
 
   async function logout() {
     await fetch("/api/logout", { method: "POST", credentials: "same-origin" }).catch(() => {});
-    Admin.login = null; Admin.accounts = null; Admin.confirm = null; Admin.adding = false;
+    Admin.login = null; Admin.accounts = null; Admin.confirm = null;
     renderAuth(); markPending(true);
     if (selected) renderPanel(byId.get(selected));
   }
