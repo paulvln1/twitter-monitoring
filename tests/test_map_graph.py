@@ -125,6 +125,27 @@ class Storage(unittest.TestCase):
             os.environ.pop("ACCOUNTS_FILE")
             os.environ.pop("MAP_TODAY")
 
+    def test_projects_accounts(self):
+        # x poste un projet (tweet 5), RT par alice ; carol cite un tweet de y (tweet 9) dans son tweet 77
+        mg.append_interactions([it("alice", "x", 5),
+                                it("carol", "y", 9, kind="quote", src="https://x.com/carol/status/77")])
+        mg.save_json("projects.json", {"date": "2026-11-17", "projects": [
+            {"title": "Tool A: a thing", "tweet_url": "https://x.com/X/status/5?s=20", "what": "  It  does A. ",
+             "links": [{"label": "Repo", "url": "https://github.com/a/b"}, {"label": "Bad", "url": "javascript:x"}]},
+            {"title": "Tool B", "tweet_url": "https://twitter.com/carol/status/77"},
+            {"title": "", "tweet_url": "https://x.com/x/status/1"},
+            {"title": "No tweet"},
+        ]})
+        got = mg.build_projects(mg.load_interactions())
+        self.assertEqual(got["date"], "2026-11-17")
+        self.assertEqual([(p["author"], p["accounts"]) for p in got["items"]],
+                         [("x", ["x", "alice"]), ("carol", ["carol", "y"])])
+        a = got["items"][0]
+        self.assertEqual((a["what"], a["how"], a["tweet_url"]), ("It does A.", None, "https://x.com/X/status/5"))
+        self.assertEqual(a["links"], [{"label": "Repo", "url": "https://github.com/a/b"}])
+        os.remove(mg.path("projects.json"))
+        self.assertIsNone(mg.build_projects([]))
+
 
 if __name__ == "__main__":
     unittest.main()

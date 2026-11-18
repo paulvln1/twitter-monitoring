@@ -120,7 +120,12 @@ Règles :
 
 ### DA (validée le 17/11/2026)
 
-- **Mise en page (18/11/2026)** : le site est un seul écran. Une barre fine en haut (`signal/ who's worth following in AI`, recherche, `GitHub · Log in · Updated`) et la map sur tout le reste. Plus de hero, d'intro, de menu, de listes Discovered / Sources ni de footer. Prochaine étape envisagée : les tweets du jour sous la map.
+- **Mise en page (18/11/2026)** : le site est un seul écran. Une barre fine en haut (`signal/ who's worth following in AI`, recherche, `GitHub · Log in · Updated`) et la map sur tout le reste. Plus de hero, d'intro, de menu, de listes Discovered / Sources ni de footer.
+- **Projets du jour (18/11/2026)** : à gauche de la map, la liste des titres de la section « Nouveaux projets » du digest, **en anglais**.
+  - Après l'envoi Discord, Claude écrit `graph/projects.json` (titre, tag, URL du tweet, liens, et les 4 paragraphes du digest traduits : what / how / who / try). `map_graph.py build` le recopie dans `graph.json` (clé `projects`) et ajoute à chaque projet ses comptes : l'auteur du tweet, les sources qui l'ont relayé, et le compte cité si le tweet est une quote ou une reply.
+  - Ces comptes ont un **halo vert** sur la map (les liens entre eux aussi). Au survol ou au clic d'un projet, seuls ses comptes restent visibles. Un projet posté par un compte *discovered* allume ce compte et les sources qui l'ont relayé.
+  - Au clic, le panneau affiche le résumé (What it is, How it works, Who it's for, Try it), les liens Repo / Site / Paper, les comptes de la map concernés et « Open the tweet on X ».
+  - Sur mobile, la liste est repliée sous la barre du haut.
 
 - Nom : **signal**, sous-titre « who's worth following in AI. », en minuscules et en très grand, dans l'esprit de la référence « unlock the Unexpected » de Paul.
 - Couleurs : crème `#EEECE7`, encre `#1A1A18`, bleu `#2B3BD0` (liens, comptes découverts, surbrillance), traits fins `#CBC8C0`.
@@ -148,6 +153,7 @@ Règles :
 - Le retrait demande une **confirmation** (Confirm / Cancel). L'ajout part au clic.
 - Pas d'autre fonction pour l'instant : pas d'ajout d'un handle hors map, pas d'annulation.
 - Le changement apparaît sur la map **au run suivant**. En attendant, le nœud porte un badge « pending », visible seulement par l'admin connecté : le site compare `accounts.txt` sur `main` avec la whitelist de `graph.json`.
+- Un compte **ajouté** (pending) a un **contour orange**, perd tout de suite ses liens et se range tout à droite de la map, comme une source qui n'a encore rien relayé.
 - Code : `site/api/` (fonctions Vercel, sans dépendance) ; tests : `node --test tests/site_api.test.js`. Mise en place : [`docs/admin-setup.md`](admin-setup.md).
 - Conflits : le commit utilise le `sha` du fichier. Si le fichier a changé entre-temps, le serveur relit et réessaie.
 

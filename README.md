@@ -40,6 +40,7 @@ Every morning, a scheduled Claude Code routine reads the last 24 hours of tweets
 
 1. **Writes a digest** and posts it to Discord: new projects worth a look, one technical concept explained simply, notable takes, accounts to follow, and the cost of the run.
 2. **Updates the map.** Every retweet, quote and reply from the watchlist is logged. An account that keeps getting relayed shows up on the map as a *discovery*, with a one-line note on why it matters.
+   The day's new projects are listed next to the map, in English; the accounts behind them light up in green.
 3. **Lets the owner act on it.** Signed in with GitHub, the owner can add a discovery to the watchlist or remove a source, straight from the site.
 
 The loop: sources surface people → the best ones get promoted to sources → they surface new people.

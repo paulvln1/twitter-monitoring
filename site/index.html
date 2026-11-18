@@ -30,7 +30,11 @@
 
   <main class="map" id="map-area">
     <svg id="graph" role="img" aria-label="Map of accounts"></svg>
-    <p class="legend tiny"><span class="dot dot-src"></span>source <span class="dot dot-cand"></span>discovered · size = tweets relayed</p>
+    <details class="projects" id="projects" open hidden>
+      <summary class="p-label">New projects · <span id="projects-date"></span></summary>
+      <ol id="projects-list"></ol>
+    </details>
+    <p class="legend tiny"><span class="dot dot-src"></span>source <span class="dot dot-cand"></span>discovered · size = tweets relayed <span class="dot dot-lit"></span>behind today's projects</p>
     <p class="map-status tiny" id="status">Loading the map…</p>
     <aside class="panel" id="panel" aria-live="polite" hidden>
       <button class="close caps" id="close" type="button">Close ×</button>

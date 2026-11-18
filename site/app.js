@@ -12,7 +12,9 @@
   const svg = d3.select("#graph");
   let G = null;            // graph.json
   let byId = new Map();    // id -> node
-  let selected = null;
+  let selected = null;     // id du nœud ouvert dans le panneau
+  let project = null;      // index du projet ouvert dans le panneau
+  let preview = null;      // index du projet survolé
   let zoom, view, sim;
   // admin : login connecté, contenu actuel de accounts.txt, confirmation de retrait en cours
   const Admin = { login: null, accounts: null, busy: false, confirm: null, error: null };
@@ -59,6 +61,7 @@
     $("status").textContent = "";
     $("updated").textContent = `Updated ${fmtDate(G.as_of)}`;
     renderSearch();
+    renderProjects();
     renderGraph();
 
     const h = decodeURIComponent(location.hash.slice(1)).toLowerCase().replace(/^@/, "");
@@ -122,6 +125,7 @@
     node.filter((d) => safeUrl(d.photo)).append("circle").attr("class", "photo")
       .attr("r", (d) => d.r).attr("fill", "none");
     node.append("circle").attr("class", "ring").attr("r", (d) => d.r);
+    node.append("circle").attr("class", "halo").attr("r", (d) => d.r + 5);
     node.append("text").attr("class", "label").attr("y", (d) => d.r + 14).text((d) => `@${handleOf(d)}`);
     node.filter(isNew).append("text").attr("class", "new").attr("y", (d) => -d.r - 6).text("new");
     node.append("text").attr("class", "pending").attr("y", (d) => -d.r - 6).text("pending");
@@ -137,27 +141,38 @@
     node.call(d3.drag()
       .on("start", (ev, d) => { if (!ev.active) sim.alphaTarget(0.2).restart(); d.fx = d.x; d.fy = d.y; })
       .on("drag", (ev, d) => { d.fx = ev.x; d.fy = ev.y; })
-      .on("end", (ev, d) => { if (!ev.active) sim.alphaTarget(0); d.fx = null; d.fy = null; }));
+      .on("end", (ev, d) => {
+        if (!ev.active) sim.alphaTarget(0);
+        if (d.pin) d.pin = { x: d.fx, y: d.fy }; else { d.fx = null; d.fy = null; }
+      }));
 
     zoom = d3.zoom().scaleExtent([0.35, 3]).on("zoom", (ev) => view.attr("transform", ev.transform));
     svg.call(zoom).on("dblclick.zoom", null);
     svg.on("click", () => deselect());
     fitAll(false);
 
-    G._sim = { nodes, links, edge, node };
-    markPending();
+    G._sim = { nodes, links, edge, node, draw, detached: "" };
+    markPending(false);
+    paintProjects();
+  }
+
+  // largeur occupée à gauche par la liste des projets (desktop)
+  function leftInset() {
+    const box = $("projects");
+    return !box.hidden && window.innerWidth > 720 ? box.offsetLeft + box.offsetWidth : 0;
   }
 
   function fitAll(animate = true) {
     const { nodes } = G._sim || { nodes: sim.nodes() };
     const area = $("map-area");
-    const W = area.clientWidth, H = area.clientHeight;
+    const L = leftInset();
+    const W = area.clientWidth - L, H = area.clientHeight;
     const xs = nodes.map((n) => n.x), ys = nodes.map((n) => n.y);
     const pad = 70;
     const x0 = Math.min(...xs) - pad, x1 = Math.max(...xs) + pad;
     const y0 = Math.min(...ys) - pad, y1 = Math.max(...ys) + pad;
     const k = Math.min(1.4, W / (x1 - x0), H / (y1 - y0));
-    const t = d3.zoomIdentity.translate(W / 2 - k * (x0 + x1) / 2, H / 2 - k * (y0 + y1) / 2).scale(k);
+    const t = d3.zoomIdentity.translate(L + W / 2 - k * (x0 + x1) / 2, H / 2 - k * (y0 + y1) / 2).scale(k);
     (animate ? svg.transition().duration(500) : svg).call(zoom.transform, t);
   }
 
@@ -166,7 +181,7 @@
     if (!n) return;
     const area = $("map-area");
     const panelW = window.innerWidth > 720 ? Math.min(380, area.clientWidth * 0.92) : 0;
-    const cx = (area.clientWidth - panelW) / 2;
+    const cx = (leftInset() + area.clientWidth - panelW) / 2;
     const cy = window.innerWidth > 720 ? area.clientHeight / 2 : area.clientHeight * 0.3;
     const k = 1.3;
     svg.transition().duration(550).call(zoom.transform, d3.zoomIdentity.translate(cx - k * n.x, cy - k * n.y).scale(k));
@@ -180,11 +195,11 @@
       return;
     }
     const near = new Set([id]);
-    G._sim.links.forEach((l) => {
+    sim.force("link").links().forEach((l) => {
       if (l.source.id === id) near.add(l.target.id);
       if (l.target.id === id) near.add(l.source.id);
     });
-    edge.classed("hl", (l) => l.source.id === id || l.target.id === id)
+    edge.classed("hl", (l) => near.has(l.source.id) && near.has(l.target.id) && (l.source.id === id || l.target.id === id))
         .classed("faded", (l) => !(l.source.id === id || l.target.id === id));
     node.classed("sel", (d) => d.id === id).classed("faded", (d) => !near.has(d.id));
   }
@@ -194,6 +209,8 @@
     const n = byId.get(id);
     if (!n) return;
     selected = id;
+    project = null;
+    paintProjects();
     highlight(id);
     focusNode(id);
     renderPanel(n);
@@ -201,10 +218,13 @@
   }
 
   function deselect() {
-    if (!selected) return;
+    if (!selected && project == null) return;
     selected = null;
+    project = null;
+    paintProjects();
     highlight(null);
     $("panel").hidden = true;
+    fitAll();
     history.replaceState(null, "", location.pathname + location.search);
   }
 
@@ -277,11 +297,46 @@
     return null;
   }
 
-  function markPending() {
+  // Un compte qu'on vient d'ajouter : contour orange, plus aucun lien, rangé tout à droite de la map.
+  function markPending(animate) {
     if (!G || !G._sim) return;
-    const { node } = G._sim;
+    const { node, edge, nodes, links, draw } = G._sim;
+    const isAdd = (d) => pending(d) === "add";
+    node.classed("pend-add", isAdd);
     node.select(".pending").attr("display", (d) => (pending(d) ? null : "none"));
     node.select(".new").attr("display", (d) => (pending(d) ? "none" : null));
+
+    const ids = new Set(nodes.filter(isAdd).map((d) => d.id));
+    const key = [...ids].sort().join(",");
+    if (key === G._sim.detached) return;
+    G._sim.detached = key;
+
+    const off = (l) => ids.has(l.source.id) || ids.has(l.target.id);
+    edge.classed("off", off);
+    sim.force("link").links(links.filter((l) => !off(l)));
+    const rest = nodes.filter((n) => !ids.has(n.id));
+    nodes.forEach((n) => { if (n.pin && !ids.has(n.id)) { n.pin = null; n.fx = null; n.fy = null; } });
+    if (ids.size) {
+      const right = Math.max(...rest.map((n) => n.x + n.r));
+      const ys = rest.map((n) => n.y);
+      const cy = (Math.min(...ys) + Math.max(...ys)) / 2;
+      [...ids].forEach((id, i) => {
+        const n = nodes.find((d) => d.id === id);
+        n.pin = { x: right + 150, y: cy + (i - (ids.size - 1) / 2) * 120 };
+        n.fx = n.pin.x; n.fy = n.pin.y;
+      });
+    }
+    const refit = () => (selected ? focusNode(selected) : fitAll(animate));
+    paintProjects();
+    if (animate) {
+      sim.on("end.pending", () => { sim.on("end.pending", null); refit(); });
+      sim.alpha(0.6).restart();
+      setTimeout(refit, 80); // le compte épinglé a déjà sauté à sa place : on le suit tout de suite
+    } else {
+      sim.tick(250);
+      draw();
+      refit();
+    }
   }
 
   function renderAdmin(n, body) {
@@ -325,11 +380,11 @@
       if (!r.ok) throw new Error(data.error || `error ${r.status}`);
       Admin.accounts = new Set(data.accounts.map((a) => a.toLowerCase()));
       Admin.confirm = null;
+      markPending(true);
     } catch (e) {
       Admin.error = r401(e) ? "Your session has expired. Log in again." : `Could not save: ${e.message}.`;
     } finally {
       Admin.busy = false;
-      markPending();
       if (selected === n.id) renderPanel(n);
     }
   }
@@ -348,7 +403,7 @@
   async function logout() {
     await fetch("/api/logout", { method: "POST", credentials: "same-origin" }).catch(() => {});
     Admin.login = null; Admin.accounts = null; Admin.confirm = null;
-    renderAuth(); markPending();
+    renderAuth(); markPending(true);
     if (selected) renderPanel(byId.get(selected));
   }
 
@@ -367,7 +422,7 @@
       const w = await fetch("/api/watchlist", { credentials: "same-origin" }).then((r) => (r.ok ? r.json() : null));
       if (w && Array.isArray(w.accounts)) {
         Admin.accounts = new Set(w.accounts.map((a) => a.toLowerCase()));
-        markPending();
+        markPending(false);
         if (selected) renderPanel(byId.get(selected));
       }
     } catch { /* pas d'API (aperçu local) : le site reste en lecture seule */ }
@@ -399,6 +454,92 @@
       .then((tw) => tw.widgets.createTweet(m[1], box, { dnt: true, theme: "light", conversation: "none", align: "left" }))
       .then((node) => { box.querySelector(".tiny")?.remove(); if (!node) fallback(); })
       .catch(fallback);
+  }
+
+  // ---------- projets du jour (section « Nouveaux projets » du digest, en anglais) ----------
+  const projects = () => (G && G.projects && Array.isArray(G.projects.items) ? G.projects.items : null);
+  const projectAccounts = (p) => (p.accounts || []).filter((h) => byId.has(h));
+
+  function renderProjects() {
+    const items = projects();
+    const box = $("projects");
+    if (!items) return;
+    $("projects-date").textContent = fmtDate(G.projects.date);
+    const list = $("projects-list");
+    if (!items.length) list.append(el("li", { class: "empty", text: "No new project today." }));
+    items.forEach((p, i) => list.append(el("li", {},
+      el("button", {
+        type: "button", "data-i": i,
+        onclick: (e) => { e.stopPropagation(); selectProject(i); },
+        onmouseenter: () => { preview = i; paintProjects(); },
+        onmouseleave: () => { preview = null; paintProjects(); },
+        onfocus: () => { preview = i; paintProjects(); },
+        onblur: () => { preview = null; paintProjects(); },
+      }, el("span", { class: "n", text: String(i + 1).padStart(2, "0") }),
+         el("span", { class: "title", text: p.title })))));
+    if (window.innerWidth <= 720) box.open = false;
+    box.hidden = false;
+  }
+
+  // vert : tous les comptes des projets du jour ; au survol ou au clic, seulement ceux du projet.
+  function paintProjects() {
+    if (!G || !G._sim) return;
+    const items = projects() || [];
+    const { node, edge } = G._sim;
+    const focus = preview != null ? preview : project;
+    const lit = new Set((focus != null ? [items[focus]] : items).filter(Boolean).flatMap(projectAccounts));
+    const isLit = (l) => lit.has(l.source.id) && lit.has(l.target.id);
+    node.classed("lit", (d) => lit.has(d.id));
+    edge.classed("lit", isLit);
+    document.querySelectorAll("#projects-list button").forEach((b) =>
+      b.classList.toggle("on", Number(b.dataset.i) === focus));
+    if (focus != null) {
+      node.classed("faded", (d) => !lit.has(d.id));
+      edge.classed("faded", (l) => !isLit(l)).classed("hl", false);
+      node.classed("sel", false);
+    } else if (selected) {
+      highlight(selected);
+    } else {
+      highlight(null);
+    }
+  }
+
+  function selectProject(i) {
+    const p = (projects() || [])[i];
+    if (!p) return;
+    selected = null;
+    project = i;
+    paintProjects();
+    renderProjectPanel(p);
+    history.replaceState(null, "", location.pathname + location.search);
+  }
+
+  function renderProjectPanel(p) {
+    const body = $("panel-body");
+    body.replaceChildren();
+    body.append(el("p", { class: "p-label first", text: `New project · ${fmtDate(G.projects.date)}` }),
+      el("div", { class: "p-name", text: p.title }));
+    if (p.tag) body.append(el("p", { class: "p-handle", text: p.tag }));
+    const parts = [["what", "What it is"], ["how", "How it works"], ["who", "Who it's for"], ["try", "Try it"]];
+    for (const [k, label] of parts) {
+      if (p[k]) body.append(el("p", { class: "p-label", text: label }), el("p", { class: "p-text", text: p[k] }));
+    }
+    const links = (p.links || []).filter((l) => safeUrl(l.url));
+    if (links.length) {
+      body.append(el("p", { class: "p-links" }, ...links.map((l) =>
+        el("a", { class: "blue", href: l.url, target: "_blank", rel: "noopener", text: `↘ ${l.label}` }))));
+    }
+    const accs = projectAccounts(p).map((h) => byId.get(h));
+    if (accs.length) {
+      body.append(el("p", { class: "p-label", text: "On the map" }),
+        el("ul", { class: "p-list" }, ...accs.map((n) => el("li", {},
+          el("button", { type: "button", text: `@${handleOf(n)}`, onclick: () => select(n.id) }),
+          el("span", { class: "t", text: n.id === p.author ? "posted it" : n.kind === "whitelist" ? "relayed it" : "featured" })))));
+    }
+    const url = safeUrl(p.tweet_url);
+    if (url) body.append(el("a", { class: "p-open blue", href: url, target: "_blank", rel: "noopener", text: "↘ Open the tweet on X" }));
+    $("panel").hidden = false;
+    $("panel").scrollTop = 0;
   }
 
   function renderSearch() {
