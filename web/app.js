@@ -43,6 +43,8 @@
     const days = (new Date(G.as_of) - new Date(n.since)) / 864e5;
     return days >= 0 && days < NEW_DAYS;
   };
+  // discovered by today's run: placed on the left of the map by default
+  const isToday = (n) => n.kind === "candidate" && !!G && n.since === G.as_of;
   const initials = (n) => (n.display_name || n.id).replace(/[^A-Za-z0-9 ]/g, "").split(/\s+/)
     .filter(Boolean).slice(0, 2).map((w) => w[0].toUpperCase()).join("") || "@";
   const radius = (n) => (n.kind === "candidate" ? 20 + 5 * Math.min(n.tweets || 1, 6) : 12);
@@ -105,11 +107,19 @@
       }
     });
 
+    // today's discoveries start on the left and are pulled there, until the user drags them
+    const leftX = W / 2 - Math.min(W * 0.45, 560);
+    const targetX = (d) => (isToday(d) && !d.moved ? leftX : W / 2);
+    nodes.forEach((n, i) => {
+      if (isToday(n)) { n.x = leftX; n.y = H / 2 + (i % 5 - 2) * 40; }
+    });
+
     sim = d3.forceSimulation(nodes)
       .force("link", d3.forceLink(links).id((d) => d.id).distance((l) => 70 + l.target.r * 2).strength(0.5))
       .force("charge", d3.forceManyBody().strength((d) => (d.kind === "candidate" ? -420 : -220)))
       .force("collide", d3.forceCollide((d) => d.r + 16))
-      .force("x", d3.forceX(W / 2).strength(0.07 * Math.max(1, H / W)))
+      .force("x", d3.forceX(targetX)
+        .strength((d) => (isToday(d) && !d.moved ? 0.9 : 0.07 * Math.max(1, H / W))))
       .force("y", d3.forceY(H / 2).strength(0.07 * Math.max(1, W / H)))
       .stop();
     sim.tick(400);
@@ -124,6 +134,11 @@
       .on("end", (ev, d) => {
         if (!ev.active) sim.alphaTarget(0);
         if (d.pin) d.pin = { x: d.fx, y: d.fy }; else { d.fx = null; d.fy = null; }
+        if (isToday(d) && !d.moved) {
+          d.moved = true; // the user placed it: stop pulling it left
+          const fx = sim.force("x");
+          fx.x(fx.x()).strength(fx.strength());
+        }
       });
     // builds the bubbles
     const build = (enter) => {
