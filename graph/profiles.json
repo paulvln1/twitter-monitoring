@@ -8,6 +8,15 @@
   "photo": "https://pbs.twimg.com/profile_images/1553485821767991296/87k3l720_400x400.jpg",
   "profile_url": "https://x.com/badlogicgames"
  },
+ "caspar_br": {
+  "bio": "Building Managed Agents at @LangChain 🇦🇺",
+  "display_name": "Caspar",
+  "fetched_at": "2026-11-19",
+  "followers": 2790,
+  "handle": "caspar_br",
+  "photo": "https://pbs.twimg.com/profile_images/1982513791498625024/mTCEFECz_400x400.jpg",
+  "profile_url": "https://x.com/caspar_br"
+ },
  "claudeai": {
   "bio": "Claude is an AI assistant built by @anthropicai to be safe, accurate, and secure. Talk to Claude on https://t.co/ZhTwG8d1e5 or download the app.",
   "display_name": "Claude",
@@ -80,6 +89,15 @@
   "photo": "https://pbs.twimg.com/profile_images/1569345624935485442/R67C4wCQ_400x400.jpg",
   "profile_url": "https://x.com/hwchase17"
  },
+ "joshpurtell": {
+  "bio": "Ars longa, vita brevia \n\nYour works are wonderful, I know that full well\n\nWorking on optimization",
+  "display_name": "Josh",
+  "fetched_at": "2026-11-19",
+  "followers": 4428,
+  "handle": "JoshPurtell",
+  "photo": "https://pbs.twimg.com/profile_images/2028166734704775168/QjjuPFIA_400x400.jpg",
+  "profile_url": "https://x.com/JoshPurtell"
+ },
  "jxnlco": {
   "bio": "vibes @openai",
   "display_name": "jason",
@@ -88,6 +106,15 @@
   "handle": "jxnlco",
   "photo": "https://pbs.twimg.com/profile_images/2079316705029832704/Cb5f0ORi_400x400.jpg",
   "profile_url": "https://x.com/jxnlco"
+ },
+ "karpathy": {
+  "bio": null,
+  "display_name": "Andrej Karpathy",
+  "fetched_at": "2026-11-19",
+  "followers": 4462279,
+  "handle": "karpathy",
+  "photo": "https://pbs.twimg.com/profile_images/1296667294148382721/9Pr6XrPB_400x400.jpg",
+  "profile_url": "https://x.com/karpathy"
  },
  "kieranklaassen": {
   "bio": "frontier team @every | compound engineering | agent-ophile  | composer | maker | baker",
@@ -133,6 +160,15 @@
   "handle": "mitsuhiko",
   "photo": "https://pbs.twimg.com/profile_images/1905698833084174336/jcHMkWFA_400x400.jpg",
   "profile_url": "https://x.com/mitsuhiko"
+ },
+ "poteto": {
+  "bio": "grok @bot at @SpaceXSI. react compiler core team, prev cursor, meta, netflix",
+  "display_name": "lauren",
+  "fetched_at": "2026-11-19",
+  "followers": 314378,
+  "handle": "poteto",
+  "photo": "https://pbs.twimg.com/profile_images/2093473719830315008/oo09g1Ov_400x400.jpg",
+  "profile_url": "https://x.com/poteto"
  },
  "rlancemartin": {
   "bio": "MTS @anthropicai",
@@ -215,6 +251,15 @@
   "photo": "https://pbs.twimg.com/profile_images/1955622250629021696/WOrOq2Mw_400x400.jpg",
   "profile_url": "https://x.com/sydneyrunkle"
  },
+ "tenderlove": {
+  "bio": "Job: @Shopify\nOpinions: Mine\nPGP: 4CE9 1B75 A798 28E8 6B1A  A8BB 9531 70BC B4FF AFC6\nPartner: @ebiltwin and cats.\nhe/him\n@tenderlove@mastodon.social",
+  "display_name": "Aaron Patterson",
+  "fetched_at": "2026-11-19",
+  "followers": 68056,
+  "handle": "tenderlove",
+  "photo": "https://pbs.twimg.com/profile_images/1372299370691842052/KHLAURcj_400x400.jpg",
+  "profile_url": "https://x.com/tenderlove"
+ },
  "theo": {
   "bio": "Full time CEO @t3dotcodes & @t3dotchat. Part time YouTuber, investor, and developer",
   "display_name": "Theo - t3.gg",
@@ -223,6 +268,15 @@
   "handle": "theo",
   "photo": "https://pbs.twimg.com/profile_images/2106484435382333440/vXOVE8EX_400x400.jpg",
   "profile_url": "https://x.com/theo"
+ },
+ "trq212": {
+  "bio": "playing WoW forever, formerly Claude Code @anthropicai",
+  "display_name": "Thariq",
+  "fetched_at": "2026-11-19",
+  "followers": 405157,
+  "handle": "trq212",
+  "photo": "https://pbs.twimg.com/profile_images/1976939058741039104/r3GgzqRh_400x400.jpg",
+  "profile_url": "https://x.com/trq212"
  },
  "zachlloydtweets": {
   "bio": "Trying to build impactful software.  Founder @warpdotdev, former Principal eng @Google.",

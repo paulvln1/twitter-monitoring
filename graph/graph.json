@@ -1,5 +1,5 @@
 {
- "as_of": "2026-11-18",
+ "as_of": "2026-11-19",
  "edges": [
   {
    "source": "dexhorthy",
@@ -31,10 +31,44 @@
    "types": [
     "reply"
    ],
+   "weight": 2
+  },
+  {
+   "source": "hwchase17",
+   "target": "caspar_br",
+   "types": [
+    "rt"
+   ],
+   "weight": 3
+  },
+  {
+   "source": "sydneyrunkle",
+   "target": "caspar_br",
+   "types": [
+    "rt"
+   ],
    "weight": 1
   },
   {
    "source": "kieranklaassen",
+   "target": "hammer_mt",
+   "types": [
+    "reply",
+    "rt"
+   ],
+   "weight": 4
+  },
+  {
+   "source": "dbreunig",
+   "target": "hammer_mt",
+   "types": [
+    "reply",
+    "rt"
+   ],
+   "weight": 2
+  },
+  {
+   "source": "completeskeptic",
    "target": "hammer_mt",
    "types": [
     "rt"
@@ -43,7 +77,32 @@
   },
   {
    "source": "dbreunig",
-   "target": "hammer_mt",
+   "target": "joshpurtell",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "steipete",
+   "target": "joshpurtell",
+   "types": [
+    "rt"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "swyx",
+   "target": "poteto",
+   "types": [
+    "quote",
+    "rt"
+   ],
+   "weight": 3
+  },
+  {
+   "source": "dexhorthy",
+   "target": "poteto",
    "types": [
     "reply"
    ],
@@ -90,6 +149,14 @@
    "weight": 1
   },
   {
+   "source": "swyx",
+   "target": "simonw",
+   "types": [
+    "reply"
+   ],
+   "weight": 2
+  },
+  {
    "source": "dexhorthy",
    "target": "steve_yegge",
    "types": [
@@ -114,17 +181,16 @@
    "weight": 1
   },
   {
-   "source": "hwchase17",
-   "target": "sydneyrunkle",
+   "source": "mitchellh",
+   "target": "tenderlove",
    "types": [
-    "quote",
-    "rt"
+    "reply"
    ],
-   "weight": 5
+   "weight": 1
   },
   {
-   "source": "swyx",
-   "target": "sydneyrunkle",
+   "source": "kieranklaassen",
+   "target": "tenderlove",
    "types": [
     "rt"
    ],
@@ -145,10 +211,51 @@
     "reply",
     "rt"
    ],
+   "weight": 4
+  },
+  {
+   "source": "swyx",
+   "target": "trq212",
+   "types": [
+    "rt"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "jxnlco",
+   "target": "trq212",
+   "types": [
+    "rt"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "dexhorthy",
+   "target": "trq212",
+   "types": [
+    "quote",
+    "reply"
+   ],
    "weight": 2
+  },
+  {
+   "source": "mckaywrigley",
+   "target": "trq212",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "kieranklaassen",
+   "target": "trq212",
+   "types": [
+    "rt"
+   ],
+   "weight": 1
   }
  ],
- "generated_at": "2026-11-18T07:11:41+00:00",
+ "generated_at": "2026-11-19T07:11:44+00:00",
  "nodes": [
   {
    "bio": "@LangChain\n\nAlways hiring: https://t.co/D5Ut3loFO7",
@@ -341,26 +448,44 @@
    "profile_url": "https://x.com/luhsnaa"
   },
   {
+   "bio": "product + open source @LangChain",
+   "display_name": "Sydney Runkle",
+   "followers": 15518,
+   "handle": "sydneyrunkle",
+   "id": "sydneyrunkle",
+   "kind": "whitelist",
+   "photo": "https://pbs.twimg.com/profile_images/1955622250629021696/WOrOq2Mw_400x400.jpg",
+   "profile_url": "https://x.com/sydneyrunkle"
+  },
+  {
+   "bio": null,
+   "display_name": "Andrej Karpathy",
+   "followers": 4462279,
+   "handle": "karpathy",
+   "id": "karpathy",
+   "kind": "whitelist",
+   "photo": "https://pbs.twimg.com/profile_images/1296667294148382721/9Pr6XrPB_400x400.jpg",
+   "profile_url": "https://x.com/karpathy"
+  },
+  {
    "bio": "Armin's handler at https://t.co/B05ybKGkzx. Old man yelling at Claudes.\n\nhttps://t.co/Q1wG57v1yc\n\nhttps://t.co/mnOoWUr0TO\n\nhttps://t.co/8i5vIRE0Wn",
    "display_name": "Mario Zechner",
    "followers": 81193,
    "handle": "badlogicgames",
    "id": "badlogicgames",
-   "interactions": 4,
+   "interactions": 5,
    "kind": "candidate",
    "latest": {
     "by": [
-     "mitsuhiko",
-     "steipete"
+     "mitsuhiko"
     ],
     "date": "2026-11-18",
-    "tweet_url": "https://x.com/badlogicgames/status/2122831328169103761",
+    "tweet_url": "https://x.com/badlogicgames/status/2123099337886749179",
     "types": [
-     "reply",
-     "rt"
+     "reply"
     ]
    },
-   "oneliner": "Argues one-shotting a three.js game is not a meaningful test of real-world model performance.",
+   "oneliner": "Conversation with @mitsuhiko about learning low-level x86 computing history.",
    "photo": "https://pbs.twimg.com/profile_images/1553485821767991296/87k3l720_400x400.jpg",
    "profile_url": "https://x.com/badlogicgames",
    "relayed_by": [
@@ -370,7 +495,36 @@
     "steipete"
    ],
    "since": "2026-11-17",
-   "tweets": 2
+   "tweets": 3
+  },
+  {
+   "bio": "Building Managed Agents at @LangChain 🇦🇺",
+   "display_name": "Caspar",
+   "followers": 2790,
+   "handle": "caspar_br",
+   "id": "caspar_br",
+   "interactions": 4,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "hwchase17",
+     "sydneyrunkle"
+    ],
+    "date": "2026-11-18",
+    "tweet_url": "https://x.com/caspar_br/status/2123192026745409844",
+    "types": [
+     "rt"
+    ]
+   },
+   "oneliner": "Day-0 support for Gemini 4 Neon in LangChain's Managed Deep Agents, added in one line.",
+   "photo": "https://pbs.twimg.com/profile_images/1982513791498625024/mTCEFECz_400x400.jpg",
+   "profile_url": "https://x.com/caspar_br",
+   "relayed_by": [
+    "hwchase17",
+    "sydneyrunkle"
+   ],
+   "since": "2026-11-18",
+   "tweets": 3
   },
   {
    "bio": "🧪 Head of Evals @Every\n📕 2x O'Reilly author: Prompt Engineering / DSPy\n🎓 400k students on AI Udemy course\n🤖 AI engineer since 2020\n📈 Built 50 person agency",
@@ -378,27 +532,84 @@
    "followers": 13165,
    "handle": "hammer_mt",
    "id": "hammer_mt",
-   "interactions": 2,
+   "interactions": 7,
    "kind": "candidate",
    "latest": {
     "by": [
      "dbreunig"
     ],
-    "date": "2026-11-17",
-    "tweet_url": "https://x.com/hammer_mt/status/2122781824254349409",
+    "date": "2026-11-19",
+    "tweet_url": "https://x.com/hammer_mt/status/2123217548103602179",
     "types": [
-     "reply"
+     "rt"
     ]
    },
-   "oneliner": "Conversation with @dbreunig about why so much software is breaking and AI adoption by engineers vs bad actors.",
+   "oneliner": "Jokes that the model that solved Navier-Stokes failed his PowerPoint benchmark.",
    "photo": "https://pbs.twimg.com/profile_images/2045274630408359936/_Q6ixnwR_400x400.jpg",
    "profile_url": "https://x.com/hammer_mt",
    "relayed_by": [
+    "completeskeptic",
     "dbreunig",
     "kieranklaassen"
    ],
    "since": "2026-11-17",
+   "tweets": 7
+  },
+  {
+   "bio": "Ars longa, vita brevia \n\nYour works are wonderful, I know that full well\n\nWorking on optimization",
+   "display_name": "Josh",
+   "followers": 4428,
+   "handle": "JoshPurtell",
+   "id": "joshpurtell",
+   "interactions": 2,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "steipete"
+    ],
+    "date": "2026-11-18",
+    "tweet_url": "https://x.com/joshpurtell/status/2122852757170213351",
+    "types": [
+     "rt"
+    ]
+   },
+   "oneliner": "Says GPT-6.2 Sol and Astra are monsters on his autoresearch benchmark, despite the online backlash.",
+   "photo": "https://pbs.twimg.com/profile_images/2028166734704775168/QjjuPFIA_400x400.jpg",
+   "profile_url": "https://x.com/JoshPurtell",
+   "relayed_by": [
+    "dbreunig",
+    "steipete"
+   ],
+   "since": "2026-11-18",
    "tweets": 2
+  },
+  {
+   "bio": "grok @bot at @SpaceXSI. react compiler core team, prev cursor, meta, netflix",
+   "display_name": "lauren",
+   "followers": 314378,
+   "handle": "poteto",
+   "id": "poteto",
+   "interactions": 4,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "dexhorthy"
+    ],
+    "date": "2026-11-19",
+    "tweet_url": "https://x.com/poteto/status/2123227123636719859",
+    "types": [
+     "reply"
+    ]
+   },
+   "oneliner": "Conversation with @dexhorthy about Mario Zechner's views on agent-written code.",
+   "photo": "https://pbs.twimg.com/profile_images/2093473719830315008/oo09g1Ov_400x400.jpg",
+   "profile_url": "https://x.com/poteto",
+   "relayed_by": [
+    "dexhorthy",
+    "swyx"
+   ],
+   "since": "2026-11-19",
+   "tweets": 3
   },
   {
    "bio": "Dad, Dev, CEO, 4x Founder. \nBuilding @HelloUntangle - AI for family law",
@@ -434,28 +645,29 @@
    "followers": 256193,
    "handle": "simonw",
    "id": "simonw",
-   "interactions": 3,
+   "interactions": 5,
    "kind": "candidate",
    "latest": {
     "by": [
-     "dbreunig"
+     "swyx"
     ],
-    "date": "2026-11-13",
-    "tweet_url": null,
+    "date": "2026-11-18",
+    "tweet_url": "https://x.com/simonw/status/2122822484529684838",
     "types": [
-     "quote"
+     "reply"
     ]
    },
-   "oneliner": "Breaks down every new model's prompting guide.",
+   "oneliner": "Conversation with @swyx comparing GPT-6.2 Sol and Fable 5.2 outputs.",
    "photo": "https://pbs.twimg.com/profile_images/378800000261649705/be9cc55e64014e6d7663c50d7cb9fc75_400x400.jpeg",
    "profile_url": "https://x.com/simonw",
    "relayed_by": [
     "dbreunig",
     "geoffreyhuntley",
-    "steipete"
+    "steipete",
+    "swyx"
    ],
    "since": "2026-11-13",
-   "tweets": 2
+   "tweets": 4
   },
   {
    "bio": "I've been in the industry for O(40) years and have written O(1M) LOC. I don't think I'll ever write O(another) line again, but I'll be launching more than ever.",
@@ -487,32 +699,32 @@
    "tweets": 3
   },
   {
-   "bio": "product + open source @LangChain",
-   "display_name": "Sydney Runkle",
-   "followers": 15518,
-   "handle": "sydneyrunkle",
-   "id": "sydneyrunkle",
-   "interactions": 6,
+   "bio": "Job: @Shopify\nOpinions: Mine\nPGP: 4CE9 1B75 A798 28E8 6B1A  A8BB 9531 70BC B4FF AFC6\nPartner: @ebiltwin and cats.\nhe/him\n@tenderlove@mastodon.social",
+   "display_name": "Aaron Patterson",
+   "followers": 68056,
+   "handle": "tenderlove",
+   "id": "tenderlove",
+   "interactions": 2,
    "kind": "candidate",
    "latest": {
     "by": [
-     "hwchase17"
+     "kieranklaassen"
     ],
-    "date": "2026-11-17",
-    "tweet_url": "https://x.com/sydneyrunkle/status/2122735146596282854",
+    "date": "2026-11-19",
+    "tweet_url": "https://x.com/tenderlove/status/2123204646449934352",
     "types": [
      "rt"
     ]
    },
-   "oneliner": "Lessons learned building proactive agents that react to live events and schedule their own work; memory and UX are key.",
-   "photo": "https://pbs.twimg.com/profile_images/1955622250629021696/WOrOq2Mw_400x400.jpg",
-   "profile_url": "https://x.com/sydneyrunkle",
+   "oneliner": "Ruby 4.0.10 released with a critical security fix; update immediately.",
+   "photo": "https://pbs.twimg.com/profile_images/1372299370691842052/KHLAURcj_400x400.jpg",
+   "profile_url": "https://x.com/tenderlove",
    "relayed_by": [
-    "hwchase17",
-    "swyx"
+    "kieranklaassen",
+    "mitchellh"
    ],
-   "since": "2026-11-12",
-   "tweets": 5
+   "since": "2026-11-19",
+   "tweets": 2
   },
   {
    "bio": "Full time CEO @t3dotcodes & @t3dotchat. Part time YouTuber, investor, and developer",
@@ -520,20 +732,19 @@
    "followers": 433028,
    "handle": "theo",
    "id": "theo",
-   "interactions": 3,
+   "interactions": 5,
    "kind": "candidate",
    "latest": {
     "by": [
      "kieranklaassen"
     ],
-    "date": "2026-11-17",
-    "tweet_url": "https://x.com/theo/status/2122762384704258122",
+    "date": "2026-11-19",
+    "tweet_url": "https://x.com/theo/status/2123226794409287937",
     "types": [
-     "reply",
-     "rt"
+     "reply"
     ]
    },
-   "oneliner": "GPT-6.2 Astra produced near-identical game levels named \"Bellwether\" for two testers; claims it regresses to the mean.",
+   "oneliner": "Conversation with @kieranklaassen about a new model he found good.",
    "photo": "https://pbs.twimg.com/profile_images/2106484435382333440/vXOVE8EX_400x400.jpg",
    "profile_url": "https://x.com/theo",
    "relayed_by": [
@@ -541,9 +752,132 @@
     "kieranklaassen"
    ],
    "since": "2026-11-17",
+   "tweets": 4
+  },
+  {
+   "bio": "playing WoW forever, formerly Claude Code @anthropicai",
+   "display_name": "Thariq",
+   "followers": 405157,
+   "handle": "trq212",
+   "id": "trq212",
+   "interactions": 6,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "dexhorthy",
+     "kieranklaassen",
+     "mckaywrigley"
+    ],
+    "date": "2026-11-18",
+    "tweet_url": "https://x.com/trq212/status/2123106370161705127",
+    "types": [
+     "reply",
+     "rt"
+    ]
+   },
+   "oneliner": "Argues most people won't generate their own software: good software is a set of strong, well-thought opinions.",
+   "photo": "https://pbs.twimg.com/profile_images/1976939058741039104/r3GgzqRh_400x400.jpg",
+   "profile_url": "https://x.com/trq212",
+   "relayed_by": [
+    "dexhorthy",
+    "jxnlco",
+    "kieranklaassen",
+    "mckaywrigley",
+    "swyx"
+   ],
+   "since": "2026-11-18",
    "tweets": 2
   }
  ],
+ "projects": {
+  "date": "2026-11-19",
+  "items": [
+   {
+    "accounts": [
+     "langchain",
+     "hwchase17"
+    ],
+    "author": "langchain",
+    "how": "Each agent session is traced (a trace is the full record of what the agent did: messages, tool calls, tokens used). LangSmith now links each thread (a conversation with the agent) to the pull request it produced (a PR is a proposed code change that gets reviewed and merged). You see what a merged PR cost, and how much token spend never led to a PR. It works across harnesses (the software wrapper around the model) and model providers.",
+    "links": [],
+    "tag": "paid",
+    "title": "LangSmith Coding agent ROI: what each agent-written PR costs",
+    "try": "A LangSmith feature (paid product with a limited free tier). The announcement link could not be read (t.co blocked), details limited to the tweet.",
+    "tweet_url": "https://x.com/LangChain/status/2123113924857827504",
+    "what": "A new dashboard in LangSmith (LangChain's monitoring tool) that gathers every coding agent a team uses (Claude Code, Codex, etc.) and computes their return on investment. Put simply, an expense report per pull request.",
+    "who": "Companies whose token bill is exploding. According to the team: see what each merged PR costs, who is shipping slop (sloppy code), and who deserves more tokens. The question any portfolio company will ask: do our agents earn more than they cost?"
+   },
+   {
+    "accounts": [
+     "bentlegen",
+     "mitsuhiko"
+    ],
+    "author": "bentlegen",
+    "how": "Version 1 was an autonomous AI PM agent. The founder's finding: nobody wants another agent, they want to use their own. So Modem was rebuilt as a platform: it collects and structures the problems, and the agents you already use (Claude, Codex...) pull from it. Technical details are not in the tweet.",
+    "links": [],
+    "tag": "paid",
+    "title": "Modem 2.0: an AI PM that works with your agents",
+    "try": "Commercial product. Site not reachable (modem.dev), details limited.",
+    "tweet_url": "https://x.com/bentlegen/status/2123083111315505178",
+    "what": "A tool that digs through customer channels to find buried problems, tracks them, and follows up when the fix ships. Put simply, a product manager who reads all the customer feedback for you.",
+    "who": "Product and ops teams drowning in customer feedback. Business lesson: it is better to be the data source agents consult than yet another agent."
+   },
+   {
+    "accounts": [
+     "nathanflurry",
+     "completeskeptic"
+    ],
+    "author": "nathanflurry",
+    "how": "1) First version: one prompt asking for the ticket severity with definitions of each level. Results were meh, because jev does not reason, by design. 2) Working version: split into tiny yes/no questions (did their service go down? are they blocked with no workaround? is something in Rivet broken?) and plain if-logic in code decides the severity. 3) Improvement loop: every misclassified ticket is given to an LLM with the expected result; the LLM adds it to a test suite, adjusts the decision logic, then backtests it on old tickets. Within a few tickets the classifier was solid. Counts: 13 questions for support classification and customer status, 6 for severity, 6 for follow-up timing.",
+    "links": [],
+    "tag": "open source",
+    "title": "Rivet's support ticket classifier: 13 tiny questions, not one big prompt",
+    "try": "An experience report, not a product. jev is not documented in the tweet (no link).",
+    "tweet_url": "https://x.com/NathanFlurry/status/2123108222470959600",
+    "what": "How Rivet built the internal tool that triages its support tickets (severity, customer status, follow-up timing...) with a decision tool called jev.",
+    "who": "Any ops or support automation. The most reusable pattern of the day: the model answers simple questions, code makes the decision, so it is controllable, monitorable and testable."
+   },
+   {
+    "accounts": [
+     "sydneyrunkle",
+     "hwchase17"
+    ],
+    "author": "sydneyrunkle",
+    "how": "Per the README: sub-agents (delegate a subtask to an agent with its own context window, its separate working memory), a filesystem (read, write, search), context management (summarize long threads, offload large tool outputs to disk), shell access in a sandbox (an isolated environment), persistent memory across sessions, human-in-the-loop (approve or reject an action before it runs), skills and MCP tools. Built on LangGraph. New yesterday: day-0 support for Gemini 4 Neon in Managed Deep Agents.",
+    "links": [
+     {
+      "label": "Repo",
+      "url": "https://github.com/langchain-ai/deepagents"
+     }
+    ],
+    "tag": "open source",
+    "title": "Deep Agents: LangChain's open source harness hits 50M downloads",
+    "try": "MIT license, uv add deepagents (Python) or the JS version; also available as a terminal coding agent (Deep Agents Code). GitHub stars not readable from the session.",
+    "tweet_url": "https://x.com/sydneyrunkle/status/2123106938473042349",
+    "what": "A batteries-included agent harness: a ready-to-run agent you customize. Put simply, the skeleton of a Claude Code, for any job and any model.",
+    "who": "Building agents that handle long tasks in a company (research, ops) without reinventing the plumbing."
+   },
+   {
+    "accounts": [
+     "sqs"
+    ],
+    "author": "sqs",
+    "how": "Not detailed: the site could not be reached.",
+    "links": [
+     {
+      "label": "Site",
+      "url": "https://ampcode.com/news/amp-for-windows"
+     }
+    ],
+    "tag": "paid",
+    "title": "Amp for Windows",
+    "try": "Site not reachable (ampcode.com), details limited.",
+    "tweet_url": "https://x.com/sqs/status/2123197781376679961",
+    "what": "The Amp coding agent ships a Windows app (\"Winamp\" was taken).",
+    "who": "Only useful if you code on Windows."
+   }
+  ]
+ },
  "rules": {
   "min_tweets": 2,
   "min_wl_accounts": 2,
@@ -568,6 +902,8 @@
   "completeskeptic",
   "sqs",
   "zachlloydtweets",
-  "luhsnaa"
+  "luhsnaa",
+  "sydneyrunkle",
+  "karpathy"
  ]
 }
