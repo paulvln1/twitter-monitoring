@@ -5,6 +5,7 @@
   --muted: #74726C;
   --line: #CBC8C0;
   --blue: #2B3BD0;
+  --violet: #8B2FC9;
   --green: #1C9A55;
   --gutter: clamp(16px, 4vw, 56px);
   --font: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -68,6 +69,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin: 0 4px 0 10px; vertical-align: -1px; }
 .dot-src { border: 1px solid var(--muted); background: #d6d3cc; margin-left: 0; width: 6px; height: 6px; }
 .dot-cand { border: 2.5px solid var(--blue); width: 10px; height: 10px; }
+.dot-today { border: 2.5px solid var(--violet); width: 10px; height: 10px; }
 .dot-lit { border: 2.5px solid var(--green); width: 10px; height: 10px; }
 .map-status { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; color: var(--muted); pointer-events: none; }
 .map-status:empty { display: none; }
@@ -91,6 +93,9 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .node .label { font-size: 10.5px; fill: var(--muted); text-anchor: middle; paint-order: stroke; stroke: var(--cream); stroke-width: 3px; }
 .node.cand .label { fill: var(--ink); }
 .node .new { font-size: 9px; fill: var(--blue); text-anchor: middle; letter-spacing: .04em; }
+/* violet: discovered by today's run */
+.node.cand.today .ring { stroke: var(--violet); }
+.node.today .new { fill: var(--violet); }
 .node .pending { font-size: 9px; fill: var(--ink); text-anchor: middle; letter-spacing: .04em; font-style: italic; }
 /* green: accounts behind today's projects */
 .node .halo { fill: none; stroke: var(--green); stroke-width: 2.5; display: none; }
