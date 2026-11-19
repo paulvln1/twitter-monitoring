@@ -472,8 +472,11 @@
     } else {
       box.replaceChildren(el("a", { class: "blue", href: "/api/login", text: "Log in" }));
     }
-    $("add-wrap").hidden = !(Admin.login && Admin.accounts);
-    if ($("add-wrap").hidden) openAdd(false);
+    // visible to everyone, but greyed out unless an admin is signed in
+    const canAdd = !!(Admin.login && Admin.accounts);
+    $("add-open").disabled = !canAdd;
+    $("add-open").title = canAdd ? "" : "Admins only: log in to add an account";
+    if (!canAdd) openAdd(false);
     renderBacklog();
   }
 
