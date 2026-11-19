@@ -255,7 +255,7 @@
    "weight": 1
   }
  ],
- "generated_at": "2026-11-19T07:11:44+00:00",
+ "generated_at": "2026-11-19T07:11:51+00:00",
  "nodes": [
   {
    "bio": "@LangChain\n\nAlways hiring: https://t.co/D5Ut3loFO7",
@@ -830,7 +830,7 @@
     "author": "nathanflurry",
     "how": "1) First version: one prompt asking for the ticket severity with definitions of each level. Results were meh, because jev does not reason, by design. 2) Working version: split into tiny yes/no questions (did their service go down? are they blocked with no workaround? is something in Rivet broken?) and plain if-logic in code decides the severity. 3) Improvement loop: every misclassified ticket is given to an LLM with the expected result; the LLM adds it to a test suite, adjusts the decision logic, then backtests it on old tickets. Within a few tickets the classifier was solid. Counts: 13 questions for support classification and customer status, 6 for severity, 6 for follow-up timing.",
     "links": [],
-    "tag": "open source",
+    "tag": "research",
     "title": "Rivet's support ticket classifier: 13 tiny questions, not one big prompt",
     "try": "An experience report, not a product. jev is not documented in the tweet (no link).",
     "tweet_url": "https://x.com/NathanFlurry/status/2123108222470959600",
