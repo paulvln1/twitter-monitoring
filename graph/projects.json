@@ -1,65 +1,65 @@
 {
- "date": "2026-11-19",
+ "date": "2026-11-20",
  "projects": [
   {
-   "title": "LangSmith Coding agent ROI: what each agent-written PR costs",
-   "tag": "paid",
-   "tweet_url": "https://x.com/LangChain/status/2123113924857827504",
-   "links": [],
-   "what": "A new dashboard in LangSmith (LangChain's monitoring tool) that gathers every coding agent a team uses (Claude Code, Codex, etc.) and computes their return on investment. Put simply, an expense report per pull request.",
-   "how": "Each agent session is traced (a trace is the full record of what the agent did: messages, tool calls, tokens used). LangSmith now links each thread (a conversation with the agent) to the pull request it produced (a PR is a proposed code change that gets reviewed and merged). You see what a merged PR cost, and how much token spend never led to a PR. It works across harnesses (the software wrapper around the model) and model providers.",
-   "who": "Companies whose token bill is exploding. According to the team: see what each merged PR costs, who is shipping slop (sloppy code), and who deserves more tokens. The question any portfolio company will ask: do our agents earn more than they cost?",
-   "try": "A LangSmith feature (paid product with a limited free tier). The announcement link could not be read (t.co blocked), details limited to the tweet."
-  },
-  {
-   "title": "Modem 2.0: an AI PM that works with your agents",
-   "tag": "paid",
-   "tweet_url": "https://x.com/bentlegen/status/2123083111315505178",
-   "links": [],
-   "what": "A tool that digs through customer channels to find buried problems, tracks them, and follows up when the fix ships. Put simply, a product manager who reads all the customer feedback for you.",
-   "how": "Version 1 was an autonomous AI PM agent. The founder's finding: nobody wants another agent, they want to use their own. So Modem was rebuilt as a platform: it collects and structures the problems, and the agents you already use (Claude, Codex...) pull from it. Technical details are not in the tweet.",
-   "who": "Product and ops teams drowning in customer feedback. Business lesson: it is better to be the data source agents consult than yet another agent.",
-   "try": "Commercial product. Site not reachable (modem.dev), details limited."
-  },
-  {
-   "title": "Rivet's support ticket classifier: 13 tiny questions, not one big prompt",
-   "tag": "research",
-   "tweet_url": "https://x.com/NathanFlurry/status/2123108222470959600",
-   "links": [],
-   "what": "How Rivet built the internal tool that triages its support tickets (severity, customer status, follow-up timing...) with a decision tool called jev.",
-   "how": "1) First version: one prompt asking for the ticket severity with definitions of each level. Results were meh, because jev does not reason, by design. 2) Working version: split into tiny yes/no questions (did their service go down? are they blocked with no workaround? is something in Rivet broken?) and plain if-logic in code decides the severity. 3) Improvement loop: every misclassified ticket is given to an LLM with the expected result; the LLM adds it to a test suite, adjusts the decision logic, then backtests it on old tickets. Within a few tickets the classifier was solid. Counts: 13 questions for support classification and customer status, 6 for severity, 6 for follow-up timing.",
-   "who": "Any ops or support automation. The most reusable pattern of the day: the model answers simple questions, code makes the decision, so it is controllable, monitorable and testable.",
-   "try": "An experience report, not a product. jev is not documented in the tweet (no link)."
-  },
-  {
-   "title": "Deep Agents: LangChain's open source harness hits 50M downloads",
+   "title": "Content Studio: LangChain's design agent, now open source",
    "tag": "open source",
-   "tweet_url": "https://x.com/sydneyrunkle/status/2123106938473042349",
+   "tweet_url": "https://x.com/hwchase17/status/2123430062913724481",
    "links": [
     {
      "label": "Repo",
-     "url": "https://github.com/langchain-ai/deepagents"
+     "url": "https://github.com/langchain-ai/design-agent"
     }
    ],
-   "what": "A batteries-included agent harness: a ready-to-run agent you customize. Put simply, the skeleton of a Claude Code, for any job and any model.",
-   "how": "Per the README: sub-agents (delegate a subtask to an agent with its own context window, its separate working memory), a filesystem (read, write, search), context management (summarize long threads, offload large tool outputs to disk), shell access in a sandbox (an isolated environment), persistent memory across sessions, human-in-the-loop (approve or reject an action before it runs), skills and MCP tools. Built on LangGraph. New yesterday: day-0 support for Gemini 4 Neon in Managed Deep Agents.",
-   "who": "Building agents that handle long tasks in a company (research, ops) without reinventing the plumbing.",
-   "try": "MIT license, uv add deepagents (Python) or the JS version; also available as a terminal coding agent (Deep Agents Code). GitHub stars not readable from the session."
+   "what": "The agent LangChain uses internally as a designer: ask it in Slack for a visual, a slide or a launch video and it returns finished, on-brand files. Basically a junior designer available 24/7 in Slack.",
+   "how": "You mention it in a Slack thread with a brief. Each thread gets its own sandbox (an isolated, disposable Linux machine with Chrome, FFmpeg...) where everything is made as code (a slide is HTML, a film is an animation timeline), so a change is an edit and a re-render. A router skill picks among 35 skills loaded only when needed, keeping the context window small. On big jobs the main agent splits the work and starts async subagents in parallel. Code checks colors, fonts, contrast and chart math before delivery. Two-layer memory (team and personal) keeps your rules, and after each job it writes notes on what worked. External tools (Notion, Linear, Figma) connect through MCP, each person signed in as themselves.",
+   "who": "A real case of an agent doing company work: per the README, over 3,000 assets shipped since August, and three in four requests come from outside marketing. A reusable architecture blueprint for any internal ops agent (Slack + sandbox + skills + memory + checks in code).",
+   "try": "Apache 2.0 license, Python 3.11+, built on Deep Agents and deployable on Managed Deep Agents (LangSmith, paid); a local mode with no keys is advertised. GitHub stars not checked."
   },
   {
-   "title": "Amp for Windows",
+   "title": "LangSmith Tool Gateway: a bouncer for your agents' tools",
    "tag": "paid",
-   "tweet_url": "https://x.com/sqs/status/2123197781376679961",
+   "tweet_url": "https://x.com/hwchase17/status/2123488866284040278",
    "links": [
     {
      "label": "Site",
-     "url": "https://ampcode.com/news/amp-for-windows"
+     "url": "https://docs.langchain.com/langsmith/tool-gateway"
     }
    ],
-   "what": "The Amp coding agent ships a Windows app (\"Winamp\" was taken).",
-   "how": "Not detailed: the site could not be reached.",
-   "who": "Only useful if you code on Windows.",
-   "try": "Site not reachable (ampcode.com), details limited."
+   "what": "A central layer between your agents and the tools they call, handling access, identity and rules. Like an IT department handing out badges instead of every agent holding the keys to the whole building.",
+   "how": "On each tool call the gateway (1) identifies the caller (a user, an agent or a shared profile); (2) blocks the call if a deny policy matches; (3) attaches the right stored credential instead of a token hardcoded in the agent; (4) asks a human to approve if an approval policy matches; (5) forwards the call to the MCP server and records a trace of who did what. Tool kits define which tools each agent sees, through a single URL.",
+   "who": "As soon as several agents touch sensitive tools (CRM, email, finance), you need to know who sent what on whose behalf and to require approvals. Harrison Chase: the more goal-oriented agents get, the more crucial this fine-grained control becomes.",
+   "try": "Beta, LangSmith Plus and Enterprise plans only (paid), on LangSmith Cloud (GCP US/EU/APAC, AWS US)."
+  },
+  {
+   "title": "Hex Knowledge Engine: a self-maintaining company knowledge layer",
+   "tag": "paid",
+   "tweet_url": "https://x.com/hwchase17/status/2123491145888272525",
+   "links": [],
+   "what": "A self-learning, graph-based context system built into Hex 4.0 (a data analysis tool), so data agents know the company's definitions and rules. Basically an internal wiki the AI keeps up to date on its own.",
+   "how": "Per Izzy Miller (Hex), instead of hand-writing static context (docs, definitions) that goes stale, the system starts from that context and synthesizes knowledge organized as a graph of linked notions, enriched by real-world feedback, so it can be verified and maintained automatically. Site not reachable, limited details.",
+   "who": "The real blocker for data agents is having five different definitions of revenue. Harrison Chase calls this a knowledge factory: at LangChain, a set of metric definitions and skills for fetching data from each system.",
+   "try": "Live now for Hex 4.0 users (paid)."
+  },
+  {
+   "title": "DataCat: an observability clone built by agent swarms",
+   "tag": "open source",
+   "tweet_url": "https://x.com/kieranklaassen/status/2123534093526966584",
+   "links": [],
+   "what": "Replit announces DataCat, a free alternative to the leading observability platform (a tool that monitors an app and catches issues, billed at $83,700/yr according to Replit).",
+   "how": "According to Replit, its Missions ran agent swarms (many agents in parallel) that explored thousands of workflows in the existing tool and rebuilt its features 1:1. No further details readable.",
+   "who": "A striking demo of SaaS cloning by agents: if agents can copy an expensive tool, B2B software prices come under pressure. Treat it as a marketing claim until people test it.",
+   "try": "Announced as 100% free; license and status not checked. Site not reachable, limited details."
+  },
+  {
+   "title": "Warp Learn: a free course to build your software factory",
+   "tag": "open source",
+   "tweet_url": "https://x.com/zachlloydtweets/status/2123494395567886657",
+   "links": [],
+   "what": "A hands-on course by Warp (the terminal) on building a software factory: per Zach Lloyd, an automation loop in the cloud that orchestrates agents to build better and better software over time.",
+   "how": "Announced path: fundamentals, then writing your first automation loop (an agent that keeps relaunching itself on tasks), up to a full factory with specs (written before the code), risk assessment and end-to-end verification (testing the whole flow, not one piece).",
+   "who": "For anyone moving from one-conversation-at-a-time vibe coding to agents that run continuously.",
+   "try": "Free and public, taught by @BHolmesDev. Site not reachable, limited details."
   }
  ]
 }

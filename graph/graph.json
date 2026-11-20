@@ -1,13 +1,31 @@
 {
- "as_of": "2026-11-19",
+ "as_of": "2026-11-20",
  "edges": [
   {
+   "source": "swyx",
+   "target": "aidotengineer",
+   "types": [
+    "quote",
+    "rt"
+   ],
+   "weight": 5
+  },
+  {
    "source": "dexhorthy",
-   "target": "badlogicgames",
+   "target": "aidotengineer",
    "types": [
     "quote"
    ],
    "weight": 1
+  },
+  {
+   "source": "dexhorthy",
+   "target": "badlogicgames",
+   "types": [
+    "quote",
+    "reply"
+   ],
+   "weight": 2
   },
   {
    "source": "dbreunig",
@@ -31,7 +49,23 @@
    "types": [
     "reply"
    ],
-   "weight": 2
+   "weight": 3
+  },
+  {
+   "source": "geoffreyhuntley",
+   "target": "badlogicgames",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "swyx",
+   "target": "badlogicgames",
+   "types": [
+    "rt"
+   ],
+   "weight": 1
   },
   {
    "source": "hwchase17",
@@ -46,6 +80,39 @@
    "target": "caspar_br",
    "types": [
     "rt"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "steipete",
+   "target": "gergelyorosz",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "swyx",
+   "target": "gergelyorosz",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "dexhorthy",
+   "target": "grok",
+   "types": [
+    "quote",
+    "reply"
+   ],
+   "weight": 5
+  },
+  {
+   "source": "geoffreyhuntley",
+   "target": "grok",
+   "types": [
+    "reply"
    ],
    "weight": 1
   },
@@ -74,6 +141,15 @@
     "rt"
    ],
    "weight": 1
+  },
+  {
+   "source": "hamelhusain",
+   "target": "hammer_mt",
+   "types": [
+    "reply",
+    "rt"
+   ],
+   "weight": 2
   },
   {
    "source": "dbreunig",
@@ -253,9 +329,25 @@
     "rt"
    ],
    "weight": 1
+  },
+  {
+   "source": "dexhorthy",
+   "target": "zeeg",
+   "types": [
+    "reply"
+   ],
+   "weight": 5
+  },
+  {
+   "source": "mitsuhiko",
+   "target": "zeeg",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
   }
  ],
- "generated_at": "2026-11-19T07:11:51+00:00",
+ "generated_at": "2026-11-20T07:11:40+00:00",
  "nodes": [
   {
    "bio": "@LangChain\n\nAlways hiring: https://t.co/D5Ut3loFO7",
@@ -468,34 +560,64 @@
    "profile_url": "https://x.com/karpathy"
   },
   {
+   "bio": "We run the highest signal technical conferences in the industry and publish it all for free online for over 2 million AI Engineers a month",
+   "display_name": "AI.Engineer",
+   "followers": 72771,
+   "handle": "aiDotEngineer",
+   "id": "aidotengineer",
+   "interactions": 6,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "dexhorthy"
+    ],
+    "date": "2026-11-20",
+    "tweet_url": "https://x.com/aidotengineer/status/2123566998294601980",
+    "types": [
+     "quote"
+    ]
+   },
+   "oneliner": "Clip of @dexhorthy on what humans should review as agents write more code: the plan, the design, the result.",
+   "photo": "https://pbs.twimg.com/profile_images/2088074761607987200/25voc1vQ_400x400.jpg",
+   "profile_url": "https://x.com/aiDotEngineer",
+   "relayed_by": [
+    "dexhorthy",
+    "swyx"
+   ],
+   "since": "2026-11-20",
+   "tweets": 5
+  },
+  {
    "bio": "Armin's handler at https://t.co/B05ybKGkzx. Old man yelling at Claudes.\n\nhttps://t.co/Q1wG57v1yc\n\nhttps://t.co/mnOoWUr0TO\n\nhttps://t.co/8i5vIRE0Wn",
    "display_name": "Mario Zechner",
    "followers": 81193,
    "handle": "badlogicgames",
    "id": "badlogicgames",
-   "interactions": 5,
+   "interactions": 9,
    "kind": "candidate",
    "latest": {
     "by": [
-     "mitsuhiko"
+     "swyx"
     ],
-    "date": "2026-11-18",
-    "tweet_url": "https://x.com/badlogicgames/status/2123099337886749179",
+    "date": "2026-11-20",
+    "tweet_url": "https://x.com/badlogicgames/status/2123326437730234433",
     "types": [
-     "reply"
+     "rt"
     ]
    },
-   "oneliner": "Conversation with @mitsuhiko about learning low-level x86 computing history.",
+   "oneliner": "Short \"recommended viewing\" post pointing to a video.",
    "photo": "https://pbs.twimg.com/profile_images/1553485821767991296/87k3l720_400x400.jpg",
    "profile_url": "https://x.com/badlogicgames",
    "relayed_by": [
     "dbreunig",
     "dexhorthy",
+    "geoffreyhuntley",
     "mitsuhiko",
-    "steipete"
+    "steipete",
+    "swyx"
    ],
    "since": "2026-11-17",
-   "tweets": 3
+   "tweets": 7
   },
   {
    "bio": "Building Managed Agents at @LangChain 🇦🇺",
@@ -527,33 +649,91 @@
    "tweets": 3
   },
   {
+   "bio": "Writing @Pragmatic_Eng, the #1 software engineering newsletter on Substack. Author of @EngGuidebook. Formerly Uber & Skype.",
+   "display_name": "Gergely Orosz",
+   "followers": 369138,
+   "handle": "GergelyOrosz",
+   "id": "gergelyorosz",
+   "interactions": 2,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "swyx"
+    ],
+    "date": "2026-11-19",
+    "tweet_url": "https://x.com/gergelyorosz/status/2123436021090078856",
+    "types": [
+     "reply"
+    ]
+   },
+   "oneliner": "Conversation with @swyx, reply thread with no readable topic.",
+   "photo": "https://pbs.twimg.com/profile_images/673095429748350976/ei5eeouV_400x400.png",
+   "profile_url": "https://x.com/GergelyOrosz",
+   "relayed_by": [
+    "steipete",
+    "swyx"
+   ],
+   "since": "2026-11-19",
+   "tweets": 2
+  },
+  {
+   "bio": "@grok it",
+   "display_name": "Grok",
+   "followers": 9427312,
+   "handle": "grok",
+   "id": "grok",
+   "interactions": 6,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "geoffreyhuntley"
+    ],
+    "date": "2026-11-19",
+    "tweet_url": "https://x.com/grok/status/2123498296966521130",
+    "types": [
+     "reply"
+    ]
+   },
+   "oneliner": "Conversation with @GeoffreyHuntley about index fund qualification rules for Anthropic's stock.",
+   "photo": "https://pbs.twimg.com/profile_images/2057885623374290944/lmj0pawP_400x400.jpg",
+   "profile_url": "https://x.com/grok",
+   "relayed_by": [
+    "dexhorthy",
+    "geoffreyhuntley"
+   ],
+   "since": "2026-11-19",
+   "tweets": 4
+  },
+  {
    "bio": "🧪 Head of Evals @Every\n📕 2x O'Reilly author: Prompt Engineering / DSPy\n🎓 400k students on AI Udemy course\n🤖 AI engineer since 2020\n📈 Built 50 person agency",
    "display_name": "Mike Taylor",
    "followers": 13165,
    "handle": "hammer_mt",
    "id": "hammer_mt",
-   "interactions": 7,
+   "interactions": 9,
    "kind": "candidate",
    "latest": {
     "by": [
-     "dbreunig"
+     "hamelhusain"
     ],
     "date": "2026-11-19",
-    "tweet_url": "https://x.com/hammer_mt/status/2123217548103602179",
+    "tweet_url": "https://x.com/hammer_mt/status/2123391054292386069",
     "types": [
+     "reply",
      "rt"
     ]
    },
-   "oneliner": "Jokes that the model that solved Navier-Stokes failed his PowerPoint benchmark.",
+   "oneliner": "Received two new books on AI evals by @sh_reya and @HamelHusain on the same day.",
    "photo": "https://pbs.twimg.com/profile_images/2045274630408359936/_Q6ixnwR_400x400.jpg",
    "profile_url": "https://x.com/hammer_mt",
    "relayed_by": [
     "completeskeptic",
     "dbreunig",
+    "hamelhusain",
     "kieranklaassen"
    ],
    "since": "2026-11-17",
-   "tweets": 7
+   "tweets": 8
   },
   {
    "bio": "Ars longa, vita brevia \n\nYour works are wonderful, I know that full well\n\nWorking on optimization",
@@ -787,94 +967,122 @@
    ],
    "since": "2026-11-18",
    "tweets": 2
+  },
+  {
+   "bio": "fractional executive, full time founder @sentry\n\nhttps://t.co/quHCKoHZtu\n\nlike whisky? @peated_app",
+   "display_name": "David Cramer",
+   "followers": 37267,
+   "handle": "zeeg",
+   "id": "zeeg",
+   "interactions": 6,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "mitsuhiko"
+    ],
+    "date": "2026-11-19",
+    "tweet_url": "https://x.com/zeeg/status/2123461324269391959",
+    "types": [
+     "reply"
+    ]
+   },
+   "oneliner": "Conversation with @mitsuhiko about Gmail IMAP limits and CASA certification for apps.",
+   "photo": "https://pbs.twimg.com/profile_images/1911613315765133312/HVkULegC_400x400.jpg",
+   "profile_url": "https://x.com/zeeg",
+   "relayed_by": [
+    "dexhorthy",
+    "mitsuhiko"
+   ],
+   "since": "2026-11-19",
+   "tweets": 6
   }
  ],
  "projects": {
-  "date": "2026-11-19",
+  "date": "2026-11-20",
   "items": [
    {
     "accounts": [
-     "langchain",
      "hwchase17"
     ],
-    "author": "langchain",
-    "how": "Each agent session is traced (a trace is the full record of what the agent did: messages, tool calls, tokens used). LangSmith now links each thread (a conversation with the agent) to the pull request it produced (a PR is a proposed code change that gets reviewed and merged). You see what a merged PR cost, and how much token spend never led to a PR. It works across harnesses (the software wrapper around the model) and model providers.",
-    "links": [],
-    "tag": "paid",
-    "title": "LangSmith Coding agent ROI: what each agent-written PR costs",
-    "try": "A LangSmith feature (paid product with a limited free tier). The announcement link could not be read (t.co blocked), details limited to the tweet.",
-    "tweet_url": "https://x.com/LangChain/status/2123113924857827504",
-    "what": "A new dashboard in LangSmith (LangChain's monitoring tool) that gathers every coding agent a team uses (Claude Code, Codex, etc.) and computes their return on investment. Put simply, an expense report per pull request.",
-    "who": "Companies whose token bill is exploding. According to the team: see what each merged PR costs, who is shipping slop (sloppy code), and who deserves more tokens. The question any portfolio company will ask: do our agents earn more than they cost?"
-   },
-   {
-    "accounts": [
-     "bentlegen",
-     "mitsuhiko"
-    ],
-    "author": "bentlegen",
-    "how": "Version 1 was an autonomous AI PM agent. The founder's finding: nobody wants another agent, they want to use their own. So Modem was rebuilt as a platform: it collects and structures the problems, and the agents you already use (Claude, Codex...) pull from it. Technical details are not in the tweet.",
-    "links": [],
-    "tag": "paid",
-    "title": "Modem 2.0: an AI PM that works with your agents",
-    "try": "Commercial product. Site not reachable (modem.dev), details limited.",
-    "tweet_url": "https://x.com/bentlegen/status/2123083111315505178",
-    "what": "A tool that digs through customer channels to find buried problems, tracks them, and follows up when the fix ships. Put simply, a product manager who reads all the customer feedback for you.",
-    "who": "Product and ops teams drowning in customer feedback. Business lesson: it is better to be the data source agents consult than yet another agent."
-   },
-   {
-    "accounts": [
-     "nathanflurry",
-     "completeskeptic"
-    ],
-    "author": "nathanflurry",
-    "how": "1) First version: one prompt asking for the ticket severity with definitions of each level. Results were meh, because jev does not reason, by design. 2) Working version: split into tiny yes/no questions (did their service go down? are they blocked with no workaround? is something in Rivet broken?) and plain if-logic in code decides the severity. 3) Improvement loop: every misclassified ticket is given to an LLM with the expected result; the LLM adds it to a test suite, adjusts the decision logic, then backtests it on old tickets. Within a few tickets the classifier was solid. Counts: 13 questions for support classification and customer status, 6 for severity, 6 for follow-up timing.",
-    "links": [],
-    "tag": "research",
-    "title": "Rivet's support ticket classifier: 13 tiny questions, not one big prompt",
-    "try": "An experience report, not a product. jev is not documented in the tweet (no link).",
-    "tweet_url": "https://x.com/NathanFlurry/status/2123108222470959600",
-    "what": "How Rivet built the internal tool that triages its support tickets (severity, customer status, follow-up timing...) with a decision tool called jev.",
-    "who": "Any ops or support automation. The most reusable pattern of the day: the model answers simple questions, code makes the decision, so it is controllable, monitorable and testable."
-   },
-   {
-    "accounts": [
-     "sydneyrunkle",
-     "hwchase17"
-    ],
-    "author": "sydneyrunkle",
-    "how": "Per the README: sub-agents (delegate a subtask to an agent with its own context window, its separate working memory), a filesystem (read, write, search), context management (summarize long threads, offload large tool outputs to disk), shell access in a sandbox (an isolated environment), persistent memory across sessions, human-in-the-loop (approve or reject an action before it runs), skills and MCP tools. Built on LangGraph. New yesterday: day-0 support for Gemini 4 Neon in Managed Deep Agents.",
+    "author": "hwchase17",
+    "how": "You mention it in a Slack thread with a brief. Each thread gets its own sandbox (an isolated, disposable Linux machine with Chrome, FFmpeg...) where everything is made as code (a slide is HTML, a film is an animation timeline), so a change is an edit and a re-render. A router skill picks among 35 skills loaded only when needed, keeping the context window small. On big jobs the main agent splits the work and starts async subagents in parallel. Code checks colors, fonts, contrast and chart math before delivery. Two-layer memory (team and personal) keeps your rules, and after each job it writes notes on what worked. External tools (Notion, Linear, Figma) connect through MCP, each person signed…",
     "links": [
      {
       "label": "Repo",
-      "url": "https://github.com/langchain-ai/deepagents"
+      "url": "https://github.com/langchain-ai/design-agent"
      }
     ],
     "tag": "open source",
-    "title": "Deep Agents: LangChain's open source harness hits 50M downloads",
-    "try": "MIT license, uv add deepagents (Python) or the JS version; also available as a terminal coding agent (Deep Agents Code). GitHub stars not readable from the session.",
-    "tweet_url": "https://x.com/sydneyrunkle/status/2123106938473042349",
-    "what": "A batteries-included agent harness: a ready-to-run agent you customize. Put simply, the skeleton of a Claude Code, for any job and any model.",
-    "who": "Building agents that handle long tasks in a company (research, ops) without reinventing the plumbing."
+    "title": "Content Studio: LangChain's design agent, now open source",
+    "try": "Apache 2.0 license, Python 3.11+, built on Deep Agents and deployable on Managed Deep Agents (LangSmith, paid); a local mode with no keys is advertised. GitHub stars not checked.",
+    "tweet_url": "https://x.com/hwchase17/status/2123430062913724481",
+    "what": "The agent LangChain uses internally as a designer: ask it in Slack for a visual, a slide or a launch video and it returns finished, on-brand files. Basically a junior designer available 24/7 in Slack.",
+    "who": "A real case of an agent doing company work: per the README, over 3,000 assets shipped since August, and three in four requests come from outside marketing. A reusable architecture blueprint for any internal ops agent (Slack + sandbox + skills + memory + checks in code)."
    },
    {
     "accounts": [
-     "sqs"
+     "hwchase17",
+     "langchain"
     ],
-    "author": "sqs",
-    "how": "Not detailed: the site could not be reached.",
+    "author": "hwchase17",
+    "how": "On each tool call the gateway (1) identifies the caller (a user, an agent or a shared profile); (2) blocks the call if a deny policy matches; (3) attaches the right stored credential instead of a token hardcoded in the agent; (4) asks a human to approve if an approval policy matches; (5) forwards the call to the MCP server and records a trace of who did what. Tool kits define which tools each agent sees, through a single URL.",
     "links": [
      {
       "label": "Site",
-      "url": "https://ampcode.com/news/amp-for-windows"
+      "url": "https://docs.langchain.com/langsmith/tool-gateway"
      }
     ],
     "tag": "paid",
-    "title": "Amp for Windows",
-    "try": "Site not reachable (ampcode.com), details limited.",
-    "tweet_url": "https://x.com/sqs/status/2123197781376679961",
-    "what": "The Amp coding agent ships a Windows app (\"Winamp\" was taken).",
-    "who": "Only useful if you code on Windows."
+    "title": "LangSmith Tool Gateway: a bouncer for your agents' tools",
+    "try": "Beta, LangSmith Plus and Enterprise plans only (paid), on LangSmith Cloud (GCP US/EU/APAC, AWS US).",
+    "tweet_url": "https://x.com/hwchase17/status/2123488866284040278",
+    "what": "A central layer between your agents and the tools they call, handling access, identity and rules. Like an IT department handing out badges instead of every agent holding the keys to the whole building.",
+    "who": "As soon as several agents touch sensitive tools (CRM, email, finance), you need to know who sent what on whose behalf and to require approvals. Harrison Chase: the more goal-oriented agents get, the more crucial this fine-grained control becomes."
+   },
+   {
+    "accounts": [
+     "hwchase17",
+     "isidoremiller"
+    ],
+    "author": "hwchase17",
+    "how": "Per Izzy Miller (Hex), instead of hand-writing static context (docs, definitions) that goes stale, the system starts from that context and synthesizes knowledge organized as a graph of linked notions, enriched by real-world feedback, so it can be verified and maintained automatically. Site not reachable, limited details.",
+    "links": [],
+    "tag": "paid",
+    "title": "Hex Knowledge Engine: a self-maintaining company knowledge layer",
+    "try": "Live now for Hex 4.0 users (paid).",
+    "tweet_url": "https://x.com/hwchase17/status/2123491145888272525",
+    "what": "A self-learning, graph-based context system built into Hex 4.0 (a data analysis tool), so data agents know the company's definitions and rules. Basically an internal wiki the AI keeps up to date on its own.",
+    "who": "The real blocker for data agents is having five different definitions of revenue. Harrison Chase calls this a knowledge factory: at LangChain, a set of metric definitions and skills for fetching data from each system."
+   },
+   {
+    "accounts": [
+     "kieranklaassen",
+     "replit"
+    ],
+    "author": "kieranklaassen",
+    "how": "According to Replit, its Missions ran agent swarms (many agents in parallel) that explored thousands of workflows in the existing tool and rebuilt its features 1:1. No further details readable.",
+    "links": [],
+    "tag": "open source",
+    "title": "DataCat: an observability clone built by agent swarms",
+    "try": "Announced as 100% free; license and status not checked. Site not reachable, limited details.",
+    "tweet_url": "https://x.com/kieranklaassen/status/2123534093526966584",
+    "what": "Replit announces DataCat, a free alternative to the leading observability platform (a tool that monitors an app and catches issues, billed at $83,700/yr according to Replit).",
+    "who": "A striking demo of SaaS cloning by agents: if agents can copy an expensive tool, B2B software prices come under pressure. Treat it as a marketing claim until people test it."
+   },
+   {
+    "accounts": [
+     "zachlloydtweets",
+     "warpdotdev"
+    ],
+    "author": "zachlloydtweets",
+    "how": "Announced path: fundamentals, then writing your first automation loop (an agent that keeps relaunching itself on tasks), up to a full factory with specs (written before the code), risk assessment and end-to-end verification (testing the whole flow, not one piece).",
+    "links": [],
+    "tag": "open source",
+    "title": "Warp Learn: a free course to build your software factory",
+    "try": "Free and public, taught by @BHolmesDev. Site not reachable, limited details.",
+    "tweet_url": "https://x.com/zachlloydtweets/status/2123494395567886657",
+    "what": "A hands-on course by Warp (the terminal) on building a software factory: per Zach Lloyd, an automation loop in the cloud that orchestrates agents to build better and better software over time.",
+    "who": "For anyone moving from one-conversation-at-a-time vibe coding to agents that run continuously."
    }
   ]
  },

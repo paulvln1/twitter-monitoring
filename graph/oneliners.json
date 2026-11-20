@@ -1,52 +1,72 @@
 {
-  "badlogicgames": {
-    "text": "Conversation with @mitsuhiko about learning low-level x86 computing history.",
-    "tweet_id": "2123099337886749179",
-    "date": "2026-11-18"
-  },
-  "hammer_mt": {
-    "text": "Jokes that the model that solved Navier-Stokes failed his PowerPoint benchmark.",
-    "tweet_id": "2123217548103602179",
-    "date": "2026-11-19"
-  },
-  "sydneyrunkle": {
-    "text": "Lessons learned building proactive agents that react to live events and schedule their own work; memory and UX are key.",
-    "tweet_id": "2122735146596282854",
-    "date": "2026-11-17"
-  },
-  "theo": {
-    "text": "Conversation with @kieranklaassen about a new model he found good.",
-    "tweet_id": "2123226794409287937",
-    "date": "2026-11-19"
-  },
-  "caspar_br": {
-    "text": "Day-0 support for Gemini 4 Neon in LangChain's Managed Deep Agents, added in one line.",
-    "tweet_id": "2123192026745409844",
-    "date": "2026-11-18"
-  },
-  "joshpurtell": {
-    "text": "Says GPT-6.2 Sol and Astra are monsters on his autoresearch benchmark, despite the online backlash.",
-    "tweet_id": "2122852757170213351",
-    "date": "2026-11-18"
-  },
-  "poteto": {
-    "text": "Conversation with @dexhorthy about Mario Zechner's views on agent-written code.",
-    "tweet_id": "2123227123636719859",
-    "date": "2026-11-19"
-  },
-  "simonw": {
-    "text": "Conversation with @swyx comparing GPT-6.2 Sol and Fable 5.2 outputs.",
-    "tweet_id": "2122822484529684838",
-    "date": "2026-11-18"
-  },
-  "tenderlove": {
-    "text": "Ruby 4.0.10 released with a critical security fix; update immediately.",
-    "tweet_id": "2123204646449934352",
-    "date": "2026-11-19"
-  },
-  "trq212": {
-    "text": "Argues most people won't generate their own software: good software is a set of strong, well-thought opinions.",
-    "tweet_id": "2123106370161705127",
-    "date": "2026-11-18"
-  }
+ "badlogicgames": {
+  "text": "Short \"recommended viewing\" post pointing to a video.",
+  "tweet_id": "2123326437730234433",
+  "date": "2026-11-20"
+ },
+ "hammer_mt": {
+  "text": "Received two new books on AI evals by @sh_reya and @HamelHusain on the same day.",
+  "tweet_id": "2123391054292386069",
+  "date": "2026-11-19"
+ },
+ "sydneyrunkle": {
+  "text": "Lessons learned building proactive agents that react to live events and schedule their own work; memory and UX are key.",
+  "tweet_id": "2122735146596282854",
+  "date": "2026-11-17"
+ },
+ "theo": {
+  "text": "Conversation with @kieranklaassen about a new model he found good.",
+  "tweet_id": "2123226794409287937",
+  "date": "2026-11-19"
+ },
+ "caspar_br": {
+  "text": "Day-0 support for Gemini 4 Neon in LangChain's Managed Deep Agents, added in one line.",
+  "tweet_id": "2123192026745409844",
+  "date": "2026-11-18"
+ },
+ "joshpurtell": {
+  "text": "Says GPT-6.2 Sol and Astra are monsters on his autoresearch benchmark, despite the online backlash.",
+  "tweet_id": "2122852757170213351",
+  "date": "2026-11-18"
+ },
+ "poteto": {
+  "text": "Conversation with @dexhorthy about Mario Zechner's views on agent-written code.",
+  "tweet_id": "2123227123636719859",
+  "date": "2026-11-19"
+ },
+ "simonw": {
+  "text": "Conversation with @swyx comparing GPT-6.2 Sol and Fable 5.2 outputs.",
+  "tweet_id": "2122822484529684838",
+  "date": "2026-11-18"
+ },
+ "tenderlove": {
+  "text": "Ruby 4.0.10 released with a critical security fix; update immediately.",
+  "tweet_id": "2123204646449934352",
+  "date": "2026-11-19"
+ },
+ "trq212": {
+  "text": "Argues most people won't generate their own software: good software is a set of strong, well-thought opinions.",
+  "tweet_id": "2123106370161705127",
+  "date": "2026-11-18"
+ },
+ "aidotengineer": {
+  "text": "Clip of @dexhorthy on what humans should review as agents write more code: the plan, the design, the result.",
+  "tweet_id": "2123566998294601980",
+  "date": "2026-11-20"
+ },
+ "gergelyorosz": {
+  "text": "Conversation with @swyx, reply thread with no readable topic.",
+  "tweet_id": "2123436021090078856",
+  "date": "2026-11-19"
+ },
+ "grok": {
+  "text": "Conversation with @GeoffreyHuntley about index fund qualification rules for Anthropic's stock.",
+  "tweet_id": "2123498296966521130",
+  "date": "2026-11-19"
+ },
+ "zeeg": {
+  "text": "Conversation with @mitsuhiko about Gmail IMAP limits and CASA certification for apps.",
+  "tweet_id": "2123461324269391959",
+  "date": "2026-11-19"
+ }
 }
