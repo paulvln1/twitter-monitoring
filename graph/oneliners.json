@@ -1,13 +1,13 @@
 {
  "badlogicgames": {
-  "text": "Short \"recommended viewing\" post pointing to a video.",
-  "tweet_id": "2123326437730234433",
+  "text": "Conversation with @steipete about an OpenAI API change breaking external agent harnesses.",
+  "tweet_id": "2123818322319872113",
   "date": "2026-11-20"
  },
  "hammer_mt": {
-  "text": "Received two new books on AI evals by @sh_reya and @HamelHusain on the same day.",
-  "tweet_id": "2123391054292386069",
-  "date": "2026-11-19"
+  "text": "Shares his attempt to apply a similar approach to writing.",
+  "tweet_id": "2123844818208244072",
+  "date": "2026-11-20"
  },
  "sydneyrunkle": {
   "text": "Lessons learned building proactive agents that react to live events and schedule their own work; memory and UX are key.",
@@ -20,9 +20,9 @@
   "date": "2026-11-19"
  },
  "caspar_br": {
-  "text": "Day-0 support for Gemini 4 Neon in LangChain's Managed Deep Agents, added in one line.",
-  "tweet_id": "2123192026745409844",
-  "date": "2026-11-18"
+  "text": "LangChain data: share of agent runs started by a schedule keeps growing across deployed agents.",
+  "tweet_id": "2123851852781686877",
+  "date": "2026-11-20"
  },
  "joshpurtell": {
   "text": "Says GPT-6.2 Sol and Astra are monsters on his autoresearch benchmark, despite the online backlash.",
@@ -50,8 +50,8 @@
   "date": "2026-11-18"
  },
  "aidotengineer": {
-  "text": "Clip of @dexhorthy on what humans should review as agents write more code: the plan, the design, the result.",
-  "tweet_id": "2123566998294601980",
+  "text": "AI Engineer Code Summit talk by Warp's Zach Lloyd on software factories as code, recorded agent runs and evals.",
+  "tweet_id": "2123850567185494508",
   "date": "2026-11-20"
  },
  "gergelyorosz": {
@@ -68,5 +68,20 @@
   "text": "Conversation with @mitsuhiko about Gmail IMAP limits and CASA certification for apps.",
   "tweet_id": "2123461324269391959",
   "date": "2026-11-19"
+ },
+ "ajambrosino": {
+  "text": "ChatGPT update: Space for Plus, new visual design, rebuilt threads, faster pages and more reliable Codex Remote.",
+  "tweet_id": "2123840812534452296",
+  "date": "2026-11-20"
+ },
+ "iruletheworldmo": {
+  "text": "Claims Sam Altman faces mounting pressure to step down as OpenAI CEO.",
+  "tweet_id": "2123757570191933639",
+  "date": "2026-11-20"
+ },
+ "petergyang": {
+  "text": "Conversation with @steipete about management style and accountability at tech companies.",
+  "tweet_id": "2123850141325283362",
+  "date": "2026-11-20"
  }
 }

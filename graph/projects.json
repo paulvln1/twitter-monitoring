@@ -1,65 +1,34 @@
-{
- "date": "2026-11-20",
- "projects": [
-  {
-   "title": "Content Studio: LangChain's design agent, now open source",
-   "tag": "open source",
-   "tweet_url": "https://x.com/hwchase17/status/2123430062913724481",
-   "links": [
-    {
-     "label": "Repo",
-     "url": "https://github.com/langchain-ai/design-agent"
-    }
-   ],
-   "what": "The agent LangChain uses internally as a designer: ask it in Slack for a visual, a slide or a launch video and it returns finished, on-brand files. Basically a junior designer available 24/7 in Slack.",
-   "how": "You mention it in a Slack thread with a brief. Each thread gets its own sandbox (an isolated, disposable Linux machine with Chrome, FFmpeg...) where everything is made as code (a slide is HTML, a film is an animation timeline), so a change is an edit and a re-render. A router skill picks among 35 skills loaded only when needed, keeping the context window small. On big jobs the main agent splits the work and starts async subagents in parallel. Code checks colors, fonts, contrast and chart math before delivery. Two-layer memory (team and personal) keeps your rules, and after each job it writes notes on what worked. External tools (Notion, Linear, Figma) connect through MCP, each person signed in as themselves.",
-   "who": "A real case of an agent doing company work: per the README, over 3,000 assets shipped since August, and three in four requests come from outside marketing. A reusable architecture blueprint for any internal ops agent (Slack + sandbox + skills + memory + checks in code).",
-   "try": "Apache 2.0 license, Python 3.11+, built on Deep Agents and deployable on Managed Deep Agents (LangSmith, paid); a local mode with no keys is advertised. GitHub stars not checked."
-  },
-  {
-   "title": "LangSmith Tool Gateway: a bouncer for your agents' tools",
-   "tag": "paid",
-   "tweet_url": "https://x.com/hwchase17/status/2123488866284040278",
-   "links": [
-    {
-     "label": "Site",
-     "url": "https://docs.langchain.com/langsmith/tool-gateway"
-    }
-   ],
-   "what": "A central layer between your agents and the tools they call, handling access, identity and rules. Like an IT department handing out badges instead of every agent holding the keys to the whole building.",
-   "how": "On each tool call the gateway (1) identifies the caller (a user, an agent or a shared profile); (2) blocks the call if a deny policy matches; (3) attaches the right stored credential instead of a token hardcoded in the agent; (4) asks a human to approve if an approval policy matches; (5) forwards the call to the MCP server and records a trace of who did what. Tool kits define which tools each agent sees, through a single URL.",
-   "who": "As soon as several agents touch sensitive tools (CRM, email, finance), you need to know who sent what on whose behalf and to require approvals. Harrison Chase: the more goal-oriented agents get, the more crucial this fine-grained control becomes.",
-   "try": "Beta, LangSmith Plus and Enterprise plans only (paid), on LangSmith Cloud (GCP US/EU/APAC, AWS US)."
-  },
-  {
-   "title": "Hex Knowledge Engine: a self-maintaining company knowledge layer",
-   "tag": "paid",
-   "tweet_url": "https://x.com/hwchase17/status/2123491145888272525",
-   "links": [],
-   "what": "A self-learning, graph-based context system built into Hex 4.0 (a data analysis tool), so data agents know the company's definitions and rules. Basically an internal wiki the AI keeps up to date on its own.",
-   "how": "Per Izzy Miller (Hex), instead of hand-writing static context (docs, definitions) that goes stale, the system starts from that context and synthesizes knowledge organized as a graph of linked notions, enriched by real-world feedback, so it can be verified and maintained automatically. Site not reachable, limited details.",
-   "who": "The real blocker for data agents is having five different definitions of revenue. Harrison Chase calls this a knowledge factory: at LangChain, a set of metric definitions and skills for fetching data from each system.",
-   "try": "Live now for Hex 4.0 users (paid)."
-  },
-  {
-   "title": "DataCat: an observability clone built by agent swarms",
-   "tag": "open source",
-   "tweet_url": "https://x.com/kieranklaassen/status/2123534093526966584",
-   "links": [],
-   "what": "Replit announces DataCat, a free alternative to the leading observability platform (a tool that monitors an app and catches issues, billed at $83,700/yr according to Replit).",
-   "how": "According to Replit, its Missions ran agent swarms (many agents in parallel) that explored thousands of workflows in the existing tool and rebuilt its features 1:1. No further details readable.",
-   "who": "A striking demo of SaaS cloning by agents: if agents can copy an expensive tool, B2B software prices come under pressure. Treat it as a marketing claim until people test it.",
-   "try": "Announced as 100% free; license and status not checked. Site not reachable, limited details."
-  },
-  {
-   "title": "Warp Learn: a free course to build your software factory",
-   "tag": "open source",
-   "tweet_url": "https://x.com/zachlloydtweets/status/2123494395567886657",
-   "links": [],
-   "what": "A hands-on course by Warp (the terminal) on building a software factory: per Zach Lloyd, an automation loop in the cloud that orchestrates agents to build better and better software over time.",
-   "how": "Announced path: fundamentals, then writing your first automation loop (an agent that keeps relaunching itself on tasks), up to a full factory with specs (written before the code), risk assessment and end-to-end verification (testing the whole flow, not one piece).",
-   "who": "For anyone moving from one-conversation-at-a-time vibe coding to agents that run continuously.",
-   "try": "Free and public, taught by @BHolmesDev. Site not reachable, limited details."
-  }
- ]
-}
+{"date": "2026-11-21", "projects": [
+ {"title": "LangSmith Tool Gateway: a bouncer controlling your agents' tools",
+  "tag": "paid",
+  "tweet_url": "https://x.com/hwchase17/status/2123802088547250358",
+  "links": [{"label": "Site", "url": "https://www.langchain.com/blog/langsmith-tool-gateway"}],
+  "what": "A managed layer that every agent tool call goes through. Think Okta/1Password for agents: it decides which agent may use which tool, with which credentials, and keeps a trace of everything.",
+  "how": "1) Register your MCP servers once (MCP is the standard for plugging tools like Gmail, Salesforce or GitHub into an AI), or enable built-in servers. 2) Build tool kits: a subset of tools behind a single URL; an agent connected to a kit only sees those tools. 3) Search mode: with hundreds of tools, the agent only loads the relevant ones so its context window does not overflow. 4) Identity: each call runs either as the user (their own access via Okta/Entra ID, with a sign-in link if they have not connected yet) or as the agent (shared service credentials for background agents). 5) Deny policies and human-in-the-loop approval for sensitive tools. 6) Every call is traced in LangSmith.",
+  "who": "The example is a large US retailer with 50+ MCP servers and 1,000+ tools: a store assistant acting with each associate's access, and an inventory agent running at 3 a.m. with its own credentials. Without a gateway, each team hand-rolls OAuth and nobody can audit. It is the missing piece when a personal agent becomes a team agent.",
+  "try": "Public Beta in the LangSmith Agent Platform (paid, price not stated in the article)."},
+ {"title": "LangSmith for Coding Agents: what each merged PR cost",
+  "tag": "paid",
+  "tweet_url": "https://x.com/hwchase17/status/2123802091713880228",
+  "links": [{"label": "Site", "url": "https://www.langchain.com/blog/langsmith-coding-agents-roi"}],
+  "what": "A dashboard that ties coding agent spend (Claude Code, Codex, Cursor...) to the pull requests they produce. In short, a cost per deliverable for AI-written code.",
+  "how": "LangSmith already traces every agent session (a trace is the step-by-step record of what the agent did and the tokens it used). The new 'outcomes' concept links each GitHub/GitLab PR to the threads that produced it (one session can open several PRs, one PR can take several sessions). The dashboard splits spend by PR state (open, closed, merged), isolates 'unattributed' spend (reviews, investigations that end without a PR), labels threads by work type (feature, bug fix, investigation, review) and shows the most expensive PRs and which skills are called.",
+  "who": "Coding is the largest enterprise AI spend category ($34B in 2026 per the article) and most leaders cannot say what it returns. Useful ROI metric to ask portfolio companies deploying coding agents about.",
+  "try": "Available in LangSmith (paid)."},
+ {"title": "Warp Factories: run coding agents like an engineered factory",
+  "tag": "paid",
+  "tweet_url": "https://x.com/zachlloydtweets/status/2123808803070063033",
+  "links": [{"label": "Site", "url": "https://www.warp.dev/learn"}],
+  "what": "Warp CEO Zach Lloyd's vision: instead of managing a team of agents like coworkers (the Devin Bots approach, with a chief-of-staff agent delegating to designer and implementer agents), define a software factory in code: a cloud system of coding agents that is measured and improved continuously. From agent manager to production-line engineer.",
+  "how": "Per the tweet: the factory is declarative (you describe what you want, not every step) and versioned like code; all runs go through the cloud, producing standardized data; you measure with evals (tests that grade the agent's work, on your own data); you try other configurations (model, harness = the software wrapper around the model, skills); improvements ship as PRs. A closed loop, like continuous improvement in a factory.",
+  "who": "Platform teams that want to maximize throughput and quality of agent-written code while minimizing cost. Key argument: agents are not people, so for the first time we can directly measure how software gets made. Warp also released a hands-on course to build your own factory. Site not reachable during the run, details limited.",
+  "try": "Free course on Warp Learn; Warp Factories is a Warp product (price not read)."},
+ {"title": "Instant Record: Rails running inside your browser",
+  "tag": "open source",
+  "tweet_url": "https://x.com/kieranklaassen/status/2123934071252521370",
+  "links": [{"label": "Site", "url": "https://instant-record.kieranklaassen.com/todo"}],
+  "what": "Kieran Klaassen is working on a Ruby gem that compiles a Rails app into the browser (and onto iPhone) so it works offline with millisecond response times, without a server.",
+  "how": "Not detailed beyond the tweet; the author calls it 'VERY experimental'. Site not reachable during the run, details limited.",
+  "who": "Skip unless curious, or if you vibe code in Rails.",
+  "try": "Demo site linked in the tweet; experimental."}
+]}

@@ -8,6 +8,15 @@
   "photo": "https://pbs.twimg.com/profile_images/2088074761607987200/25voc1vQ_400x400.jpg",
   "profile_url": "https://x.com/aiDotEngineer"
  },
+ "ajambrosino": {
+  "bio": "Codex & ChatGPT @OpenAI",
+  "display_name": "Andrew Ambrosino",
+  "fetched_at": "2026-11-21",
+  "followers": 105743,
+  "handle": "ajambrosino",
+  "photo": "https://pbs.twimg.com/profile_images/2123872040524357632/t_GcQ2er_400x400.jpg",
+  "profile_url": "https://x.com/ajambrosino"
+ },
  "badlogicgames": {
   "bio": "Armin's handler at https://t.co/B05ybKGkzx. Old man yelling at Claudes.\n\nhttps://t.co/Q1wG57v1yc\n\nhttps://t.co/mnOoWUr0TO\n\nhttps://t.co/8i5vIRE0Wn",
   "display_name": "Mario Zechner",
@@ -116,6 +125,15 @@
   "photo": "https://pbs.twimg.com/profile_images/1569345624935485442/R67C4wCQ_400x400.jpg",
   "profile_url": "https://x.com/hwchase17"
  },
+ "iruletheworldmo": {
+  "bio": "a week of big plans ahead.",
+  "display_name": "🍓🍓🍓",
+  "fetched_at": "2026-11-21",
+  "followers": 117245,
+  "handle": "iruletheworldmo",
+  "photo": "https://pbs.twimg.com/profile_images/2048580995302174720/jWUrx_47_400x400.jpg",
+  "profile_url": "https://x.com/iruletheworldmo"
+ },
  "joshpurtell": {
   "bio": "Ars longa, vita brevia \n\nYour works are wonderful, I know that full well\n\nWorking on optimization",
   "display_name": "Josh",
@@ -187,6 +205,15 @@
   "handle": "mitsuhiko",
   "photo": "https://pbs.twimg.com/profile_images/1905698833084174336/jcHMkWFA_400x400.jpg",
   "profile_url": "https://x.com/mitsuhiko"
+ },
+ "petergyang": {
+  "bio": "Practical AI tutorials and interviews for busy people | Get my best AI skills and guides at https://t.co/6VAA6p81x6",
+  "display_name": "Peter Yang",
+  "fetched_at": "2026-11-21",
+  "followers": 298395,
+  "handle": "petergyang",
+  "photo": "https://pbs.twimg.com/profile_images/1454103621516206083/_klMwpkk_400x400.jpg",
+  "profile_url": "https://x.com/petergyang"
  },
  "poteto": {
   "bio": "grok @bot at @SpaceXSI. react compiler core team, prev cursor, meta, netflix",
