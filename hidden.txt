@@ -1,3 +1,4 @@
 # Discovered accounts hidden from the map by the admin (from the site's "Hide from map" button).
 # One "handle YYYY-MM-DD" per line (the day it was hidden, UTC). Lines starting with # are ignored.
 # A hidden account stays off the map until a source relays it again after that day.
+grok 2026-11-22
