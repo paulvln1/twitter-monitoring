@@ -26,6 +26,18 @@ test("editWatchlist: add, duplicate, remove, comments kept", () => {
   assert.deepStrictEqual(lib.listHandles(FILE), ["alice", "Bob", "carol"]);
 });
 
+test("editHidden: hide, move the date, unhide, comments kept", () => {
+  const H = "# hidden\nfoo 2026-11-20\n";
+  assert.strictEqual(lib.editHidden("", "hide", "Bar", "2026-11-22"), "bar 2026-11-22\n");
+  assert.strictEqual(lib.editHidden(H, "hide", "bar", "2026-11-22"), H + "bar 2026-11-22\n");
+  assert.strictEqual(lib.editHidden(H, "hide", "FOO", "2026-11-20"), null);
+  assert.strictEqual(lib.editHidden(H, "hide", "foo", "2026-11-22"), "# hidden\nfoo 2026-11-22\n");
+  assert.strictEqual(lib.editHidden(H, "unhide", "foo"), "# hidden\n");
+  assert.strictEqual(lib.editHidden(H, "unhide", "zed"), null);
+  assert.throws(() => lib.editHidden(H, "hide", "foo", "bad"));
+  assert.deepStrictEqual(lib.listHidden(H + "junk\n@Baz 2026-11-21 # x\n"), { foo: "2026-11-20", baz: "2026-11-21" });
+});
+
 test("signed session: valid, forged, expired, admin removed", () => {
   const tok = lib.signSession("paulvln1");
   assert.strictEqual(lib.readSession(tok), "paulvln1");
@@ -51,7 +63,7 @@ function fakeRes() {
   return r;
 }
 function fakeGitHub({ conflicts = 0 } = {}) {
-  const state = { text: FILE, sha: "s0", puts: [] };
+  const state = { text: FILE, sha: "s0", puts: [], hidden: null, hiddenSha: null };
   global.fetch = async (url, opt = {}) => {
     const u = new URL(url), m = opt.method || "GET";
     const reply = (status, data) => ({ status, json: async () => data });
@@ -66,6 +78,16 @@ function fakeGitHub({ conflicts = 0 } = {}) {
       if (b.sha !== state.sha) return reply(409, {});
       state.text = Buffer.from(b.content, "base64").toString(); state.sha += "1";
       return reply(200, {});
+    }
+    if (u.pathname.endsWith("/contents/hidden.txt") && m === "GET")
+      return state.hidden === null ? reply(404, {})
+        : reply(200, { sha: state.hiddenSha, content: Buffer.from(state.hidden).toString("base64") });
+    if (u.pathname.endsWith("/contents/hidden.txt") && m === "PUT") {
+      const b = JSON.parse(opt.body);
+      state.puts.push(b);
+      if (b.sha !== (state.hidden === null ? undefined : state.hiddenSha)) return reply(409, {});
+      state.hidden = Buffer.from(b.content, "base64").toString(); state.hiddenSha = (state.hiddenSha || "h") + "1";
+      return reply(state.hiddenSha === "h1" ? 201 : 200, {});
     }
     throw new Error(`unexpected ${m} ${url}`);
   };
@@ -107,6 +129,34 @@ test("watchlist: add then remove, commits to main, retries after a conflict", as
   res = fakeRes();
   await watchlist({ method: "GET", headers: authed().headers }, res);
   assert.deepStrictEqual(res.body.accounts, ["alice", "carol", "Dave"]);
+});
+
+test("watchlist: hide creates hidden.txt, unhide removes the line, GET returns both files", async () => {
+  const gh = fakeGitHub();
+  const day = new Date().toISOString().slice(0, 10);
+  let res = fakeRes();
+  await watchlist({ method: "GET", headers: authed().headers }, res);
+  assert.deepStrictEqual(res.body, { accounts: ["alice", "Bob", "carol"], hidden: {} });
+
+  res = fakeRes();
+  await watchlist({ method: "POST", ...authed(), body: { action: "hide", handle: "@Zed" } }, res);
+  assert.strictEqual(res.statusCode, 200);
+  assert.strictEqual(gh.hidden, `zed ${day}\n`);
+  assert.strictEqual(gh.puts[0].sha, undefined);
+  assert.strictEqual(gh.puts[0].branch, "main");
+  assert.match(gh.puts[0].message, /^Map: hide @Zed .*@paulvln1/);
+  assert.deepStrictEqual(res.body.hidden, { zed: day });
+  assert.deepStrictEqual(res.body.accounts, ["alice", "Bob", "carol"]);
+  assert.strictEqual(gh.text, FILE, "watchlist.txt untouched");
+
+  res = fakeRes();
+  await watchlist({ method: "POST", ...authed(), body: { action: "unhide", handle: "zed" } }, res);
+  assert.strictEqual(gh.hidden, "");
+  assert.deepStrictEqual(res.body.hidden, {});
+
+  res = fakeRes();
+  await watchlist({ method: "POST", ...authed(), body: { action: "delete", handle: "zed" } }, res);
+  assert.strictEqual(res.statusCode, 400);
 });
 
 test("callback: bad state rejected, non-admin rejected, admin signed in", async () => {

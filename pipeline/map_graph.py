@@ -74,6 +74,22 @@ def load_whitelist():
     return list(dict.fromkeys(norm(a) for a in re.split(r"[\s,;]+", raw) if norm(a)))
 
 
+def load_hidden():
+    """hidden.txt on main: discovered accounts the admin hid from the map, one "handle YYYY-MM-DD" per line.
+    Returns {handle: date}. A missing file means nothing is hidden."""
+    hidden_file = os.environ.get("HIDDEN_FILE", os.path.join(ROOT, "hidden.txt"))
+    out = {}
+    try:
+        with open(hidden_file, encoding="utf-8") as f:
+            for line in f:
+                parts = line.split("#", 1)[0].split()
+                if len(parts) >= 2 and HANDLE_RE.match(norm(parts[0])) and re.match(r"^\d{4}-\d{2}-\d{2}$", parts[1]):
+                    out[norm(parts[0])] = parts[1]
+    except FileNotFoundError:
+        pass
+    return out
+
+
 def load_interactions():
     out = []
     try:
@@ -188,8 +204,12 @@ def cmd_seed(args):
 
 # --- Map computation ---
 
-def compute_map(whitelist, interactions, ref_day):
-    """Apply the rules of section 2. Returns {handle: interactions} for the accounts that make the map."""
+def compute_map(whitelist, interactions, ref_day, hidden=None):
+    """Apply the rules of section 2. Returns {handle: interactions} for the accounts that make the map.
+
+    hidden = {handle: date} (hidden.txt): a hidden account stays off the map until a source
+    relays it again after that date (and it still meets the rules)."""
+    hidden = hidden or {}
     wl = set(whitelist)
     start = (ref_day - timedelta(days=WINDOW_DAYS - 1)).isoformat()
     end = ref_day.isoformat()
@@ -206,6 +226,8 @@ def compute_map(whitelist, interactions, ref_day):
         tweets = {it["target_tweet_id"] for it in its}
         relayers = {it["from"] for it in its}
         if len(tweets) >= MIN_TWEETS and len(relayers) >= MIN_WL_ACCOUNTS:
+            if handle in hidden and not any(it["date"] > hidden[handle] for it in its):
+                continue  # hidden by the admin, not relayed since
             kept[handle] = its
     return kept
 
@@ -244,7 +266,7 @@ def latest_relayed(its):
 
 def map_handles():
     wl = load_whitelist()
-    kept = compute_map(wl, load_interactions(), today())
+    kept = compute_map(wl, load_interactions(), today(), load_hidden())
     return wl, kept
 
 

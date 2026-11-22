@@ -73,6 +73,7 @@ Rules:
 - **Bubble size** of a discovered account: number of distinct tweets relayed over 30 days.
 - **Links**: only source → discovered. No source ↔ source links. Thickness follows the number of interactions.
 - **Big accounts** (labs, CEOs...): no filter, they show up like everyone else.
+- **Hidden by the admin** (`hidden.txt` on `main`, one `handle YYYY-MM-DD` per line): the account leaves the map at the next run. It comes back only if a source relays it again **after** that day (a relay on the same day does not count) and it still meets the conditions above. Hiding it again moves the date.
 - **Removed from `watchlist.txt`**: the account becomes a candidate again. Its outgoing links disappear, and it stays on the map only if it still meets the conditions above.
 - **Added to `watchlist.txt`**: the account becomes a source at the next run. It **loses its incoming links** (no source ↔ source links) and reconnects once it relays discovered accounts itself. Its interactions are collected from then on.
 - **No longer relayed**: a discovered account leaves the map as soon as it no longer meets the conditions over 30 days.
@@ -140,9 +141,10 @@ Rules:
 - **Log in with GitHub** (GitHub OAuth App) through a Vercel serverless function. The **Log in** link sits in the top bar; once signed in it shows `@login · Log out`.
 - Allowed users: `ADMIN_GITHUB_LOGINS` (comma-separated).
 - Signed in, the panel shows **+ Add to watchlist** on a discovered account and **Remove from watchlist** on a source. Removing asks for a **confirmation** (Confirm / Cancel); adding is one click.
+- **Hide from map**: on a discovered account, a "Map" box offers **Hide from map** (one click, undoable). The server writes `handle YYYY-MM-DD` (today, UTC) to `hidden.txt` on `main`. The account stays on the map, marked "pending", until the next run, then disappears until a source relays it again (section 2).
 - The server commits `watchlist.txt` on `main` through the GitHub API, with credentials stored on Vercel and never sent to the browser. The commit message names the action and the account.
 - **Add by hand**: a **+ Add an account** button (blue border) under the top bar, on the right (bottom right on mobile), opens a small "Add to the watchlist" dialog. It takes `@handle`, `handle` or an `x.com/handle` URL, at any time of day, and writes to `watchlist.txt` like the panel button.
-- **Backlog**: signed in, a "Backlog · Will be in the next run" box sits under the button, flush with the right edge of the map (black border, no right border). It lists the accounts waiting for the next run: *joining* (added) and *leaving* (removed). A click opens the account's panel, with the button to undo.
+- **Backlog**: signed in, a "Backlog · Will be in the next run" box sits under the button, flush with the right edge of the map (black border, no right border). It lists the accounts waiting for the next run: *joining* (added), *leaving* (removed) and *hidden* (hidden from the map). A click opens the account's panel, with the button to undo.
   - An **added** account leaves the map right away (bubble and links) and only lives in the backlog. A **removed** account stays on the map, marked "pending", until the run.
   - An account that is not on the map yet (added by hand, or straight on GitHub) shows its initials; its panel says "added by hand" and offers "Undo: remove from watchlist", to fix a typo. Its profile arrives at the next run.
 - The change shows up on the map **at the next run**. Until then, the site compares `watchlist.txt` on `main` with the watchlist in `graph.json`, and only the signed-in admin sees the difference.
@@ -154,7 +156,7 @@ Rules:
 - **No personal access token is stored.**
 - **GitHub login only checks identity.** It asks for the minimal scope (no repo access). The OAuth token is used to read the login, then revoked. The browser gets a signed session cookie (`HttpOnly`, `Secure`, `SameSite=Strict`, time-limited), signed with a key stored on Vercel.
 - **Writes go through a dedicated GitHub App**, installed on this repo only, with a single permission: `Contents: write`. Its private key lives in Vercel's encrypted environment variables, is never sent to the browser and can be rotated at any time.
-- **The server only changes `watchlist.txt`**: the file path is hard-coded.
+- **The server only changes `watchlist.txt` and `hidden.txt`**: both paths are hard-coded.
 - **Handle validation**: `^[A-Za-z0-9_]{1,15}$`. Anything else is rejected, so no extra lines or arbitrary text can be injected.
 - **CSRF protection**: write routes only accept `POST` requests from the site's own origin (`Origin` header checked).
 - **Admin list on the server** (`ADMIN_GITHUB_LOGINS`): the login is checked on every write, not only at sign-in.

@@ -17,8 +17,8 @@
   let project = null;      // index of the project open in the panel
   let preview = null;      // index of the hovered project
   let zoom, view, sim;
-  // admin: signed-in login, current content of watchlist.txt, pending remove confirmation
-  const Admin = { login: null, accounts: null, busy: false, confirm: null, error: null };
+  // admin: signed-in login, current content of watchlist.txt and hidden.txt, pending remove confirmation
+  const Admin = { login: null, accounts: null, hidden: null, busy: false, confirm: null, error: null };
 
   // ---------- helpers ----------
   function el(tag, props = {}, ...children) {
@@ -327,14 +327,21 @@
   }
 
   // ---------- watchlist (admin) ----------
-  // "add": discovered account already added to watchlist.txt; "remove": source already removed. Applied at the next run.
+  // "add": discovered account already added to watchlist.txt; "remove": source already removed;
+  // "hide": discovered account hidden (hidden.txt) since the map was built. Applied at the next run.
   function pending(n) {
     if (!Admin.accounts) return null;
     const inFile = Admin.accounts.has(n.id);
     if (n.kind === "candidate" && inFile) return "add";
     if (n.kind === "whitelist" && !inFile) return "remove";
+    const day = Admin.hidden && Admin.hidden[n.id];
+    if (n.kind === "candidate" && !n.ghost && day && G && G.as_of <= day) return "hide";
     return null;
   }
+  const setAdminFiles = (data) => {
+    Admin.accounts = new Set(data.accounts.map((a) => a.toLowerCase()));
+    Admin.hidden = data.hidden && typeof data.hidden === "object" ? data.hidden : {};
+  };
 
   // Accounts in watchlist.txt that are not on the map yet (added by hand): a ghost entry, listed in the backlog.
   function syncGhosts() {
@@ -397,7 +404,8 @@
       const p = n.ghost ? "add" : pending(n);
       if (p) items.push({ n, p });
     }
-    items.sort((a, b) => (a.p === b.p ? handleOf(a.n).localeCompare(handleOf(b.n)) : a.p === "add" ? -1 : 1));
+    const order = { add: 0, remove: 1, hide: 2 };
+    items.sort((a, b) => order[a.p] - order[b.p] || handleOf(a.n).localeCompare(handleOf(b.n)));
     const list = $("backlog-list");
     list.replaceChildren();
     if (!items.length) { list.append(el("li", { class: "empty", text: "Nothing pending." })); return; }
@@ -409,7 +417,7 @@
         type: "button", class: selected === n.id ? "on" : null,
         onclick: (e) => { e.stopPropagation(); select(n.id); },
       }, pic, el("span", { class: "b-h", text: `@${handleOf(n)}` }),
-        el("span", { class: "b-tag", text: p === "add" ? "joining" : "leaving" }))));
+        el("span", { class: "b-tag", text: { add: "joining", remove: "leaving", hide: "hidden" }[p] }))));
     }
   }
 
@@ -418,7 +426,9 @@
     const box = el("div", { class: "p-admin" }, el("p", { class: "p-label", text: "Watchlist" }));
     const h = `@${handleOf(n)}`;
     const p = pending(n);
-    if (p) {
+    if (p === "hide") {
+      // hidden from the map: only the "Map" box below shows, with the undo button
+    } else if (p) {
       box.append(el("p", { class: "p-note", text: p === "add"
         ? `${h} is in the watchlist. It becomes a source at the next run.`
         : `${h} was removed from the watchlist. It leaves the sources at the next run.` }));
@@ -436,8 +446,23 @@
       box.append(el("button", { type: "button", class: "btn ghost", text: "Remove from watchlist",
         onclick: () => { Admin.confirm = n.id; Admin.error = null; renderPanel(n); } }));
     }
-    if (Admin.error) box.append(el("p", { class: "p-note err", text: Admin.error }));
-    body.append(box);
+    if (p !== "hide") body.append(box);
+
+    // Map: hide a discovered account until a source relays it again
+    if (n.kind === "candidate" && p !== "add") {
+      const map = el("div", { class: "p-admin" }, el("p", { class: "p-label", text: "Map" }));
+      if (p === "hide") {
+        map.append(el("p", { class: "p-note", text: `${h} is hidden. It leaves the map at the next run, and comes back only if a source relays it again.` }),
+          el("button", { type: "button", class: "btn ghost", disabled: Admin.busy ? "" : null,
+            text: Admin.busy ? "Saving…" : "Undo: show again", onclick: () => edit("unhide", n) }));
+      } else {
+        map.append(el("button", { type: "button", class: "btn ghost", disabled: Admin.busy ? "" : null,
+          text: Admin.busy ? "Saving…" : "Hide from map", onclick: () => edit("hide", n) }),
+          el("p", { class: "p-note", text: "Until a source relays it again." }));
+      }
+      body.append(map);
+    }
+    if (Admin.error) body.append(el("p", { class: "p-note err", text: Admin.error }));
   }
 
   async function edit(action, n) {
@@ -452,7 +477,7 @@
       });
       const data = await r.json().catch(() => ({}));
       if (!r.ok) throw new Error(data.error || `error ${r.status}`);
-      Admin.accounts = new Set(data.accounts.map((a) => a.toLowerCase()));
+      setAdminFiles(data);
       Admin.confirm = null;
       markPending(true);
     } catch (e) {
@@ -513,7 +538,7 @@
       });
       const data = await r.json().catch(() => ({}));
       if (!r.ok) throw new Error(data.error || `error ${r.status}`);
-      Admin.accounts = new Set(data.accounts.map((a) => a.toLowerCase()));
+      setAdminFiles(data);
       Admin.busy = false;
       openAdd(false);
       markPending(true);
@@ -527,7 +552,7 @@
 
   async function logout() {
     await fetch("/api/logout", { method: "POST", credentials: "same-origin" }).catch(() => {});
-    Admin.login = null; Admin.accounts = null; Admin.confirm = null;
+    Admin.login = null; Admin.accounts = null; Admin.hidden = null; Admin.confirm = null;
     renderAuth(); markPending(true);
     if (selected) renderPanel(byId.get(selected));
   }
@@ -546,7 +571,7 @@
       renderAuth();
       const w = await fetch("/api/watchlist", { credentials: "same-origin" }).then((r) => (r.ok ? r.json() : null));
       if (w && Array.isArray(w.accounts)) {
-        Admin.accounts = new Set(w.accounts.map((a) => a.toLowerCase()));
+        setAdminFiles(w);
         renderAuth();
         markPending(false);
         if (selected) renderPanel(byId.get(selected));
