@@ -58,8 +58,9 @@ Then:
 2. Back on the site, you should see `@<your-login> · Log out`, and a **+ Add an account** button under the top bar.
 3. Click a discovered account: the panel shows **+ Add to watchlist**.
 4. Click a source: the panel shows **Remove from watchlist**, then asks for confirmation.
+5. Click a discovered account: the panel also shows **Hide from map** (writes `hidden.txt`).
 
-Each action creates a commit on `watchlist.txt`, on `main`. The account sits in the **Backlog** box until the next routine run.
+Each action creates a commit on `watchlist.txt` (or `hidden.txt`), on `main`. The account sits in the **Backlog** box until the next routine run.
 
 ## Troubleshooting
 

@@ -46,7 +46,7 @@ Every morning, a scheduled Claude Code routine reads the last 24 hours of tweets
 1. **Writes a digest** and posts it to Discord: new projects worth a look, one technical concept explained simply, notable takes, accounts to follow, and the cost of the run.
 2. **Updates the map.** Every retweet, quote and reply from the watchlist is logged. An account that keeps getting relayed shows up on the map as a *discovery*, with a one-line note on why it matters.
    The day's new projects are listed next to the map, in English; the accounts behind them light up in green.
-3. **Lets the owner act on it.** Signed in with GitHub, the owner can add a discovery to the watchlist, add any account by hand, or remove a source, straight from the site. Pending changes wait in a Backlog box until the next run.
+3. **Lets the owner act on it.** Signed in with GitHub, the owner can add a discovery to the watchlist, add any account by hand, remove a source, or hide a discovery from the map, straight from the site. Pending changes wait in a Backlog box until the next run.
 
 The loop: sources surface people → the best ones get promoted to sources → they surface new people.
 
@@ -82,6 +82,7 @@ flowchart LR
 |---|---|
 | `ROUTINE.md` | Instructions for the daily routine: filtering, digest format (in French), delivery order, map update. |
 | `watchlist.txt` | The followed accounts, one handle per line. |
+| `hidden.txt` | Discoveries hidden from the map by the admin, `handle YYYY-MM-DD` per line. |
 | `pipeline/fetch_tweets.py` | All tweet fetching via Mindcase, with cost guardrails (date filter on every call, stop if the first call looks wrong). Python stdlib only. |
 | `pipeline/post_discord.py` | Sends the digest to one or more Discord webhooks, one embed per section. `--dry-run` prints the payloads. |
 | `pipeline/map_graph.py` | The map engine: extracts interactions, applies the rules, fetches new profiles once, links each project of the day to its accounts, builds `graph.json`. Python stdlib only. |
@@ -97,7 +98,7 @@ The site is public; editing the watchlist is restricted to one admin.
 
 - **GitHub login is used for identity only.** No repository scope is requested, and the OAuth token is revoked right after reading the login.
 - **The session is a signed cookie** (`HttpOnly`, `Secure`, `SameSite=Strict`, 7 days). The admin list is checked again on every write.
-- **Writes go through a dedicated GitHub App** installed on this repository only, with `Contents: write` as its only permission. The server code can only touch `watchlist.txt`.
+- **Writes go through a dedicated GitHub App** installed on this repository only, with `Contents: write` as its only permission. The server code can only touch `watchlist.txt` and `hidden.txt`.
 - **Handles are validated** against `^[A-Za-z0-9_]{1,15}$`, and write requests must come from the site's own origin.
 - **The routine can't push to `main`.** Its data lives on `claude/map-data`, so a malicious tweet can't change the code the routine runs.
 
@@ -134,6 +135,8 @@ node --test tests/web_api.test.js
 ## Editing the watchlist
 
 Use the **Add / Remove** buttons or **+ Add an account** on the site, or edit [`watchlist.txt`](watchlist.txt) on GitHub: one handle per line, `#` for comments. The routine reads `main` on every run, so changes show up the next morning.
+
+**Hiding a discovery.** Too many bubbles? Signed in, open a discovered account and click **Hide from map**. It goes into [`hidden.txt`](hidden.txt) with today's date and leaves the map at the next run. It comes back only if a source relays it again after that day (and it still meets the rules). Until the run, it sits in the Backlog as *hidden*, with **Undo: show again**.
 
 ## Costs
 

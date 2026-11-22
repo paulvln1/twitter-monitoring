@@ -57,6 +57,36 @@ class Rules(unittest.TestCase):
         self.assertEqual(self.kept(items, wl=["alice", "bob"]), {"carol"})
 
 
+class Hidden(unittest.TestCase):
+    ITEMS = [it("alice", "x", 1, d="2026-11-10"), it("bob", "x", 2, d="2026-11-12")]
+
+    def test_hidden_account_leaves_the_map(self):
+        self.assertEqual(set(mg.compute_map(WL, self.ITEMS, DAY, {"x": "2026-11-14"})), set())
+
+    def test_comes_back_after_a_new_relay(self):
+        # a relay on the hide day does not count, the day after does
+        same_day = self.ITEMS + [it("carol", "x", 3, d="2026-11-14")]
+        later = self.ITEMS + [it("carol", "x", 3, d="2026-11-15")]
+        self.assertEqual(set(mg.compute_map(WL, same_day, DAY, {"x": "2026-11-14"})), set())
+        self.assertEqual(set(mg.compute_map(WL, later, DAY, {"x": "2026-11-14"})), {"x"})
+
+    def test_other_accounts_untouched(self):
+        self.assertEqual(set(mg.compute_map(WL, self.ITEMS, DAY, {"y": "2026-11-14"})), {"x"})
+
+    def test_load_hidden(self):
+        with tempfile.TemporaryDirectory() as d:
+            f = os.path.join(d, "hidden.txt")
+            with open(f, "w") as fh:
+                fh.write("# comment\n@Foo 2026-11-20\nbar 2026-11-21  # note\nbad\nbaz not-a-date\n")
+            os.environ["HIDDEN_FILE"] = f
+            try:
+                self.assertEqual(mg.load_hidden(), {"foo": "2026-11-20", "bar": "2026-11-21"})
+                os.environ["HIDDEN_FILE"] = os.path.join(d, "missing.txt")
+                self.assertEqual(mg.load_hidden(), {})
+            finally:
+                os.environ.pop("HIDDEN_FILE")
+
+
 class Extraction(unittest.TestCase):
     base = {"account": "alice", "tweetUrl": "https://x.com/alice/status/100", "postedDate": "2026-11-16T10:00:00Z",
             "tweetText": "hello"}

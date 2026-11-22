@@ -5,7 +5,8 @@ const crypto = require("crypto");
 
 const OWNER = "paulvln1";
 const REPO = "twitter-monitoring";
-const FILE = "watchlist.txt"; // the only file the server is allowed to change
+const FILE = "watchlist.txt";     // the only two files the server is allowed to change
+const HIDDEN_FILE = "hidden.txt";  // discovered accounts hidden from the map: "handle YYYY-MM-DD" per line
 const BRANCH = "main";
 const SESSION_COOKIE = "signal_session";
 const SESSION_DAYS = 7;
@@ -112,11 +113,15 @@ async function installationToken() {
   return tok.data.token;
 }
 
-async function readWatchlistFile(token) {
-  const r = await gh(`/repos/${OWNER}/${REPO}/contents/${FILE}?ref=${BRANCH}`, { token });
+// file is FILE or HIDDEN_FILE, never anything else. hidden.txt may not exist yet: empty, no sha (the PUT creates it).
+async function readRepoFile(token, file) {
+  if (file !== FILE && file !== HIDDEN_FILE) throw new Error("file not allowed");
+  const r = await gh(`/repos/${OWNER}/${REPO}/contents/${file}?ref=${BRANCH}`, { token });
+  if (r.status === 404 && file === HIDDEN_FILE) return { sha: undefined, text: "" };
   if (r.status !== 200) throw new Error(`read ${r.status}`);
   return { sha: r.data.sha, text: Buffer.from(r.data.content, "base64").toString("utf8") };
 }
+const readWatchlistFile = (token) => readRepoFile(token, FILE);
 
 // ---------- editing watchlist.txt (pure logic, tested) ----------
 const norm = (line) => line.trim().replace(/^@/, "").toLowerCase();
@@ -141,8 +146,40 @@ function editWatchlist(text, action, handle) {
   throw new Error("bad action");
 }
 
+// ---------- editing hidden.txt (pure logic, tested) ----------
+const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
+const hiddenEntry = (line) => {
+  const [h, d] = line.split("#")[0].trim().split(/\s+/);
+  return h && HANDLE_RE.test(h.replace(/^@/, "")) && DATE_RE.test(d || "") ? { h: h.replace(/^@/, "").toLowerCase(), d } : null;
+};
+
+// { handle: "YYYY-MM-DD" }
+function listHidden(text) {
+  const out = {};
+  for (const line of text.split("\n")) { const e = hiddenEntry(line); if (e) out[e.h] = e.d; }
+  return out;
+}
+
+// "hide" writes (or moves) "handle day"; "unhide" removes it. Returns the new text, or null if nothing changes.
+function editHidden(text, action, handle, day) {
+  const h = handle.toLowerCase();
+  const lines = text.split("\n");
+  const mine = (l) => { const e = hiddenEntry(l); return !!e && e.h === h; };
+  if (action === "hide") {
+    if (!DATE_RE.test(day)) throw new Error("bad day");
+    if (lines.some((l) => mine(l) && hiddenEntry(l).d === day)) return null;
+    const rest = lines.filter((l) => !mine(l)).join("\n");
+    return (rest === "" || rest.endsWith("\n") ? rest : rest + "\n") + `${h} ${day}\n`;
+  }
+  if (action === "unhide") {
+    if (!lines.some(mine)) return null;
+    return lines.filter((l) => !mine(l)).join("\n");
+  }
+  throw new Error("bad action");
+}
+
 module.exports = {
-  OWNER, REPO, FILE, BRANCH, SESSION_COOKIE, SESSION_DAYS, HANDLE_RE,
+  OWNER, REPO, FILE, HIDDEN_FILE, BRANCH, SESSION_COOKIE, SESSION_DAYS, HANDLE_RE,
   env, siteOrigin, parseCookies, safeEqual, signSession, readSession, isAdmin, currentAdmin,
-  cookie, sameOrigin, gh, installationToken, readWatchlistFile, listHandles, editWatchlist,
+  cookie, sameOrigin, gh, installationToken, readRepoFile, readWatchlistFile, listHandles, editWatchlist, listHidden, editHidden,
 };
