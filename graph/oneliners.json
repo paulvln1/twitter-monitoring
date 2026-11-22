@@ -1,13 +1,13 @@
 {
  "badlogicgames": {
-  "text": "Conversation with @steipete about an OpenAI API change breaking external agent harnesses.",
-  "tweet_id": "2123818322319872113",
-  "date": "2026-11-20"
+  "text": "Conversation with @geoffreyhuntley about spending a season in Sweden.",
+  "tweet_id": "2124070404176421058",
+  "date": "2026-11-21"
  },
  "hammer_mt": {
-  "text": "Shares his attempt to apply a similar approach to writing.",
-  "tweet_id": "2123844818208244072",
-  "date": "2026-11-20"
+  "text": "Jokes he got 8% through GTA and 30% through the evals book EFAIE.",
+  "tweet_id": "2123759160030302283",
+  "date": "2026-11-21"
  },
  "sydneyrunkle": {
   "text": "Lessons learned building proactive agents that react to live events and schedule their own work; memory and UX are key.",
@@ -15,9 +15,9 @@
   "date": "2026-11-17"
  },
  "theo": {
-  "text": "Conversation with @kieranklaassen about a new model he found good.",
-  "tweet_id": "2123226794409287937",
-  "date": "2026-11-19"
+  "text": "Argues repos need private files, per-team private branches and built-in secret management.",
+  "tweet_id": "2123901093751280052",
+  "date": "2026-11-21"
  },
  "caspar_br": {
   "text": "LangChain data: share of agent runs started by a schedule keeps growing across deployed agents.",
@@ -65,9 +65,9 @@
   "date": "2026-11-19"
  },
  "zeeg": {
-  "text": "Conversation with @mitsuhiko about Gmail IMAP limits and CASA certification for apps.",
-  "tweet_id": "2123461324269391959",
-  "date": "2026-11-19"
+  "text": "Conversation with @dexhorthy about what agent context to keep versus archive.",
+  "tweet_id": "2124314932678373831",
+  "date": "2026-11-22"
  },
  "ajambrosino": {
   "text": "ChatGPT update: Space for Plus, new visual design, rebuilt threads, faster pages and more reliable Codex Remote.",
@@ -83,5 +83,10 @@
   "text": "Conversation with @steipete about management style and accountability at tech companies.",
   "tweet_id": "2123850141325283362",
   "date": "2026-11-20"
+ },
+ "bentlegen": {
+  "text": "Conversation with @sqs about founders handing accounts to volume-focused outsourcing services.",
+  "tweet_id": "2124199066301288752",
+  "date": "2026-11-21"
  }
 }

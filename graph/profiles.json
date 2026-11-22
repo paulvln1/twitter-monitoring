@@ -26,6 +26,15 @@
   "photo": "https://pbs.twimg.com/profile_images/1553485821767991296/87k3l720_400x400.jpg",
   "profile_url": "https://x.com/badlogicgames"
  },
+ "bentlegen": {
+  "bio": "Co-founder @modemdev. Before: founding engineer then VPE at @sentry. Builds https://t.co/lRZKcrfjO0. Runs @devtoolsTO. 🇨🇦",
+  "display_name": "Ben Vinegar",
+  "fetched_at": "2026-11-22",
+  "followers": 15339,
+  "handle": "bentlegen",
+  "photo": "https://pbs.twimg.com/profile_images/1765244446650568704/zgjmJiTX_400x400.jpg",
+  "profile_url": "https://x.com/bentlegen"
+ },
  "caspar_br": {
   "bio": "Building Managed Agents at @LangChain 🇦🇺",
   "display_name": "Caspar",
