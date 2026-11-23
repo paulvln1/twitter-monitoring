@@ -20,9 +20,9 @@
   "date": "2026-11-21"
  },
  "caspar_br": {
-  "text": "LangChain data: share of agent runs started by a schedule keeps growing across deployed agents.",
-  "tweet_id": "2123851852781686877",
-  "date": "2026-11-20"
+  "text": "One-word endorsement of LangSmith, LangChain's agent observability and eval platform.",
+  "tweet_id": "2124599842131632399",
+  "date": "2026-11-22"
  },
  "joshpurtell": {
   "text": "Says GPT-6.2 Sol and Astra are monsters on his autoresearch benchmark, despite the online backlash.",
@@ -50,9 +50,9 @@
   "date": "2026-11-18"
  },
  "aidotengineer": {
-  "text": "AI Engineer Code Summit talk by Warp's Zach Lloyd on software factories as code, recorded agent runs and evals.",
-  "tweet_id": "2123850567185494508",
-  "date": "2026-11-20"
+  "text": "Talk: how Lovable separates task history from running processes so 10-hour agents survive deploys every two minutes.",
+  "tweet_id": "2124291774671880239",
+  "date": "2026-11-22"
  },
  "gergelyorosz": {
   "text": "Conversation with @swyx, reply thread with no readable topic.",
@@ -88,5 +88,45 @@
   "text": "Conversation with @sqs about founders handing accounts to volume-focused outsourcing services.",
   "tweet_id": "2124199066301288752",
   "date": "2026-11-21"
+ },
+ "eliaslumer": {
+  "text": "Conversation with @dexhorthy about inspecting Codex and Claude Code harnesses via open source code or a local proxy.",
+  "tweet_id": "2124619645927772451",
+  "date": "2026-11-22"
+ },
+ "eliebakouch": {
+  "text": "Conversation with @CompleteSkeptic about whether OpenAI counts midtraining as pretraining in its perplexity chart.",
+  "tweet_id": "2124677577902321859",
+  "date": "2026-11-23"
+ },
+ "joelhooks": {
+  "text": "Conversation with @dbreunig and @dexhorthy about using a lab's official harness vs custom ones for its models.",
+  "tweet_id": "2124579474767499468",
+  "date": "2026-11-22"
+ },
+ "pvncher": {
+  "text": "Conversation with @mitsuhiko about advice to copy Codex's system prompt to get good results from OpenAI models.",
+  "tweet_id": "2124581091679916199",
+  "date": "2026-11-22"
+ },
+ "quinnypig": {
+  "text": "Conversation with @GeoffreyHuntley; short agreement reply, topic not stated.",
+  "tweet_id": "2124346726995853521",
+  "date": "2026-11-22"
+ },
+ "rasbt": {
+  "text": "Conversation with @CompleteSkeptic about whether GPT-4.5 and GPT-5.5 had similar pretraining capabilities.",
+  "tweet_id": "2124679667231961593",
+  "date": "2026-11-23"
+ },
+ "ryancarson": {
+  "text": "Says developers who coded with LLMs for years must unlearn their old habits as models improve.",
+  "tweet_id": "2124706135097868324",
+  "date": "2026-11-23"
+ },
+ "thorstenball": {
+  "text": "Shares Benedict Evans on rethinking how you work with AI, including dropping pull requests.",
+  "tweet_id": "2124743669781594564",
+  "date": "2026-11-23"
  }
 }

@@ -1,5 +1,5 @@
 {
- "as_of": "2026-11-22",
+ "as_of": "2026-11-23",
  "edges": [
   {
    "source": "swyx",
@@ -8,7 +8,7 @@
     "quote",
     "rt"
    ],
-   "weight": 5
+   "weight": 6
   },
   {
    "source": "dexhorthy",
@@ -115,13 +115,45 @@
     "quote",
     "rt"
    ],
-   "weight": 5
+   "weight": 6
   },
   {
    "source": "sydneyrunkle",
    "target": "caspar_br",
    "types": [
     "rt"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "hwchase17",
+   "target": "eliaslumer",
+   "types": [
+    "rt"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "dexhorthy",
+   "target": "eliaslumer",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "swyx",
+   "target": "eliebakouch",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "completeskeptic",
+   "target": "eliebakouch",
+   "types": [
+    "reply"
    ],
    "weight": 1
   },
@@ -136,23 +168,6 @@
   {
    "source": "swyx",
    "target": "gergelyorosz",
-   "types": [
-    "reply"
-   ],
-   "weight": 1
-  },
-  {
-   "source": "dexhorthy",
-   "target": "grok",
-   "types": [
-    "quote",
-    "reply"
-   ],
-   "weight": 5
-  },
-  {
-   "source": "geoffreyhuntley",
-   "target": "grok",
    "types": [
     "reply"
    ],
@@ -212,6 +227,22 @@
   },
   {
    "source": "dbreunig",
+   "target": "joelhooks",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "dexhorthy",
+   "target": "joelhooks",
+   "types": [
+    "reply"
+   ],
+   "weight": 2
+  },
+  {
+   "source": "dbreunig",
    "target": "joshpurtell",
    "types": [
     "reply"
@@ -260,6 +291,55 @@
    "weight": 1
   },
   {
+   "source": "dbreunig",
+   "target": "pvncher",
+   "types": [
+    "quote"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "mitsuhiko",
+   "target": "pvncher",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "dexhorthy",
+   "target": "quinnypig",
+   "types": [
+    "quote",
+    "reply"
+   ],
+   "weight": 2
+  },
+  {
+   "source": "geoffreyhuntley",
+   "target": "quinnypig",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "swyx",
+   "target": "rasbt",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "completeskeptic",
+   "target": "rasbt",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
    "source": "kieranklaassen",
    "target": "ryancarson",
    "types": [
@@ -269,6 +349,14 @@
   },
   {
    "source": "swyx",
+   "target": "ryancarson",
+   "types": [
+    "quote"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "dexhorthy",
    "target": "ryancarson",
    "types": [
     "quote"
@@ -374,6 +462,22 @@
    "weight": 2
   },
   {
+   "source": "sqs",
+   "target": "thorstenball",
+   "types": [
+    "rt"
+   ],
+   "weight": 5
+  },
+  {
+   "source": "mitsuhiko",
+   "target": "thorstenball",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
    "source": "swyx",
    "target": "trq212",
    "types": [
@@ -431,7 +535,7 @@
    "weight": 1
   }
  ],
- "generated_at": "2026-11-22T07:12:16+00:00",
+ "generated_at": "2026-11-23T07:11:51+00:00",
  "nodes": [
   {
    "bio": "@LangChain\n\nAlways hiring: https://t.co/D5Ut3loFO7",
@@ -649,19 +753,19 @@
    "followers": 72771,
    "handle": "aiDotEngineer",
    "id": "aidotengineer",
-   "interactions": 7,
+   "interactions": 8,
    "kind": "candidate",
    "latest": {
     "by": [
-     "zachlloydtweets"
+     "swyx"
     ],
-    "date": "2026-11-20",
-    "tweet_url": "https://x.com/aidotengineer/status/2123850567185494508",
+    "date": "2026-11-22",
+    "tweet_url": "https://x.com/aidotengineer/status/2124291774671880239",
     "types": [
-     "quote"
+     "rt"
     ]
    },
-   "oneliner": "AI Engineer Code Summit talk by Warp's Zach Lloyd on software factories as code, recorded agent runs and evals.",
+   "oneliner": "Talk: how Lovable separates task history from running processes so 10-hour agents survive deploys every two minutes.",
    "photo": "https://pbs.twimg.com/profile_images/2088074761607987200/25voc1vQ_400x400.jpg",
    "profile_url": "https://x.com/aiDotEngineer",
    "relayed_by": [
@@ -670,7 +774,7 @@
     "zachlloydtweets"
    ],
    "since": "2026-11-20",
-   "tweets": 6
+   "tweets": 7
   },
   {
    "bio": "Codex & ChatGPT @OpenAI",
@@ -766,20 +870,19 @@
    "followers": 2790,
    "handle": "caspar_br",
    "id": "caspar_br",
-   "interactions": 6,
+   "interactions": 7,
    "kind": "candidate",
    "latest": {
     "by": [
      "hwchase17"
     ],
-    "date": "2026-11-20",
-    "tweet_url": "https://x.com/caspar_br/status/2123851852781686877",
+    "date": "2026-11-22",
+    "tweet_url": "https://x.com/caspar_br/status/2124599842131632399",
     "types": [
-     "quote",
      "rt"
     ]
    },
-   "oneliner": "LangChain data: share of agent runs started by a schedule keeps growing across deployed agents.",
+   "oneliner": "One-word endorsement of LangSmith, LangChain's agent observability and eval platform.",
    "photo": "https://pbs.twimg.com/profile_images/1982513791498625024/mTCEFECz_400x400.jpg",
    "profile_url": "https://x.com/caspar_br",
    "relayed_by": [
@@ -787,7 +890,63 @@
     "sydneyrunkle"
    ],
    "since": "2026-11-18",
-   "tweets": 4
+   "tweets": 5
+  },
+  {
+   "bio": "ai research & engineering | pwc",
+   "display_name": "Elias Lumer",
+   "followers": 122,
+   "handle": "EliasLumer",
+   "id": "eliaslumer",
+   "interactions": 2,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "dexhorthy"
+    ],
+    "date": "2026-11-22",
+    "tweet_url": "https://x.com/eliaslumer/status/2124619645927772451",
+    "types": [
+     "reply"
+    ]
+   },
+   "oneliner": "Conversation with @dexhorthy about inspecting Codex and Claude Code harnesses via open source code or a local proxy.",
+   "photo": "https://pbs.twimg.com/profile_images/2025645255278690306/RJz9tlGW_400x400.jpg",
+   "profile_url": "https://x.com/EliasLumer",
+   "relayed_by": [
+    "dexhorthy",
+    "hwchase17"
+   ],
+   "since": "2026-11-22",
+   "tweets": 2
+  },
+  {
+   "bio": "research @PrimeIntellect (prev: @huggingface)\nanon feedback: https://t.co/JmMh7Sfvxd",
+   "display_name": "elie",
+   "followers": 27018,
+   "handle": "eliebakouch",
+   "id": "eliebakouch",
+   "interactions": 2,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "completeskeptic"
+    ],
+    "date": "2026-11-23",
+    "tweet_url": "https://x.com/eliebakouch/status/2124677577902321859",
+    "types": [
+     "reply"
+    ]
+   },
+   "oneliner": "Conversation with @CompleteSkeptic about whether OpenAI counts midtraining as pretraining in its perplexity chart.",
+   "photo": "https://pbs.twimg.com/profile_images/1745893660099592193/MmYemsw6_400x400.jpg",
+   "profile_url": "https://x.com/eliebakouch",
+   "relayed_by": [
+    "completeskeptic",
+    "swyx"
+   ],
+   "since": "2026-11-23",
+   "tweets": 2
   },
   {
    "bio": "Writing @Pragmatic_Eng, the #1 software engineering newsletter on Substack. Author of @EngGuidebook. Formerly Uber & Skype.",
@@ -816,34 +975,6 @@
    ],
    "since": "2026-11-19",
    "tweets": 2
-  },
-  {
-   "bio": "@grok it",
-   "display_name": "Grok",
-   "followers": 9427312,
-   "handle": "grok",
-   "id": "grok",
-   "interactions": 6,
-   "kind": "candidate",
-   "latest": {
-    "by": [
-     "geoffreyhuntley"
-    ],
-    "date": "2026-11-19",
-    "tweet_url": "https://x.com/grok/status/2123498296966521130",
-    "types": [
-     "reply"
-    ]
-   },
-   "oneliner": "Conversation with @GeoffreyHuntley about index fund qualification rules for Anthropic's stock.",
-   "photo": "https://pbs.twimg.com/profile_images/2057885623374290944/lmj0pawP_400x400.jpg",
-   "profile_url": "https://x.com/grok",
-   "relayed_by": [
-    "dexhorthy",
-    "geoffreyhuntley"
-   ],
-   "since": "2026-11-19",
-   "tweets": 4
   },
   {
    "bio": "🧪 Head of Evals @Every\n📕 2x O'Reilly author: Prompt Engineering / DSPy\n🎓 400k students on AI Udemy course\n🤖 AI engineer since 2020\n📈 Built 50 person agency",
@@ -902,6 +1033,34 @@
    ],
    "since": "2026-11-20",
    "tweets": 2
+  },
+  {
+   "bio": "lvl 16 half-orc nerd 🍄💀🌈 independent AI researcher https://t.co/uwjF87I7m9 🐀",
+   "display_name": "joel ⛈️",
+   "followers": 24730,
+   "handle": "joelhooks",
+   "id": "joelhooks",
+   "interactions": 3,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "dbreunig"
+    ],
+    "date": "2026-11-22",
+    "tweet_url": "https://x.com/joelhooks/status/2124579474767499468",
+    "types": [
+     "reply"
+    ]
+   },
+   "oneliner": "Conversation with @dbreunig and @dexhorthy about using a lab's official harness vs custom ones for its models.",
+   "photo": "https://pbs.twimg.com/profile_images/1896711404381732864/PrDnDmii_400x400.jpg",
+   "profile_url": "https://x.com/joelhooks",
+   "relayed_by": [
+    "dbreunig",
+    "dexhorthy"
+   ],
+   "since": "2026-11-22",
+   "tweets": 3
   },
   {
    "bio": "Ars longa, vita brevia \n\nYour works are wonderful, I know that full well\n\nWorking on optimization",
@@ -988,32 +1147,117 @@
    "tweets": 3
   },
   {
+   "bio": "Codex DX @Openai | built @repoprompt | prev XR @unity",
+   "display_name": "eric provencher",
+   "followers": 45840,
+   "handle": "pvncher",
+   "id": "pvncher",
+   "interactions": 2,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "mitsuhiko"
+    ],
+    "date": "2026-11-22",
+    "tweet_url": "https://x.com/pvncher/status/2124581091679916199",
+    "types": [
+     "reply"
+    ]
+   },
+   "oneliner": "Conversation with @mitsuhiko about advice to copy Codex's system prompt to get good results from OpenAI models.",
+   "photo": "https://pbs.twimg.com/profile_images/2104274058095513600/_e2nlZX-_400x400.jpg",
+   "profile_url": "https://x.com/pvncher",
+   "relayed_by": [
+    "dbreunig",
+    "mitsuhiko"
+   ],
+   "since": "2026-11-22",
+   "tweets": 2
+  },
+  {
+   "bio": "Chief Cloud Economist and co-founder at Duckbill. Author, Artificial Confidence. Professional skeptic with receipts.",
+   "display_name": "Corey Quinn",
+   "followers": 109498,
+   "handle": "QuinnyPig",
+   "id": "quinnypig",
+   "interactions": 3,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "geoffreyhuntley"
+    ],
+    "date": "2026-11-22",
+    "tweet_url": "https://x.com/quinnypig/status/2124346726995853521",
+    "types": [
+     "reply"
+    ]
+   },
+   "oneliner": "Conversation with @GeoffreyHuntley; short agreement reply, topic not stated.",
+   "photo": "https://pbs.twimg.com/profile_images/1840839119037218817/3aPpjjwH_400x400.jpg",
+   "profile_url": "https://x.com/QuinnyPig",
+   "relayed_by": [
+    "dexhorthy",
+    "geoffreyhuntley"
+   ],
+   "since": "2026-11-22",
+   "tweets": 3
+  },
+  {
+   "bio": "ML/AI research engineer. Ex stats professor.\nAuthor of \"Build a Large Language Model From Scratch\" (https://t.co/O8LAAMRzzW) & reasoning (https://t.co/5TueQKx2Fk)",
+   "display_name": "Sebastian Raschka",
+   "followers": 541583,
+   "handle": "rasbt",
+   "id": "rasbt",
+   "interactions": 2,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "completeskeptic"
+    ],
+    "date": "2026-11-23",
+    "tweet_url": "https://x.com/rasbt/status/2124679667231961593",
+    "types": [
+     "reply"
+    ]
+   },
+   "oneliner": "Conversation with @CompleteSkeptic about whether GPT-4.5 and GPT-5.5 had similar pretraining capabilities.",
+   "photo": "https://pbs.twimg.com/profile_images/1661187442043486209/a3E4t1eV_400x400.jpg",
+   "profile_url": "https://x.com/rasbt",
+   "relayed_by": [
+    "completeskeptic",
+    "swyx"
+   ],
+   "since": "2026-11-23",
+   "tweets": 2
+  },
+  {
    "bio": "Dad, Dev, CEO, 4x Founder. \nBuilding @HelloUntangle - AI for family law",
    "display_name": "Ryan Carson",
    "followers": 187278,
    "handle": "ryancarson",
    "id": "ryancarson",
-   "interactions": 2,
+   "interactions": 3,
    "kind": "candidate",
    "latest": {
     "by": [
-     "swyx"
+     "dexhorthy"
     ],
-    "date": "2026-11-12",
-    "tweet_url": null,
+    "date": "2026-11-23",
+    "tweet_url": "https://x.com/ryancarson/status/2124706135097868324",
     "types": [
      "quote"
     ]
    },
-   "oneliner": "AIE talk: how they build with agents at Untangle.",
+   "oneliner": "Says developers who coded with LLMs for years must unlearn their old habits as models improve.",
    "photo": "https://pbs.twimg.com/profile_images/2111981537365196800/k2HE9uOo_400x400.jpg",
    "profile_url": "https://x.com/ryancarson",
    "relayed_by": [
+    "dexhorthy",
     "kieranklaassen",
     "swyx"
    ],
    "since": "2026-11-12",
-   "tweets": 2
+   "tweets": 3
   },
   {
    "bio": "Creator @datasetteproj, co-creator Django. PSF board. Hangs out with @natbat. He/Him. Mastodon: https://t.co/t0MrmnJW0K Bsky: https://t.co/OnWIyhX4CH",
@@ -1133,6 +1377,34 @@
    "tweets": 5
   },
   {
+   "bio": "Working on @ampcode. Writing https://t.co/0SZD6dbLes. Once authored https://t.co/arW0hnVET0 and https://t.co/RN9xXOzhON.",
+   "display_name": "Thorsten Ball",
+   "followers": 63503,
+   "handle": "thorstenball",
+   "id": "thorstenball",
+   "interactions": 6,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "sqs"
+    ],
+    "date": "2026-11-23",
+    "tweet_url": "https://x.com/thorstenball/status/2124743669781594564",
+    "types": [
+     "rt"
+    ]
+   },
+   "oneliner": "Shares Benedict Evans on rethinking how you work with AI, including dropping pull requests.",
+   "photo": "https://pbs.twimg.com/profile_images/2073288299528024064/3itOM_L5_400x400.jpg",
+   "profile_url": "https://x.com/thorstenball",
+   "relayed_by": [
+    "mitsuhiko",
+    "sqs"
+   ],
+   "since": "2026-11-22",
+   "tweets": 6
+  },
+  {
    "bio": "playing WoW forever, formerly Claude Code @anthropicai",
    "display_name": "Thariq",
    "followers": 405157,
@@ -1196,79 +1468,80 @@
   }
  ],
  "projects": {
-  "date": "2026-11-22",
+  "date": "2026-11-23",
   "items": [
    {
     "accounts": [
+     "shannholmberg",
      "hwchase17"
     ],
-    "author": "hwchase17",
-    "how": "Reconstructed from the tweet and the many summaries relayed (the article itself could not be read from the session). 1) Write down what is in your best people's heads: processes as skills (step-by-step procedure sheets the agent loads when needed), how the business works in one linked wiki, and where the data lives and how to access it (tools = functions the agent can call). 2) Agents flag what is missing or wrong while they work. 3) A curator agent goes through those flags and the traces (the detailed log of what the agent did) every night and fixes the source; it is the only agent that edits the wiki, because task agents edit it badly. 4) Skill changes often need human sign-off (HITL, hum…",
-    "links": [
-     {
-      "label": "Site",
-      "url": "https://x.com/i/article/2124180107669766144"
-     }
-    ],
-    "tag": "research",
-    "title": "Knowledge Factory (LangChain): the knowledge loop that makes business agents improve",
-    "try": "Free: it is a pattern, not a product. Version 0: a folder of Markdown files (processes, glossary, where the data lives) plus an instruction to your agent: at the end of each task, list what you were missing.",
-    "tweet_url": "https://x.com/hwchase17/status/2124181216719151585",
-    "what": "An article by Harrison Chase (LangChain CEO) describing how all their internal agents (GTM, content, LangSmith Engine) learn continuously. Put simply: permanent onboarding for your agents, like a company wiki that updates itself.",
-    "who": "Anyone trying to get agents to do real work in a company. The message: the model is rarely the problem, the agent just does not know how your company works. Many field reports in the RTs: Palm built one because different sources gave different values for the same fact; a team applies it to voice agents (knowledge gaps bubble up, humans answer by reviewing the call); another says background agents already make up 20 to 50% of their runs."
-   },
-   {
-    "accounts": [
-     "sqs"
-    ],
-    "author": "sqs",
-    "how": "Puck is Amp's voice assistant. Quinn Slack (CEO) also trained a local wake-word model (\"Hey Puck\", like \"Hey Siri\"): Amp generated synthetic data, used 77.2 hours of his own dictation recordings (no one else's data) and wrote native Swift/Kotlin/Web implementations. Local means the model runs on your device, so nothing is sent to the server until you say the keyword (low latency plus privacy). He plans to queue things you need to look at and show them at a red light. Amp already shows up in CarPlay as a call.",
-    "links": [
-     {
-      "label": "Site",
-      "url": "https://ampcode.com/news/puck-in-the-car"
-     }
-    ],
-    "tag": "paid",
-    "title": "Amp Puck in the car: drive your coding agent by voice",
-    "try": "Available in Amp (paid, pay-as-you-go); the wake word is coming soon. Site not reachable from the session, limited details.",
-    "tweet_url": "https://x.com/sqs/status/2124216212129534454",
-    "what": "Amp (Sourcegraph's coding agent, a cousin of Claude Code / Codex) adds a car mode: you talk to your agent, it answers by voice and only shows a big picture or a button now and then. Put simply: a Siri for your coding agent.",
-    "who": "Shows where agent interfaces are heading: less screen, more asynchronous delegation. Also a nice case of an agent building its own ML component end to end."
-   },
-   {
-    "accounts": [
-     "_mayurc",
-     "hwchase17"
-    ],
-    "author": "_mayurc",
-    "how": "Based on the tweet only: the idea is to make the reasoning and intent behind each change readable, because agents write more code than you can read. The exact mechanism could not be checked.",
+    "author": "shannholmberg",
+    "how": "The base holds 3 kinds of knowledge: skills (how the team delivers, e.g. writing a report in your style), domain knowledge (products, customers, competitors, what your KPIs mean) and data access guidance (which source to trust and how to pull from it). While working, agents have a tool to flag anything missing or wrong. At night, a curator agent (an agent running on a schedule) reads the flags, the traces (the log of what each agent did) and sources like Notion or Slack, then updates the knowledge. Only the curator writes: if every agent edited the base, it would fill up with contradictions. LangChain example: the finance agent spots a renamed database column and flags it; the finance lead …",
     "links": [],
-    "tag": "free",
-    "title": "Vistara: read your agents' reasons instead of their code",
-    "try": "Free on Mac. Site not reachable from the session, limited details.",
-    "tweet_url": "https://x.com/_mayurc/status/2124257107558220061",
-    "what": "A free Mac app, relayed by Harrison Chase, to follow why your coding agents changed something, not just what they changed.",
-    "who": "Vibe coders who do not read every diff but want to know what changed and why."
+    "tag": "research",
+    "title": "LangChain's knowledge factory: a librarian agent that keeps your agents' knowledge up to date",
+    "try": "It is a method, not a product. Minimal version suggested by @KevinMagnan: markdown files (Obsidian, Notion or GitHub), every new addition goes through a queue, and a cloud agent accepts or rejects the updates.",
+    "tweet_url": "https://x.com/shannholmberg/status/2124513622282137913",
+    "what": "An architecture where working agents (reports, content, GTM) rely on a company knowledge base that a dedicated agent maintains automatically. In short: an internal wiki nobody has to update by hand.",
+    "who": "Exactly an ops topic: company knowledge lives in people's heads; you give it to the agent once and it never forgets. Today's debate: @JohnKutay stores this knowledge in PostgreSQL rather than markdown files, and @scribeceo warns that documenting every workflow by hand is a huge job."
    },
    {
     "accounts": [
+     "prukalpa",
+     "hwchase17"
+    ],
+    "author": "prukalpa",
+    "how": "According to the link card, Trident shows how your AI uses your context (the information you give it), catches what breaks when you change models, and drafts the fix. Stated principles: knowledge managed as code (versions, dependencies), knowledge artefact types beyond markdown (ontology = the map of entities and their relationships, metrics, skills, tools), and hill climbing (improving step by step from traces).",
+    "links": [],
+    "tag": "paid",
+    "title": "Atlan Trident: a quality loop for your AI's context",
+    "try": "Commercial product, price not disclosed. Site not reachable (t.co link blocked), limited details.",
+    "tweet_url": "https://x.com/prukalpa/status/2124415863516516459",
+    "what": "The product version of the knowledge factory, by Atlan (data catalog), announced at Context Conference.",
+    "who": "Companies with lots of data that want their agents to stay reliable from one model to the next. Mostly for large companies."
+   },
+   {
+    "accounts": [
+     "dexhorthy"
+    ],
+    "author": "dexhorthy",
+    "how": "Instead of calling tools one by one and reading every full JSON response, the agent writes a small script that calls the tools, filters the data and returns only what matters. As dex explains, the model now only sees the Linear fields that matter for decision making instead of the giant gobs of JSON.",
+    "links": [],
+    "tag": "paid",
+    "title": "Code mode in Factory: a daily Linear sweep drops from 245k to 23k tokens",
+    "try": "Factory is a paid product. The technique can be reproduced with any agent that can run code.",
+    "tweet_url": "https://x.com/dexhorthy/status/2124624191563698426",
+    "what": "dex (Factory) plugged Procedural Tool Calling (PTC, code mode) into an agent that reviews Linear tickets every day. Result: 245k to 23k tokens and 7 min to 36 s.",
+    "who": "Any ops automation that reads lots of data (CRM, tickets, emails). Fewer tokens is cheaper and faster, and the agent gets lost less."
+   },
+   {
+    "accounts": [
+     "zachlloydtweets"
+    ],
+    "author": "zachlloydtweets",
+    "how": "On their setup, subagents cost 40% more with no meaningful quality gain. A 7-minute video shows the results.",
+    "links": [],
+    "tag": "paid",
+    "title": "Warp measures subagents: 40% more expensive, no quality gain",
+    "try": "Video in the tweet. Warp is a terminal with agents (free and paid plans).",
+    "tweet_url": "https://x.com/zachlloydtweets/status/2124592480674779605",
+    "what": "Warp's founder compared two ways to organize his factory (a chain of agents that produces code): each stage delegating to its own subagents (sub-agents launched with their own context), or a simpler approach.",
+    "who": "A common vibe-coder reflex is to multiply agents. Warp's data says: start simple, add subagents only if you measure a gain."
+   },
+   {
+    "accounts": [
+     "paolino",
      "kieranklaassen"
     ],
-    "author": "kieranklaassen",
-    "how": "ActiveRecord models are compiled to wasm with the same Ruby code and validations, run on SQLite in the browser and sync with the Rails server.",
-    "links": [
-     {
-      "label": "Site",
-      "url": "https://frontier.every.to/experiments/instantrecord-rails-models-that-run-in-the-browser"
-     }
-    ],
-    "tag": "open source",
-    "title": "InstantRecord: Rails models that run in the browser",
-    "try": "Ruby gem; license not verified. Site not reachable from the session, limited details.",
-    "tweet_url": "https://x.com/kieranklaassen/status/2124193482243977631",
-    "what": "A Ruby gem by Kieran Klaassen (Every) that compiles your Rails app to WebAssembly (a format that runs non-JavaScript code in the browser): your database lives in SQLite in the tab, syncs with the server and works offline (local-first). Demo: 10,601 conversations, first row in about 820 ms.",
-    "who": "Very technical and not about agents: skip unless curious."
+    "author": "paolino",
+    "how": "No technical details in the tweet. Available in the EU on every plan, or on your own servers.",
+    "links": [],
+    "tag": "paid",
+    "title": "Chat with Work: work bots available in Europe",
+    "try": "Site not reachable (t.co link blocked), limited details.",
+    "tweet_url": "https://x.com/paolino/status/2124544426672611717",
+    "what": "A launch (planned for 'tomorrow' in the tweet) of work bots, pitched as the European alternative to Claude Duet (US only), ChatGPT's dots (not on Pro in Europe) and Gemini's Tasks (not in Europe).",
+    "who": "A French team that wants this kind of agent without waiting for the US giants, with the option to keep its data in-house."
    }
   ]
  },

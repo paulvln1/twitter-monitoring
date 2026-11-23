@@ -1,34 +1,55 @@
-{"date": "2026-11-22", "projects": [
- {"title": "Knowledge Factory (LangChain): the knowledge loop that makes business agents improve",
-  "tag": "research",
-  "tweet_url": "https://x.com/hwchase17/status/2124181216719151585",
-  "links": [{"label": "Site", "url": "https://x.com/i/article/2124180107669766144"}],
-  "what": "An article by Harrison Chase (LangChain CEO) describing how all their internal agents (GTM, content, LangSmith Engine) learn continuously. Put simply: permanent onboarding for your agents, like a company wiki that updates itself.",
-  "how": "Reconstructed from the tweet and the many summaries relayed (the article itself could not be read from the session). 1) Write down what is in your best people's heads: processes as skills (step-by-step procedure sheets the agent loads when needed), how the business works in one linked wiki, and where the data lives and how to access it (tools = functions the agent can call). 2) Agents flag what is missing or wrong while they work. 3) A curator agent goes through those flags and the traces (the detailed log of what the agent did) every night and fixes the source; it is the only agent that edits the wiki, because task agents edit it badly. 4) Skill changes often need human sign-off (HITL, human-in-the-loop); other memory can be merged automatically. Result: agents improve without touching model weights; the wiki is what you diff, review and roll back, like code.",
-  "who": "Anyone trying to get agents to do real work in a company. The message: the model is rarely the problem, the agent just does not know how your company works. Many field reports in the RTs: Palm built one because different sources gave different values for the same fact; a team applies it to voice agents (knowledge gaps bubble up, humans answer by reviewing the call); another says background agents already make up 20 to 50% of their runs.",
-  "try": "Free: it is a pattern, not a product. Version 0: a folder of Markdown files (processes, glossary, where the data lives) plus an instruction to your agent: at the end of each task, list what you were missing."},
- {"title": "Amp Puck in the car: drive your coding agent by voice",
-  "tag": "paid",
-  "tweet_url": "https://x.com/sqs/status/2124216212129534454",
-  "links": [{"label": "Site", "url": "https://ampcode.com/news/puck-in-the-car"}],
-  "what": "Amp (Sourcegraph's coding agent, a cousin of Claude Code / Codex) adds a car mode: you talk to your agent, it answers by voice and only shows a big picture or a button now and then. Put simply: a Siri for your coding agent.",
-  "how": "Puck is Amp's voice assistant. Quinn Slack (CEO) also trained a local wake-word model (\"Hey Puck\", like \"Hey Siri\"): Amp generated synthetic data, used 77.2 hours of his own dictation recordings (no one else's data) and wrote native Swift/Kotlin/Web implementations. Local means the model runs on your device, so nothing is sent to the server until you say the keyword (low latency plus privacy). He plans to queue things you need to look at and show them at a red light. Amp already shows up in CarPlay as a call.",
-  "who": "Shows where agent interfaces are heading: less screen, more asynchronous delegation. Also a nice case of an agent building its own ML component end to end.",
-  "try": "Available in Amp (paid, pay-as-you-go); the wake word is coming soon. Site not reachable from the session, limited details."},
- {"title": "Vistara: read your agents' reasons instead of their code",
-  "tag": "free",
-  "tweet_url": "https://x.com/_mayurc/status/2124257107558220061",
-  "links": [],
-  "what": "A free Mac app, relayed by Harrison Chase, to follow why your coding agents changed something, not just what they changed.",
-  "how": "Based on the tweet only: the idea is to make the reasoning and intent behind each change readable, because agents write more code than you can read. The exact mechanism could not be checked.",
-  "who": "Vibe coders who do not read every diff but want to know what changed and why.",
-  "try": "Free on Mac. Site not reachable from the session, limited details."},
- {"title": "InstantRecord: Rails models that run in the browser",
-  "tag": "open source",
-  "tweet_url": "https://x.com/kieranklaassen/status/2124193482243977631",
-  "links": [{"label": "Site", "url": "https://frontier.every.to/experiments/instantrecord-rails-models-that-run-in-the-browser"}],
-  "what": "A Ruby gem by Kieran Klaassen (Every) that compiles your Rails app to WebAssembly (a format that runs non-JavaScript code in the browser): your database lives in SQLite in the tab, syncs with the server and works offline (local-first). Demo: 10,601 conversations, first row in about 820 ms.",
-  "how": "ActiveRecord models are compiled to wasm with the same Ruby code and validations, run on SQLite in the browser and sync with the Rails server.",
-  "who": "Very technical and not about agents: skip unless curious.",
-  "try": "Ruby gem; license not verified. Site not reachable from the session, limited details."}
-]}
+{
+ "date": "2026-11-23",
+ "projects": [
+  {
+   "title": "LangChain's knowledge factory: a librarian agent that keeps your agents' knowledge up to date",
+   "tag": "research",
+   "tweet_url": "https://x.com/shannholmberg/status/2124513622282137913",
+   "links": [],
+   "what": "An architecture where working agents (reports, content, GTM) rely on a company knowledge base that a dedicated agent maintains automatically. In short: an internal wiki nobody has to update by hand.",
+   "how": "The base holds 3 kinds of knowledge: skills (how the team delivers, e.g. writing a report in your style), domain knowledge (products, customers, competitors, what your KPIs mean) and data access guidance (which source to trust and how to pull from it). While working, agents have a tool to flag anything missing or wrong. At night, a curator agent (an agent running on a schedule) reads the flags, the traces (the log of what each agent did) and sources like Notion or Slack, then updates the knowledge. Only the curator writes: if every agent edited the base, it would fill up with contradictions. LangChain example: the finance agent spots a renamed database column and flags it; the finance lead asks for a new header on documents; the next night the curator updates the data-pulling skill and the report-writing skill, and every later report is right.",
+   "who": "Exactly an ops topic: company knowledge lives in people's heads; you give it to the agent once and it never forgets. Today's debate: @JohnKutay stores this knowledge in PostgreSQL rather than markdown files, and @scribeceo warns that documenting every workflow by hand is a huge job.",
+   "try": "It is a method, not a product. Minimal version suggested by @KevinMagnan: markdown files (Obsidian, Notion or GitHub), every new addition goes through a queue, and a cloud agent accepts or rejects the updates."
+  },
+  {
+   "title": "Atlan Trident: a quality loop for your AI's context",
+   "tag": "paid",
+   "tweet_url": "https://x.com/prukalpa/status/2124415863516516459",
+   "links": [],
+   "what": "The product version of the knowledge factory, by Atlan (data catalog), announced at Context Conference.",
+   "how": "According to the link card, Trident shows how your AI uses your context (the information you give it), catches what breaks when you change models, and drafts the fix. Stated principles: knowledge managed as code (versions, dependencies), knowledge artefact types beyond markdown (ontology = the map of entities and their relationships, metrics, skills, tools), and hill climbing (improving step by step from traces).",
+   "who": "Companies with lots of data that want their agents to stay reliable from one model to the next. Mostly for large companies.",
+   "try": "Commercial product, price not disclosed. Site not reachable (t.co link blocked), limited details."
+  },
+  {
+   "title": "Code mode in Factory: a daily Linear sweep drops from 245k to 23k tokens",
+   "tag": "paid",
+   "tweet_url": "https://x.com/dexhorthy/status/2124624191563698426",
+   "links": [],
+   "what": "dex (Factory) plugged Procedural Tool Calling (PTC, code mode) into an agent that reviews Linear tickets every day. Result: 245k to 23k tokens and 7 min to 36 s.",
+   "how": "Instead of calling tools one by one and reading every full JSON response, the agent writes a small script that calls the tools, filters the data and returns only what matters. As dex explains, the model now only sees the Linear fields that matter for decision making instead of the giant gobs of JSON.",
+   "who": "Any ops automation that reads lots of data (CRM, tickets, emails). Fewer tokens is cheaper and faster, and the agent gets lost less.",
+   "try": "Factory is a paid product. The technique can be reproduced with any agent that can run code."
+  },
+  {
+   "title": "Warp measures subagents: 40% more expensive, no quality gain",
+   "tag": "paid",
+   "tweet_url": "https://x.com/zachlloydtweets/status/2124592480674779605",
+   "links": [],
+   "what": "Warp's founder compared two ways to organize his factory (a chain of agents that produces code): each stage delegating to its own subagents (sub-agents launched with their own context), or a simpler approach.",
+   "how": "On their setup, subagents cost 40% more with no meaningful quality gain. A 7-minute video shows the results.",
+   "who": "A common vibe-coder reflex is to multiply agents. Warp's data says: start simple, add subagents only if you measure a gain.",
+   "try": "Video in the tweet. Warp is a terminal with agents (free and paid plans)."
+  },
+  {
+   "title": "Chat with Work: work bots available in Europe",
+   "tag": "paid",
+   "tweet_url": "https://x.com/paolino/status/2124544426672611717",
+   "links": [],
+   "what": "A launch (planned for 'tomorrow' in the tweet) of work bots, pitched as the European alternative to Claude Duet (US only), ChatGPT's dots (not on Pro in Europe) and Gemini's Tasks (not in Europe).",
+   "how": "No technical details in the tweet. Available in the EU on every plan, or on your own servers.",
+   "who": "A French team that wants this kind of agent without waiting for the US giants, with the option to keep its data in-house.",
+   "try": "Site not reachable (t.co link blocked), limited details."
+  }
+ ]
+}

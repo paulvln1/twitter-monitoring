@@ -80,6 +80,24 @@
   "photo": "https://pbs.twimg.com/profile_images/1936650128518938624/tCFV_MZO_400x400.jpg",
   "profile_url": "https://x.com/dexhorthy"
  },
+ "eliaslumer": {
+  "bio": "ai research & engineering | pwc",
+  "display_name": "Elias Lumer",
+  "fetched_at": "2026-11-23",
+  "followers": 122,
+  "handle": "EliasLumer",
+  "photo": "https://pbs.twimg.com/profile_images/2025645255278690306/RJz9tlGW_400x400.jpg",
+  "profile_url": "https://x.com/EliasLumer"
+ },
+ "eliebakouch": {
+  "bio": "research @PrimeIntellect (prev: @huggingface)\nanon feedback: https://t.co/JmMh7Sfvxd",
+  "display_name": "elie",
+  "fetched_at": "2026-11-23",
+  "followers": 27018,
+  "handle": "eliebakouch",
+  "photo": "https://pbs.twimg.com/profile_images/1745893660099592193/MmYemsw6_400x400.jpg",
+  "profile_url": "https://x.com/eliebakouch"
+ },
  "geoffreyhuntley": {
   "bio": "impressive whatever goes here",
   "display_name": "geoff",
@@ -142,6 +160,15 @@
   "handle": "iruletheworldmo",
   "photo": "https://pbs.twimg.com/profile_images/2048580995302174720/jWUrx_47_400x400.jpg",
   "profile_url": "https://x.com/iruletheworldmo"
+ },
+ "joelhooks": {
+  "bio": "lvl 16 half-orc nerd 🍄💀🌈 independent AI researcher https://t.co/uwjF87I7m9 🐀",
+  "display_name": "joel ⛈️",
+  "fetched_at": "2026-11-23",
+  "followers": 24730,
+  "handle": "joelhooks",
+  "photo": "https://pbs.twimg.com/profile_images/1896711404381732864/PrDnDmii_400x400.jpg",
+  "profile_url": "https://x.com/joelhooks"
  },
  "joshpurtell": {
   "bio": "Ars longa, vita brevia \n\nYour works are wonderful, I know that full well\n\nWorking on optimization",
@@ -232,6 +259,33 @@
   "handle": "poteto",
   "photo": "https://pbs.twimg.com/profile_images/2093473719830315008/oo09g1Ov_400x400.jpg",
   "profile_url": "https://x.com/poteto"
+ },
+ "pvncher": {
+  "bio": "Codex DX @Openai | built @repoprompt | prev XR @unity",
+  "display_name": "eric provencher",
+  "fetched_at": "2026-11-23",
+  "followers": 45840,
+  "handle": "pvncher",
+  "photo": "https://pbs.twimg.com/profile_images/2104274058095513600/_e2nlZX-_400x400.jpg",
+  "profile_url": "https://x.com/pvncher"
+ },
+ "quinnypig": {
+  "bio": "Chief Cloud Economist and co-founder at Duckbill. Author, Artificial Confidence. Professional skeptic with receipts.",
+  "display_name": "Corey Quinn",
+  "fetched_at": "2026-11-23",
+  "followers": 109498,
+  "handle": "QuinnyPig",
+  "photo": "https://pbs.twimg.com/profile_images/1840839119037218817/3aPpjjwH_400x400.jpg",
+  "profile_url": "https://x.com/QuinnyPig"
+ },
+ "rasbt": {
+  "bio": "ML/AI research engineer. Ex stats professor.\nAuthor of \"Build a Large Language Model From Scratch\" (https://t.co/O8LAAMRzzW) & reasoning (https://t.co/5TueQKx2Fk)",
+  "display_name": "Sebastian Raschka",
+  "fetched_at": "2026-11-23",
+  "followers": 541583,
+  "handle": "rasbt",
+  "photo": "https://pbs.twimg.com/profile_images/1661187442043486209/a3E4t1eV_400x400.jpg",
+  "profile_url": "https://x.com/rasbt"
  },
  "rlancemartin": {
   "bio": "MTS @anthropicai",
@@ -331,6 +385,15 @@
   "handle": "theo",
   "photo": "https://pbs.twimg.com/profile_images/2106484435382333440/vXOVE8EX_400x400.jpg",
   "profile_url": "https://x.com/theo"
+ },
+ "thorstenball": {
+  "bio": "Working on @ampcode. Writing https://t.co/0SZD6dbLes. Once authored https://t.co/arW0hnVET0 and https://t.co/RN9xXOzhON.",
+  "display_name": "Thorsten Ball",
+  "fetched_at": "2026-11-23",
+  "followers": 63503,
+  "handle": "thorstenball",
+  "photo": "https://pbs.twimg.com/profile_images/2073288299528024064/3itOM_L5_400x400.jpg",
+  "profile_url": "https://x.com/thorstenball"
  },
  "trq212": {
   "bio": "playing WoW forever, formerly Claude Code @anthropicai",
