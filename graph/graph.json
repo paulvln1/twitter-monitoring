@@ -1,6 +1,38 @@
 {
- "as_of": "2026-11-23",
+ "as_of": "2026-11-24",
  "edges": [
+  {
+   "source": "swyx",
+   "target": "agrimsingh",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "geoffreyhuntley",
+   "target": "agrimsingh",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "geoffreyhuntley",
+   "target": "ahmetb",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "sqs",
+   "target": "ahmetb",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
   {
    "source": "swyx",
    "target": "aidotengineer",
@@ -16,7 +48,7 @@
    "types": [
     "quote"
    ],
-   "weight": 1
+   "weight": 2
   },
   {
    "source": "zachlloydtweets",
@@ -39,6 +71,38 @@
    "target": "ajambrosino",
    "types": [
     "rt"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "geoffreyhuntley",
+   "target": "andrewcurran_",
+   "types": [
+    "reply"
+   ],
+   "weight": 2
+  },
+  {
+   "source": "mckaywrigley",
+   "target": "andrewcurran_",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "sqs",
+   "target": "ariesthecoder",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "geoffreyhuntley",
+   "target": "ariesthecoder",
+   "types": [
+    "reply"
    ],
    "weight": 1
   },
@@ -82,13 +146,29 @@
    "types": [
     "reply"
    ],
-   "weight": 2
+   "weight": 3
   },
   {
    "source": "swyx",
    "target": "badlogicgames",
    "types": [
     "rt"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "hamelhusain",
+   "target": "benhylak",
+   "types": [
+    "reply"
+   ],
+   "weight": 3
+  },
+  {
+   "source": "completeskeptic",
+   "target": "benhylak",
+   "types": [
+    "reply"
    ],
    "weight": 1
   },
@@ -126,6 +206,38 @@
    "weight": 1
   },
   {
+   "source": "mitsuhiko",
+   "target": "dillon_mulroy",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "dexhorthy",
+   "target": "dillon_mulroy",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "mitchellh",
+   "target": "dusangran",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "hwchase17",
+   "target": "dusangran",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
    "source": "hwchase17",
    "target": "eliaslumer",
    "types": [
@@ -158,6 +270,22 @@
    "weight": 1
   },
   {
+   "source": "swyx",
+   "target": "ft",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "geoffreyhuntley",
+   "target": "ft",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
    "source": "steipete",
    "target": "gergelyorosz",
    "types": [
@@ -168,6 +296,23 @@
   {
    "source": "swyx",
    "target": "gergelyorosz",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "dexhorthy",
+   "target": "grok",
+   "types": [
+    "quote",
+    "reply"
+   ],
+   "weight": 6
+  },
+  {
+   "source": "geoffreyhuntley",
+   "target": "grok",
    "types": [
     "reply"
    ],
@@ -189,7 +334,7 @@
     "reply",
     "rt"
    ],
-   "weight": 2
+   "weight": 3
   },
   {
    "source": "completeskeptic",
@@ -210,6 +355,22 @@
    "weight": 3
   },
   {
+   "source": "hamelhusain",
+   "target": "hanchunglee",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "dbreunig",
+   "target": "hanchunglee",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
    "source": "mckaywrigley",
    "target": "iruletheworldmo",
    "types": [
@@ -222,6 +383,22 @@
    "target": "iruletheworldmo",
    "types": [
     "quote"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "sqs",
+   "target": "ivanleomk",
+   "types": [
+    "reply"
+   ],
+   "weight": 2
+  },
+  {
+   "source": "geoffreyhuntley",
+   "target": "ivanleomk",
+   "types": [
+    "reply"
    ],
    "weight": 1
   },
@@ -242,6 +419,14 @@
    "weight": 2
   },
   {
+   "source": "swyx",
+   "target": "joelhooks",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
    "source": "dbreunig",
    "target": "joshpurtell",
    "types": [
@@ -254,6 +439,31 @@
    "target": "joshpurtell",
    "types": [
     "rt"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "hwchase17",
+   "target": "langchain",
+   "types": [
+    "quote",
+    "rt"
+   ],
+   "weight": 9
+  },
+  {
+   "source": "completeskeptic",
+   "target": "langchain",
+   "types": [
+    "quote"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "sydneyrunkle",
+   "target": "langchain",
+   "types": [
+    "quote"
    ],
    "weight": 1
   },
@@ -478,6 +688,22 @@
    "weight": 1
   },
   {
+   "source": "steipete",
+   "target": "timsweeneyepic",
+   "types": [
+    "rt"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "mitsuhiko",
+   "target": "timsweeneyepic",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
    "source": "swyx",
    "target": "trq212",
    "types": [
@@ -535,7 +761,7 @@
    "weight": 1
   }
  ],
- "generated_at": "2026-11-23T07:11:51+00:00",
+ "generated_at": "2026-11-24T07:09:14+00:00",
  "nodes": [
   {
    "bio": "@LangChain\n\nAlways hiring: https://t.co/D5Ut3loFO7",
@@ -748,24 +974,80 @@
    "profile_url": "https://x.com/karpathy"
   },
   {
+   "bio": "building @spacexsi @grok @bot // teaching @ https://t.co/tpc1Nwqrix // community https://t.co/2mTTsnMgAY \nwhisky guru & dj",
+   "display_name": "agrim singh",
+   "followers": 6090,
+   "handle": "agrimsingh",
+   "id": "agrimsingh",
+   "interactions": 2,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "geoffreyhuntley"
+    ],
+    "date": "2026-11-24",
+    "tweet_url": "https://x.com/agrimsingh/status/2125084246297772145",
+    "types": [
+     "reply"
+    ]
+   },
+   "oneliner": "Banter with @geoffreyhuntley about a new profile picture.",
+   "photo": "https://pbs.twimg.com/profile_images/2116185858793779200/QdybhTyT_400x400.jpg",
+   "profile_url": "https://x.com/agrimsingh",
+   "relayed_by": [
+    "geoffreyhuntley",
+    "swyx"
+   ],
+   "since": "2026-11-24",
+   "tweets": 2
+  },
+  {
+   "bio": "infra @baseten  oss: https://t.co/LbCjmbdcvb did large-scale baremetal compute in past life, learning to do the same for gpus now 🌹",
+   "display_name": "ahmet alp balkan",
+   "followers": 51922,
+   "handle": "ahmetb",
+   "id": "ahmetb",
+   "interactions": 2,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "geoffreyhuntley"
+    ],
+    "date": "2026-11-24",
+    "tweet_url": "https://x.com/ahmetb/status/2125094147866693699",
+    "types": [
+     "reply"
+    ]
+   },
+   "oneliner": "Conversation with @geoffreyhuntley about politics and LGBT rights abroad.",
+   "photo": "https://pbs.twimg.com/profile_images/1621769650412584961/MbnqgDNm_400x400.jpg",
+   "profile_url": "https://x.com/ahmetb",
+   "relayed_by": [
+    "geoffreyhuntley",
+    "sqs"
+   ],
+   "since": "2026-11-24",
+   "tweets": 2
+  },
+  {
    "bio": "We run the highest signal technical conferences in the industry and publish it all for free online for over 2 million AI Engineers a month",
    "display_name": "AI.Engineer",
    "followers": 72771,
    "handle": "aiDotEngineer",
    "id": "aidotengineer",
-   "interactions": 8,
+   "interactions": 9,
    "kind": "candidate",
    "latest": {
     "by": [
-     "swyx"
+     "dexhorthy"
     ],
-    "date": "2026-11-22",
-    "tweet_url": "https://x.com/aidotengineer/status/2124291774671880239",
+    "date": "2026-11-23",
+    "tweet_url": "https://x.com/aidotengineer/status/2124956149359472788",
     "types": [
-     "rt"
+     "quote"
     ]
    },
-   "oneliner": "Talk: how Lovable separates task history from running processes so 10-hour agents survive deploys every two minutes.",
+   "oneliner": "Dex Horthy's AI Engineer talk: 12 practices to keep a software factory from becoming a slop factory.",
    "photo": "https://pbs.twimg.com/profile_images/2088074761607987200/25voc1vQ_400x400.jpg",
    "profile_url": "https://x.com/aiDotEngineer",
    "relayed_by": [
@@ -774,7 +1056,7 @@
     "zachlloydtweets"
    ],
    "since": "2026-11-20",
-   "tweets": 7
+   "tweets": 8
   },
   {
    "bio": "Codex & ChatGPT @OpenAI",
@@ -805,24 +1087,80 @@
    "tweets": 2
   },
   {
-   "bio": "Armin's handler at https://t.co/B05ybKGkzx. Old man yelling at Claudes.\n\nhttps://t.co/Q1wG57v1yc\n\nhttps://t.co/mnOoWUr0TO\n\nhttps://t.co/8i5vIRE0Wn",
-   "display_name": "Mario Zechner",
-   "followers": 81193,
-   "handle": "badlogicgames",
-   "id": "badlogicgames",
-   "interactions": 12,
+   "bio": "🏰 - I write about AI, mostly. Expect some strange sights.",
+   "display_name": "Andrew Curran",
+   "followers": 118700,
+   "handle": "AndrewCurran_",
+   "id": "andrewcurran_",
+   "interactions": 3,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "mckaywrigley"
+    ],
+    "date": "2026-11-23",
+    "tweet_url": "https://x.com/andrewcurran_/status/2124910719905013842",
+    "types": [
+     "reply"
+    ]
+   },
+   "oneliner": "Conversation with @mckaywrigley reacting to news that turned out to be real.",
+   "photo": "https://pbs.twimg.com/profile_images/1596945208058744833/_X3LT7fb_400x400.jpg",
+   "profile_url": "https://x.com/AndrewCurran_",
+   "relayed_by": [
+    "geoffreyhuntley",
+    "mckaywrigley"
+   ],
+   "since": "2026-11-23",
+   "tweets": 3
+  },
+  {
+   "bio": "25+ yr business builder now shipping real projects with AI - Raw field reports, tool battles & rescues!\n\nViews are my own.",
+   "display_name": "AriesTheCoder",
+   "followers": 981,
+   "handle": "AriesTheCoder",
+   "id": "ariesthecoder",
+   "interactions": 2,
    "kind": "candidate",
    "latest": {
     "by": [
      "geoffreyhuntley"
     ],
-    "date": "2026-11-21",
-    "tweet_url": "https://x.com/badlogicgames/status/2124070404176421058",
+    "date": "2026-11-24",
+    "tweet_url": "https://x.com/ariesthecoder/status/2125110581112037574",
     "types": [
      "reply"
     ]
    },
-   "oneliner": "Conversation with @geoffreyhuntley about spending a season in Sweden.",
+   "oneliner": "Conversation with @geoffreyhuntley about government power and political ideology.",
+   "photo": "https://pbs.twimg.com/profile_images/2106702198709362688/rFkqItOz_400x400.jpg",
+   "profile_url": "https://x.com/AriesTheCoder",
+   "relayed_by": [
+    "geoffreyhuntley",
+    "sqs"
+   ],
+   "since": "2026-11-24",
+   "tweets": 2
+  },
+  {
+   "bio": "Armin's handler at https://t.co/B05ybKGkzx. Old man yelling at Claudes.\n\nhttps://t.co/Q1wG57v1yc\n\nhttps://t.co/mnOoWUr0TO\n\nhttps://t.co/8i5vIRE0Wn",
+   "display_name": "Mario Zechner",
+   "followers": 81193,
+   "handle": "badlogicgames",
+   "id": "badlogicgames",
+   "interactions": 13,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "geoffreyhuntley"
+    ],
+    "date": "2026-11-24",
+    "tweet_url": "https://x.com/badlogicgames/status/2125036059168014759",
+    "types": [
+     "reply"
+    ]
+   },
+   "oneliner": "Short exchange with @geoffreyhuntley.",
    "photo": "https://pbs.twimg.com/profile_images/1553485821767991296/87k3l720_400x400.jpg",
    "profile_url": "https://x.com/badlogicgames",
    "relayed_by": [
@@ -834,7 +1172,35 @@
     "swyx"
    ],
    "since": "2026-11-17",
-   "tweets": 10
+   "tweets": 11
+  },
+  {
+   "bio": "aspiring optimist. cto @raindrop_ai, prev @apple design, @spacex avionics",
+   "display_name": "ben hylak",
+   "followers": 54137,
+   "handle": "benhylak",
+   "id": "benhylak",
+   "interactions": 4,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "completeskeptic"
+    ],
+    "date": "2026-11-23",
+    "tweet_url": "https://x.com/benhylak/status/2124992192175616239",
+    "types": [
+     "reply"
+    ]
+   },
+   "oneliner": "Conversation with @completeskeptic; reply was a shared link.",
+   "photo": "https://pbs.twimg.com/profile_images/2016053929583521792/MNeDZthF_400x400.jpg",
+   "profile_url": "https://x.com/benhylak",
+   "relayed_by": [
+    "completeskeptic",
+    "hamelhusain"
+   ],
+   "since": "2026-11-23",
+   "tweets": 4
   },
   {
    "bio": "Co-founder @modemdev. Before: founding engineer then VPE at @sentry. Builds https://t.co/lRZKcrfjO0. Runs @devtoolsTO. 🇨🇦",
@@ -893,6 +1259,62 @@
    "tweets": 5
   },
   {
+   "bio": "principal engineer @cloudflare • tweets about functional programming, typescript, neovim, & formula 1 • https://t.co/6Vr6DiQmze • https://t.co/tlUe9v8Ha4",
+   "display_name": "Dillon Mulroy",
+   "followers": 45409,
+   "handle": "dillon_mulroy",
+   "id": "dillon_mulroy",
+   "interactions": 2,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "dexhorthy"
+    ],
+    "date": "2026-11-24",
+    "tweet_url": "https://x.com/dillon_mulroy/status/2125036420901253387",
+    "types": [
+     "reply"
+    ]
+   },
+   "oneliner": "Conversation with @dexhorthy, a joke referencing Graphviz.",
+   "photo": "https://pbs.twimg.com/profile_images/2092640156020817920/FcBklR0l_400x400.jpg",
+   "profile_url": "https://x.com/dillon_mulroy",
+   "relayed_by": [
+    "dexhorthy",
+    "mitsuhiko"
+   ],
+   "since": "2026-11-24",
+   "tweets": 2
+  },
+  {
+   "bio": "Dusan Odalovic. 17 years in software. Agents write our code, I share what works.\nCo-founder of GRAN · https://t.co/taRdpz4axu · https://t.co/meqYALGdRO",
+   "display_name": "Dusan 🐧 AI agents · dad",
+   "followers": 666,
+   "handle": "dusangran",
+   "id": "dusangran",
+   "interactions": 2,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "hwchase17"
+    ],
+    "date": "2026-11-23",
+    "tweet_url": "https://x.com/dusangran/status/2124973778421870720",
+    "types": [
+     "reply"
+    ]
+   },
+   "oneliner": "Conversation with @hwchase17 praising LangSmith.",
+   "photo": "https://pbs.twimg.com/profile_images/2111070746147528704/W7M4CPyS_400x400.jpg",
+   "profile_url": "https://x.com/dusangran",
+   "relayed_by": [
+    "hwchase17",
+    "mitchellh"
+   ],
+   "since": "2026-11-23",
+   "tweets": 2
+  },
+  {
    "bio": "ai research & engineering | pwc",
    "display_name": "Elias Lumer",
    "followers": 122,
@@ -949,6 +1371,34 @@
    "tweets": 2
   },
   {
+   "bio": "Big stories and breaking news as they are published on https://t.co/EYmAcRLBHv. Register here to access free articles: https://t.co/NRg2hritkA",
+   "display_name": "Financial Times",
+   "followers": 7130665,
+   "handle": "FT",
+   "id": "ft",
+   "interactions": 2,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "geoffreyhuntley"
+    ],
+    "date": "2026-11-24",
+    "tweet_url": "https://x.com/ft/status/2124912720193393007",
+    "types": [
+     "reply"
+    ]
+   },
+   "oneliner": "Conversation with @geoffreyhuntley, who says he cancelled his FT subscription.",
+   "photo": "https://pbs.twimg.com/profile_images/931156393108885504/EqEMtLhM_400x400.jpg",
+   "profile_url": "https://x.com/FT",
+   "relayed_by": [
+    "geoffreyhuntley",
+    "swyx"
+   ],
+   "since": "2026-11-24",
+   "tweets": 2
+  },
+  {
    "bio": "Writing @Pragmatic_Eng, the #1 software engineering newsletter on Substack. Author of @EngGuidebook. Formerly Uber & Skype.",
    "display_name": "Gergely Orosz",
    "followers": 369138,
@@ -977,24 +1427,52 @@
    "tweets": 2
   },
   {
+   "bio": "@grok it",
+   "display_name": "Grok",
+   "followers": 9427312,
+   "handle": "grok",
+   "id": "grok",
+   "interactions": 7,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "dexhorthy"
+    ],
+    "date": "2026-11-23",
+    "tweet_url": "https://x.com/grok/status/2124882153305469032",
+    "types": [
+     "reply"
+    ]
+   },
+   "oneliner": "Conversation with @dexhorthy pointing out a Grok answer without citations.",
+   "photo": "https://pbs.twimg.com/profile_images/2057885623374290944/lmj0pawP_400x400.jpg",
+   "profile_url": "https://x.com/grok",
+   "relayed_by": [
+    "dexhorthy",
+    "geoffreyhuntley"
+   ],
+   "since": "2026-11-19",
+   "tweets": 5
+  },
+  {
    "bio": "🧪 Head of Evals @Every\n📕 2x O'Reilly author: Prompt Engineering / DSPy\n🎓 400k students on AI Udemy course\n🤖 AI engineer since 2020\n📈 Built 50 person agency",
    "display_name": "Mike Taylor",
    "followers": 13165,
    "handle": "hammer_mt",
    "id": "hammer_mt",
-   "interactions": 11,
+   "interactions": 12,
    "kind": "candidate",
    "latest": {
     "by": [
-     "hamelhusain"
+     "dbreunig"
     ],
-    "date": "2026-11-21",
-    "tweet_url": "https://x.com/hammer_mt/status/2123759160030302283",
+    "date": "2026-11-24",
+    "tweet_url": "https://x.com/hammer_mt/status/2125022740272795748",
     "types": [
-     "quote"
+     "reply"
     ]
    },
-   "oneliner": "Jokes he got 8% through GTA and 30% through the evals book EFAIE.",
+   "oneliner": "Conversation with @dbreunig about the SF DSPy meetup at Figma on Dec 16.",
    "photo": "https://pbs.twimg.com/profile_images/2045274630408359936/_Q6ixnwR_400x400.jpg",
    "profile_url": "https://x.com/hammer_mt",
    "relayed_by": [
@@ -1004,7 +1482,35 @@
     "kieranklaassen"
    ],
    "since": "2026-11-17",
-   "tweets": 10
+   "tweets": 11
+  },
+  {
+   "bio": "organic home farmer.",
+   "display_name": "Han",
+   "followers": 5446,
+   "handle": "HanchungLee",
+   "id": "hanchunglee",
+   "interactions": 2,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "dbreunig"
+    ],
+    "date": "2026-11-23",
+    "tweet_url": "https://x.com/hanchunglee/status/2124899357749280921",
+    "types": [
+     "reply"
+    ]
+   },
+   "oneliner": "Conversation with @dbreunig about Jensen Huang's return as Nvidia CEO.",
+   "photo": "https://pbs.twimg.com/profile_images/1659629006139031553/n0_BdDoi_400x400.jpg",
+   "profile_url": "https://x.com/HanchungLee",
+   "relayed_by": [
+    "dbreunig",
+    "hamelhusain"
+   ],
+   "since": "2026-11-23",
+   "tweets": 2
   },
   {
    "bio": "a week of big plans ahead.",
@@ -1035,32 +1541,61 @@
    "tweets": 2
   },
   {
+   "bio": "Developer Experience @GoogleDeepMind, Benchmarks @kaggle\n prev agents @manusai. I write at https://t.co/02byZNKMa8.\n\nTweets are my own views!",
+   "display_name": "Ivan Leo",
+   "followers": 13698,
+   "handle": "ivanleomk",
+   "id": "ivanleomk",
+   "interactions": 3,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "geoffreyhuntley"
+    ],
+    "date": "2026-11-23",
+    "tweet_url": "https://x.com/ivanleomk/status/2124593812437901651",
+    "types": [
+     "reply"
+    ]
+   },
+   "oneliner": "Short exchange with @geoffreyhuntley.",
+   "photo": "https://pbs.twimg.com/profile_images/2107181145293266944/kmvtQ6c6_400x400.jpg",
+   "profile_url": "https://x.com/ivanleomk",
+   "relayed_by": [
+    "geoffreyhuntley",
+    "sqs"
+   ],
+   "since": "2026-11-23",
+   "tweets": 3
+  },
+  {
    "bio": "lvl 16 half-orc nerd 🍄💀🌈 independent AI researcher https://t.co/uwjF87I7m9 🐀",
    "display_name": "joel ⛈️",
    "followers": 24730,
    "handle": "joelhooks",
    "id": "joelhooks",
-   "interactions": 3,
+   "interactions": 4,
    "kind": "candidate",
    "latest": {
     "by": [
-     "dbreunig"
+     "swyx"
     ],
-    "date": "2026-11-22",
-    "tweet_url": "https://x.com/joelhooks/status/2124579474767499468",
+    "date": "2026-11-23",
+    "tweet_url": "https://x.com/joelhooks/status/2124668436634841562",
     "types": [
      "reply"
     ]
    },
-   "oneliner": "Conversation with @dbreunig and @dexhorthy about using a lab's official harness vs custom ones for its models.",
+   "oneliner": "Conversation with @swyx about Latent Space's light paywall.",
    "photo": "https://pbs.twimg.com/profile_images/1896711404381732864/PrDnDmii_400x400.jpg",
    "profile_url": "https://x.com/joelhooks",
    "relayed_by": [
     "dbreunig",
-    "dexhorthy"
+    "dexhorthy",
+    "swyx"
    ],
    "since": "2026-11-22",
-   "tweets": 3
+   "tweets": 4
   },
   {
    "bio": "Ars longa, vita brevia \n\nYour works are wonderful, I know that full well\n\nWorking on optimization",
@@ -1089,6 +1624,35 @@
    ],
    "since": "2026-11-18",
    "tweets": 2
+  },
+  {
+   "bio": "Own your intelligence.\n\nMakers of LangSmith, @LangChain_OSS, and @LangChain_JS.",
+   "display_name": "LangChain",
+   "followers": 275667,
+   "handle": "LangChain",
+   "id": "langchain",
+   "interactions": 11,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "hwchase17"
+    ],
+    "date": "2026-11-23",
+    "tweet_url": "https://x.com/langchain/status/2124926152703655977",
+    "types": [
+     "quote"
+    ]
+   },
+   "oneliner": "Content Studio, LangChain's open-source design agent making videos, graphics and decks from a Slack prompt.",
+   "photo": "https://pbs.twimg.com/profile_images/2028336270431453184/jRRpLAdG_400x400.jpg",
+   "profile_url": "https://x.com/LangChain",
+   "relayed_by": [
+    "completeskeptic",
+    "hwchase17",
+    "sydneyrunkle"
+   ],
+   "since": "2026-11-23",
+   "tweets": 6
   },
   {
    "bio": "Practical AI tutorials and interviews for busy people | Get my best AI skills and guides at https://t.co/6VAA6p81x6",
@@ -1405,6 +1969,34 @@
    "tweets": 6
   },
   {
+   "bio": "Epic Games founder and CEO.",
+   "display_name": "Tim Sweeney",
+   "followers": 363525,
+   "handle": "TimSweeneyEpic",
+   "id": "timsweeneyepic",
+   "interactions": 2,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "mitsuhiko"
+    ],
+    "date": "2026-11-23",
+    "tweet_url": "https://x.com/timsweeneyepic/status/2124909763331043774",
+    "types": [
+     "reply"
+    ]
+   },
+   "oneliner": "Conversation with @mitsuhiko about a galactic algorithm outcome.",
+   "photo": "https://pbs.twimg.com/profile_images/795819168629198849/SBY3ARvZ_400x400.jpg",
+   "profile_url": "https://x.com/TimSweeneyEpic",
+   "relayed_by": [
+    "mitsuhiko",
+    "steipete"
+   ],
+   "since": "2026-11-23",
+   "tweets": 2
+  },
+  {
    "bio": "playing WoW forever, formerly Claude Code @anthropicai",
    "display_name": "Thariq",
    "followers": 405157,
@@ -1468,80 +2060,88 @@
   }
  ],
  "projects": {
-  "date": "2026-11-23",
+  "date": "2026-11-24",
   "items": [
    {
     "accounts": [
-     "shannholmberg",
-     "hwchase17"
+     "hwchase17",
+     "langchain"
     ],
-    "author": "shannholmberg",
-    "how": "The base holds 3 kinds of knowledge: skills (how the team delivers, e.g. writing a report in your style), domain knowledge (products, customers, competitors, what your KPIs mean) and data access guidance (which source to trust and how to pull from it). While working, agents have a tool to flag anything missing or wrong. At night, a curator agent (an agent running on a schedule) reads the flags, the traces (the log of what each agent did) and sources like Notion or Slack, then updates the knowledge. Only the curator writes: if every agent edited the base, it would fill up with contradictions. LangChain example: the finance agent spots a renamed database column and flags it; the finance lead …",
-    "links": [],
-    "tag": "research",
-    "title": "LangChain's knowledge factory: a librarian agent that keeps your agents' knowledge up to date",
-    "try": "It is a method, not a product. Minimal version suggested by @KevinMagnan: markdown files (Obsidian, Notion or GitHub), every new addition goes through a queue, and a cloud agent accepts or rejects the updates.",
-    "tweet_url": "https://x.com/shannholmberg/status/2124513622282137913",
-    "what": "An architecture where working agents (reports, content, GTM) rely on a company knowledge base that a dedicated agent maintains automatically. In short: an internal wiki nobody has to update by hand.",
-    "who": "Exactly an ops topic: company knowledge lives in people's heads; you give it to the agent once and it never forgets. Today's debate: @JohnKutay stores this knowledge in PostgreSQL rather than markdown files, and @scribeceo warns that documenting every workflow by hand is a huge job."
+    "author": "hwchase17",
+    "how": "1) You write the request in Slack and attach briefs. 2) Each Slack thread gets its own sandbox (an isolated, disposable virtual computer) where the agent keeps the project between messages. 3) The model makes the creative calls and everything is produced as code (HTML/CSS, animations, chart specs), then rendered to files; the agent looks at its own renders to fix them. 4) Its skills (procedure files it reads when needed) hold LangChain's design principles plus guardrails against AI slop. 5) For big jobs (a launch film takes hours) it acts as a chief of staff: it runs asynchronous subagents in parallel, shows the plan and progress in the thread, and asks for approval before shipping; several…",
+    "links": [
+     {
+      "label": "Repo",
+      "url": "https://github.com/langchain-ai/design-agent"
+     },
+     {
+      "label": "Site",
+      "url": "https://www.langchain.com/blog/design-agent"
+     }
+    ],
+    "tag": "open source",
+    "title": "Content Studio: LangChain's design agent, driven from Slack",
+    "try": "Apache 2.0 license, Python 3.12+, can be tried locally without keys per the README; Slack deployment via Managed Deep Agents (paid LangSmith offering). Star count not read.",
+    "tweet_url": "https://x.com/hwchase17/status/2124958660061446569",
+    "what": "An agent that lives in Slack: anyone at the company asks it for a visual (video, social graphic, slide deck, recreated UI image) the way they would ask a designer. Put simply, a Canva plus junior designer that knows your brand and answers in a Slack thread.",
+    "who": "The design team was buried under small repetitive requests. Published results: 3,000+ assets, 80+ decks, three in four requests from outside marketing, median cost per request down from about $8 to about $0.50. A textbook business agent: a real ops workflow, a clear architecture (main agent + subagents + sandbox + skills) and numbers. Key lesson: delete the rules that made up for model weaknesses once models improve; keep the principles."
    },
    {
     "accounts": [
-     "prukalpa",
-     "hwchase17"
+     "claudeai"
     ],
-    "author": "prukalpa",
-    "how": "According to the link card, Trident shows how your AI uses your context (the information you give it), catches what breaks when you change models, and drafts the fix. Stated principles: knowledge managed as code (versions, dependencies), knowledge artefact types beyond markdown (ontology = the map of entities and their relationships, metrics, skills, tools), and hill climbing (improving step by step from traces).",
-    "links": [],
+    "author": "claudeai",
+    "how": "A connector usually relies on MCP (Model Context Protocol, a standard plug that lets an AI talk to software). A skill is a folder of instructions and scripts that Claude loads only when the task calls for it. The plugin bundles both so that in one click Claude can access the tool and knows how to use it well. The catalog mixes Claude Code plugins (PR review, LSP, security) and Cowork plugins (Atlassian, Slack, Figma...).",
+    "links": [
+     {
+      "label": "Site",
+      "url": "https://claude.com/plugins"
+     }
+    ],
     "tag": "paid",
-    "title": "Atlan Trident: a quality loop for your AI's context",
-    "try": "Commercial product, price not disclosed. Site not reachable (t.co link blocked), limited details.",
-    "tweet_url": "https://x.com/prukalpa/status/2124415863516516459",
-    "what": "The product version of the knowledge factory, by Atlan (data catalog), announced at Context Conference.",
-    "who": "Companies with lots of data that want their agents to stay reliable from one model to the next. Mostly for large companies."
+    "title": "Claude Plugins: connectors and skills combined in one format",
+    "try": "Available on Free, Pro, Max and Ultra; Team and Enterprise coming soon. 10,000+ plugins announced. Site not reachable (claude.ai/plugins), details from the tweet and the claude.com/plugins page.",
+    "tweet_url": "https://x.com/claudeai/status/2124970294523945328",
+    "what": "There is now one way to add a capability to Claude: a plugin, which can contain a connector (access to an external tool such as Slack, Jira or Supabase), a skill (a written way of working), or both. Put simply, an app store for Claude.",
+    "who": "Before, you had to plug in a connector on one side and write a skill on the other. It is the simplest building block to equip an ops agent (CRM, Notion, Slack) without coding."
    },
    {
     "accounts": [
-     "dexhorthy"
+     "claudeai"
     ],
-    "author": "dexhorthy",
-    "how": "Instead of calling tools one by one and reading every full JSON response, the agent writes a small script that calls the tools, filters the data and returns only what matters. As dex explains, the model now only sees the Linear fields that matter for decision making instead of the giant gobs of JSON.",
-    "links": [],
+    "author": "claudeai",
+    "how": "1) Classifiers (small models that screen each request one by one) miss attacks split into many harmless-looking requests. 2) EFS adds monitoring that looks for patterns across many requests. 3) Inputs and outputs are written to your own storage (S3 or Google Cloud Storage), encrypted with your keys, then deleted on Anthropic's side. 4) Only the automated monitoring accesses them (no human review, no training). 5) When it finds a risk you get a Safety Case (without the content) that can feed your SIEM (security monitoring tool). It also flags agents that go beyond the user's intent.",
+    "links": [
+     {
+      "label": "Site",
+      "url": "https://claude.com/resources/articles/zero-data-retention-with-enterprise-frontier-safeguards"
+     }
+    ],
     "tag": "paid",
-    "title": "Code mode in Factory: a daily Linear sweep drops from 245k to 23k tokens",
-    "try": "Factory is a paid product. The technique can be reproduced with any agent that can run code.",
-    "tweet_url": "https://x.com/dexhorthy/status/2124624191563698426",
-    "what": "dex (Factory) plugged Procedural Tool Calling (PTC, code mode) into an agent that reviews Linear tickets every day. Result: 245k to 23k tokens and 7 min to 36 s.",
-    "who": "Any ops automation that reads lots of data (CRM, tickets, emails). Fewer tokens is cheaper and faster, and the agent gets lost less."
+    "title": "Enterprise Frontier Safeguards: misuse detection without keeping your data",
+    "try": "Public beta for eligible customers on Claude Platform, AWS, Bedrock and Google Cloud; Microsoft Foundry coming soon. Storage is billed by your cloud provider.",
+    "tweet_url": "https://x.com/claudeai/status/2124929944530587712",
+    "what": "An Anthropic option for companies that want ZDR (zero data retention: neither Anthropic nor the cloud keeps prompts and outputs) while keeping misuse monitoring. Put simply: your logs stay in your own vault, but a security robot can still read them.",
+    "who": "Regulated industries (healthcare, finance, legal) that held back on frontier models for lack of guarantees. Developed with 100+ customers (Stripe, Salesforce and Bridgewater were in the private beta)."
    },
    {
     "accounts": [
-     "zachlloydtweets"
+     "geoffreyhuntley"
     ],
-    "author": "zachlloydtweets",
-    "how": "On their setup, subagents cost 40% more with no meaningful quality gain. A 7-minute video shows the results.",
-    "links": [],
-    "tag": "paid",
-    "title": "Warp measures subagents: 40% more expensive, no quality gain",
-    "try": "Video in the tweet. Warp is a terminal with agents (free and paid plans).",
-    "tweet_url": "https://x.com/zachlloydtweets/status/2124592480674779605",
-    "what": "Warp's founder compared two ways to organize his factory (a chain of agents that produces code): each stage delegating to its own subagents (sub-agents launched with their own context), or a simpler approach.",
-    "who": "A common vibe-coder reflex is to multiply agents. Warp's data says: start simple, add subagents only if you measure a gain."
-   },
-   {
-    "accounts": [
-     "paolino",
-     "kieranklaassen"
+    "author": "geoffreyhuntley",
+    "how": "XNU is built from Apple's published sources and runs as a kernel module (xnu.ko); a small interface module (fki.ko) lends it Linux's memory, timers, files, network and GPU.",
+    "links": [
+     {
+      "label": "Repo",
+      "url": "https://github.com/AFK-surf/xnulinux"
+     }
     ],
-    "author": "paolino",
-    "how": "No technical details in the tweet. Available in the EU on every plan, or on your own servers.",
-    "links": [],
-    "tag": "paid",
-    "title": "Chat with Work: work bots available in Europe",
-    "try": "Site not reachable (t.co link blocked), limited details.",
-    "tweet_url": "https://x.com/paolino/status/2124544426672611717",
-    "what": "A launch (planned for 'tomorrow' in the tweet) of work bots, pitched as the European alternative to Claude Duet (US only), ChatGPT's dots (not on Pro in Europe) and Gemini's Tasks (not in Europe).",
-    "who": "A French team that wants this kind of agent without waiting for the US giants, with the option to keep its data in-house."
+    "tag": "open source",
+    "title": "xnulinux: running macOS inside Linux",
+    "try": "Open source on GitHub.",
+    "tweet_url": "https://x.com/GeoffreyHuntley/status/2124812995310260465",
+    "what": "Loads the macOS kernel (XNU) as a Linux kernel module, without a hypervisor (the software that runs virtual machines): Safari, Finder and the Dock run next to Linux programs on an ARM machine.",
+    "who": "An impressive but very low-level feat. Skip unless curious."
    }
   ]
  },

@@ -1,4 +1,22 @@
 {
+ "agrimsingh": {
+  "bio": "building @spacexsi @grok @bot // teaching @ https://t.co/tpc1Nwqrix // community https://t.co/2mTTsnMgAY \nwhisky guru & dj",
+  "display_name": "agrim singh",
+  "fetched_at": "2026-11-24",
+  "followers": 6090,
+  "handle": "agrimsingh",
+  "photo": "https://pbs.twimg.com/profile_images/2116185858793779200/QdybhTyT_400x400.jpg",
+  "profile_url": "https://x.com/agrimsingh"
+ },
+ "ahmetb": {
+  "bio": "infra @baseten  oss: https://t.co/LbCjmbdcvb did large-scale baremetal compute in past life, learning to do the same for gpus now 🌹",
+  "display_name": "ahmet alp balkan",
+  "fetched_at": "2026-11-24",
+  "followers": 51922,
+  "handle": "ahmetb",
+  "photo": "https://pbs.twimg.com/profile_images/1621769650412584961/MbnqgDNm_400x400.jpg",
+  "profile_url": "https://x.com/ahmetb"
+ },
  "aidotengineer": {
   "bio": "We run the highest signal technical conferences in the industry and publish it all for free online for over 2 million AI Engineers a month",
   "display_name": "AI.Engineer",
@@ -17,6 +35,24 @@
   "photo": "https://pbs.twimg.com/profile_images/2123872040524357632/t_GcQ2er_400x400.jpg",
   "profile_url": "https://x.com/ajambrosino"
  },
+ "andrewcurran_": {
+  "bio": "🏰 - I write about AI, mostly. Expect some strange sights.",
+  "display_name": "Andrew Curran",
+  "fetched_at": "2026-11-24",
+  "followers": 118700,
+  "handle": "AndrewCurran_",
+  "photo": "https://pbs.twimg.com/profile_images/1596945208058744833/_X3LT7fb_400x400.jpg",
+  "profile_url": "https://x.com/AndrewCurran_"
+ },
+ "ariesthecoder": {
+  "bio": "25+ yr business builder now shipping real projects with AI - Raw field reports, tool battles & rescues!\n\nViews are my own.",
+  "display_name": "AriesTheCoder",
+  "fetched_at": "2026-11-24",
+  "followers": 981,
+  "handle": "AriesTheCoder",
+  "photo": "https://pbs.twimg.com/profile_images/2106702198709362688/rFkqItOz_400x400.jpg",
+  "profile_url": "https://x.com/AriesTheCoder"
+ },
  "badlogicgames": {
   "bio": "Armin's handler at https://t.co/B05ybKGkzx. Old man yelling at Claudes.\n\nhttps://t.co/Q1wG57v1yc\n\nhttps://t.co/mnOoWUr0TO\n\nhttps://t.co/8i5vIRE0Wn",
   "display_name": "Mario Zechner",
@@ -25,6 +61,15 @@
   "handle": "badlogicgames",
   "photo": "https://pbs.twimg.com/profile_images/1553485821767991296/87k3l720_400x400.jpg",
   "profile_url": "https://x.com/badlogicgames"
+ },
+ "benhylak": {
+  "bio": "aspiring optimist. cto @raindrop_ai, prev @apple design, @spacex avionics",
+  "display_name": "ben hylak",
+  "fetched_at": "2026-11-24",
+  "followers": 54137,
+  "handle": "benhylak",
+  "photo": "https://pbs.twimg.com/profile_images/2016053929583521792/MNeDZthF_400x400.jpg",
+  "profile_url": "https://x.com/benhylak"
  },
  "bentlegen": {
   "bio": "Co-founder @modemdev. Before: founding engineer then VPE at @sentry. Builds https://t.co/lRZKcrfjO0. Runs @devtoolsTO. 🇨🇦",
@@ -80,6 +125,24 @@
   "photo": "https://pbs.twimg.com/profile_images/1936650128518938624/tCFV_MZO_400x400.jpg",
   "profile_url": "https://x.com/dexhorthy"
  },
+ "dillon_mulroy": {
+  "bio": "principal engineer @cloudflare • tweets about functional programming, typescript, neovim, & formula 1 • https://t.co/6Vr6DiQmze • https://t.co/tlUe9v8Ha4",
+  "display_name": "Dillon Mulroy",
+  "fetched_at": "2026-11-24",
+  "followers": 45409,
+  "handle": "dillon_mulroy",
+  "photo": "https://pbs.twimg.com/profile_images/2092640156020817920/FcBklR0l_400x400.jpg",
+  "profile_url": "https://x.com/dillon_mulroy"
+ },
+ "dusangran": {
+  "bio": "Dusan Odalovic. 17 years in software. Agents write our code, I share what works.\nCo-founder of GRAN · https://t.co/taRdpz4axu · https://t.co/meqYALGdRO",
+  "display_name": "Dusan 🐧 AI agents · dad",
+  "fetched_at": "2026-11-24",
+  "followers": 666,
+  "handle": "dusangran",
+  "photo": "https://pbs.twimg.com/profile_images/2111070746147528704/W7M4CPyS_400x400.jpg",
+  "profile_url": "https://x.com/dusangran"
+ },
  "eliaslumer": {
   "bio": "ai research & engineering | pwc",
   "display_name": "Elias Lumer",
@@ -97,6 +160,15 @@
   "handle": "eliebakouch",
   "photo": "https://pbs.twimg.com/profile_images/1745893660099592193/MmYemsw6_400x400.jpg",
   "profile_url": "https://x.com/eliebakouch"
+ },
+ "ft": {
+  "bio": "Big stories and breaking news as they are published on https://t.co/EYmAcRLBHv. Register here to access free articles: https://t.co/NRg2hritkA",
+  "display_name": "Financial Times",
+  "fetched_at": "2026-11-24",
+  "followers": 7130665,
+  "handle": "FT",
+  "photo": "https://pbs.twimg.com/profile_images/931156393108885504/EqEMtLhM_400x400.jpg",
+  "profile_url": "https://x.com/FT"
  },
  "geoffreyhuntley": {
   "bio": "impressive whatever goes here",
@@ -143,6 +215,15 @@
   "photo": "https://pbs.twimg.com/profile_images/2045274630408359936/_Q6ixnwR_400x400.jpg",
   "profile_url": "https://x.com/hammer_mt"
  },
+ "hanchunglee": {
+  "bio": "organic home farmer.",
+  "display_name": "Han",
+  "fetched_at": "2026-11-24",
+  "followers": 5446,
+  "handle": "HanchungLee",
+  "photo": "https://pbs.twimg.com/profile_images/1659629006139031553/n0_BdDoi_400x400.jpg",
+  "profile_url": "https://x.com/HanchungLee"
+ },
  "hwchase17": {
   "bio": "@LangChain\n\nAlways hiring: https://t.co/D5Ut3loFO7",
   "display_name": "Harrison Chase",
@@ -160,6 +241,15 @@
   "handle": "iruletheworldmo",
   "photo": "https://pbs.twimg.com/profile_images/2048580995302174720/jWUrx_47_400x400.jpg",
   "profile_url": "https://x.com/iruletheworldmo"
+ },
+ "ivanleomk": {
+  "bio": "Developer Experience @GoogleDeepMind, Benchmarks @kaggle\n prev agents @manusai. I write at https://t.co/02byZNKMa8.\n\nTweets are my own views!",
+  "display_name": "Ivan Leo",
+  "fetched_at": "2026-11-24",
+  "followers": 13698,
+  "handle": "ivanleomk",
+  "photo": "https://pbs.twimg.com/profile_images/2107181145293266944/kmvtQ6c6_400x400.jpg",
+  "profile_url": "https://x.com/ivanleomk"
  },
  "joelhooks": {
   "bio": "lvl 16 half-orc nerd 🍄💀🌈 independent AI researcher https://t.co/uwjF87I7m9 🐀",
@@ -205,6 +295,15 @@
   "handle": "kieranklaassen",
   "photo": "https://pbs.twimg.com/profile_images/1826620508789485568/AfWTPhxT_400x400.jpg",
   "profile_url": "https://x.com/kieranklaassen"
+ },
+ "langchain": {
+  "bio": "Own your intelligence.\n\nMakers of LangSmith, @LangChain_OSS, and @LangChain_JS.",
+  "display_name": "LangChain",
+  "fetched_at": "2026-11-24",
+  "followers": 275667,
+  "handle": "LangChain",
+  "photo": "https://pbs.twimg.com/profile_images/2028336270431453184/jRRpLAdG_400x400.jpg",
+  "profile_url": "https://x.com/LangChain"
  },
  "luhsnaa": {
   "bio": "ai engineer. \nthe voice ai & evals guy\n5x startups | 7x hackathons",
@@ -394,6 +493,15 @@
   "handle": "thorstenball",
   "photo": "https://pbs.twimg.com/profile_images/2073288299528024064/3itOM_L5_400x400.jpg",
   "profile_url": "https://x.com/thorstenball"
+ },
+ "timsweeneyepic": {
+  "bio": "Epic Games founder and CEO.",
+  "display_name": "Tim Sweeney",
+  "fetched_at": "2026-11-24",
+  "followers": 363525,
+  "handle": "TimSweeneyEpic",
+  "photo": "https://pbs.twimg.com/profile_images/795819168629198849/SBY3ARvZ_400x400.jpg",
+  "profile_url": "https://x.com/TimSweeneyEpic"
  },
  "trq212": {
   "bio": "playing WoW forever, formerly Claude Code @anthropicai",

@@ -1,13 +1,13 @@
 {
  "badlogicgames": {
-  "text": "Conversation with @geoffreyhuntley about spending a season in Sweden.",
-  "tweet_id": "2124070404176421058",
-  "date": "2026-11-21"
+  "text": "Short exchange with @geoffreyhuntley.",
+  "tweet_id": "2125036059168014759",
+  "date": "2026-11-24"
  },
  "hammer_mt": {
-  "text": "Jokes he got 8% through GTA and 30% through the evals book EFAIE.",
-  "tweet_id": "2123759160030302283",
-  "date": "2026-11-21"
+  "text": "Conversation with @dbreunig about the SF DSPy meetup at Figma on Dec 16.",
+  "tweet_id": "2125022740272795748",
+  "date": "2026-11-24"
  },
  "sydneyrunkle": {
   "text": "Lessons learned building proactive agents that react to live events and schedule their own work; memory and UX are key.",
@@ -50,9 +50,9 @@
   "date": "2026-11-18"
  },
  "aidotengineer": {
-  "text": "Talk: how Lovable separates task history from running processes so 10-hour agents survive deploys every two minutes.",
-  "tweet_id": "2124291774671880239",
-  "date": "2026-11-22"
+  "text": "Dex Horthy's AI Engineer talk: 12 practices to keep a software factory from becoming a slop factory.",
+  "tweet_id": "2124956149359472788",
+  "date": "2026-11-23"
  },
  "gergelyorosz": {
   "text": "Conversation with @swyx, reply thread with no readable topic.",
@@ -60,9 +60,9 @@
   "date": "2026-11-19"
  },
  "grok": {
-  "text": "Conversation with @GeoffreyHuntley about index fund qualification rules for Anthropic's stock.",
-  "tweet_id": "2123498296966521130",
-  "date": "2026-11-19"
+  "text": "Conversation with @dexhorthy pointing out a Grok answer without citations.",
+  "tweet_id": "2124882153305469032",
+  "date": "2026-11-23"
  },
  "zeeg": {
   "text": "Conversation with @dexhorthy about what agent context to keep versus archive.",
@@ -100,9 +100,9 @@
   "date": "2026-11-23"
  },
  "joelhooks": {
-  "text": "Conversation with @dbreunig and @dexhorthy about using a lab's official harness vs custom ones for its models.",
-  "tweet_id": "2124579474767499468",
-  "date": "2026-11-22"
+  "text": "Conversation with @swyx about Latent Space's light paywall.",
+  "tweet_id": "2124668436634841562",
+  "date": "2026-11-23"
  },
  "pvncher": {
   "text": "Conversation with @mitsuhiko about advice to copy Codex's system prompt to get good results from OpenAI models.",
@@ -127,6 +127,66 @@
  "thorstenball": {
   "text": "Shares Benedict Evans on rethinking how you work with AI, including dropping pull requests.",
   "tweet_id": "2124743669781594564",
+  "date": "2026-11-23"
+ },
+ "agrimsingh": {
+  "text": "Banter with @geoffreyhuntley about a new profile picture.",
+  "tweet_id": "2125084246297772145",
+  "date": "2026-11-24"
+ },
+ "ahmetb": {
+  "text": "Conversation with @geoffreyhuntley about politics and LGBT rights abroad.",
+  "tweet_id": "2125094147866693699",
+  "date": "2026-11-24"
+ },
+ "andrewcurran_": {
+  "text": "Conversation with @mckaywrigley reacting to news that turned out to be real.",
+  "tweet_id": "2124910719905013842",
+  "date": "2026-11-23"
+ },
+ "ariesthecoder": {
+  "text": "Conversation with @geoffreyhuntley about government power and political ideology.",
+  "tweet_id": "2125110581112037574",
+  "date": "2026-11-24"
+ },
+ "benhylak": {
+  "text": "Conversation with @completeskeptic; reply was a shared link.",
+  "tweet_id": "2124992192175616239",
+  "date": "2026-11-23"
+ },
+ "dillon_mulroy": {
+  "text": "Conversation with @dexhorthy, a joke referencing Graphviz.",
+  "tweet_id": "2125036420901253387",
+  "date": "2026-11-24"
+ },
+ "dusangran": {
+  "text": "Conversation with @hwchase17 praising LangSmith.",
+  "tweet_id": "2124973778421870720",
+  "date": "2026-11-23"
+ },
+ "ft": {
+  "text": "Conversation with @geoffreyhuntley, who says he cancelled his FT subscription.",
+  "tweet_id": "2124912720193393007",
+  "date": "2026-11-24"
+ },
+ "hanchunglee": {
+  "text": "Conversation with @dbreunig about Jensen Huang's return as Nvidia CEO.",
+  "tweet_id": "2124899357749280921",
+  "date": "2026-11-23"
+ },
+ "ivanleomk": {
+  "text": "Short exchange with @geoffreyhuntley.",
+  "tweet_id": "2124593812437901651",
+  "date": "2026-11-23"
+ },
+ "langchain": {
+  "text": "Content Studio, LangChain's open-source design agent making videos, graphics and decks from a Slack prompt.",
+  "tweet_id": "2124926152703655977",
+  "date": "2026-11-23"
+ },
+ "timsweeneyepic": {
+  "text": "Conversation with @mitsuhiko about a galactic algorithm outcome.",
+  "tweet_id": "2124909763331043774",
   "date": "2026-11-23"
  }
 }

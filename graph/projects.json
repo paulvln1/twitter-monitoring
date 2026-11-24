@@ -1,55 +1,69 @@
 {
- "date": "2026-11-23",
+ "date": "2026-11-24",
  "projects": [
   {
-   "title": "LangChain's knowledge factory: a librarian agent that keeps your agents' knowledge up to date",
-   "tag": "research",
-   "tweet_url": "https://x.com/shannholmberg/status/2124513622282137913",
-   "links": [],
-   "what": "An architecture where working agents (reports, content, GTM) rely on a company knowledge base that a dedicated agent maintains automatically. In short: an internal wiki nobody has to update by hand.",
-   "how": "The base holds 3 kinds of knowledge: skills (how the team delivers, e.g. writing a report in your style), domain knowledge (products, customers, competitors, what your KPIs mean) and data access guidance (which source to trust and how to pull from it). While working, agents have a tool to flag anything missing or wrong. At night, a curator agent (an agent running on a schedule) reads the flags, the traces (the log of what each agent did) and sources like Notion or Slack, then updates the knowledge. Only the curator writes: if every agent edited the base, it would fill up with contradictions. LangChain example: the finance agent spots a renamed database column and flags it; the finance lead asks for a new header on documents; the next night the curator updates the data-pulling skill and the report-writing skill, and every later report is right.",
-   "who": "Exactly an ops topic: company knowledge lives in people's heads; you give it to the agent once and it never forgets. Today's debate: @JohnKutay stores this knowledge in PostgreSQL rather than markdown files, and @scribeceo warns that documenting every workflow by hand is a huge job.",
-   "try": "It is a method, not a product. Minimal version suggested by @KevinMagnan: markdown files (Obsidian, Notion or GitHub), every new addition goes through a queue, and a cloud agent accepts or rejects the updates."
+   "title": "Content Studio: LangChain's design agent, driven from Slack",
+   "tag": "open source",
+   "tweet_url": "https://x.com/hwchase17/status/2124958660061446569",
+   "links": [
+    {
+     "label": "Repo",
+     "url": "https://github.com/langchain-ai/design-agent"
+    },
+    {
+     "label": "Site",
+     "url": "https://www.langchain.com/blog/design-agent"
+    }
+   ],
+   "what": "An agent that lives in Slack: anyone at the company asks it for a visual (video, social graphic, slide deck, recreated UI image) the way they would ask a designer. Put simply, a Canva plus junior designer that knows your brand and answers in a Slack thread.",
+   "how": "1) You write the request in Slack and attach briefs. 2) Each Slack thread gets its own sandbox (an isolated, disposable virtual computer) where the agent keeps the project between messages. 3) The model makes the creative calls and everything is produced as code (HTML/CSS, animations, chart specs), then rendered to files; the agent looks at its own renders to fix them. 4) Its skills (procedure files it reads when needed) hold LangChain's design principles plus guardrails against AI slop. 5) For big jobs (a launch film takes hours) it acts as a chief of staff: it runs asynchronous subagents in parallel, shows the plan and progress in the thread, and asks for approval before shipping; several people can steer it mid-run. Built on Deep Agents (LangChain's harness: agent loop, planning, files, context management), deployed with Managed Deep Agents.",
+   "who": "The design team was buried under small repetitive requests. Published results: 3,000+ assets, 80+ decks, three in four requests from outside marketing, median cost per request down from about $8 to about $0.50. A textbook business agent: a real ops workflow, a clear architecture (main agent + subagents + sandbox + skills) and numbers. Key lesson: delete the rules that made up for model weaknesses once models improve; keep the principles.",
+   "try": "Apache 2.0 license, Python 3.12+, can be tried locally without keys per the README; Slack deployment via Managed Deep Agents (paid LangSmith offering). Star count not read."
   },
   {
-   "title": "Atlan Trident: a quality loop for your AI's context",
+   "title": "Claude Plugins: connectors and skills combined in one format",
    "tag": "paid",
-   "tweet_url": "https://x.com/prukalpa/status/2124415863516516459",
-   "links": [],
-   "what": "The product version of the knowledge factory, by Atlan (data catalog), announced at Context Conference.",
-   "how": "According to the link card, Trident shows how your AI uses your context (the information you give it), catches what breaks when you change models, and drafts the fix. Stated principles: knowledge managed as code (versions, dependencies), knowledge artefact types beyond markdown (ontology = the map of entities and their relationships, metrics, skills, tools), and hill climbing (improving step by step from traces).",
-   "who": "Companies with lots of data that want their agents to stay reliable from one model to the next. Mostly for large companies.",
-   "try": "Commercial product, price not disclosed. Site not reachable (t.co link blocked), limited details."
+   "tweet_url": "https://x.com/claudeai/status/2124970294523945328",
+   "links": [
+    {
+     "label": "Site",
+     "url": "https://claude.com/plugins"
+    }
+   ],
+   "what": "There is now one way to add a capability to Claude: a plugin, which can contain a connector (access to an external tool such as Slack, Jira or Supabase), a skill (a written way of working), or both. Put simply, an app store for Claude.",
+   "how": "A connector usually relies on MCP (Model Context Protocol, a standard plug that lets an AI talk to software). A skill is a folder of instructions and scripts that Claude loads only when the task calls for it. The plugin bundles both so that in one click Claude can access the tool and knows how to use it well. The catalog mixes Claude Code plugins (PR review, LSP, security) and Cowork plugins (Atlassian, Slack, Figma...).",
+   "who": "Before, you had to plug in a connector on one side and write a skill on the other. It is the simplest building block to equip an ops agent (CRM, Notion, Slack) without coding.",
+   "try": "Available on Free, Pro, Max and Ultra; Team and Enterprise coming soon. 10,000+ plugins announced. Site not reachable (claude.ai/plugins), details from the tweet and the claude.com/plugins page."
   },
   {
-   "title": "Code mode in Factory: a daily Linear sweep drops from 245k to 23k tokens",
+   "title": "Enterprise Frontier Safeguards: misuse detection without keeping your data",
    "tag": "paid",
-   "tweet_url": "https://x.com/dexhorthy/status/2124624191563698426",
-   "links": [],
-   "what": "dex (Factory) plugged Procedural Tool Calling (PTC, code mode) into an agent that reviews Linear tickets every day. Result: 245k to 23k tokens and 7 min to 36 s.",
-   "how": "Instead of calling tools one by one and reading every full JSON response, the agent writes a small script that calls the tools, filters the data and returns only what matters. As dex explains, the model now only sees the Linear fields that matter for decision making instead of the giant gobs of JSON.",
-   "who": "Any ops automation that reads lots of data (CRM, tickets, emails). Fewer tokens is cheaper and faster, and the agent gets lost less.",
-   "try": "Factory is a paid product. The technique can be reproduced with any agent that can run code."
+   "tweet_url": "https://x.com/claudeai/status/2124929944530587712",
+   "links": [
+    {
+     "label": "Site",
+     "url": "https://claude.com/resources/articles/zero-data-retention-with-enterprise-frontier-safeguards"
+    }
+   ],
+   "what": "An Anthropic option for companies that want ZDR (zero data retention: neither Anthropic nor the cloud keeps prompts and outputs) while keeping misuse monitoring. Put simply: your logs stay in your own vault, but a security robot can still read them.",
+   "how": "1) Classifiers (small models that screen each request one by one) miss attacks split into many harmless-looking requests. 2) EFS adds monitoring that looks for patterns across many requests. 3) Inputs and outputs are written to your own storage (S3 or Google Cloud Storage), encrypted with your keys, then deleted on Anthropic's side. 4) Only the automated monitoring accesses them (no human review, no training). 5) When it finds a risk you get a Safety Case (without the content) that can feed your SIEM (security monitoring tool). It also flags agents that go beyond the user's intent.",
+   "who": "Regulated industries (healthcare, finance, legal) that held back on frontier models for lack of guarantees. Developed with 100+ customers (Stripe, Salesforce and Bridgewater were in the private beta).",
+   "try": "Public beta for eligible customers on Claude Platform, AWS, Bedrock and Google Cloud; Microsoft Foundry coming soon. Storage is billed by your cloud provider."
   },
   {
-   "title": "Warp measures subagents: 40% more expensive, no quality gain",
-   "tag": "paid",
-   "tweet_url": "https://x.com/zachlloydtweets/status/2124592480674779605",
-   "links": [],
-   "what": "Warp's founder compared two ways to organize his factory (a chain of agents that produces code): each stage delegating to its own subagents (sub-agents launched with their own context), or a simpler approach.",
-   "how": "On their setup, subagents cost 40% more with no meaningful quality gain. A 7-minute video shows the results.",
-   "who": "A common vibe-coder reflex is to multiply agents. Warp's data says: start simple, add subagents only if you measure a gain.",
-   "try": "Video in the tweet. Warp is a terminal with agents (free and paid plans)."
-  },
-  {
-   "title": "Chat with Work: work bots available in Europe",
-   "tag": "paid",
-   "tweet_url": "https://x.com/paolino/status/2124544426672611717",
-   "links": [],
-   "what": "A launch (planned for 'tomorrow' in the tweet) of work bots, pitched as the European alternative to Claude Duet (US only), ChatGPT's dots (not on Pro in Europe) and Gemini's Tasks (not in Europe).",
-   "how": "No technical details in the tweet. Available in the EU on every plan, or on your own servers.",
-   "who": "A French team that wants this kind of agent without waiting for the US giants, with the option to keep its data in-house.",
-   "try": "Site not reachable (t.co link blocked), limited details."
+   "title": "xnulinux: running macOS inside Linux",
+   "tag": "open source",
+   "tweet_url": "https://x.com/GeoffreyHuntley/status/2124812995310260465",
+   "links": [
+    {
+     "label": "Repo",
+     "url": "https://github.com/AFK-surf/xnulinux"
+    }
+   ],
+   "what": "Loads the macOS kernel (XNU) as a Linux kernel module, without a hypervisor (the software that runs virtual machines): Safari, Finder and the Dock run next to Linux programs on an ARM machine.",
+   "how": "XNU is built from Apple's published sources and runs as a kernel module (xnu.ko); a small interface module (fki.ko) lends it Linux's memory, timers, files, network and GPU.",
+   "who": "An impressive but very low-level feat. Skip unless curious.",
+   "try": "Open source on GitHub."
   }
  ]
 }
