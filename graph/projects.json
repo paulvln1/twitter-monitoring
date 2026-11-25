@@ -1,69 +1,34 @@
-{
- "date": "2026-11-24",
- "projects": [
-  {
-   "title": "Content Studio: LangChain's design agent, driven from Slack",
-   "tag": "open source",
-   "tweet_url": "https://x.com/hwchase17/status/2124958660061446569",
-   "links": [
-    {
-     "label": "Repo",
-     "url": "https://github.com/langchain-ai/design-agent"
-    },
-    {
-     "label": "Site",
-     "url": "https://www.langchain.com/blog/design-agent"
-    }
-   ],
-   "what": "An agent that lives in Slack: anyone at the company asks it for a visual (video, social graphic, slide deck, recreated UI image) the way they would ask a designer. Put simply, a Canva plus junior designer that knows your brand and answers in a Slack thread.",
-   "how": "1) You write the request in Slack and attach briefs. 2) Each Slack thread gets its own sandbox (an isolated, disposable virtual computer) where the agent keeps the project between messages. 3) The model makes the creative calls and everything is produced as code (HTML/CSS, animations, chart specs), then rendered to files; the agent looks at its own renders to fix them. 4) Its skills (procedure files it reads when needed) hold LangChain's design principles plus guardrails against AI slop. 5) For big jobs (a launch film takes hours) it acts as a chief of staff: it runs asynchronous subagents in parallel, shows the plan and progress in the thread, and asks for approval before shipping; several people can steer it mid-run. Built on Deep Agents (LangChain's harness: agent loop, planning, files, context management), deployed with Managed Deep Agents.",
-   "who": "The design team was buried under small repetitive requests. Published results: 3,000+ assets, 80+ decks, three in four requests from outside marketing, median cost per request down from about $8 to about $0.50. A textbook business agent: a real ops workflow, a clear architecture (main agent + subagents + sandbox + skills) and numbers. Key lesson: delete the rules that made up for model weaknesses once models improve; keep the principles.",
-   "try": "Apache 2.0 license, Python 3.12+, can be tried locally without keys per the README; Slack deployment via Managed Deep Agents (paid LangSmith offering). Star count not read."
-  },
-  {
-   "title": "Claude Plugins: connectors and skills combined in one format",
-   "tag": "paid",
-   "tweet_url": "https://x.com/claudeai/status/2124970294523945328",
-   "links": [
-    {
-     "label": "Site",
-     "url": "https://claude.com/plugins"
-    }
-   ],
-   "what": "There is now one way to add a capability to Claude: a plugin, which can contain a connector (access to an external tool such as Slack, Jira or Supabase), a skill (a written way of working), or both. Put simply, an app store for Claude.",
-   "how": "A connector usually relies on MCP (Model Context Protocol, a standard plug that lets an AI talk to software). A skill is a folder of instructions and scripts that Claude loads only when the task calls for it. The plugin bundles both so that in one click Claude can access the tool and knows how to use it well. The catalog mixes Claude Code plugins (PR review, LSP, security) and Cowork plugins (Atlassian, Slack, Figma...).",
-   "who": "Before, you had to plug in a connector on one side and write a skill on the other. It is the simplest building block to equip an ops agent (CRM, Notion, Slack) without coding.",
-   "try": "Available on Free, Pro, Max and Ultra; Team and Enterprise coming soon. 10,000+ plugins announced. Site not reachable (claude.ai/plugins), details from the tweet and the claude.com/plugins page."
-  },
-  {
-   "title": "Enterprise Frontier Safeguards: misuse detection without keeping your data",
-   "tag": "paid",
-   "tweet_url": "https://x.com/claudeai/status/2124929944530587712",
-   "links": [
-    {
-     "label": "Site",
-     "url": "https://claude.com/resources/articles/zero-data-retention-with-enterprise-frontier-safeguards"
-    }
-   ],
-   "what": "An Anthropic option for companies that want ZDR (zero data retention: neither Anthropic nor the cloud keeps prompts and outputs) while keeping misuse monitoring. Put simply: your logs stay in your own vault, but a security robot can still read them.",
-   "how": "1) Classifiers (small models that screen each request one by one) miss attacks split into many harmless-looking requests. 2) EFS adds monitoring that looks for patterns across many requests. 3) Inputs and outputs are written to your own storage (S3 or Google Cloud Storage), encrypted with your keys, then deleted on Anthropic's side. 4) Only the automated monitoring accesses them (no human review, no training). 5) When it finds a risk you get a Safety Case (without the content) that can feed your SIEM (security monitoring tool). It also flags agents that go beyond the user's intent.",
-   "who": "Regulated industries (healthcare, finance, legal) that held back on frontier models for lack of guarantees. Developed with 100+ customers (Stripe, Salesforce and Bridgewater were in the private beta).",
-   "try": "Public beta for eligible customers on Claude Platform, AWS, Bedrock and Google Cloud; Microsoft Foundry coming soon. Storage is billed by your cloud provider."
-  },
-  {
-   "title": "xnulinux: running macOS inside Linux",
-   "tag": "open source",
-   "tweet_url": "https://x.com/GeoffreyHuntley/status/2124812995310260465",
-   "links": [
-    {
-     "label": "Repo",
-     "url": "https://github.com/AFK-surf/xnulinux"
-    }
-   ],
-   "what": "Loads the macOS kernel (XNU) as a Linux kernel module, without a hypervisor (the software that runs virtual machines): Safari, Finder and the Dock run next to Linux programs on an ARM machine.",
-   "how": "XNU is built from Apple's published sources and runs as a kernel module (xnu.ko); a small interface module (fki.ko) lends it Linux's memory, timers, files, network and GPU.",
-   "who": "An impressive but very low-level feat. Skip unless curious.",
-   "try": "Open source on GitHub."
-  }
- ]
-}
+{"date": "2026-11-25", "projects": [
+ {"title": "LangChain GTM Agent: an in-house sales agent that builds deal documents",
+  "tag": "open source",
+  "tweet_url": "https://x.com/hwchase17/status/2125289278448320790",
+  "links": [{"label": "Site", "url": "https://www.langchain.com/blog/gtm-agent-high-quality-sales-artifacts"}, {"label": "Template", "url": "https://www.langchain.com/templates/gtm-agent"}],
+  "what": "The agent LangChain uses every day for its sales team: call prep, outreach drafts and above all sales artifacts (account plans, proof-of-value docs, proposal decks, onboarding plans). Think of it as a junior SDR/sales ops hire living in Slack. Harrison Chase's retweet is truncated; details come from LangChain's November 10 post about this agent.",
+  "how": "Built on the Deep Agents harness (the frame that runs the model with its tools). A rep asks for a document in Slack, or the agent offers one during meeting prep. It reads the account in Salesforce plus call transcripts and product usage data, asks the rep for missing inputs, copies the leadership-approved template from Google Drive, and builds the document in a sandbox (an isolated machine with python-pptx, LibreOffice and the brand kit). It then reviews itself: converts to PDF, turns pages into images, checks them, fixes and re-renders. Finally it files a native Google Slides/Docs/Sheets file and posts a PDF preview and link in Slack, flagging what a human should check. Sales process rules live in skills versioned apart from the code, and every run is traced in LangSmith.",
+  "who": "A concrete case of agents doing real business work. Reported results over 12 weeks: 1,540 artifacts generated (100+ per week), 47% of deals that received an artifact moved to a later stage versus 16% without, and 337 hours of rep time saved on sent artifacts. A stopping rule (ship as soon as a review finds no real defect) cut a one-pager from 18 to 7 minutes.",
+  "try": "The agent itself is not open source; LangChain publishes a GTM agent template (Salesforce, Gmail, Slack, BigQuery) and points to Deep Agents / Managed Deep Agents to build the equivalent."},
+ {"title": "Warp Learn: a free course to build your own software factory",
+  "tag": "open source",
+  "tweet_url": "https://x.com/zachlloydtweets/status/2125346947997548846",
+  "links": [{"label": "Site", "url": "https://warp.dev/learn"}],
+  "what": "A hands-on course from Warp that starts with a backlog agent (the agent that handles the to-do list of tickets) and builds up to a multi-stage factory with specs, verification and risk assessment. Zach Lloyd also shares Ben Holmes's guide, which he calls the most comprehensive he has seen.",
+  "how": "According to the course description, a factory is made of agents (who do the work), automations (what triggers them: a new ticket, a Slack message), runners (the machines they run on), skills, scorers (what grades the work) and benchmarks (reference tasks to compare configurations). You start with a triage agent that labels tickets as ready to build, needs more info or duplicate, then add stages and human approval gates at the risky points. Ben Holmes's guide covers encoding factory steps as code, where to put human gates, and what verification and risk assessment look like.",
+  "who": "The right starting point to go from vibe coding with one agent to agents working through a queue of tasks on their own. The triage, execution, verification, human approval logic also applies to non-technical ops.",
+  "try": "Free, 3 units. The warp.dev site could not be reached, so details come from the tweet and course descriptions found in search."},
+ {"title": "Claude artifacts become installable desktop apps",
+  "tag": "paid",
+  "tweet_url": "https://x.com/ClaudeDevs/status/2125315491522650299",
+  "links": [],
+  "what": "Ask Claude to build an artifact (a mini web app), click Install as app, and it opens like any other app on Mac or Windows. In plain terms: an internal tool built without coding that lives in your dock.",
+  "how": "The app can use your connectors (Claude's links to Gmail, Drive, Slack and so on), OS APIs and Claude itself, and, if you allow it, send notifications or add a menu bar item.",
+  "who": "For ops people, the shortest path to small internal tools (a deal tracker that notifies you, a reporting widget) without deploying anything. Relayed by @dexhorthy (skeptical) and @kieranklaassen (enthusiastic).",
+  "try": "Available now in the Claude app on Mac and Windows. The announcement link could not be read, so details are limited to the tweet."},
+ {"title": "Agent Approve 0.9: approve your agents' actions from your watch",
+  "tag": "paid",
+  "tweet_url": "https://x.com/agentapprove/status/2125009080440025264",
+  "links": [],
+  "what": "An app that tracks what your agents do and asks your permission for sensitive actions from an iPhone or Apple Watch. Version 0.9 adds Policy Rules powered by Jev, TypeSafe AI's judgment model, plus an Ask List.",
+  "how": "Instead of approving everything by hand, Jev checks each agent action against your rules: safe actions go through automatically, doubtful ones are sent to you. Human-in-the-loop approval, but sorted automatically.",
+  "who": "Trust is the main blocker for agents at work. This kind of tool lets an agent run without constant supervision. Relayed by @CompleteSkeptic, who also highlights another Jev use: report, Jev classifier, grouping, new issues sent to Slack.",
+  "try": "Solo and Pro plans, prices not read. No readable page, details limited to the tweet."}
+]}

@@ -1,8 +1,8 @@
 {
  "badlogicgames": {
-  "text": "Short exchange with @geoffreyhuntley.",
-  "tweet_id": "2125036059168014759",
-  "date": "2026-11-24"
+  "text": "Conversation with @swyx about actor-based backends; swyx suggests looking at Microsoft Orleans.",
+  "tweet_id": "2125299127223554056",
+  "date": "2026-11-25"
  },
  "hammer_mt": {
   "text": "Conversation with @dbreunig about the SF DSPy meetup at Figma on Dec 16.",
@@ -15,9 +15,9 @@
   "date": "2026-11-17"
  },
  "theo": {
-  "text": "Argues repos need private files, per-team private branches and built-in secret management.",
-  "tweet_id": "2123901093751280052",
-  "date": "2026-11-21"
+  "text": "Conversation with @swyx about telemetry drama in open source projects.",
+  "tweet_id": "2125316769858683312",
+  "date": "2026-11-25"
  },
  "caspar_br": {
   "text": "One-word endorsement of LangSmith, LangChain's agent observability and eval platform.",
@@ -45,9 +45,9 @@
   "date": "2026-11-19"
  },
  "trq212": {
-  "text": "Argues most people won't generate their own software: good software is a set of strong, well-thought opinions.",
-  "tweet_id": "2123106370161705127",
-  "date": "2026-11-18"
+  "text": "Conversation with @swyx reacting to news of Thariq Shihipar's move to OpenAI.",
+  "tweet_id": "2125156290494353663",
+  "date": "2026-11-25"
  },
  "aidotengineer": {
   "text": "Dex Horthy's AI Engineer talk: 12 practices to keep a software factory from becoming a slop factory.",
@@ -55,9 +55,9 @@
   "date": "2026-11-23"
  },
  "gergelyorosz": {
-  "text": "Conversation with @swyx, reply thread with no readable topic.",
-  "tweet_id": "2123436021090078856",
-  "date": "2026-11-19"
+  "text": "Conversation with @dexhorthy about a startup rewriting its stack to cut CI/CD costs; dex notes it is a custom compiler.",
+  "tweet_id": "2125296348836577527",
+  "date": "2026-11-24"
  },
  "grok": {
   "text": "Conversation with @dexhorthy pointing out a Grok answer without citations.",
@@ -110,9 +110,9 @@
   "date": "2026-11-22"
  },
  "quinnypig": {
-  "text": "Conversation with @GeoffreyHuntley; short agreement reply, topic not stated.",
-  "tweet_id": "2124346726995853521",
-  "date": "2026-11-22"
+  "text": "Conversation with @dexhorthy joking about cutting CI/CD bills by rewriting a stack in another language.",
+  "tweet_id": "2125266871960355032",
+  "date": "2026-11-24"
  },
  "rasbt": {
   "text": "Conversation with @CompleteSkeptic about whether GPT-4.5 and GPT-5.5 had similar pretraining capabilities.",
@@ -135,8 +135,8 @@
   "date": "2026-11-24"
  },
  "ahmetb": {
-  "text": "Conversation with @geoffreyhuntley about politics and LGBT rights abroad.",
-  "tweet_id": "2125094147866693699",
+  "text": "Thread with @GeoffreyHuntley about Israeli law and same-sex marriage, prompted by a Grok exchange.",
+  "tweet_id": "2125137411839844563",
   "date": "2026-11-24"
  },
  "andrewcurran_": {
@@ -188,5 +188,35 @@
   "text": "Conversation with @mitsuhiko about a galactic algorithm outcome.",
   "tweet_id": "2124909763331043774",
   "date": "2026-11-23"
+ },
+ "charliermarsh": {
+  "text": "Conversation with @steipete about reducing memory when forking processes in Node-based tools.",
+  "tweet_id": "2125333328207413458",
+  "date": "2026-11-24"
+ },
+ "claudedevs": {
+  "text": "Claude artifacts can now be installed as Mac and Windows desktop apps, with connectors, notifications and menu bar items.",
+  "tweet_id": "2125315491522650299",
+  "date": "2026-11-24"
+ },
+ "dsp_": {
+  "text": "Conversation with @swyx, who wishes them a happy anniversary.",
+  "tweet_id": "2125280855061045621",
+  "date": "2026-11-25"
+ },
+ "katelyn_lesse": {
+  "text": "Engineers must solve a new set of problems to unlock powerful multi-agent systems.",
+  "tweet_id": "2114542280535318557",
+  "date": "2026-11-24"
+ },
+ "mtslive": {
+  "text": "Clip of Morph founder Tejas Bhakta arguing AI may create more bullshit jobs rather than mass unemployment.",
+  "tweet_id": "2125367695730421863",
+  "date": "2026-11-25"
+ },
+ "nateberkopec": {
+  "text": "Brief friendly exchange with @dbreunig.",
+  "tweet_id": "2125415905610125767",
+  "date": "2026-11-25"
  }
 }

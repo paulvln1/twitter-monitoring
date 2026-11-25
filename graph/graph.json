@@ -1,5 +1,5 @@
 {
- "as_of": "2026-11-24",
+ "as_of": "2026-11-25",
  "edges": [
   {
    "source": "swyx",
@@ -23,7 +23,7 @@
    "types": [
     "reply"
    ],
-   "weight": 1
+   "weight": 4
   },
   {
    "source": "sqs",
@@ -113,15 +113,16 @@
     "quote",
     "reply"
    ],
-   "weight": 2
+   "weight": 3
   },
   {
    "source": "dbreunig",
    "target": "badlogicgames",
    "types": [
-    "quote"
+    "quote",
+    "reply"
    ],
-   "weight": 1
+   "weight": 2
   },
   {
    "source": "steipete",
@@ -152,9 +153,10 @@
    "source": "swyx",
    "target": "badlogicgames",
    "types": [
+    "reply",
     "rt"
    ],
-   "weight": 1
+   "weight": 2
   },
   {
    "source": "hamelhusain",
@@ -206,6 +208,47 @@
    "weight": 1
   },
   {
+   "source": "steipete",
+   "target": "charliermarsh",
+   "types": [
+    "reply",
+    "rt"
+   ],
+   "weight": 2
+  },
+  {
+   "source": "jxnlco",
+   "target": "charliermarsh",
+   "types": [
+    "rt"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "dexhorthy",
+   "target": "charliermarsh",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "mitsuhiko",
+   "target": "claudedevs",
+   "types": [
+    "quote"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "dexhorthy",
+   "target": "claudedevs",
+   "types": [
+    "quote"
+   ],
+   "weight": 1
+  },
+  {
    "source": "mitsuhiko",
    "target": "dillon_mulroy",
    "types": [
@@ -216,6 +259,22 @@
   {
    "source": "dexhorthy",
    "target": "dillon_mulroy",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "mitsuhiko",
+   "target": "dsp_",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "swyx",
+   "target": "dsp_",
    "types": [
     "reply"
    ],
@@ -295,6 +354,14 @@
   },
   {
    "source": "swyx",
+   "target": "gergelyorosz",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "dexhorthy",
    "target": "gergelyorosz",
    "types": [
     "reply"
@@ -443,6 +510,22 @@
    "weight": 1
   },
   {
+   "source": "rlancemartin",
+   "target": "katelyn_lesse",
+   "types": [
+    "rt"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "swyx",
+   "target": "katelyn_lesse",
+   "types": [
+    "quote"
+   ],
+   "weight": 1
+  },
+  {
    "source": "hwchase17",
    "target": "langchain",
    "types": [
@@ -464,6 +547,38 @@
    "target": "langchain",
    "types": [
     "quote"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "geoffreyhuntley",
+   "target": "mtslive",
+   "types": [
+    "quote"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "swyx",
+   "target": "mtslive",
+   "types": [
+    "quote"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "kieranklaassen",
+   "target": "nateberkopec",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "dbreunig",
+   "target": "nateberkopec",
+   "types": [
+    "reply"
    ],
    "weight": 1
   },
@@ -523,7 +638,7 @@
     "quote",
     "reply"
    ],
-   "weight": 2
+   "weight": 3
   },
   {
    "source": "geoffreyhuntley",
@@ -669,7 +784,7 @@
     "reply",
     "rt"
    ],
-   "weight": 2
+   "weight": 5
   },
   {
    "source": "sqs",
@@ -707,9 +822,10 @@
    "source": "swyx",
    "target": "trq212",
    "types": [
+    "reply",
     "rt"
    ],
-   "weight": 1
+   "weight": 2
   },
   {
    "source": "jxnlco",
@@ -761,7 +877,7 @@
    "weight": 1
   }
  ],
- "generated_at": "2026-11-24T07:09:14+00:00",
+ "generated_at": "2026-11-25T07:09:59+00:00",
  "nodes": [
   {
    "bio": "@LangChain\n\nAlways hiring: https://t.co/D5Ut3loFO7",
@@ -1007,19 +1123,19 @@
    "followers": 51922,
    "handle": "ahmetb",
    "id": "ahmetb",
-   "interactions": 2,
+   "interactions": 5,
    "kind": "candidate",
    "latest": {
     "by": [
      "geoffreyhuntley"
     ],
     "date": "2026-11-24",
-    "tweet_url": "https://x.com/ahmetb/status/2125094147866693699",
+    "tweet_url": "https://x.com/ahmetb/status/2125137411839844563",
     "types": [
      "reply"
     ]
    },
-   "oneliner": "Conversation with @geoffreyhuntley about politics and LGBT rights abroad.",
+   "oneliner": "Thread with @GeoffreyHuntley about Israeli law and same-sex marriage, prompted by a Grok exchange.",
    "photo": "https://pbs.twimg.com/profile_images/1621769650412584961/MbnqgDNm_400x400.jpg",
    "profile_url": "https://x.com/ahmetb",
    "relayed_by": [
@@ -1027,7 +1143,7 @@
     "sqs"
    ],
    "since": "2026-11-24",
-   "tweets": 2
+   "tweets": 5
   },
   {
    "bio": "We run the highest signal technical conferences in the industry and publish it all for free online for over 2 million AI Engineers a month",
@@ -1148,19 +1264,19 @@
    "followers": 81193,
    "handle": "badlogicgames",
    "id": "badlogicgames",
-   "interactions": 13,
+   "interactions": 16,
    "kind": "candidate",
    "latest": {
     "by": [
-     "geoffreyhuntley"
+     "swyx"
     ],
-    "date": "2026-11-24",
-    "tweet_url": "https://x.com/badlogicgames/status/2125036059168014759",
+    "date": "2026-11-25",
+    "tweet_url": "https://x.com/badlogicgames/status/2125299127223554056",
     "types": [
      "reply"
     ]
    },
-   "oneliner": "Short exchange with @geoffreyhuntley.",
+   "oneliner": "Conversation with @swyx about actor-based backends; swyx suggests looking at Microsoft Orleans.",
    "photo": "https://pbs.twimg.com/profile_images/1553485821767991296/87k3l720_400x400.jpg",
    "profile_url": "https://x.com/badlogicgames",
    "relayed_by": [
@@ -1172,7 +1288,7 @@
     "swyx"
    ],
    "since": "2026-11-17",
-   "tweets": 11
+   "tweets": 14
   },
   {
    "bio": "aspiring optimist. cto @raindrop_ai, prev @apple design, @spacex avionics",
@@ -1259,6 +1375,63 @@
    "tweets": 5
   },
   {
+   "bio": "@OpenAI. Building Ruff, uv, ty, and other high-performance Python tools with the @astral_sh team.",
+   "display_name": "Charlie Marsh",
+   "followers": 54745,
+   "handle": "charliermarsh",
+   "id": "charliermarsh",
+   "interactions": 4,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "steipete"
+    ],
+    "date": "2026-11-24",
+    "tweet_url": "https://x.com/charliermarsh/status/2125333328207413458",
+    "types": [
+     "reply"
+    ]
+   },
+   "oneliner": "Conversation with @steipete about reducing memory when forking processes in Node-based tools.",
+   "photo": "https://pbs.twimg.com/profile_images/1490182599981125634/ex0Jezvf_400x400.jpg",
+   "profile_url": "https://x.com/charliermarsh",
+   "relayed_by": [
+    "dexhorthy",
+    "jxnlco",
+    "steipete"
+   ],
+   "since": "2026-11-24",
+   "tweets": 3
+  },
+  {
+   "bio": "Official updates for developers building with @ClaudeAI",
+   "display_name": "ClaudeDevs",
+   "followers": 856538,
+   "handle": "ClaudeDevs",
+   "id": "claudedevs",
+   "interactions": 2,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "dexhorthy"
+    ],
+    "date": "2026-11-24",
+    "tweet_url": "https://x.com/claudedevs/status/2125315491522650299",
+    "types": [
+     "quote"
+    ]
+   },
+   "oneliner": "Claude artifacts can now be installed as Mac and Windows desktop apps, with connectors, notifications and menu bar items.",
+   "photo": "https://pbs.twimg.com/profile_images/2044472418815893504/xf14RxM8_400x400.png",
+   "profile_url": "https://x.com/ClaudeDevs",
+   "relayed_by": [
+    "dexhorthy",
+    "mitsuhiko"
+   ],
+   "since": "2026-11-24",
+   "tweets": 2
+  },
+  {
    "bio": "principal engineer @cloudflare • tweets about functional programming, typescript, neovim, & formula 1 • https://t.co/6Vr6DiQmze • https://t.co/tlUe9v8Ha4",
    "display_name": "Dillon Mulroy",
    "followers": 45409,
@@ -1284,6 +1457,34 @@
     "mitsuhiko"
    ],
    "since": "2026-11-24",
+   "tweets": 2
+  },
+  {
+   "bio": "Member of Technical Staff @AnthropicAI. Co-Creator of https://t.co/cn31cNYQD3. Ex-Meta. Playing with computers and tech",
+   "display_name": "David Soria Parra",
+   "followers": 15403,
+   "handle": "dsp_",
+   "id": "dsp_",
+   "interactions": 2,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "swyx"
+    ],
+    "date": "2026-11-25",
+    "tweet_url": "https://x.com/dsp_/status/2125280855061045621",
+    "types": [
+     "reply"
+    ]
+   },
+   "oneliner": "Conversation with @swyx, who wishes them a happy anniversary.",
+   "photo": "https://pbs.twimg.com/profile_images/2671670579/07d6fd4445bbcb1383a7b181f4ffce13_400x400.jpeg",
+   "profile_url": "https://x.com/dsp_",
+   "relayed_by": [
+    "mitsuhiko",
+    "swyx"
+   ],
+   "since": "2026-11-25",
    "tweets": 2
   },
   {
@@ -1404,27 +1605,28 @@
    "followers": 369138,
    "handle": "GergelyOrosz",
    "id": "gergelyorosz",
-   "interactions": 2,
+   "interactions": 3,
    "kind": "candidate",
    "latest": {
     "by": [
-     "swyx"
+     "dexhorthy"
     ],
-    "date": "2026-11-19",
-    "tweet_url": "https://x.com/gergelyorosz/status/2123436021090078856",
+    "date": "2026-11-24",
+    "tweet_url": "https://x.com/gergelyorosz/status/2125296348836577527",
     "types": [
      "reply"
     ]
    },
-   "oneliner": "Conversation with @swyx, reply thread with no readable topic.",
+   "oneliner": "Conversation with @dexhorthy about a startup rewriting its stack to cut CI/CD costs; dex notes it is a custom compiler.",
    "photo": "https://pbs.twimg.com/profile_images/673095429748350976/ei5eeouV_400x400.png",
    "profile_url": "https://x.com/GergelyOrosz",
    "relayed_by": [
+    "dexhorthy",
     "steipete",
     "swyx"
    ],
    "since": "2026-11-19",
-   "tweets": 2
+   "tweets": 3
   },
   {
    "bio": "@grok it",
@@ -1626,6 +1828,34 @@
    "tweets": 2
   },
   {
+   "bio": "head of platform @anthropicai. previously @stripe @betterment. lfgm.",
+   "display_name": "Katelyn Lesse",
+   "followers": 13937,
+   "handle": "katelyn_lesse",
+   "id": "katelyn_lesse",
+   "interactions": 2,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "swyx"
+    ],
+    "date": "2026-11-24",
+    "tweet_url": "https://x.com/katelyn_lesse/status/2114542280535318557",
+    "types": [
+     "quote"
+    ]
+   },
+   "oneliner": "Engineers must solve a new set of problems to unlock powerful multi-agent systems.",
+   "photo": "https://pbs.twimg.com/profile_images/1948503623769751556/U1BBp88H_400x400.jpg",
+   "profile_url": "https://x.com/katelyn_lesse",
+   "relayed_by": [
+    "rlancemartin",
+    "swyx"
+   ],
+   "since": "2026-11-24",
+   "tweets": 2
+  },
+  {
    "bio": "Own your intelligence.\n\nMakers of LangSmith, @LangChain_OSS, and @LangChain_JS.",
    "display_name": "LangChain",
    "followers": 275667,
@@ -1653,6 +1883,62 @@
    ],
    "since": "2026-11-23",
    "tweets": 6
+  },
+  {
+   "bio": "Chronicling the singularity\n\nNew original series @themethodshow",
+   "display_name": "MTS",
+   "followers": 594235,
+   "handle": "MTSlive",
+   "id": "mtslive",
+   "interactions": 2,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "swyx"
+    ],
+    "date": "2026-11-25",
+    "tweet_url": "https://x.com/mtslive/status/2125367695730421863",
+    "types": [
+     "quote"
+    ]
+   },
+   "oneliner": "Clip of Morph founder Tejas Bhakta arguing AI may create more bullshit jobs rather than mass unemployment.",
+   "photo": "https://pbs.twimg.com/profile_images/2057947669281263616/aovpVL4b_400x400.jpg",
+   "profile_url": "https://x.com/MTSlive",
+   "relayed_by": [
+    "geoffreyhuntley",
+    "swyx"
+   ],
+   "since": "2026-11-25",
+   "tweets": 2
+  },
+  {
+   "bio": "Ruby and Rails applications, made fast. 日本語: @nateberkopec_ja",
+   "display_name": "Nate Berkopec",
+   "followers": 34892,
+   "handle": "nateberkopec",
+   "id": "nateberkopec",
+   "interactions": 2,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "dbreunig"
+    ],
+    "date": "2026-11-25",
+    "tweet_url": "https://x.com/nateberkopec/status/2125415905610125767",
+    "types": [
+     "reply"
+    ]
+   },
+   "oneliner": "Brief friendly exchange with @dbreunig.",
+   "photo": "https://pbs.twimg.com/profile_images/1905366180376006656/kYntWlPf_400x400.jpg",
+   "profile_url": "https://x.com/nateberkopec",
+   "relayed_by": [
+    "dbreunig",
+    "kieranklaassen"
+   ],
+   "since": "2026-11-25",
+   "tweets": 2
   },
   {
    "bio": "Practical AI tutorials and interviews for busy people | Get my best AI skills and guides at https://t.co/6VAA6p81x6",
@@ -1744,19 +2030,19 @@
    "followers": 109498,
    "handle": "QuinnyPig",
    "id": "quinnypig",
-   "interactions": 3,
+   "interactions": 4,
    "kind": "candidate",
    "latest": {
     "by": [
-     "geoffreyhuntley"
+     "dexhorthy"
     ],
-    "date": "2026-11-22",
-    "tweet_url": "https://x.com/quinnypig/status/2124346726995853521",
+    "date": "2026-11-24",
+    "tweet_url": "https://x.com/quinnypig/status/2125266871960355032",
     "types": [
      "reply"
     ]
    },
-   "oneliner": "Conversation with @GeoffreyHuntley; short agreement reply, topic not stated.",
+   "oneliner": "Conversation with @dexhorthy joking about cutting CI/CD bills by rewriting a stack in another language.",
    "photo": "https://pbs.twimg.com/profile_images/1840839119037218817/3aPpjjwH_400x400.jpg",
    "profile_url": "https://x.com/QuinnyPig",
    "relayed_by": [
@@ -1764,7 +2050,7 @@
     "geoffreyhuntley"
    ],
    "since": "2026-11-22",
-   "tweets": 3
+   "tweets": 4
   },
   {
    "bio": "ML/AI research engineer. Ex stats professor.\nAuthor of \"Build a Large Language Model From Scratch\" (https://t.co/O8LAAMRzzW) & reasoning (https://t.co/5TueQKx2Fk)",
@@ -1916,20 +2202,19 @@
    "followers": 433028,
    "handle": "theo",
    "id": "theo",
-   "interactions": 7,
+   "interactions": 10,
    "kind": "candidate",
    "latest": {
     "by": [
      "swyx"
     ],
-    "date": "2026-11-21",
-    "tweet_url": "https://x.com/theo/status/2123901093751280052",
+    "date": "2026-11-25",
+    "tweet_url": "https://x.com/theo/status/2125316769858683312",
     "types": [
-     "reply",
-     "rt"
+     "reply"
     ]
    },
-   "oneliner": "Argues repos need private files, per-team private branches and built-in secret management.",
+   "oneliner": "Conversation with @swyx about telemetry drama in open source projects.",
    "photo": "https://pbs.twimg.com/profile_images/2106484435382333440/vXOVE8EX_400x400.jpg",
    "profile_url": "https://x.com/theo",
    "relayed_by": [
@@ -1938,7 +2223,7 @@
     "swyx"
    ],
    "since": "2026-11-17",
-   "tweets": 5
+   "tweets": 8
   },
   {
    "bio": "Working on @ampcode. Writing https://t.co/0SZD6dbLes. Once authored https://t.co/arW0hnVET0 and https://t.co/RN9xXOzhON.",
@@ -2002,22 +2287,19 @@
    "followers": 405157,
    "handle": "trq212",
    "id": "trq212",
-   "interactions": 6,
+   "interactions": 7,
    "kind": "candidate",
    "latest": {
     "by": [
-     "dexhorthy",
-     "kieranklaassen",
-     "mckaywrigley"
+     "swyx"
     ],
-    "date": "2026-11-18",
-    "tweet_url": "https://x.com/trq212/status/2123106370161705127",
+    "date": "2026-11-25",
+    "tweet_url": "https://x.com/trq212/status/2125156290494353663",
     "types": [
-     "reply",
-     "rt"
+     "reply"
     ]
    },
-   "oneliner": "Argues most people won't generate their own software: good software is a set of strong, well-thought opinions.",
+   "oneliner": "Conversation with @swyx reacting to news of Thariq Shihipar's move to OpenAI.",
    "photo": "https://pbs.twimg.com/profile_images/1976939058741039104/r3GgzqRh_400x400.jpg",
    "profile_url": "https://x.com/trq212",
    "relayed_by": [
@@ -2028,7 +2310,7 @@
     "swyx"
    ],
    "since": "2026-11-18",
-   "tweets": 2
+   "tweets": 3
   },
   {
    "bio": "fractional executive, full time founder @sentry\n\nhttps://t.co/quHCKoHZtu\n\nlike whisky? @peated_app",
@@ -2060,88 +2342,80 @@
   }
  ],
  "projects": {
-  "date": "2026-11-24",
+  "date": "2026-11-25",
   "items": [
    {
     "accounts": [
-     "hwchase17",
-     "langchain"
+     "hwchase17"
     ],
     "author": "hwchase17",
-    "how": "1) You write the request in Slack and attach briefs. 2) Each Slack thread gets its own sandbox (an isolated, disposable virtual computer) where the agent keeps the project between messages. 3) The model makes the creative calls and everything is produced as code (HTML/CSS, animations, chart specs), then rendered to files; the agent looks at its own renders to fix them. 4) Its skills (procedure files it reads when needed) hold LangChain's design principles plus guardrails against AI slop. 5) For big jobs (a launch film takes hours) it acts as a chief of staff: it runs asynchronous subagents in parallel, shows the plan and progress in the thread, and asks for approval before shipping; several…",
+    "how": "Built on the Deep Agents harness (the frame that runs the model with its tools). A rep asks for a document in Slack, or the agent offers one during meeting prep. It reads the account in Salesforce plus call transcripts and product usage data, asks the rep for missing inputs, copies the leadership-approved template from Google Drive, and builds the document in a sandbox (an isolated machine with python-pptx, LibreOffice and the brand kit). It then reviews itself: converts to PDF, turns pages into images, checks them, fixes and re-renders. Finally it files a native Google Slides/Docs/Sheets file and posts a PDF preview and link in Slack, flagging what a human should check. Sales process rules…",
     "links": [
      {
-      "label": "Repo",
-      "url": "https://github.com/langchain-ai/design-agent"
+      "label": "Site",
+      "url": "https://www.langchain.com/blog/gtm-agent-high-quality-sales-artifacts"
      },
      {
-      "label": "Site",
-      "url": "https://www.langchain.com/blog/design-agent"
+      "label": "Template",
+      "url": "https://www.langchain.com/templates/gtm-agent"
      }
     ],
     "tag": "open source",
-    "title": "Content Studio: LangChain's design agent, driven from Slack",
-    "try": "Apache 2.0 license, Python 3.12+, can be tried locally without keys per the README; Slack deployment via Managed Deep Agents (paid LangSmith offering). Star count not read.",
-    "tweet_url": "https://x.com/hwchase17/status/2124958660061446569",
-    "what": "An agent that lives in Slack: anyone at the company asks it for a visual (video, social graphic, slide deck, recreated UI image) the way they would ask a designer. Put simply, a Canva plus junior designer that knows your brand and answers in a Slack thread.",
-    "who": "The design team was buried under small repetitive requests. Published results: 3,000+ assets, 80+ decks, three in four requests from outside marketing, median cost per request down from about $8 to about $0.50. A textbook business agent: a real ops workflow, a clear architecture (main agent + subagents + sandbox + skills) and numbers. Key lesson: delete the rules that made up for model weaknesses once models improve; keep the principles."
+    "title": "LangChain GTM Agent: an in-house sales agent that builds deal documents",
+    "try": "The agent itself is not open source; LangChain publishes a GTM agent template (Salesforce, Gmail, Slack, BigQuery) and points to Deep Agents / Managed Deep Agents to build the equivalent.",
+    "tweet_url": "https://x.com/hwchase17/status/2125289278448320790",
+    "what": "The agent LangChain uses every day for its sales team: call prep, outreach drafts and above all sales artifacts (account plans, proof-of-value docs, proposal decks, onboarding plans). Think of it as a junior SDR/sales ops hire living in Slack. Harrison Chase's retweet is truncated; details come from LangChain's November 10 post about this agent.",
+    "who": "A concrete case of agents doing real business work. Reported results over 12 weeks: 1,540 artifacts generated (100+ per week), 47% of deals that received an artifact moved to a later stage versus 16% without, and 337 hours of rep time saved on sent artifacts. A stopping rule (ship as soon as a review finds no real defect) cut a one-pager from 18 to 7 minutes."
    },
    {
     "accounts": [
-     "claudeai"
+     "zachlloydtweets",
+     "warpdotdev"
     ],
-    "author": "claudeai",
-    "how": "A connector usually relies on MCP (Model Context Protocol, a standard plug that lets an AI talk to software). A skill is a folder of instructions and scripts that Claude loads only when the task calls for it. The plugin bundles both so that in one click Claude can access the tool and knows how to use it well. The catalog mixes Claude Code plugins (PR review, LSP, security) and Cowork plugins (Atlassian, Slack, Figma...).",
+    "author": "zachlloydtweets",
+    "how": "According to the course description, a factory is made of agents (who do the work), automations (what triggers them: a new ticket, a Slack message), runners (the machines they run on), skills, scorers (what grades the work) and benchmarks (reference tasks to compare configurations). You start with a triage agent that labels tickets as ready to build, needs more info or duplicate, then add stages and human approval gates at the risky points. Ben Holmes's guide covers encoding factory steps as code, where to put human gates, and what verification and risk assessment look like.",
     "links": [
      {
       "label": "Site",
-      "url": "https://claude.com/plugins"
-     }
-    ],
-    "tag": "paid",
-    "title": "Claude Plugins: connectors and skills combined in one format",
-    "try": "Available on Free, Pro, Max and Ultra; Team and Enterprise coming soon. 10,000+ plugins announced. Site not reachable (claude.ai/plugins), details from the tweet and the claude.com/plugins page.",
-    "tweet_url": "https://x.com/claudeai/status/2124970294523945328",
-    "what": "There is now one way to add a capability to Claude: a plugin, which can contain a connector (access to an external tool such as Slack, Jira or Supabase), a skill (a written way of working), or both. Put simply, an app store for Claude.",
-    "who": "Before, you had to plug in a connector on one side and write a skill on the other. It is the simplest building block to equip an ops agent (CRM, Notion, Slack) without coding."
-   },
-   {
-    "accounts": [
-     "claudeai"
-    ],
-    "author": "claudeai",
-    "how": "1) Classifiers (small models that screen each request one by one) miss attacks split into many harmless-looking requests. 2) EFS adds monitoring that looks for patterns across many requests. 3) Inputs and outputs are written to your own storage (S3 or Google Cloud Storage), encrypted with your keys, then deleted on Anthropic's side. 4) Only the automated monitoring accesses them (no human review, no training). 5) When it finds a risk you get a Safety Case (without the content) that can feed your SIEM (security monitoring tool). It also flags agents that go beyond the user's intent.",
-    "links": [
-     {
-      "label": "Site",
-      "url": "https://claude.com/resources/articles/zero-data-retention-with-enterprise-frontier-safeguards"
-     }
-    ],
-    "tag": "paid",
-    "title": "Enterprise Frontier Safeguards: misuse detection without keeping your data",
-    "try": "Public beta for eligible customers on Claude Platform, AWS, Bedrock and Google Cloud; Microsoft Foundry coming soon. Storage is billed by your cloud provider.",
-    "tweet_url": "https://x.com/claudeai/status/2124929944530587712",
-    "what": "An Anthropic option for companies that want ZDR (zero data retention: neither Anthropic nor the cloud keeps prompts and outputs) while keeping misuse monitoring. Put simply: your logs stay in your own vault, but a security robot can still read them.",
-    "who": "Regulated industries (healthcare, finance, legal) that held back on frontier models for lack of guarantees. Developed with 100+ customers (Stripe, Salesforce and Bridgewater were in the private beta)."
-   },
-   {
-    "accounts": [
-     "geoffreyhuntley"
-    ],
-    "author": "geoffreyhuntley",
-    "how": "XNU is built from Apple's published sources and runs as a kernel module (xnu.ko); a small interface module (fki.ko) lends it Linux's memory, timers, files, network and GPU.",
-    "links": [
-     {
-      "label": "Repo",
-      "url": "https://github.com/AFK-surf/xnulinux"
+      "url": "https://warp.dev/learn"
      }
     ],
     "tag": "open source",
-    "title": "xnulinux: running macOS inside Linux",
-    "try": "Open source on GitHub.",
-    "tweet_url": "https://x.com/GeoffreyHuntley/status/2124812995310260465",
-    "what": "Loads the macOS kernel (XNU) as a Linux kernel module, without a hypervisor (the software that runs virtual machines): Safari, Finder and the Dock run next to Linux programs on an ARM machine.",
-    "who": "An impressive but very low-level feat. Skip unless curious."
+    "title": "Warp Learn: a free course to build your own software factory",
+    "try": "Free, 3 units. The warp.dev site could not be reached, so details come from the tweet and course descriptions found in search.",
+    "tweet_url": "https://x.com/zachlloydtweets/status/2125346947997548846",
+    "what": "A hands-on course from Warp that starts with a backlog agent (the agent that handles the to-do list of tickets) and builds up to a multi-stage factory with specs, verification and risk assessment. Zach Lloyd also shares Ben Holmes's guide, which he calls the most comprehensive he has seen.",
+    "who": "The right starting point to go from vibe coding with one agent to agents working through a queue of tasks on their own. The triage, execution, verification, human approval logic also applies to non-technical ops."
+   },
+   {
+    "accounts": [
+     "claudedevs",
+     "dexhorthy"
+    ],
+    "author": "claudedevs",
+    "how": "The app can use your connectors (Claude's links to Gmail, Drive, Slack and so on), OS APIs and Claude itself, and, if you allow it, send notifications or add a menu bar item.",
+    "links": [],
+    "tag": "paid",
+    "title": "Claude artifacts become installable desktop apps",
+    "try": "Available now in the Claude app on Mac and Windows. The announcement link could not be read, so details are limited to the tweet.",
+    "tweet_url": "https://x.com/ClaudeDevs/status/2125315491522650299",
+    "what": "Ask Claude to build an artifact (a mini web app), click Install as app, and it opens like any other app on Mac or Windows. In plain terms: an internal tool built without coding that lives in your dock.",
+    "who": "For ops people, the shortest path to small internal tools (a deal tracker that notifies you, a reporting widget) without deploying anything. Relayed by @dexhorthy (skeptical) and @kieranklaassen (enthusiastic)."
+   },
+   {
+    "accounts": [
+     "agentapprove",
+     "completeskeptic"
+    ],
+    "author": "agentapprove",
+    "how": "Instead of approving everything by hand, Jev checks each agent action against your rules: safe actions go through automatically, doubtful ones are sent to you. Human-in-the-loop approval, but sorted automatically.",
+    "links": [],
+    "tag": "paid",
+    "title": "Agent Approve 0.9: approve your agents' actions from your watch",
+    "try": "Solo and Pro plans, prices not read. No readable page, details limited to the tweet.",
+    "tweet_url": "https://x.com/agentapprove/status/2125009080440025264",
+    "what": "An app that tracks what your agents do and asks your permission for sensitive actions from an iPhone or Apple Watch. Version 0.9 adds Policy Rules powered by Jev, TypeSafe AI's judgment model, plus an Ask List.",
+    "who": "Trust is the main blocker for agents at work. This kind of tool lets an agent run without constant supervision. Relayed by @CompleteSkeptic, who also highlights another Jev use: report, Jev classifier, grouping, new issues sent to Slack."
    }
   ]
  },

@@ -89,6 +89,15 @@
   "photo": "https://pbs.twimg.com/profile_images/1982513791498625024/mTCEFECz_400x400.jpg",
   "profile_url": "https://x.com/caspar_br"
  },
+ "charliermarsh": {
+  "bio": "@OpenAI. Building Ruff, uv, ty, and other high-performance Python tools with the @astral_sh team.",
+  "display_name": "Charlie Marsh",
+  "fetched_at": "2026-11-25",
+  "followers": 54745,
+  "handle": "charliermarsh",
+  "photo": "https://pbs.twimg.com/profile_images/1490182599981125634/ex0Jezvf_400x400.jpg",
+  "profile_url": "https://x.com/charliermarsh"
+ },
  "claudeai": {
   "bio": "Claude is an AI assistant built by @anthropicai to be safe, accurate, and secure. Talk to Claude on https://t.co/ZhTwG8d1e5 or download the app.",
   "display_name": "Claude",
@@ -97,6 +106,15 @@
   "handle": "claudeai",
   "photo": "https://pbs.twimg.com/profile_images/1950950107937185792/QOfEjFoJ_400x400.jpg",
   "profile_url": "https://x.com/claudeai"
+ },
+ "claudedevs": {
+  "bio": "Official updates for developers building with @ClaudeAI",
+  "display_name": "ClaudeDevs",
+  "fetched_at": "2026-11-25",
+  "followers": 856538,
+  "handle": "ClaudeDevs",
+  "photo": "https://pbs.twimg.com/profile_images/2044472418815893504/xf14RxM8_400x400.png",
+  "profile_url": "https://x.com/ClaudeDevs"
  },
  "completeskeptic": {
   "bio": "Sane + 🌶️ takes in an insane AI world... AI capabilities researcher: co-created RLHF/ChatGPT @ @openai now trying to right the wrong 🤭 (ceo @typesafeai)",
@@ -133,6 +151,15 @@
   "handle": "dillon_mulroy",
   "photo": "https://pbs.twimg.com/profile_images/2092640156020817920/FcBklR0l_400x400.jpg",
   "profile_url": "https://x.com/dillon_mulroy"
+ },
+ "dsp_": {
+  "bio": "Member of Technical Staff @AnthropicAI. Co-Creator of https://t.co/cn31cNYQD3. Ex-Meta. Playing with computers and tech",
+  "display_name": "David Soria Parra",
+  "fetched_at": "2026-11-25",
+  "followers": 15403,
+  "handle": "dsp_",
+  "photo": "https://pbs.twimg.com/profile_images/2671670579/07d6fd4445bbcb1383a7b181f4ffce13_400x400.jpeg",
+  "profile_url": "https://x.com/dsp_"
  },
  "dusangran": {
   "bio": "Dusan Odalovic. 17 years in software. Agents write our code, I share what works.\nCo-founder of GRAN · https://t.co/taRdpz4axu · https://t.co/meqYALGdRO",
@@ -287,6 +314,15 @@
   "photo": "https://pbs.twimg.com/profile_images/1296667294148382721/9Pr6XrPB_400x400.jpg",
   "profile_url": "https://x.com/karpathy"
  },
+ "katelyn_lesse": {
+  "bio": "head of platform @anthropicai. previously @stripe @betterment. lfgm.",
+  "display_name": "Katelyn Lesse",
+  "fetched_at": "2026-11-25",
+  "followers": 13937,
+  "handle": "katelyn_lesse",
+  "photo": "https://pbs.twimg.com/profile_images/1948503623769751556/U1BBp88H_400x400.jpg",
+  "profile_url": "https://x.com/katelyn_lesse"
+ },
  "kieranklaassen": {
   "bio": "frontier team @every | compound engineering | agent-ophile  | composer | maker | baker",
   "display_name": "Kieran Klaassen",
@@ -340,6 +376,24 @@
   "handle": "mitsuhiko",
   "photo": "https://pbs.twimg.com/profile_images/1905698833084174336/jcHMkWFA_400x400.jpg",
   "profile_url": "https://x.com/mitsuhiko"
+ },
+ "mtslive": {
+  "bio": "Chronicling the singularity\n\nNew original series @themethodshow",
+  "display_name": "MTS",
+  "fetched_at": "2026-11-25",
+  "followers": 594235,
+  "handle": "MTSlive",
+  "photo": "https://pbs.twimg.com/profile_images/2057947669281263616/aovpVL4b_400x400.jpg",
+  "profile_url": "https://x.com/MTSlive"
+ },
+ "nateberkopec": {
+  "bio": "Ruby and Rails applications, made fast. 日本語: @nateberkopec_ja",
+  "display_name": "Nate Berkopec",
+  "fetched_at": "2026-11-25",
+  "followers": 34892,
+  "handle": "nateberkopec",
+  "photo": "https://pbs.twimg.com/profile_images/1905366180376006656/kYntWlPf_400x400.jpg",
+  "profile_url": "https://x.com/nateberkopec"
  },
  "petergyang": {
   "bio": "Practical AI tutorials and interviews for busy people | Get my best AI skills and guides at https://t.co/6VAA6p81x6",
