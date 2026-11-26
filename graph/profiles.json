@@ -125,6 +125,15 @@
   "photo": "https://pbs.twimg.com/profile_images/1650708125685800960/7k6r0UZg_400x400.jpg",
   "profile_url": "https://x.com/CompleteSkeptic"
  },
+ "danshipper": {
+  "bio": "ceo @every | the only subscription you need to stay at the edge of AI",
+  "display_name": "Dan Shipper",
+  "fetched_at": "2026-11-26",
+  "followers": 146895,
+  "handle": "danshipper",
+  "photo": "https://pbs.twimg.com/profile_images/1946219091305340928/_Ef-eDlc_400x400.jpg",
+  "profile_url": "https://x.com/danshipper"
+ },
  "dbreunig": {
   "bio": "Writing about and working on AI, DSPy, geo, and data.\n\nTrying to prevent prompt debt and help others build maintainable intelligent applications.",
   "display_name": "Drew Breunig",
@@ -187,6 +196,15 @@
   "handle": "eliebakouch",
   "photo": "https://pbs.twimg.com/profile_images/1745893660099592193/MmYemsw6_400x400.jpg",
   "profile_url": "https://x.com/eliebakouch"
+ },
+ "eugeneyan": {
+  "bio": "member of technical staff. prev principal applied scientist @ amazon, led ml @ alibaba, healthtech startup. girl dad.",
+  "display_name": "Eugene Yan",
+  "fetched_at": "2026-11-26",
+  "followers": 32025,
+  "handle": "eugeneyan",
+  "photo": "https://pbs.twimg.com/profile_images/2016777075076788224/058nrUQb_400x400.jpg",
+  "profile_url": "https://x.com/eugeneyan"
  },
  "ft": {
   "bio": "Big stories and breaking news as they are published on https://t.co/EYmAcRLBHv. Register here to access free articles: https://t.co/NRg2hritkA",
@@ -269,6 +287,15 @@
   "photo": "https://pbs.twimg.com/profile_images/2048580995302174720/jWUrx_47_400x400.jpg",
   "profile_url": "https://x.com/iruletheworldmo"
  },
+ "itamar_mar": {
+  "bio": "Excited about the future of intelligent software development. CEO & co-founder @QodoAI",
+  "display_name": "Itamar Friedman",
+  "fetched_at": "2026-11-26",
+  "followers": 7498,
+  "handle": "itamar_mar",
+  "photo": "https://pbs.twimg.com/profile_images/1608739169756405760/6pH5vnWV_400x400.jpg",
+  "profile_url": "https://x.com/itamar_mar"
+ },
  "ivanleomk": {
   "bio": "Developer Experience @GoogleDeepMind, Benchmarks @kaggle\n prev agents @manusai. I write at https://t.co/02byZNKMa8.\n\nTweets are my own views!",
   "display_name": "Ivan Leo",
@@ -340,6 +367,15 @@
   "handle": "LangChain",
   "photo": "https://pbs.twimg.com/profile_images/2028336270431453184/jRRpLAdG_400x400.jpg",
   "profile_url": "https://x.com/LangChain"
+ },
+ "liambush20": {
+  "bio": "Building @LangChain | @Penn | SF | Marina Green Local Legend",
+  "display_name": "Liam Bush",
+  "fetched_at": "2026-11-26",
+  "followers": 228,
+  "handle": "LiamBush20",
+  "photo": "https://pbs.twimg.com/profile_images/2067034860947124224/fuJSVGEI_400x400.jpg",
+  "profile_url": "https://x.com/LiamBush20"
  },
  "luhsnaa": {
   "bio": "ai engineer. \nthe voice ai & evals guy\n5x startups | 7x hackathons",
@@ -440,6 +476,15 @@
   "photo": "https://pbs.twimg.com/profile_images/1661187442043486209/a3E4t1eV_400x400.jpg",
   "profile_url": "https://x.com/rasbt"
  },
+ "rblalock": {
+  "bio": "Founder Agentuity / The Agent Company\nBon archer, bonnes flèches",
+  "display_name": "Rick Blalock",
+  "fetched_at": "2026-11-26",
+  "followers": 3120,
+  "handle": "rblalock",
+  "photo": "https://pbs.twimg.com/profile_images/1520195134507425794/JOGd7q2__400x400.jpg",
+  "profile_url": "https://x.com/rblalock"
+ },
  "rlancemartin": {
   "bio": "MTS @anthropicai",
   "display_name": "Lance Martin",
@@ -457,6 +502,15 @@
   "handle": "ryancarson",
   "photo": "https://pbs.twimg.com/profile_images/2111981537365196800/k2HE9uOo_400x400.jpg",
   "profile_url": "https://x.com/ryancarson"
+ },
+ "ryolu_": {
+  "bio": "Designed @Cursor_ai, @NotionHQ, @Stripe, built startups. I make a world where anyone can make software. Aspiring k-pop idol.",
+  "display_name": "Ryo Lu",
+  "fetched_at": "2026-11-26",
+  "followers": 101286,
+  "handle": "ryolu_",
+  "photo": "https://pbs.twimg.com/profile_images/1915014653295697921/KmMbglaO_400x400.jpg",
+  "profile_url": "https://x.com/ryolu_"
  },
  "simon_budziak": {
   "bio": "Custom AI agents that solve your business problems | CEO @ Soba Labs | @LangChain Ambassador",

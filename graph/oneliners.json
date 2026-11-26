@@ -30,9 +30,9 @@
   "date": "2026-11-18"
  },
  "poteto": {
-  "text": "Conversation with @dexhorthy about Mario Zechner's views on agent-written code.",
-  "tweet_id": "2123227123636719859",
-  "date": "2026-11-19"
+  "text": "Conversation with @kieranklaassen, who says he loves it for optimizing things.",
+  "tweet_id": "2125340394938593344",
+  "date": "2026-11-25"
  },
  "simonw": {
   "text": "Conversation with @swyx comparing GPT-6.2 Sol and Fable 5.2 outputs.",
@@ -45,8 +45,8 @@
   "date": "2026-11-19"
  },
  "trq212": {
-  "text": "Conversation with @swyx reacting to news of Thariq Shihipar's move to OpenAI.",
-  "tweet_id": "2125156290494353663",
+  "text": "Thariq announces he is leaving Anthropic to join OpenAI.",
+  "tweet_id": "2125675533761671405",
   "date": "2026-11-25"
  },
  "aidotengineer": {
@@ -65,9 +65,9 @@
   "date": "2026-11-23"
  },
  "zeeg": {
-  "text": "Conversation with @dexhorthy about what agent context to keep versus archive.",
-  "tweet_id": "2124314932678373831",
-  "date": "2026-11-22"
+  "text": "Conversation with @dexhorthy, a light reply about coffee.",
+  "tweet_id": "2125620240835101034",
+  "date": "2026-11-25"
  },
  "ajambrosino": {
   "text": "ChatGPT update: Space for Plus, new visual design, rebuilt threads, faster pages and more reliable Codex Remote.",
@@ -80,14 +80,14 @@
   "date": "2026-11-20"
  },
  "petergyang": {
-  "text": "Conversation with @steipete about management style and accountability at tech companies.",
-  "tweet_id": "2123850141325283362",
-  "date": "2026-11-20"
+  "text": "Conversation with @steipete, who answers that it is always about tokens.",
+  "tweet_id": "2125658354399998247",
+  "date": "2026-11-25"
  },
  "bentlegen": {
-  "text": "Conversation with @sqs about founders handing accounts to volume-focused outsourcing services.",
-  "tweet_id": "2124199066301288752",
-  "date": "2026-11-21"
+  "text": "Conversation with @dexhorthy, who cheers on a post by Ben Tlegen.",
+  "tweet_id": "2125610494513885205",
+  "date": "2026-11-25"
  },
  "eliaslumer": {
   "text": "Conversation with @dexhorthy about inspecting Codex and Claude Code harnesses via open source code or a local proxy.",
@@ -155,14 +155,14 @@
   "date": "2026-11-23"
  },
  "dillon_mulroy": {
-  "text": "Conversation with @dexhorthy, a joke referencing Graphviz.",
-  "tweet_id": "2125036420901253387",
-  "date": "2026-11-24"
+  "text": "Conversation with @GeoffreyHuntley, a joking exchange about Ahrefs and parsing.",
+  "tweet_id": "2125684398779474023",
+  "date": "2026-11-25"
  },
  "dusangran": {
-  "text": "Conversation with @hwchase17 praising LangSmith.",
-  "tweet_id": "2124973778421870720",
-  "date": "2026-11-23"
+  "text": "Conversation with @mitchellh about access to the Rex/herdr Discord for invited users.",
+  "tweet_id": "2125716062666981744",
+  "date": "2026-11-25"
  },
  "ft": {
   "text": "Conversation with @geoffreyhuntley, who says he cancelled his FT subscription.",
@@ -180,9 +180,9 @@
   "date": "2026-11-23"
  },
  "langchain": {
-  "text": "Content Studio, LangChain's open-source design agent making videos, graphics and decks from a Slack prompt.",
-  "tweet_id": "2124926152703655977",
-  "date": "2026-11-23"
+  "text": "LangChain shares recorded talks from its TypeSafe AI meetup, incl. building agent harnesses with Jev.",
+  "tweet_id": "2125601610009334003",
+  "date": "2026-11-25"
  },
  "timsweeneyepic": {
   "text": "Conversation with @mitsuhiko about a galactic algorithm outcome.",
@@ -205,9 +205,9 @@
   "date": "2026-11-25"
  },
  "katelyn_lesse": {
-  "text": "Engineers must solve a new set of problems to unlock powerful multi-agent systems.",
-  "tweet_id": "2114542280535318557",
-  "date": "2026-11-24"
+  "text": "Conversation with @GeoffreyHuntley, a short agreement in a thread.",
+  "tweet_id": "2125627723062141393",
+  "date": "2026-11-25"
  },
  "mtslive": {
   "text": "Clip of Morph founder Tejas Bhakta arguing AI may create more bullshit jobs rather than mass unemployment.",
@@ -215,8 +215,38 @@
   "date": "2026-11-25"
  },
  "nateberkopec": {
-  "text": "Brief friendly exchange with @dbreunig.",
-  "tweet_id": "2125415905610125767",
+  "text": "Conversation with @dbreunig about why AI alignment people read so much sci-fi.",
+  "tweet_id": "2125689395596669389",
+  "date": "2026-11-25"
+ },
+ "danshipper": {
+  "text": "Every raises a $17.5M Series A at a $110M valuation to make teams AI-native, led by IA Ventures.",
+  "tweet_id": "2125615579964833827",
+  "date": "2026-11-25"
+ },
+ "eugeneyan": {
+  "text": "Conversation with @dexhorthy, who replies with a link to Eugene Yan's post.",
+  "tweet_id": "2125682415205314965",
+  "date": "2026-11-25"
+ },
+ "itamar_mar": {
+  "text": "Conversation with @karpathy: his Civ-style US map side project ran on his regular Claude subscription.",
+  "tweet_id": "2125781121770414101",
+  "date": "2026-11-26"
+ },
+ "liambush20": {
+  "text": "Launch of Persistent Agent: an open source always-on Slack agent with goals, playbooks and personal tool connectors.",
+  "tweet_id": "2125656061516677509",
+  "date": "2026-11-25"
+ },
+ "rblalock": {
+  "text": "Conversation with @dexhorthy, a joking reply about Factory.",
+  "tweet_id": "2125693980000342190",
+  "date": "2026-11-26"
+ },
+ "ryolu_": {
+  "text": "Conversation with @GeoffreyHuntley, a light reply about kittens.",
+  "tweet_id": "2125626627182985331",
   "date": "2026-11-25"
  }
 }
