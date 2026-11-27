@@ -1,5 +1,5 @@
 {
- "as_of": "2026-11-26",
+ "as_of": "2026-11-27",
  "edges": [
   {
    "source": "swyx",
@@ -131,7 +131,7 @@
     "reply",
     "rt"
    ],
-   "weight": 3
+   "weight": 4
   },
   {
    "source": "mitsuhiko",
@@ -139,7 +139,7 @@
    "types": [
     "reply"
    ],
-   "weight": 3
+   "weight": 4
   },
   {
    "source": "geoffreyhuntley",
@@ -287,7 +287,7 @@
    "types": [
     "reply"
    ],
-   "weight": 1
+   "weight": 2
   },
   {
    "source": "geoffreyhuntley",
@@ -543,6 +543,22 @@
    "weight": 1
   },
   {
+   "source": "geoffreyhuntley",
+   "target": "jamesonzaballos",
+   "types": [
+    "rt"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "karpathy",
+   "target": "jamesonzaballos",
+   "types": [
+    "quote"
+   ],
+   "weight": 1
+  },
+  {
    "source": "dbreunig",
    "target": "joelhooks",
    "types": [
@@ -680,6 +696,22 @@
     "reply"
    ],
    "weight": 2
+  },
+  {
+   "source": "swyx",
+   "target": "natolambert",
+   "types": [
+    "reply"
+   ],
+   "weight": 2
+  },
+  {
+   "source": "completeskeptic",
+   "target": "natolambert",
+   "types": [
+    "rt"
+   ],
+   "weight": 1
   },
   {
    "source": "kieranklaassen",
@@ -847,9 +879,10 @@
    "source": "dbreunig",
    "target": "simonw",
    "types": [
-    "quote"
+    "quote",
+    "reply"
    ],
-   "weight": 1
+   "weight": 2
   },
   {
    "source": "swyx",
@@ -871,9 +904,10 @@
    "source": "swyx",
    "target": "steve_yegge",
    "types": [
+    "reply",
     "rt"
    ],
-   "weight": 1
+   "weight": 3
   },
   {
    "source": "geoffreyhuntley",
@@ -1041,7 +1075,7 @@
    "weight": 1
   }
  ],
- "generated_at": "2026-11-26T07:09:27+00:00",
+ "generated_at": "2026-11-27T07:08:46+00:00",
  "nodes": [
   {
    "bio": "@LangChain\n\nAlways hiring: https://t.co/D5Ut3loFO7",
@@ -1428,19 +1462,19 @@
    "followers": 81193,
    "handle": "badlogicgames",
    "id": "badlogicgames",
-   "interactions": 16,
+   "interactions": 18,
    "kind": "candidate",
    "latest": {
     "by": [
-     "swyx"
+     "mitsuhiko"
     ],
-    "date": "2026-11-25",
-    "tweet_url": "https://x.com/badlogicgames/status/2125299127223554056",
+    "date": "2026-11-26",
+    "tweet_url": "https://x.com/badlogicgames/status/2125903266550624399",
     "types": [
      "reply"
     ]
    },
-   "oneliner": "Conversation with @swyx about actor-based backends; swyx suggests looking at Microsoft Orleans.",
+   "oneliner": "Conversation with @mitsuhiko about which language Muse is written in (Rust).",
    "photo": "https://pbs.twimg.com/profile_images/1553485821767991296/87k3l720_400x400.jpg",
    "profile_url": "https://x.com/badlogicgames",
    "relayed_by": [
@@ -1452,7 +1486,7 @@
     "swyx"
    ],
    "since": "2026-11-17",
-   "tweets": 14
+   "tweets": 16
   },
   {
    "bio": "aspiring optimist. cto @raindrop_ai, prev @apple design, @spacex avionics",
@@ -1632,19 +1666,19 @@
    "followers": 45409,
    "handle": "dillon_mulroy",
    "id": "dillon_mulroy",
-   "interactions": 3,
+   "interactions": 4,
    "kind": "candidate",
    "latest": {
     "by": [
-     "geoffreyhuntley"
+     "dexhorthy"
     ],
-    "date": "2026-11-25",
-    "tweet_url": "https://x.com/dillon_mulroy/status/2125684398779474023",
+    "date": "2026-11-26",
+    "tweet_url": "https://x.com/dillon_mulroy/status/2126073605523968421",
     "types": [
      "reply"
     ]
    },
-   "oneliner": "Conversation with @GeoffreyHuntley, a joking exchange about Ahrefs and parsing.",
+   "oneliner": "Conversation with @dexhorthy about Thanksgiving food comas (off-topic).",
    "photo": "https://pbs.twimg.com/profile_images/2092640156020817920/FcBklR0l_400x400.jpg",
    "profile_url": "https://x.com/dillon_mulroy",
    "relayed_by": [
@@ -1653,7 +1687,7 @@
     "mitsuhiko"
    ],
    "since": "2026-11-24",
-   "tweets": 3
+   "tweets": 4
   },
   {
    "bio": "Member of Technical Staff @AnthropicAI. Co-Creator of https://t.co/cn31cNYQD3. Ex-Meta. Playing with computers and tech",
@@ -2024,6 +2058,34 @@
    "tweets": 3
   },
   {
+   "bio": "Ghostwriting and memes for founders backed by a16z, Benchmark, Bessemer, YC, and a bunch of others. prev eng @microsoft",
+   "display_name": "Jameson Zaballos",
+   "followers": 1540,
+   "handle": "JamesonZaballos",
+   "id": "jamesonzaballos",
+   "interactions": 2,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "karpathy"
+    ],
+    "date": "2026-11-26",
+    "tweet_url": "https://x.com/jamesonzaballos/status/2124951903180079604",
+    "types": [
+     "quote"
+    ]
+   },
+   "oneliner": "Meme about a 'little vibe coder' asked to present their multi-agent workflows at a family gathering.",
+   "photo": "https://pbs.twimg.com/profile_images/1481752337416925186/KuT8Hku5_400x400.jpg",
+   "profile_url": "https://x.com/JamesonZaballos",
+   "relayed_by": [
+    "geoffreyhuntley",
+    "karpathy"
+   ],
+   "since": "2026-11-26",
+   "tweets": 2
+  },
+  {
    "bio": "lvl 16 half-orc nerd 🍄💀🌈 independent AI researcher https://t.co/uwjF87I7m9 🐀",
    "display_name": "joel ⛈️",
    "followers": 24730,
@@ -2222,6 +2284,34 @@
     "kieranklaassen"
    ],
    "since": "2026-11-25",
+   "tweets": 3
+  },
+  {
+   "bio": "Open model research, founder, director @trillium_labs. Prev. co-led Olmo at Ai2.\nWrites @interconnectsai, wrote https://t.co/alRXKINTwE",
+   "display_name": "Nathan Lambert",
+   "followers": 112021,
+   "handle": "natolambert",
+   "id": "natolambert",
+   "interactions": 3,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "completeskeptic"
+    ],
+    "date": "2026-11-26",
+    "tweet_url": "https://x.com/natolambert/status/2126000323407806954",
+    "types": [
+     "rt"
+    ]
+   },
+   "oneliner": "Meme comparing LLM outputs in 2022 vs 2026.",
+   "photo": "https://pbs.twimg.com/profile_images/2051823244832083968/Nr0pT8-V_400x400.jpg",
+   "profile_url": "https://x.com/natolambert",
+   "relayed_by": [
+    "completeskeptic",
+    "swyx"
+   ],
+   "since": "2026-11-26",
    "tweets": 3
   },
   {
@@ -2456,19 +2546,19 @@
    "followers": 256193,
    "handle": "simonw",
    "id": "simonw",
-   "interactions": 5,
+   "interactions": 6,
    "kind": "candidate",
    "latest": {
     "by": [
-     "swyx"
+     "dbreunig"
     ],
-    "date": "2026-11-18",
-    "tweet_url": "https://x.com/simonw/status/2122822484529684838",
+    "date": "2026-11-26",
+    "tweet_url": "https://x.com/simonw/status/2125999332386349209",
     "types": [
      "reply"
     ]
    },
-   "oneliner": "Conversation with @swyx comparing GPT-6.2 Sol and Fable 5.2 outputs.",
+   "oneliner": "Conversation with @dbreunig about AI giving anyone executive-style briefings on demand.",
    "photo": "https://pbs.twimg.com/profile_images/378800000261649705/be9cc55e64014e6d7663c50d7cb9fc75_400x400.jpeg",
    "profile_url": "https://x.com/simonw",
    "relayed_by": [
@@ -2478,7 +2568,7 @@
     "swyx"
    ],
    "since": "2026-11-13",
-   "tweets": 4
+   "tweets": 5
   },
   {
    "bio": "I've been in the industry for O(40) years and have written O(1M) LOC. I don't think I'll ever write O(another) line again, but I'll be launching more than ever.",
@@ -2486,19 +2576,19 @@
    "followers": 52944,
    "handle": "Steve_Yegge",
    "id": "steve_yegge",
-   "interactions": 3,
+   "interactions": 5,
    "kind": "candidate",
    "latest": {
     "by": [
-     "geoffreyhuntley"
+     "swyx"
     ],
-    "date": "2026-11-11",
-    "tweet_url": null,
+    "date": "2026-11-26",
+    "tweet_url": "https://x.com/steve_yegge/status/2126056111988244795",
     "types": [
-     "rt"
+     "reply"
     ]
    },
-   "oneliner": "Talk on his Wheelhouse agent software factory and its agent drama.",
+   "oneliner": "Conversation with @swyx about Steve Yegge's AI Engineer talk and OpenAI's Astra.",
    "photo": "https://pbs.twimg.com/profile_images/1978335584331632640/ypKkHeVF_400x400.jpg",
    "profile_url": "https://x.com/Steve_Yegge",
    "relayed_by": [
@@ -2507,7 +2597,7 @@
     "swyx"
    ],
    "since": "2026-11-08",
-   "tweets": 3
+   "tweets": 4
   },
   {
    "bio": "Job: @Shopify\nOpinions: Mine\nPGP: 4CE9 1B75 A798 28E8 6B1A  A8BB 9531 70BC B4FF AFC6\nPartner: @ebiltwin and cats.\nhe/him\n@tenderlove@mastodon.social",
@@ -2690,92 +2780,95 @@
   }
  ],
  "projects": {
-  "date": "2026-11-26",
+  "date": "2026-11-27",
   "items": [
    {
     "accounts": [
-     "liambush20",
-     "hwchase17",
-     "sydneyrunkle"
-    ],
-    "author": "liambush20",
-    "how": "(1) The agent schedules its own work and keeps working toward the goals you give it, without waiting to be asked. (2) It holds playbooks, your organization's best practices and knowledge written down, and enriches them as people use it: this is its memory (it is stateful, it keeps state between conversations). (3) Each person connects their own tools (enterprise connectors such as CRM or Drive). It deploys on LangChain's infrastructure (MDA, according to Harrison Chase).",
-    "links": [],
-    "tag": "open source",
-    "title": "Persistent Agent: a permanent AI teammate living in your Slack",
-    "try": "Open source, a template to fork over the weekend according to Harrison Chase. Stars and license not checked. The project link could not be opened (t.co), so details are limited.",
-    "tweet_url": "https://x.com/LiamBush20/status/2125656061516677509",
-    "what": "An open source blueprint from LangChain for building an always-on agent in Slack. Put simply, the base for an in-house, proactive team assistant that you adapt to your company.",
-    "who": "Teams that want agents doing real work in the company. Most agents are reactive (you ask, they answer); this one pursues a goal over time, like an ops analyst you hand a file to. A good starting point to understand how planning, memory and tools fit together."
-   },
-   {
-    "accounts": [
-     "rlancemartin",
+     "wadefoster",
      "swyx"
     ],
-    "author": "rlancemartin",
-    "how": "Claude wrote a first version in about a week; the real work was proving it behaved the same. (1) Shadowing: each real request goes through the old and the new version and the results are compared step by step. (2) To protect privacy, the text is never read: only a fingerprint of each difference is recorded (which step, which byte, which length). (3) A script groups these differences every 10-30 minutes; a coordinator agent receives each new kind of difference and assigns it to a worker agent, with a Slack thread where engineers follow along and steer. (4) Three loops: an inner loop (sandbox, checks in under a second), an outer loop (validation on production traffic, after human PR review) a…",
+    "author": "wadefoster",
+    "how": "A Zap starts when a real event happens (a new lead, a payment notification, the Monday report), runs the same steps every time and only calls AI for the steps that need judgment. A scheduled task in Claude or ChatGPT instead wakes the AI at fixed times to check for work, so you pay tokens even when there is nothing to do. Zapier's AI Workflow Index (2,944 real workflows priced) found scheduled agents cost an estimated 2.1x as much as Zaps. Zapier also says it fixes hosted workflows that break at 2am and recommends replacing AI with simple automation when AI is not needed.",
     "links": [
      {
       "label": "Site",
-      "url": "https://www.anthropic.com/research/migrating-api-to-rust"
+      "url": "https://zapier.com/mcp"
      }
     ],
-    "tag": "research",
-    "title": "How Anthropic migrated its API to Rust with a team of agents",
-    "try": "Public article, worth reading in full to see a real multi-agent system in production.",
-    "tweet_url": "https://x.com/RLanceMartin/status/2125627070084796562",
-    "what": "The story of rewriting Claude's Messages API from Python to Rust, largely by Claude agents, verified against real traffic.",
-    "who": "The key lesson: with AI, generating code gets easy, verifying it becomes the bottleneck. The code passed 98% of its tests but only about 25% of real requests matched at first. Final result: about 70% less CPU per request and about 20% lower latency."
+    "tag": "paid",
+    "title": "The new Zapier: AI agents wired into 10,000 apps without wasting tokens",
+    "try": "Existing Zapier product, paid (pricing not read).",
+    "tweet_url": "https://x.com/wadefoster/status/2125590135227957619",
+    "what": "Zapier CEO Wade Foster explains the Zapier refounding: your agent (Claude, ChatGPT...) does the thinking, and Zapier, through an MCP server (a standard plug that lets an AI use external tools), gives it hands to act in 10,000+ apps. In short: the agent is the brain, Zapier is the arm.",
+    "who": "Ops people: separate what needs intelligence (writing, sorting, judging) from what is mechanical (triggering, copying, sending). Their advice: the next time you ask Claude for the same thing twice, have it build a Zap. Site not reachable, details limited to the tweet."
    },
    {
     "accounts": [
-     "samecrowder",
      "hwchase17"
     ],
-    "author": "samecrowder",
-    "how": "(1) A dedicated database, SmithDB, ingests traces (Clay sends hundreds of millions of events per day). (2) Outcomes are added (the real result: a thumbs down, a merged PR...). (3) Online evals (automatic judges, often an LLM-as-a-judge or a cheaper decision model) label the traces. (4) AI Search lets you search in natural language (\"conversations where the user got frustrated\"). (5) Agents then analyze these traces to propose fixes.",
+    "author": "hwchase17",
+    "how": "The tweet is truncated, so no architecture details. The idea of a curator agent: it regularly rereads the internal wiki to spot outdated, duplicate or inconsistent pages, and proposes or applies fixes.",
+    "links": [],
+    "tag": "open source",
+    "title": "A curator agent that watches a company's Notion knowledge base",
+    "try": "The LangChain guide is not identified in the truncated tweet; look up @StakeJein's original tweet.",
+    "tweet_url": "https://x.com/hwchase17/status/2126083404546613473",
+    "what": "@StakeJein built a curator agent, hosted on LangChain, that monitors their Notion knowledge base, following a guide by Harrison Chase (LangChain CEO), who replied he wants to hear more.",
+    "who": "Team wikis rot quickly. An agent that gardens internal docs is a very concrete business case that is easy to reproduce."
+   },
+   {
+    "accounts": [
+     "mitchellh",
+     "swyx"
+    ],
+    "author": "mitchellh",
+    "how": "From Mitchell's replies: the app connects to your Rex Server (e.g. your computer), sometimes through Tailscale relays (a private network linking your devices wherever they are); it has installable skills, evals (automated tests of AI quality) and default rulesets (e.g. adding the Crush tool). They claim over 100,000 users and document all their external connections.",
     "links": [
      {
       "label": "Site",
-      "url": "https://blog.langchain.com/the-agent-lake/"
+      "url": "https://superlogical.com"
      }
     ],
     "tag": "paid",
-    "title": "Agent Lake: LangChain's data lake for agent traces",
-    "try": "Built into LangSmith (paid offering, free trial).",
-    "tweet_url": "https://x.com/samecrowder/status/2125636505293263083",
-    "what": "LangSmith's new vision: store every agent trace (the detailed log of each step) and run intelligent compute on top to improve agents. Put simply, a Snowflake specialized for what your agents do.",
-    "who": "Once an agent runs in production, thousands of traces pile up without telling you whether it is improving. Useful to understand how a business agent is managed over time."
+    "title": "Rex (Superlogical): Mitchell Hashimoto's app lands on the App Store",
+    "try": "App Store (except France for now), Rex Server required. Price unknown. Site not reachable, details limited.",
+    "tweet_url": "https://x.com/mitchellh/status/2126047712596631876",
+    "what": "New iPhone app from Mitchell Hashimoto (creator of Terraform and Ghostty) that needs a Rex Server running on another device. swyx compares it to Cursor and T3 Code (beating them on day 0), so it is a tool to drive coding and coding agents from your phone.",
+    "who": "Launching and watching your vibe coding sessions from your phone. Not yet available in France (encryption paperwork, submitted to Apple this week). Full public release said to be imminent."
    },
    {
     "accounts": [
-     "karpathy"
+     "jess_weng18",
+     "sydneyrunkle"
     ],
-    "author": "karpathy",
-    "how": "All the data is projected onto a grid of 25 km hexagons and translated into game language (gold is GDP, a city's districts are its real industries). 19 lenses, 524 cities, and an Explorer that turns any column for 3,100 counties into a table and scatter plot. 45,000 lines of code in 7 hours.",
+    "author": "jess_weng18",
+    "how": "You play, and the game hides educational content about how an agent works.",
     "links": [],
     "tag": "open source",
-    "title": "Karpathy: a Civilization-style US map built by Claude in 7 hours",
-    "try": "Deployed publicly (link in the tweet), with the source code reachable from the \"?\" button.",
-    "tweet_url": "https://x.com/karpathy/status/2125779541952246039",
-    "what": "A vibe-coded side project: Claude (Opus 5.5 in the Claude Code desktop app, ultracode mode) downloaded and combined 31 public data sources (Census, BLS, NOAA, FAA...) to turn them into a game map.",
-    "who": "Proof that an agent can do real data-ops work on its own (collecting, cleaning and reconciling heterogeneous sources). Note: it still skipped a few states, and used half of Karpathy's weekly quota."
+    "title": "A video game to learn Deep Agents, LangChain's agent harness",
+    "try": "Free, link in the tweet.",
+    "tweet_url": "https://x.com/jess_weng18/status/2125653978965016691",
+    "what": "@jess_weng18 made a video game that teaches you how to use Deep Agents, LangChain's open source harness (all the code around the model that gives it tools, memory, a plan and sub-agents), to celebrate its 50M downloads.",
+    "who": "Anyone who wants to understand what is under the hood of an agent without reading docs."
    },
    {
     "accounts": [
-     "factory",
-     "dexhorthy"
+     "jxnlco"
     ],
-    "author": "factory",
-    "how": "Download the app, paste your API key, start a task. Temporary bonus: free Droid Computer hours, cloud machines where your agents run in the background (background agents).",
-    "links": [],
-    "tag": "paid",
-    "title": "Factory becomes free when you bring your own API key",
-    "try": "Free with BYOK, free cloud hours for a limited time. The site could not be opened (factory.ai), so details are limited.",
-    "tweet_url": "https://x.com/factory/status/2125637084522447202",
-    "what": "Factory (coding agents called Droids) is free for individual developers with BYOK (bring your own key: you pay the model provider directly, not Factory).",
-    "who": "Worth testing to compare with Claude Code or Codex without another subscription."
+    "author": "jxnlco",
+    "how": "Version 1.18 fixes streaming, retries, batch jobs and provider integrations, adds classification and scoring through the OpenAI Decisions API and Jev, and makes raw response logging opt-in.",
+    "links": [
+     {
+      "label": "Repo",
+      "url": "https://github.com/567-labs/instructor"
+     }
+    ],
+    "tag": "open source",
+    "title": "Instructor 1.18: get clean structured data out of an LLM",
+    "try": "Open source, release coming soon.",
+    "tweet_url": "https://x.com/jxnlco/status/2126054694003024241",
+    "what": "Python library: you describe the data you want (e.g. name and age) and Instructor makes the LLM answer in that format, validates it and retries if the answer is invalid.",
+    "who": "Skip unless curious if you don't code in Python, but it is the base brick of many 'read an email, fill a CRM row' automations."
    }
   ]
  },

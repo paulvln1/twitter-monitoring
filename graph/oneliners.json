@@ -1,8 +1,8 @@
 {
  "badlogicgames": {
-  "text": "Conversation with @swyx about actor-based backends; swyx suggests looking at Microsoft Orleans.",
-  "tweet_id": "2125299127223554056",
-  "date": "2026-11-25"
+  "text": "Conversation with @mitsuhiko about which language Muse is written in (Rust).",
+  "tweet_id": "2125903266550624399",
+  "date": "2026-11-26"
  },
  "hammer_mt": {
   "text": "Conversation with @dbreunig about the SF DSPy meetup at Figma on Dec 16.",
@@ -35,9 +35,9 @@
   "date": "2026-11-25"
  },
  "simonw": {
-  "text": "Conversation with @swyx comparing GPT-6.2 Sol and Fable 5.2 outputs.",
-  "tweet_id": "2122822484529684838",
-  "date": "2026-11-18"
+  "text": "Conversation with @dbreunig about AI giving anyone executive-style briefings on demand.",
+  "tweet_id": "2125999332386349209",
+  "date": "2026-11-26"
  },
  "tenderlove": {
   "text": "Ruby 4.0.10 released with a critical security fix; update immediately.",
@@ -155,9 +155,9 @@
   "date": "2026-11-23"
  },
  "dillon_mulroy": {
-  "text": "Conversation with @GeoffreyHuntley, a joking exchange about Ahrefs and parsing.",
-  "tweet_id": "2125684398779474023",
-  "date": "2026-11-25"
+  "text": "Conversation with @dexhorthy about Thanksgiving food comas (off-topic).",
+  "tweet_id": "2126073605523968421",
+  "date": "2026-11-26"
  },
  "dusangran": {
   "text": "Conversation with @mitchellh about access to the Rex/herdr Discord for invited users.",
@@ -248,5 +248,20 @@
   "text": "Conversation with @GeoffreyHuntley, a light reply about kittens.",
   "tweet_id": "2125626627182985331",
   "date": "2026-11-25"
+ },
+ "jamesonzaballos": {
+  "text": "Meme about a 'little vibe coder' asked to present their multi-agent workflows at a family gathering.",
+  "tweet_id": "2124951903180079604",
+  "date": "2026-11-26"
+ },
+ "natolambert": {
+  "text": "Meme comparing LLM outputs in 2022 vs 2026.",
+  "tweet_id": "2126000323407806954",
+  "date": "2026-11-26"
+ },
+ "steve_yegge": {
+  "text": "Conversation with @swyx about Steve Yegge's AI Engineer talk and OpenAI's Astra.",
+  "tweet_id": "2126056111988244795",
+  "date": "2026-11-26"
  }
 }

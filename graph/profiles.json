@@ -305,6 +305,15 @@
   "photo": "https://pbs.twimg.com/profile_images/2107181145293266944/kmvtQ6c6_400x400.jpg",
   "profile_url": "https://x.com/ivanleomk"
  },
+ "jamesonzaballos": {
+  "bio": "Ghostwriting and memes for founders backed by a16z, Benchmark, Bessemer, YC, and a bunch of others. prev eng @microsoft",
+  "display_name": "Jameson Zaballos",
+  "fetched_at": "2026-11-27",
+  "followers": 1540,
+  "handle": "JamesonZaballos",
+  "photo": "https://pbs.twimg.com/profile_images/1481752337416925186/KuT8Hku5_400x400.jpg",
+  "profile_url": "https://x.com/JamesonZaballos"
+ },
  "joelhooks": {
   "bio": "lvl 16 half-orc nerd 🍄💀🌈 independent AI researcher https://t.co/uwjF87I7m9 🐀",
   "display_name": "joel ⛈️",
@@ -430,6 +439,15 @@
   "handle": "nateberkopec",
   "photo": "https://pbs.twimg.com/profile_images/1905366180376006656/kYntWlPf_400x400.jpg",
   "profile_url": "https://x.com/nateberkopec"
+ },
+ "natolambert": {
+  "bio": "Open model research, founder, director @trillium_labs. Prev. co-led Olmo at Ai2.\nWrites @interconnectsai, wrote https://t.co/alRXKINTwE",
+  "display_name": "Nathan Lambert",
+  "fetched_at": "2026-11-27",
+  "followers": 112021,
+  "handle": "natolambert",
+  "photo": "https://pbs.twimg.com/profile_images/2051823244832083968/Nr0pT8-V_400x400.jpg",
+  "profile_url": "https://x.com/natolambert"
  },
  "petergyang": {
   "bio": "Practical AI tutorials and interviews for busy people | Get my best AI skills and guides at https://t.co/6VAA6p81x6",
