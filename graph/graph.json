@@ -1,5 +1,5 @@
 {
- "as_of": "2026-11-27",
+ "as_of": "2026-11-28",
  "edges": [
   {
    "source": "swyx",
@@ -40,7 +40,7 @@
     "quote",
     "rt"
    ],
-   "weight": 6
+   "weight": 8
   },
   {
    "source": "dexhorthy",
@@ -75,6 +75,22 @@
    "weight": 1
   },
   {
+   "source": "mitchellh",
+   "target": "almonk",
+   "types": [
+    "quote"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "swyx",
+   "target": "almonk",
+   "types": [
+    "reply"
+   ],
+   "weight": 2
+  },
+  {
    "source": "geoffreyhuntley",
    "target": "andrewcurran_",
    "types": [
@@ -101,6 +117,22 @@
   {
    "source": "geoffreyhuntley",
    "target": "ariesthecoder",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "mitsuhiko",
+   "target": "astuyve",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
+   "source": "geoffreyhuntley",
+   "target": "astuyve",
    "types": [
     "reply"
    ],
@@ -298,6 +330,14 @@
    "weight": 1
   },
   {
+   "source": "rlancemartin",
+   "target": "dillon_mulroy",
+   "types": [
+    "reply"
+   ],
+   "weight": 1
+  },
+  {
    "source": "mitsuhiko",
    "target": "dsp_",
    "types": [
@@ -413,9 +453,10 @@
    "source": "swyx",
    "target": "gergelyorosz",
    "types": [
+    "quote",
     "reply"
    ],
-   "weight": 1
+   "weight": 2
   },
   {
    "source": "dexhorthy",
@@ -1075,7 +1116,7 @@
    "weight": 1
   }
  ],
- "generated_at": "2026-11-27T07:08:46+00:00",
+ "generated_at": "2026-11-28T07:09:11+00:00",
  "nodes": [
   {
    "bio": "@LangChain\n\nAlways hiring: https://t.co/D5Ut3loFO7",
@@ -1349,19 +1390,19 @@
    "followers": 72771,
    "handle": "aiDotEngineer",
    "id": "aidotengineer",
-   "interactions": 9,
+   "interactions": 11,
    "kind": "candidate",
    "latest": {
     "by": [
-     "dexhorthy"
+     "swyx"
     ],
-    "date": "2026-11-23",
-    "tweet_url": "https://x.com/aidotengineer/status/2124956149359472788",
+    "date": "2026-11-28",
+    "tweet_url": "https://x.com/aidotengineer/status/2125008996583018609",
     "types": [
      "quote"
     ]
    },
-   "oneliner": "Dex Horthy's AI Engineer talk: 12 practices to keep a software factory from becoming a slop factory.",
+   "oneliner": "AI Engineer talk by @echelon on building open source creative tools with Rust and coding agents hits 1M views.",
    "photo": "https://pbs.twimg.com/profile_images/2088074761607987200/25voc1vQ_400x400.jpg",
    "profile_url": "https://x.com/aiDotEngineer",
    "relayed_by": [
@@ -1370,7 +1411,7 @@
     "zachlloydtweets"
    ],
    "since": "2026-11-20",
-   "tweets": 8
+   "tweets": 10
   },
   {
    "bio": "Codex & ChatGPT @OpenAI",
@@ -1399,6 +1440,34 @@
    ],
    "since": "2026-11-20",
    "tweets": 2
+  },
+  {
+   "bio": "multiplexing the planet @superlogical. prev: @poolsideai @vercel @heroku",
+   "display_name": "almonk",
+   "followers": 24615,
+   "handle": "almonk",
+   "id": "almonk",
+   "interactions": 3,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "swyx"
+    ],
+    "date": "2026-11-28",
+    "tweet_url": "https://x.com/almonk/status/2126441888454730039",
+    "types": [
+     "reply"
+    ]
+   },
+   "oneliner": "Conversation with @swyx about speaking at AI Engineer (CFP) about an upcoming launch.",
+   "photo": "https://pbs.twimg.com/profile_images/2066502629593686016/SeDPrfD9_400x400.jpg",
+   "profile_url": "https://x.com/almonk",
+   "relayed_by": [
+    "mitchellh",
+    "swyx"
+   ],
+   "since": "2026-11-27",
+   "tweets": 3
   },
   {
    "bio": "🏰 - I write about AI, mostly. Expect some strange sights.",
@@ -1454,6 +1523,34 @@
     "sqs"
    ],
    "since": "2026-11-24",
+   "tweets": 2
+  },
+  {
+   "bio": "AWS Hero 💫, Staff eng @Datadoghq\n\nAKA Aaron Stuyvenberg\n\nAsk me about your p99 (opinions mine)",
+   "display_name": "AJ Stuyvenberg",
+   "followers": 14053,
+   "handle": "astuyve",
+   "id": "astuyve",
+   "interactions": 2,
+   "kind": "candidate",
+   "latest": {
+    "by": [
+     "geoffreyhuntley"
+    ],
+    "date": "2026-11-27",
+    "tweet_url": "https://x.com/astuyve/status/2126403688377856257",
+    "types": [
+     "reply"
+    ]
+   },
+   "oneliner": "Conversation with @GeoffreyHuntley about his foldable iPhone's inner screen failing.",
+   "photo": "https://pbs.twimg.com/profile_images/1795633924598632448/rGow-XWo_400x400.jpg",
+   "profile_url": "https://x.com/astuyve",
+   "relayed_by": [
+    "geoffreyhuntley",
+    "mitsuhiko"
+   ],
+   "since": "2026-11-27",
    "tweets": 2
   },
   {
@@ -1666,28 +1763,29 @@
    "followers": 45409,
    "handle": "dillon_mulroy",
    "id": "dillon_mulroy",
-   "interactions": 4,
+   "interactions": 5,
    "kind": "candidate",
    "latest": {
     "by": [
-     "dexhorthy"
+     "rlancemartin"
     ],
-    "date": "2026-11-26",
-    "tweet_url": "https://x.com/dillon_mulroy/status/2126073605523968421",
+    "date": "2026-11-27",
+    "tweet_url": "https://x.com/dillon_mulroy/status/2126416656712790175",
     "types": [
      "reply"
     ]
    },
-   "oneliner": "Conversation with @dexhorthy about Thanksgiving food comas (off-topic).",
+   "oneliner": "Conversation with @RLanceMartin welcoming him to Anthropic's team.",
    "photo": "https://pbs.twimg.com/profile_images/2092640156020817920/FcBklR0l_400x400.jpg",
    "profile_url": "https://x.com/dillon_mulroy",
    "relayed_by": [
     "dexhorthy",
     "geoffreyhuntley",
-    "mitsuhiko"
+    "mitsuhiko",
+    "rlancemartin"
    ],
    "since": "2026-11-24",
-   "tweets": 4
+   "tweets": 5
   },
   {
    "bio": "Member of Technical Staff @AnthropicAI. Co-Creator of https://t.co/cn31cNYQD3. Ex-Meta. Playing with computers and tech",
@@ -1864,19 +1962,19 @@
    "followers": 369138,
    "handle": "GergelyOrosz",
    "id": "gergelyorosz",
-   "interactions": 3,
+   "interactions": 4,
    "kind": "candidate",
    "latest": {
     "by": [
-     "dexhorthy"
+     "swyx"
     ],
-    "date": "2026-11-24",
-    "tweet_url": "https://x.com/gergelyorosz/status/2125296348836577527",
+    "date": "2026-11-28",
+    "tweet_url": "https://x.com/gergelyorosz/status/2126458072596140248",
     "types": [
-     "reply"
+     "quote"
     ]
    },
-   "oneliner": "Conversation with @dexhorthy about a startup rewriting its stack to cut CI/CD costs; dex notes it is a custom compiler.",
+   "oneliner": "Quip that working at Cloudflare is now the easiest path to an Anthropic or OpenAI offer.",
    "photo": "https://pbs.twimg.com/profile_images/673095429748350976/ei5eeouV_400x400.png",
    "profile_url": "https://x.com/GergelyOrosz",
    "relayed_by": [
@@ -1885,7 +1983,7 @@
     "swyx"
    ],
    "since": "2026-11-19",
-   "tweets": 3
+   "tweets": 4
   },
   {
    "bio": "@grok it",
@@ -2780,95 +2878,75 @@
   }
  ],
  "projects": {
-  "date": "2026-11-27",
+  "date": "2026-11-28",
   "items": [
    {
     "accounts": [
-     "wadefoster",
-     "swyx"
+     "dbreunig"
     ],
-    "author": "wadefoster",
-    "how": "A Zap starts when a real event happens (a new lead, a payment notification, the Monday report), runs the same steps every time and only calls AI for the steps that need judgment. A scheduled task in Claude or ChatGPT instead wakes the AI at fixed times to check for work, so you pay tokens even when there is nothing to do. Zapier's AI Workflow Index (2,944 real workflows priced) found scheduled agents cost an estimated 2.1x as much as Zaps. Zapier also says it fixes hosted workflows that break at 2am and recommends replacing AI with simple automation when AI is not needed.",
+    "author": "dbreunig",
+    "how": "A skill is an instruction file the agent loads when the task calls for it. This one enforces 3 rules: ground hypotheses in observations, run experiments to prove or disprove them, freeze variables and change one thing at a time. The cost: each experiment setup must be approved by hand. He notes autoresearch harnesses (the tooling around a model for autonomous research) avoid the issue because their prompts already carry this kind of methodology.",
+    "links": [
+     {
+      "label": "Article",
+      "url": "https://www.dbreunig.com/2026/11/27/proactivity-can-read-as-sabotage.html"
+     }
+    ],
+    "tag": "research",
+    "title": "Drew Breunig's scientific-method skill: stop the agent's silent edits",
+    "try": "Free article. The skill itself is not published in the tweets. Site not reachable during this run, details limited to the thread.",
+    "tweet_url": "https://x.com/dbreunig/status/2126360740693230030",
+    "what": "An experience report on agents (Claude, but also GPT and GLM) that silently changed many parameters during ML experiments, and the skill Drew wrote to fix it. In short: a procedure sheet that makes the agent work like a rigorous scientist instead of an over-eager intern.",
+    "who": "Current models are proactive: an offhand remark becomes a reason to change five things. Fine for simple web work, but for costly work (ML experiments, an ops pipeline, a financial model) you need a heavy hand. Reusable tip: for delicate tasks, give the agent an explicit procedure (one change at a time, log every step in a journal.md)."
+   },
+   {
+    "accounts": [
+     "dexhorthy"
+    ],
+    "author": "dexhorthy",
+    "how": "He compares two prompts on the same challenges: \"just solve\" (build the feature) vs \"you own it\". Early results: less duplicated code and more tests with \"you own it\". On one challenge, 8/8 passes vs 4/8. The stock prompt produced 3 duplicate implementations of the same function, while \"you own it\" created a reusable interface and deleted a large module in favor of a better abstraction. But token cost and duration were higher at every checkpoint, and in one case early tests locked in bad behavior.",
+    "links": [],
+    "tag": "research",
+    "title": "SlopCodeBench: what happens when you tell the agent \"you own this code\"",
+    "try": "Preliminary results (still early in the campaign). License and benchmark link not given in the tweets.",
+    "tweet_url": "https://x.com/dexhorthy/status/2126446998543118515",
+    "what": "Dex Horthy tests on SlopCodeBench (an eval by @GOrlanski and team that measures code quality over time) a tip from the official Fable 5.2 prompting guide: telling the model \"you own this codebase and will be working in it over time\".",
+    "who": "When you vibe code an internal tool that will live for months, the real danger is slop: code that works but piles up duplicates. One line of context in your CLAUDE.md can change how the agent behaves."
+   },
+   {
+    "accounts": [
+     "sqs",
+     "claytonfarr"
+    ],
+    "author": "sqs",
+    "how": "You talk, it listens and answers out loud, using STT (speech-to-text: your voice becomes text) and TTS (text-to-speech: its answer becomes voice). A user (@ClaytonFarr) praises two choices: it does not make the little \"mmm, ok\" sounds that break your train of thought, and it knows when to start and stop talking. Puck works above Amp's other threads, spaces and projects: a steering layer, not one more agent.",
     "links": [
      {
       "label": "Site",
-      "url": "https://zapier.com/mcp"
+      "url": "https://ampcode.com/news/puck-in-the-car"
      }
     ],
     "tag": "paid",
-    "title": "The new Zapier: AI agents wired into 10,000 apps without wasting tokens",
-    "try": "Existing Zapier product, paid (pricing not read).",
-    "tweet_url": "https://x.com/wadefoster/status/2125590135227957619",
-    "what": "Zapier CEO Wade Foster explains the Zapier refounding: your agent (Claude, ChatGPT...) does the thinking, and Zapier, through an MCP server (a standard plug that lets an AI use external tools), gives it hands to act in 10,000+ apps. In short: the agent is the brain, Zapier is the arm.",
-    "who": "Ops people: separate what needs intelligence (writing, sorting, judging) from what is mechanical (triggering, copying, sending). Their advice: the next time you ask Claude for the same thing twice, have it build a Zap. Site not reachable, details limited to the tweet."
+    "title": "Amp \"Puck in the car\": talk to your coding agent while driving",
+    "try": "Available in Amp. Price not given in the tweets. Site not reachable during this run, details limited.",
+    "tweet_url": "https://x.com/sqs/status/2126377274828300385",
+    "what": "A car mode for Puck, the voice assistant of Amp (Sourcegraph's coding agent). In short, a voice ChatGPT, but plugged into your projects and agent threads.",
+    "who": "Follow up on or restart your agents without a screen, while commuting. @sqs adds that the call button can now be set as a global OS shortcut."
    },
    {
     "accounts": [
-     "hwchase17"
+     "kinglycrow",
+     "dexhorthy"
     ],
-    "author": "hwchase17",
-    "how": "The tweet is truncated, so no architecture details. The idea of a curator agent: it regularly rereads the internal wiki to spot outdated, duplicate or inconsistent pages, and proposes or applies fixes.",
+    "author": "kinglycrow",
+    "how": "You order it by telling your agent to read a page and help you buy one. Relayed by @dexhorthy (\"heard very cool things\").",
     "links": [],
-    "tag": "open source",
-    "title": "A curator agent that watches a company's Notion knowledge base",
-    "try": "The LangChain guide is not identified in the truncated tweet; look up @StakeJein's original tweet.",
-    "tweet_url": "https://x.com/hwchase17/status/2126083404546613473",
-    "what": "@StakeJein built a curator agent, hosted on LangChain, that monitors their Notion knowledge base, following a guide by Harrison Chase (LangChain CEO), who replied he wants to hear more.",
-    "who": "Team wikis rot quickly. An agent that gardens internal docs is a very concrete business case that is easy to reproduce."
-   },
-   {
-    "accounts": [
-     "mitchellh",
-     "swyx"
-    ],
-    "author": "mitchellh",
-    "how": "From Mitchell's replies: the app connects to your Rex Server (e.g. your computer), sometimes through Tailscale relays (a private network linking your devices wherever they are); it has installable skills, evals (automated tests of AI quality) and default rulesets (e.g. adding the Crush tool). They claim over 100,000 users and document all their external connections.",
-    "links": [
-     {
-      "label": "Site",
-      "url": "https://superlogical.com"
-     }
-    ],
     "tag": "paid",
-    "title": "Rex (Superlogical): Mitchell Hashimoto's app lands on the App Store",
-    "try": "App Store (except France for now), Rex Server required. Price unknown. Site not reachable, details limited.",
-    "tweet_url": "https://x.com/mitchellh/status/2126047712596631876",
-    "what": "New iPhone app from Mitchell Hashimoto (creator of Terraform and Ghostty) that needs a Rex Server running on another device. swyx compares it to Cursor and T3 Code (beating them on day 0), so it is a tool to drive coding and coding agents from your phone.",
-    "who": "Launching and watching your vibe coding sessions from your phone. Not yet available in France (encryption paperwork, submitted to Apple this week). Full public release said to be imminent."
-   },
-   {
-    "accounts": [
-     "jess_weng18",
-     "sydneyrunkle"
-    ],
-    "author": "jess_weng18",
-    "how": "You play, and the game hides educational content about how an agent works.",
-    "links": [],
-    "tag": "open source",
-    "title": "A video game to learn Deep Agents, LangChain's agent harness",
-    "try": "Free, link in the tweet.",
-    "tweet_url": "https://x.com/jess_weng18/status/2125653978965016691",
-    "what": "@jess_weng18 made a video game that teaches you how to use Deep Agents, LangChain's open source harness (all the code around the model that gives it tools, memory, a plan and sub-agents), to celebrate its 50M downloads.",
-    "who": "Anyone who wants to understand what is under the hood of an agent without reading docs."
-   },
-   {
-    "accounts": [
-     "jxnlco"
-    ],
-    "author": "jxnlco",
-    "how": "Version 1.18 fixes streaming, retries, batch jobs and provider integrations, adds classification and scoring through the OpenAI Decisions API and Jev, and makes raw response logging opt-in.",
-    "links": [
-     {
-      "label": "Repo",
-      "url": "https://github.com/567-labs/instructor"
-     }
-    ],
-    "tag": "open source",
-    "title": "Instructor 1.18: get clean structured data out of an LLM",
-    "try": "Open source, release coming soon.",
-    "tweet_url": "https://x.com/jxnlco/status/2126054694003024241",
-    "what": "Python library: you describe the data you want (e.g. name and age) and Instructor makes the LLM answer in that format, validates it and retries if the answer is invalid.",
-    "who": "Skip unless curious if you don't code in Python, but it is the base brick of many 'read an email, fill a CRM row' automations."
+    "title": "The Scout: a $25 Wi-Fi camera that gives your agent eyes",
+    "try": "$25, no subscription, 15% off through Dec 6.",
+    "tweet_url": "https://x.com/kinglycrow/status/2126374876135231971",
+    "what": "A magnetic camera for the fridge, pantry, door or pets that your agent can check.",
+    "who": "Niche: skip unless curious."
    }
   ]
  },

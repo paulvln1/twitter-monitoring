@@ -50,14 +50,14 @@
   "date": "2026-11-25"
  },
  "aidotengineer": {
-  "text": "Dex Horthy's AI Engineer talk: 12 practices to keep a software factory from becoming a slop factory.",
-  "tweet_id": "2124956149359472788",
-  "date": "2026-11-23"
+  "text": "AI Engineer talk by @echelon on building open source creative tools with Rust and coding agents hits 1M views.",
+  "tweet_id": "2125008996583018609",
+  "date": "2026-11-28"
  },
  "gergelyorosz": {
-  "text": "Conversation with @dexhorthy about a startup rewriting its stack to cut CI/CD costs; dex notes it is a custom compiler.",
-  "tweet_id": "2125296348836577527",
-  "date": "2026-11-24"
+  "text": "Quip that working at Cloudflare is now the easiest path to an Anthropic or OpenAI offer.",
+  "tweet_id": "2126458072596140248",
+  "date": "2026-11-28"
  },
  "grok": {
   "text": "Conversation with @dexhorthy pointing out a Grok answer without citations.",
@@ -155,9 +155,9 @@
   "date": "2026-11-23"
  },
  "dillon_mulroy": {
-  "text": "Conversation with @dexhorthy about Thanksgiving food comas (off-topic).",
-  "tweet_id": "2126073605523968421",
-  "date": "2026-11-26"
+  "text": "Conversation with @RLanceMartin welcoming him to Anthropic's team.",
+  "tweet_id": "2126416656712790175",
+  "date": "2026-11-27"
  },
  "dusangran": {
   "text": "Conversation with @mitchellh about access to the Rex/herdr Discord for invited users.",
@@ -263,5 +263,15 @@
   "text": "Conversation with @swyx about Steve Yegge's AI Engineer talk and OpenAI's Astra.",
   "tweet_id": "2126056111988244795",
   "date": "2026-11-26"
+ },
+ "almonk": {
+  "text": "Conversation with @swyx about speaking at AI Engineer (CFP) about an upcoming launch.",
+  "tweet_id": "2126441888454730039",
+  "date": "2026-11-28"
+ },
+ "astuyve": {
+  "text": "Conversation with @GeoffreyHuntley about his foldable iPhone's inner screen failing.",
+  "tweet_id": "2126403688377856257",
+  "date": "2026-11-27"
  }
 }

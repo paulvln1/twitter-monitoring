@@ -1,42 +1,55 @@
-{"date": "2026-11-27", "projects": [
- {"title": "The new Zapier: AI agents wired into 10,000 apps without wasting tokens",
-  "tag": "paid",
-  "tweet_url": "https://x.com/wadefoster/status/2125590135227957619",
-  "links": [{"label": "Site", "url": "https://zapier.com/mcp"}],
-  "what": "Zapier CEO Wade Foster explains the Zapier refounding: your agent (Claude, ChatGPT...) does the thinking, and Zapier, through an MCP server (a standard plug that lets an AI use external tools), gives it hands to act in 10,000+ apps. In short: the agent is the brain, Zapier is the arm.",
-  "how": "A Zap starts when a real event happens (a new lead, a payment notification, the Monday report), runs the same steps every time and only calls AI for the steps that need judgment. A scheduled task in Claude or ChatGPT instead wakes the AI at fixed times to check for work, so you pay tokens even when there is nothing to do. Zapier's AI Workflow Index (2,944 real workflows priced) found scheduled agents cost an estimated 2.1x as much as Zaps. Zapier also says it fixes hosted workflows that break at 2am and recommends replacing AI with simple automation when AI is not needed.",
-  "who": "Ops people: separate what needs intelligence (writing, sorting, judging) from what is mechanical (triggering, copying, sending). Their advice: the next time you ask Claude for the same thing twice, have it build a Zap. Site not reachable, details limited to the tweet.",
-  "try": "Existing Zapier product, paid (pricing not read)."},
- {"title": "A curator agent that watches a company's Notion knowledge base",
-  "tag": "open source",
-  "tweet_url": "https://x.com/hwchase17/status/2126083404546613473",
-  "links": [],
-  "what": "@StakeJein built a curator agent, hosted on LangChain, that monitors their Notion knowledge base, following a guide by Harrison Chase (LangChain CEO), who replied he wants to hear more.",
-  "how": "The tweet is truncated, so no architecture details. The idea of a curator agent: it regularly rereads the internal wiki to spot outdated, duplicate or inconsistent pages, and proposes or applies fixes.",
-  "who": "Team wikis rot quickly. An agent that gardens internal docs is a very concrete business case that is easy to reproduce.",
-  "try": "The LangChain guide is not identified in the truncated tweet; look up @StakeJein's original tweet."},
- {"title": "Rex (Superlogical): Mitchell Hashimoto's app lands on the App Store",
-  "tag": "paid",
-  "tweet_url": "https://x.com/mitchellh/status/2126047712596631876",
-  "links": [{"label": "Site", "url": "https://superlogical.com"}],
-  "what": "New iPhone app from Mitchell Hashimoto (creator of Terraform and Ghostty) that needs a Rex Server running on another device. swyx compares it to Cursor and T3 Code (beating them on day 0), so it is a tool to drive coding and coding agents from your phone.",
-  "how": "From Mitchell's replies: the app connects to your Rex Server (e.g. your computer), sometimes through Tailscale relays (a private network linking your devices wherever they are); it has installable skills, evals (automated tests of AI quality) and default rulesets (e.g. adding the Crush tool). They claim over 100,000 users and document all their external connections.",
-  "who": "Launching and watching your vibe coding sessions from your phone. Not yet available in France (encryption paperwork, submitted to Apple this week). Full public release said to be imminent.",
-  "try": "App Store (except France for now), Rex Server required. Price unknown. Site not reachable, details limited."},
- {"title": "A video game to learn Deep Agents, LangChain's agent harness",
-  "tag": "open source",
-  "tweet_url": "https://x.com/jess_weng18/status/2125653978965016691",
-  "links": [],
-  "what": "@jess_weng18 made a video game that teaches you how to use Deep Agents, LangChain's open source harness (all the code around the model that gives it tools, memory, a plan and sub-agents), to celebrate its 50M downloads.",
-  "how": "You play, and the game hides educational content about how an agent works.",
-  "who": "Anyone who wants to understand what is under the hood of an agent without reading docs.",
-  "try": "Free, link in the tweet."},
- {"title": "Instructor 1.18: get clean structured data out of an LLM",
-  "tag": "open source",
-  "tweet_url": "https://x.com/jxnlco/status/2126054694003024241",
-  "links": [{"label": "Repo", "url": "https://github.com/567-labs/instructor"}],
-  "what": "Python library: you describe the data you want (e.g. name and age) and Instructor makes the LLM answer in that format, validates it and retries if the answer is invalid.",
-  "how": "Version 1.18 fixes streaming, retries, batch jobs and provider integrations, adds classification and scoring through the OpenAI Decisions API and Jev, and makes raw response logging opt-in.",
-  "who": "Skip unless curious if you don't code in Python, but it is the base brick of many 'read an email, fill a CRM row' automations.",
-  "try": "Open source, release coming soon."}
-]}
+{
+ "date": "2026-11-28",
+ "projects": [
+  {
+   "title": "Drew Breunig's scientific-method skill: stop the agent's silent edits",
+   "tag": "research",
+   "tweet_url": "https://x.com/dbreunig/status/2126360740693230030",
+   "links": [
+    {
+     "label": "Article",
+     "url": "https://www.dbreunig.com/2026/11/27/proactivity-can-read-as-sabotage.html"
+    }
+   ],
+   "what": "An experience report on agents (Claude, but also GPT and GLM) that silently changed many parameters during ML experiments, and the skill Drew wrote to fix it. In short: a procedure sheet that makes the agent work like a rigorous scientist instead of an over-eager intern.",
+   "how": "A skill is an instruction file the agent loads when the task calls for it. This one enforces 3 rules: ground hypotheses in observations, run experiments to prove or disprove them, freeze variables and change one thing at a time. The cost: each experiment setup must be approved by hand. He notes autoresearch harnesses (the tooling around a model for autonomous research) avoid the issue because their prompts already carry this kind of methodology.",
+   "who": "Current models are proactive: an offhand remark becomes a reason to change five things. Fine for simple web work, but for costly work (ML experiments, an ops pipeline, a financial model) you need a heavy hand. Reusable tip: for delicate tasks, give the agent an explicit procedure (one change at a time, log every step in a journal.md).",
+   "try": "Free article. The skill itself is not published in the tweets. Site not reachable during this run, details limited to the thread."
+  },
+  {
+   "title": "SlopCodeBench: what happens when you tell the agent \"you own this code\"",
+   "tag": "research",
+   "tweet_url": "https://x.com/dexhorthy/status/2126446998543118515",
+   "links": [],
+   "what": "Dex Horthy tests on SlopCodeBench (an eval by @GOrlanski and team that measures code quality over time) a tip from the official Fable 5.2 prompting guide: telling the model \"you own this codebase and will be working in it over time\".",
+   "how": "He compares two prompts on the same challenges: \"just solve\" (build the feature) vs \"you own it\". Early results: less duplicated code and more tests with \"you own it\". On one challenge, 8/8 passes vs 4/8. The stock prompt produced 3 duplicate implementations of the same function, while \"you own it\" created a reusable interface and deleted a large module in favor of a better abstraction. But token cost and duration were higher at every checkpoint, and in one case early tests locked in bad behavior.",
+   "who": "When you vibe code an internal tool that will live for months, the real danger is slop: code that works but piles up duplicates. One line of context in your CLAUDE.md can change how the agent behaves.",
+   "try": "Preliminary results (still early in the campaign). License and benchmark link not given in the tweets."
+  },
+  {
+   "title": "Amp \"Puck in the car\": talk to your coding agent while driving",
+   "tag": "paid",
+   "tweet_url": "https://x.com/sqs/status/2126377274828300385",
+   "links": [
+    {
+     "label": "Site",
+     "url": "https://ampcode.com/news/puck-in-the-car"
+    }
+   ],
+   "what": "A car mode for Puck, the voice assistant of Amp (Sourcegraph's coding agent). In short, a voice ChatGPT, but plugged into your projects and agent threads.",
+   "how": "You talk, it listens and answers out loud, using STT (speech-to-text: your voice becomes text) and TTS (text-to-speech: its answer becomes voice). A user (@ClaytonFarr) praises two choices: it does not make the little \"mmm, ok\" sounds that break your train of thought, and it knows when to start and stop talking. Puck works above Amp's other threads, spaces and projects: a steering layer, not one more agent.",
+   "who": "Follow up on or restart your agents without a screen, while commuting. @sqs adds that the call button can now be set as a global OS shortcut.",
+   "try": "Available in Amp. Price not given in the tweets. Site not reachable during this run, details limited."
+  },
+  {
+   "title": "The Scout: a $25 Wi-Fi camera that gives your agent eyes",
+   "tag": "paid",
+   "tweet_url": "https://x.com/kinglycrow/status/2126374876135231971",
+   "links": [],
+   "what": "A magnetic camera for the fridge, pantry, door or pets that your agent can check.",
+   "how": "You order it by telling your agent to read a page and help you buy one. Relayed by @dexhorthy (\"heard very cool things\").",
+   "who": "Niche: skip unless curious.",
+   "try": "$25, no subscription, 15% off through Dec 6."
+  }
+ ]
+}
